@@ -1,6 +1,5 @@
 package com.zhezhuo.model.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -71,7 +70,7 @@ public class SysUsersDO implements Serializable {
         this.nickName = nickName;
     }
 
-    @JSONField(serialize = false)
+
     public String getPassword() {
         return password;
     }

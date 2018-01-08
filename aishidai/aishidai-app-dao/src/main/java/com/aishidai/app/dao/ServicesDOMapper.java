@@ -3,13 +3,13 @@ package com.aishidai.app.dao;
 import com.aishidai.app.model.pojo.ServicesDO;
 
 public interface ServicesDOMapper {
-    int deleteByPrimaryKey(Integer serviceId);
+    int deleteByPrimaryKey(Long serviceId);
 
     int insert(ServicesDO record);
 
     int insertSelective(ServicesDO record);
 
-    ServicesDO selectByPrimaryKey(Integer serviceId);
+    ServicesDO selectByPrimaryKey(Long serviceId);
 
     int updateByPrimaryKeySelective(ServicesDO record);
 

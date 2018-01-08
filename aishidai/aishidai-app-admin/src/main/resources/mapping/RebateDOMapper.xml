@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.RebateDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.RebateDO">
-    <id column="rebate_id" jdbcType="BIGINT" property="rebateId" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="discount" jdbcType="DECIMAL" property="discount" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="creater" jdbcType="BIGINT" property="creater" />
-    <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.RebateDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.RebateDO" >
+    <id column="rebate_id" property="rebateId" jdbcType="BIGINT" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="discount" property="discount" jdbcType="DECIMAL" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="creater" property="creater" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     rebate_id, number, name, item_id, discount, start_time, end_time, created, updated, 
     creater, status, is_deleted
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from rebate
     where rebate_id = #{rebateId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from rebate
     where rebate_id = #{rebateId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.RebateDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.RebateDO" >
     insert into rebate (rebate_id, number, name, 
       item_id, discount, start_time, 
       end_time, created, updated, 
@@ -41,298 +41,125 @@
       #{creater,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.RebateDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.RebateDO" >
     insert into rebate
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rebateId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rebateId != null" >
         rebate_id,
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="itemId != null">
+      <if test="itemId != null" >
         item_id,
       </if>
-      <if test="discount != null">
+      <if test="discount != null" >
         discount,
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         start_time,
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         end_time,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="creater != null">
+      <if test="creater != null" >
         creater,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rebateId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rebateId != null" >
         #{rebateId,jdbcType=BIGINT},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         #{number,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="itemId != null">
+      <if test="itemId != null" >
         #{itemId,jdbcType=BIGINT},
       </if>
-      <if test="discount != null">
+      <if test="discount != null" >
         #{discount,jdbcType=DECIMAL},
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="creater != null">
+      <if test="creater != null" >
         #{creater,jdbcType=BIGINT},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         #{isDeleted,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.RebateDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.RebateDO" >
     update rebate
-    <set>
-      <if test="number != null">
+    <set >
+      <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="itemId != null">
+      <if test="itemId != null" >
         item_id = #{itemId,jdbcType=BIGINT},
       </if>
-      <if test="discount != null">
+      <if test="discount != null" >
         discount = #{discount,jdbcType=DECIMAL},
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="creater != null">
+      <if test="creater != null" >
         creater = #{creater,jdbcType=BIGINT},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
     </set>
     where rebate_id = #{rebateId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.RebateDO">
-    update rebate
-    set number = #{number,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      item_id = #{itemId,jdbcType=BIGINT},
-      discount = #{discount,jdbcType=DECIMAL},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      creater = #{creater,jdbcType=BIGINT},
-      status = #{status,jdbcType=TINYINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT}
-    where rebate_id = #{rebateId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.RebateDO">
-    <id column="rebate_id" jdbcType="BIGINT" property="rebateId" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="discount" jdbcType="DECIMAL" property="discount" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="creater" jdbcType="BIGINT" property="creater" />
-    <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    rebate_id, number, name, item_id, discount, start_time, end_time, created, updated, 
-    creater, status, is_deleted
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from rebate
-    where rebate_id = #{rebateId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from rebate
-    where rebate_id = #{rebateId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.RebateDO">
-    insert into rebate (rebate_id, number, name, 
-      item_id, discount, start_time, 
-      end_time, created, updated, 
-      creater, status, is_deleted
-      )
-    values (#{rebateId,jdbcType=BIGINT}, #{number,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{itemId,jdbcType=BIGINT}, #{discount,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
-      #{creater,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.RebateDO">
-    insert into rebate
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rebateId != null">
-        rebate_id,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="itemId != null">
-        item_id,
-      </if>
-      <if test="discount != null">
-        discount,
-      </if>
-      <if test="startTime != null">
-        start_time,
-      </if>
-      <if test="endTime != null">
-        end_time,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="creater != null">
-        creater,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rebateId != null">
-        #{rebateId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=BIGINT},
-      </if>
-      <if test="discount != null">
-        #{discount,jdbcType=DECIMAL},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creater != null">
-        #{creater,jdbcType=BIGINT},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.RebateDO">
-    update rebate
-    <set>
-      <if test="number != null">
-        number = #{number,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="itemId != null">
-        item_id = #{itemId,jdbcType=BIGINT},
-      </if>
-      <if test="discount != null">
-        discount = #{discount,jdbcType=DECIMAL},
-      </if>
-      <if test="startTime != null">
-        start_time = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creater != null">
-        creater = #{creater,jdbcType=BIGINT},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-    </set>
-    where rebate_id = #{rebateId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.RebateDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.RebateDO" >
     update rebate
     set number = #{number,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},

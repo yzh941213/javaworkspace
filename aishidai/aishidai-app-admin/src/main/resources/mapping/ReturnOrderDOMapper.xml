@@ -1,38 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.ReturnOrderDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ReturnOrderDO">
-    <id column="return_order_id" jdbcType="BIGINT" property="returnOrderId" />
-    <result column="apply_user_id" jdbcType="BIGINT" property="applyUserId" />
-    <result column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="number" jdbcType="TINYINT" property="number" />
-    <result column="money" jdbcType="DECIMAL" property="money" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="apply_reason" jdbcType="VARCHAR" property="applyReason" />
-    <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="is_receive" jdbcType="TINYINT" property="isReceive" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="apply_explain" jdbcType="VARCHAR" property="applyExplain" />
-    <result column="is_invoice" jdbcType="TINYINT" property="isInvoice" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ReturnOrderDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ReturnOrderDO" >
+    <id column="return_order_id" property="returnOrderId" jdbcType="BIGINT" />
+    <result column="apply_user_id" property="applyUserId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="number" property="number" jdbcType="TINYINT" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="apply_reason" property="applyReason" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="is_receive" property="isReceive" jdbcType="TINYINT" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="apply_explain" property="applyExplain" jdbcType="VARCHAR" />
+    <result column="is_invoice" property="isInvoice" jdbcType="TINYINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     return_order_id, apply_user_id, order_id, number, money, image, apply_reason, status, 
     type, is_receive, created, updated, apply_explain, is_invoice, is_deleted
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from return_order
     where return_order_id = #{returnOrderId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from return_order
     where return_order_id = #{returnOrderId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO" >
     insert into return_order (return_order_id, apply_user_id, order_id, 
       number, money, image, 
       apply_reason, status, type, 
@@ -46,360 +46,152 @@
       #{applyExplain,jdbcType=VARCHAR}, #{isInvoice,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO" >
     insert into return_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="returnOrderId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="returnOrderId != null" >
         return_order_id,
       </if>
-      <if test="applyUserId != null">
+      <if test="applyUserId != null" >
         apply_user_id,
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         order_id,
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number,
       </if>
-      <if test="money != null">
+      <if test="money != null" >
         money,
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image,
       </if>
-      <if test="applyReason != null">
+      <if test="applyReason != null" >
         apply_reason,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type,
       </if>
-      <if test="isReceive != null">
+      <if test="isReceive != null" >
         is_receive,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="applyExplain != null">
+      <if test="applyExplain != null" >
         apply_explain,
       </if>
-      <if test="isInvoice != null">
+      <if test="isInvoice != null" >
         is_invoice,
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="returnOrderId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="returnOrderId != null" >
         #{returnOrderId,jdbcType=BIGINT},
       </if>
-      <if test="applyUserId != null">
+      <if test="applyUserId != null" >
         #{applyUserId,jdbcType=BIGINT},
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         #{number,jdbcType=TINYINT},
       </if>
-      <if test="money != null">
+      <if test="money != null" >
         #{money,jdbcType=DECIMAL},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         #{image,jdbcType=VARCHAR},
       </if>
-      <if test="applyReason != null">
+      <if test="applyReason != null" >
         #{applyReason,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         #{type,jdbcType=TINYINT},
       </if>
-      <if test="isReceive != null">
+      <if test="isReceive != null" >
         #{isReceive,jdbcType=TINYINT},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=INTEGER},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=INTEGER},
       </if>
-      <if test="applyExplain != null">
+      <if test="applyExplain != null" >
         #{applyExplain,jdbcType=VARCHAR},
       </if>
-      <if test="isInvoice != null">
+      <if test="isInvoice != null" >
         #{isInvoice,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         #{isDeleted,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO" >
     update return_order
-    <set>
-      <if test="applyUserId != null">
+    <set >
+      <if test="applyUserId != null" >
         apply_user_id = #{applyUserId,jdbcType=BIGINT},
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         order_id = #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number = #{number,jdbcType=TINYINT},
       </if>
-      <if test="money != null">
+      <if test="money != null" >
         money = #{money,jdbcType=DECIMAL},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image = #{image,jdbcType=VARCHAR},
       </if>
-      <if test="applyReason != null">
+      <if test="applyReason != null" >
         apply_reason = #{applyReason,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
-      <if test="isReceive != null">
+      <if test="isReceive != null" >
         is_receive = #{isReceive,jdbcType=TINYINT},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=INTEGER},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=INTEGER},
       </if>
-      <if test="applyExplain != null">
+      <if test="applyExplain != null" >
         apply_explain = #{applyExplain,jdbcType=VARCHAR},
       </if>
-      <if test="isInvoice != null">
+      <if test="isInvoice != null" >
         is_invoice = #{isInvoice,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
     </set>
     where return_order_id = #{returnOrderId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
-    update return_order
-    set apply_user_id = #{applyUserId,jdbcType=BIGINT},
-      order_id = #{orderId,jdbcType=BIGINT},
-      number = #{number,jdbcType=TINYINT},
-      money = #{money,jdbcType=DECIMAL},
-      image = #{image,jdbcType=VARCHAR},
-      apply_reason = #{applyReason,jdbcType=VARCHAR},
-      status = #{status,jdbcType=TINYINT},
-      type = #{type,jdbcType=TINYINT},
-      is_receive = #{isReceive,jdbcType=TINYINT},
-      created = #{created,jdbcType=INTEGER},
-      updated = #{updated,jdbcType=INTEGER},
-      apply_explain = #{applyExplain,jdbcType=VARCHAR},
-      is_invoice = #{isInvoice,jdbcType=TINYINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT}
-    where return_order_id = #{returnOrderId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ReturnOrderDO">
-    <id column="return_order_id" jdbcType="BIGINT" property="returnOrderId" />
-    <result column="apply_user_id" jdbcType="BIGINT" property="applyUserId" />
-    <result column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="number" jdbcType="TINYINT" property="number" />
-    <result column="money" jdbcType="DECIMAL" property="money" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="apply_reason" jdbcType="VARCHAR" property="applyReason" />
-    <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="is_receive" jdbcType="TINYINT" property="isReceive" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="apply_explain" jdbcType="VARCHAR" property="applyExplain" />
-    <result column="is_invoice" jdbcType="TINYINT" property="isInvoice" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    return_order_id, apply_user_id, order_id, number, money, image, apply_reason, status, 
-    type, is_receive, created, updated, apply_explain, is_invoice, is_deleted
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from return_order
-    where return_order_id = #{returnOrderId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from return_order
-    where return_order_id = #{returnOrderId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
-    insert into return_order (return_order_id, apply_user_id, order_id, 
-      number, money, image, 
-      apply_reason, status, type, 
-      is_receive, created, updated, 
-      apply_explain, is_invoice, is_deleted
-      )
-    values (#{returnOrderId,jdbcType=BIGINT}, #{applyUserId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
-      #{number,jdbcType=TINYINT}, #{money,jdbcType=DECIMAL}, #{image,jdbcType=VARCHAR}, 
-      #{applyReason,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, 
-      #{isReceive,jdbcType=TINYINT}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
-      #{applyExplain,jdbcType=VARCHAR}, #{isInvoice,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
-    insert into return_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="returnOrderId != null">
-        return_order_id,
-      </if>
-      <if test="applyUserId != null">
-        apply_user_id,
-      </if>
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-      <if test="money != null">
-        money,
-      </if>
-      <if test="image != null">
-        image,
-      </if>
-      <if test="applyReason != null">
-        apply_reason,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="isReceive != null">
-        is_receive,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="applyExplain != null">
-        apply_explain,
-      </if>
-      <if test="isInvoice != null">
-        is_invoice,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="returnOrderId != null">
-        #{returnOrderId,jdbcType=BIGINT},
-      </if>
-      <if test="applyUserId != null">
-        #{applyUserId,jdbcType=BIGINT},
-      </if>
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=TINYINT},
-      </if>
-      <if test="money != null">
-        #{money,jdbcType=DECIMAL},
-      </if>
-      <if test="image != null">
-        #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="applyReason != null">
-        #{applyReason,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=TINYINT},
-      </if>
-      <if test="isReceive != null">
-        #{isReceive,jdbcType=TINYINT},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="applyExplain != null">
-        #{applyExplain,jdbcType=VARCHAR},
-      </if>
-      <if test="isInvoice != null">
-        #{isInvoice,jdbcType=TINYINT},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
-    update return_order
-    <set>
-      <if test="applyUserId != null">
-        apply_user_id = #{applyUserId,jdbcType=BIGINT},
-      </if>
-      <if test="orderId != null">
-        order_id = #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        number = #{number,jdbcType=TINYINT},
-      </if>
-      <if test="money != null">
-        money = #{money,jdbcType=DECIMAL},
-      </if>
-      <if test="image != null">
-        image = #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="applyReason != null">
-        apply_reason = #{applyReason,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="isReceive != null">
-        is_receive = #{isReceive,jdbcType=TINYINT},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="applyExplain != null">
-        apply_explain = #{applyExplain,jdbcType=VARCHAR},
-      </if>
-      <if test="isInvoice != null">
-        is_invoice = #{isInvoice,jdbcType=TINYINT},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-    </set>
-    where return_order_id = #{returnOrderId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ReturnOrderDO" >
     update return_order
     set apply_user_id = #{applyUserId,jdbcType=BIGINT},
       order_id = #{orderId,jdbcType=BIGINT},

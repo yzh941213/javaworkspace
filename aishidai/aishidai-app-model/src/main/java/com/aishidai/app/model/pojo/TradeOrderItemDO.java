@@ -17,7 +17,7 @@ public class TradeOrderItemDO {
 
     private String image;
 
-    private String orderId;
+    private Long orderId;
 
     private String itemName;
 
@@ -85,12 +85,12 @@ public class TradeOrderItemDO {
         this.image = image == null ? null : image.trim();
     }
 
-    public String getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public String getItemName() {

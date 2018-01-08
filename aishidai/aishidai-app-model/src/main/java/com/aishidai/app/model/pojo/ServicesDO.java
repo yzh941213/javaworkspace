@@ -3,15 +3,15 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class ServicesDO {
-    private Integer serviceId;
+    private Long serviceId;
 
-    private Integer applyId;
+    private Long applyId;
 
-    private Integer ordersType;
+    private Long ordersType;
 
-    private Integer shopId;
+    private Long shopId;
 
-    private Integer usersId;
+    private Long usersId;
 
     private Date created;
 
@@ -33,43 +33,43 @@ public class ServicesDO {
 
     private Integer type;
 
-    public Integer getServiceId() {
+    public Long getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(Integer serviceId) {
+    public void setServiceId(Long serviceId) {
         this.serviceId = serviceId;
     }
 
-    public Integer getApplyId() {
+    public Long getApplyId() {
         return applyId;
     }
 
-    public void setApplyId(Integer applyId) {
+    public void setApplyId(Long applyId) {
         this.applyId = applyId;
     }
 
-    public Integer getOrdersType() {
+    public Long getOrdersType() {
         return ordersType;
     }
 
-    public void setOrdersType(Integer ordersType) {
+    public void setOrdersType(Long ordersType) {
         this.ordersType = ordersType;
     }
 
-    public Integer getShopId() {
+    public Long getShopId() {
         return shopId;
     }
 
-    public void setShopId(Integer shopId) {
+    public void setShopId(Long shopId) {
         this.shopId = shopId;
     }
 
-    public Integer getUsersId() {
+    public Long getUsersId() {
         return usersId;
     }
 
-    public void setUsersId(Integer usersId) {
+    public void setUsersId(Long usersId) {
         this.usersId = usersId;
     }
 

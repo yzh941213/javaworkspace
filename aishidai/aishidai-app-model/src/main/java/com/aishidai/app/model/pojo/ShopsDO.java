@@ -51,6 +51,10 @@ public class ShopsDO {
 
     private Byte star;
 
+    private String lat;
+
+    private String lnt;
+
     public Long getShopsId() {
         return shopsId;
     }
@@ -241,5 +245,21 @@ public class ShopsDO {
 
     public void setStar(Byte star) {
         this.star = star;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat == null ? null : lat.trim();
+    }
+
+    public String getLnt() {
+        return lnt;
+    }
+
+    public void setLnt(String lnt) {
+        this.lnt = lnt == null ? null : lnt.trim();
     }
 }

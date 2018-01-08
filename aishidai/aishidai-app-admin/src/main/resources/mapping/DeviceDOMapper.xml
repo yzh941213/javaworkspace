@@ -161,6 +161,166 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.DeviceDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="manufacture_date" jdbcType="TIMESTAMP" property="manufactureDate" />
+    <result column="start_date" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="distributor_id" jdbcType="BIGINT" property="distributorId" />
+    <result column="mac" jdbcType="VARCHAR" property="mac" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_no, manufacture_date, start_date, remark, distributor_id, mac, ip, created, 
+    updated, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from device
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.DeviceDO">
+    insert into device (id, product_no, manufacture_date, 
+      start_date, remark, distributor_id, 
+      mac, ip, created, 
+      updated, status)
+    values (#{id,jdbcType=BIGINT}, #{productNo,jdbcType=VARCHAR}, #{manufactureDate,jdbcType=TIMESTAMP}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{distributorId,jdbcType=BIGINT}, 
+      #{mac,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.DeviceDO">
+    insert into device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productNo != null">
+        product_no,
+      </if>
+      <if test="manufactureDate != null">
+        manufacture_date,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="distributorId != null">
+        distributor_id,
+      </if>
+      <if test="mac != null">
+        mac,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="productNo != null">
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="manufactureDate != null">
+        #{manufactureDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorId != null">
+        #{distributorId,jdbcType=BIGINT},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.DeviceDO">
+    update device
+    <set>
+      <if test="productNo != null">
+        product_no = #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="manufactureDate != null">
+        manufacture_date = #{manufactureDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorId != null">
+        distributor_id = #{distributorId,jdbcType=BIGINT},
+      </if>
+      <if test="mac != null">
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.DeviceDO">
+    update device
+    set product_no = #{productNo,jdbcType=VARCHAR},
+      manufacture_date = #{manufactureDate,jdbcType=TIMESTAMP},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      distributor_id = #{distributorId,jdbcType=BIGINT},
+      mac = #{mac,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.DeviceDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="product_no" jdbcType="VARCHAR" property="productNo" />

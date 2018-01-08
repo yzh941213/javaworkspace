@@ -149,6 +149,154 @@
       is_deleted = #{isDeleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.FittingRoom">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="buyer_user_id" jdbcType="BIGINT" property="buyerUserId" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="model_id" jdbcType="BIGINT" property="modelId" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="extra" jdbcType="VARCHAR" property="extra" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, buyer_user_id, item_id, sku_id, model_id, number, extra, created, updated, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fitting_room
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from fitting_room
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.FittingRoom">
+    insert into fitting_room (id, buyer_user_id, item_id, 
+      sku_id, model_id, number, 
+      extra, created, updated, 
+      is_deleted)
+    values (#{id,jdbcType=BIGINT}, #{buyerUserId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, 
+      #{skuId,jdbcType=BIGINT}, #{modelId,jdbcType=BIGINT}, #{number,jdbcType=INTEGER}, 
+      #{extra,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.FittingRoom">
+    insert into fitting_room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="buyerUserId != null">
+        buyer_user_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="extra != null">
+        extra,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="buyerUserId != null">
+        #{buyerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null">
+        #{modelId,jdbcType=BIGINT},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.FittingRoom">
+    update fitting_room
+    <set>
+      <if test="buyerUserId != null">
+        buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=BIGINT},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.FittingRoom">
+    update fitting_room
+    set buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
+      item_id = #{itemId,jdbcType=BIGINT},
+      sku_id = #{skuId,jdbcType=BIGINT},
+      model_id = #{modelId,jdbcType=BIGINT},
+      number = #{number,jdbcType=INTEGER},
+      extra = #{extra,jdbcType=VARCHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.FittingRoom">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="buyer_user_id" jdbcType="BIGINT" property="buyerUserId" />

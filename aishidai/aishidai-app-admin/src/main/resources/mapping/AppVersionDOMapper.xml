@@ -138,6 +138,143 @@
       force_update = #{forceUpdate,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AppVersionDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+    <result column="version_num" jdbcType="VARCHAR" property="versionNum" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="update" jdbcType="TINYINT" property="update" />
+    <result column="force_update" jdbcType="TINYINT" property="forceUpdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, download_url, version_num, describe, type, created, updated, update, force_update
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_version
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from app_version
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.AppVersionDO">
+    insert into app_version (id, download_url, version_num, 
+      describe, type, created, 
+      updated, update, force_update
+      )
+    values (#{id,jdbcType=INTEGER}, #{downloadUrl,jdbcType=VARCHAR}, #{versionNum,jdbcType=VARCHAR}, 
+      #{describe,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{update,jdbcType=TINYINT}, #{forceUpdate,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.AppVersionDO">
+    insert into app_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="downloadUrl != null">
+        download_url,
+      </if>
+      <if test="versionNum != null">
+        version_num,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="update != null">
+        update,
+      </if>
+      <if test="forceUpdate != null">
+        force_update,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNum != null">
+        #{versionNum,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null">
+        #{update,jdbcType=TINYINT},
+      </if>
+      <if test="forceUpdate != null">
+        #{forceUpdate,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.AppVersionDO">
+    update app_version
+    <set>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNum != null">
+        version_num = #{versionNum,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null">
+        update = #{update,jdbcType=TINYINT},
+      </if>
+      <if test="forceUpdate != null">
+        force_update = #{forceUpdate,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.AppVersionDO">
+    update app_version
+    set download_url = #{downloadUrl,jdbcType=VARCHAR},
+      version_num = #{versionNum,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      update = #{update,jdbcType=TINYINT},
+      force_update = #{forceUpdate,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.AppVersionDO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />

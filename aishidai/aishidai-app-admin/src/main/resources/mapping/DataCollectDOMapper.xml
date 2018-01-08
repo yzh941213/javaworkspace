@@ -338,6 +338,343 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.DataCollectDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="body_data" jdbcType="BIGINT" property="bodyData" />
+    <result column="angle_switching" jdbcType="BIGINT" property="angleSwitching" />
+    <result column="fitting_room" jdbcType="BIGINT" property="fittingRoom" />
+    <result column="face" jdbcType="BIGINT" property="face" />
+    <result column="face_save" jdbcType="BIGINT" property="faceSave" />
+    <result column="p_times" jdbcType="BIGINT" property="pTimes" />
+    <result column="shop_cart" jdbcType="BIGINT" property="shopCart" />
+    <result column="register" jdbcType="BIGINT" property="register" />
+    <result column="quit" jdbcType="BIGINT" property="quit" />
+    <result column="personal" jdbcType="BIGINT" property="personal" />
+    <result column="scene" jdbcType="BIGINT" property="scene" />
+    <result column="login" jdbcType="BIGINT" property="login" />
+    <result column="shoes" jdbcType="BIGINT" property="shoes" />
+    <result column="accessories" jdbcType="BIGINT" property="accessories" />
+    <result column="clothing" jdbcType="BIGINT" property="clothing" />
+    <result column="hairstyle" jdbcType="BIGINT" property="hairstyle" />
+    <result column="gallery" jdbcType="BIGINT" property="gallery" />
+    <result column="standard_stature" jdbcType="BIGINT" property="standardStature" />
+    <result column="healthy" jdbcType="BIGINT" property="healthy" />
+    <result column="natural" jdbcType="BIGINT" property="natural" />
+    <result column="ruddy" jdbcType="BIGINT" property="ruddy" />
+    <result column="fair" jdbcType="BIGINT" property="fair" />
+    <result column="normal_color" jdbcType="BIGINT" property="normalColor" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, body_data, angle_switching, fitting_room, face, face_save, p_times, shop_cart, 
+    register, quit, personal, scene, login, shoes, accessories, clothing, hairstyle, 
+    gallery, standard_stature, healthy, natural, ruddy, fair, normal_color, created, 
+    updated
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from data_collect
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from data_collect
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.DataCollectDO">
+    insert into data_collect (id, body_data, angle_switching, 
+      fitting_room, face, face_save, 
+      p_times, shop_cart, register, 
+      quit, personal, scene, 
+      login, shoes, accessories, 
+      clothing, hairstyle, gallery, 
+      standard_stature, healthy, natural, 
+      ruddy, fair, normal_color, 
+      created, updated)
+    values (#{id,jdbcType=INTEGER}, #{bodyData,jdbcType=BIGINT}, #{angleSwitching,jdbcType=BIGINT}, 
+      #{fittingRoom,jdbcType=BIGINT}, #{face,jdbcType=BIGINT}, #{faceSave,jdbcType=BIGINT}, 
+      #{pTimes,jdbcType=BIGINT}, #{shopCart,jdbcType=BIGINT}, #{register,jdbcType=BIGINT}, 
+      #{quit,jdbcType=BIGINT}, #{personal,jdbcType=BIGINT}, #{scene,jdbcType=BIGINT}, 
+      #{login,jdbcType=BIGINT}, #{shoes,jdbcType=BIGINT}, #{accessories,jdbcType=BIGINT}, 
+      #{clothing,jdbcType=BIGINT}, #{hairstyle,jdbcType=BIGINT}, #{gallery,jdbcType=BIGINT}, 
+      #{standardStature,jdbcType=BIGINT}, #{healthy,jdbcType=BIGINT}, #{natural,jdbcType=BIGINT}, 
+      #{ruddy,jdbcType=BIGINT}, #{fair,jdbcType=BIGINT}, #{normalColor,jdbcType=BIGINT}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.DataCollectDO">
+    insert into data_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bodyData != null">
+        body_data,
+      </if>
+      <if test="angleSwitching != null">
+        angle_switching,
+      </if>
+      <if test="fittingRoom != null">
+        fitting_room,
+      </if>
+      <if test="face != null">
+        face,
+      </if>
+      <if test="faceSave != null">
+        face_save,
+      </if>
+      <if test="pTimes != null">
+        p_times,
+      </if>
+      <if test="shopCart != null">
+        shop_cart,
+      </if>
+      <if test="register != null">
+        register,
+      </if>
+      <if test="quit != null">
+        quit,
+      </if>
+      <if test="personal != null">
+        personal,
+      </if>
+      <if test="scene != null">
+        scene,
+      </if>
+      <if test="login != null">
+        login,
+      </if>
+      <if test="shoes != null">
+        shoes,
+      </if>
+      <if test="accessories != null">
+        accessories,
+      </if>
+      <if test="clothing != null">
+        clothing,
+      </if>
+      <if test="hairstyle != null">
+        hairstyle,
+      </if>
+      <if test="gallery != null">
+        gallery,
+      </if>
+      <if test="standardStature != null">
+        standard_stature,
+      </if>
+      <if test="healthy != null">
+        healthy,
+      </if>
+      <if test="natural != null">
+        natural,
+      </if>
+      <if test="ruddy != null">
+        ruddy,
+      </if>
+      <if test="fair != null">
+        fair,
+      </if>
+      <if test="normalColor != null">
+        normal_color,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bodyData != null">
+        #{bodyData,jdbcType=BIGINT},
+      </if>
+      <if test="angleSwitching != null">
+        #{angleSwitching,jdbcType=BIGINT},
+      </if>
+      <if test="fittingRoom != null">
+        #{fittingRoom,jdbcType=BIGINT},
+      </if>
+      <if test="face != null">
+        #{face,jdbcType=BIGINT},
+      </if>
+      <if test="faceSave != null">
+        #{faceSave,jdbcType=BIGINT},
+      </if>
+      <if test="pTimes != null">
+        #{pTimes,jdbcType=BIGINT},
+      </if>
+      <if test="shopCart != null">
+        #{shopCart,jdbcType=BIGINT},
+      </if>
+      <if test="register != null">
+        #{register,jdbcType=BIGINT},
+      </if>
+      <if test="quit != null">
+        #{quit,jdbcType=BIGINT},
+      </if>
+      <if test="personal != null">
+        #{personal,jdbcType=BIGINT},
+      </if>
+      <if test="scene != null">
+        #{scene,jdbcType=BIGINT},
+      </if>
+      <if test="login != null">
+        #{login,jdbcType=BIGINT},
+      </if>
+      <if test="shoes != null">
+        #{shoes,jdbcType=BIGINT},
+      </if>
+      <if test="accessories != null">
+        #{accessories,jdbcType=BIGINT},
+      </if>
+      <if test="clothing != null">
+        #{clothing,jdbcType=BIGINT},
+      </if>
+      <if test="hairstyle != null">
+        #{hairstyle,jdbcType=BIGINT},
+      </if>
+      <if test="gallery != null">
+        #{gallery,jdbcType=BIGINT},
+      </if>
+      <if test="standardStature != null">
+        #{standardStature,jdbcType=BIGINT},
+      </if>
+      <if test="healthy != null">
+        #{healthy,jdbcType=BIGINT},
+      </if>
+      <if test="natural != null">
+        #{natural,jdbcType=BIGINT},
+      </if>
+      <if test="ruddy != null">
+        #{ruddy,jdbcType=BIGINT},
+      </if>
+      <if test="fair != null">
+        #{fair,jdbcType=BIGINT},
+      </if>
+      <if test="normalColor != null">
+        #{normalColor,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.DataCollectDO">
+    update data_collect
+    <set>
+      <if test="bodyData != null">
+        body_data = #{bodyData,jdbcType=BIGINT},
+      </if>
+      <if test="angleSwitching != null">
+        angle_switching = #{angleSwitching,jdbcType=BIGINT},
+      </if>
+      <if test="fittingRoom != null">
+        fitting_room = #{fittingRoom,jdbcType=BIGINT},
+      </if>
+      <if test="face != null">
+        face = #{face,jdbcType=BIGINT},
+      </if>
+      <if test="faceSave != null">
+        face_save = #{faceSave,jdbcType=BIGINT},
+      </if>
+      <if test="pTimes != null">
+        p_times = #{pTimes,jdbcType=BIGINT},
+      </if>
+      <if test="shopCart != null">
+        shop_cart = #{shopCart,jdbcType=BIGINT},
+      </if>
+      <if test="register != null">
+        register = #{register,jdbcType=BIGINT},
+      </if>
+      <if test="quit != null">
+        quit = #{quit,jdbcType=BIGINT},
+      </if>
+      <if test="personal != null">
+        personal = #{personal,jdbcType=BIGINT},
+      </if>
+      <if test="scene != null">
+        scene = #{scene,jdbcType=BIGINT},
+      </if>
+      <if test="login != null">
+        login = #{login,jdbcType=BIGINT},
+      </if>
+      <if test="shoes != null">
+        shoes = #{shoes,jdbcType=BIGINT},
+      </if>
+      <if test="accessories != null">
+        accessories = #{accessories,jdbcType=BIGINT},
+      </if>
+      <if test="clothing != null">
+        clothing = #{clothing,jdbcType=BIGINT},
+      </if>
+      <if test="hairstyle != null">
+        hairstyle = #{hairstyle,jdbcType=BIGINT},
+      </if>
+      <if test="gallery != null">
+        gallery = #{gallery,jdbcType=BIGINT},
+      </if>
+      <if test="standardStature != null">
+        standard_stature = #{standardStature,jdbcType=BIGINT},
+      </if>
+      <if test="healthy != null">
+        healthy = #{healthy,jdbcType=BIGINT},
+      </if>
+      <if test="natural != null">
+        natural = #{natural,jdbcType=BIGINT},
+      </if>
+      <if test="ruddy != null">
+        ruddy = #{ruddy,jdbcType=BIGINT},
+      </if>
+      <if test="fair != null">
+        fair = #{fair,jdbcType=BIGINT},
+      </if>
+      <if test="normalColor != null">
+        normal_color = #{normalColor,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.DataCollectDO">
+    update data_collect
+    set body_data = #{bodyData,jdbcType=BIGINT},
+      angle_switching = #{angleSwitching,jdbcType=BIGINT},
+      fitting_room = #{fittingRoom,jdbcType=BIGINT},
+      face = #{face,jdbcType=BIGINT},
+      face_save = #{faceSave,jdbcType=BIGINT},
+      p_times = #{pTimes,jdbcType=BIGINT},
+      shop_cart = #{shopCart,jdbcType=BIGINT},
+      register = #{register,jdbcType=BIGINT},
+      quit = #{quit,jdbcType=BIGINT},
+      personal = #{personal,jdbcType=BIGINT},
+      scene = #{scene,jdbcType=BIGINT},
+      login = #{login,jdbcType=BIGINT},
+      shoes = #{shoes,jdbcType=BIGINT},
+      accessories = #{accessories,jdbcType=BIGINT},
+      clothing = #{clothing,jdbcType=BIGINT},
+      hairstyle = #{hairstyle,jdbcType=BIGINT},
+      gallery = #{gallery,jdbcType=BIGINT},
+      standard_stature = #{standardStature,jdbcType=BIGINT},
+      healthy = #{healthy,jdbcType=BIGINT},
+      natural = #{natural,jdbcType=BIGINT},
+      ruddy = #{ruddy,jdbcType=BIGINT},
+      fair = #{fair,jdbcType=BIGINT},
+      normal_color = #{normalColor,jdbcType=BIGINT},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.DataCollectDO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="body_data" jdbcType="BIGINT" property="bodyData" />

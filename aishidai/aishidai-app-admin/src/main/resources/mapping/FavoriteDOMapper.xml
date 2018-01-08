@@ -125,6 +125,130 @@
       fav_type = #{favType,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.FavoriteDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="rel_type" jdbcType="SMALLINT" property="relType" />
+    <result column="rel_id" jdbcType="BIGINT" property="relId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="fav_type" jdbcType="SMALLINT" property="favType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, rel_type, rel_id, status, created, updated, fav_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from favorite
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from favorite
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.FavoriteDO">
+    insert into favorite (id, user_id, rel_type, 
+      rel_id, status, created, 
+      updated, fav_type)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{relType,jdbcType=SMALLINT}, 
+      #{relId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{favType,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.FavoriteDO">
+    insert into favorite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="relType != null">
+        rel_type,
+      </if>
+      <if test="relId != null">
+        rel_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="favType != null">
+        fav_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="relType != null">
+        #{relType,jdbcType=SMALLINT},
+      </if>
+      <if test="relId != null">
+        #{relId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="favType != null">
+        #{favType,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.FavoriteDO">
+    update favorite
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="relType != null">
+        rel_type = #{relType,jdbcType=SMALLINT},
+      </if>
+      <if test="relId != null">
+        rel_id = #{relId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="favType != null">
+        fav_type = #{favType,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.FavoriteDO">
+    update favorite
+    set user_id = #{userId,jdbcType=BIGINT},
+      rel_type = #{relType,jdbcType=SMALLINT},
+      rel_id = #{relId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      fav_type = #{favType,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.FavoriteDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />

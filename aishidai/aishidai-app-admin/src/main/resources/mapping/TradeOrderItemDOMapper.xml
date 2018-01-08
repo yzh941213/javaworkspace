@@ -1,32 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.TradeOrderItemDOMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderItemDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
-    <result column="color_id" property="colorId" jdbcType="INTEGER" />
-    <result column="size_id" property="sizeId" jdbcType="INTEGER" />
-    <result column="item_id" property="itemId" jdbcType="INTEGER" />
-    <result column="number" property="number" jdbcType="INTEGER" />
-    <result column="price" property="price" jdbcType="VARCHAR" />
-    <result column="image" property="image" jdbcType="VARCHAR" />
-    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
-    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.TradeOrderItemDOMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderItemDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="color_id" jdbcType="INTEGER" property="colorId" />
+    <result column="size_id" jdbcType="INTEGER" property="sizeId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, sku_id, color_id, size_id, item_id, number, price, image, order_id, item_name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from trade_order_item
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from trade_order_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
     insert into trade_order_item (id, sku_id, color_id, 
       size_id, item_id, number, 
       price, image, order_id, 
@@ -36,107 +36,255 @@
       #{price,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
       #{itemName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
     insert into trade_order_item
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="skuId != null" >
+      <if test="skuId != null">
         sku_id,
       </if>
-      <if test="colorId != null" >
+      <if test="colorId != null">
         color_id,
       </if>
-      <if test="sizeId != null" >
+      <if test="sizeId != null">
         size_id,
       </if>
-      <if test="itemId != null" >
+      <if test="itemId != null">
         item_id,
       </if>
-      <if test="number != null" >
+      <if test="number != null">
         number,
       </if>
-      <if test="price != null" >
+      <if test="price != null">
         price,
       </if>
-      <if test="image != null" >
+      <if test="image != null">
         image,
       </if>
-      <if test="orderId != null" >
+      <if test="orderId != null">
         order_id,
       </if>
-      <if test="itemName != null" >
+      <if test="itemName != null">
         item_name,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="skuId != null" >
+      <if test="skuId != null">
         #{skuId,jdbcType=INTEGER},
       </if>
-      <if test="colorId != null" >
+      <if test="colorId != null">
         #{colorId,jdbcType=INTEGER},
       </if>
-      <if test="sizeId != null" >
+      <if test="sizeId != null">
         #{sizeId,jdbcType=INTEGER},
       </if>
-      <if test="itemId != null" >
+      <if test="itemId != null">
         #{itemId,jdbcType=INTEGER},
       </if>
-      <if test="number != null" >
+      <if test="number != null">
         #{number,jdbcType=INTEGER},
       </if>
-      <if test="price != null" >
+      <if test="price != null">
         #{price,jdbcType=VARCHAR},
       </if>
-      <if test="image != null" >
+      <if test="image != null">
         #{image,jdbcType=VARCHAR},
       </if>
-      <if test="orderId != null" >
+      <if test="orderId != null">
         #{orderId,jdbcType=VARCHAR},
       </if>
-      <if test="itemName != null" >
+      <if test="itemName != null">
         #{itemName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
     update trade_order_item
-    <set >
-      <if test="skuId != null" >
+    <set>
+      <if test="skuId != null">
         sku_id = #{skuId,jdbcType=INTEGER},
       </if>
-      <if test="colorId != null" >
+      <if test="colorId != null">
         color_id = #{colorId,jdbcType=INTEGER},
       </if>
-      <if test="sizeId != null" >
+      <if test="sizeId != null">
         size_id = #{sizeId,jdbcType=INTEGER},
       </if>
-      <if test="itemId != null" >
+      <if test="itemId != null">
         item_id = #{itemId,jdbcType=INTEGER},
       </if>
-      <if test="number != null" >
+      <if test="number != null">
         number = #{number,jdbcType=INTEGER},
       </if>
-      <if test="price != null" >
+      <if test="price != null">
         price = #{price,jdbcType=VARCHAR},
       </if>
-      <if test="image != null" >
+      <if test="image != null">
         image = #{image,jdbcType=VARCHAR},
       </if>
-      <if test="orderId != null" >
+      <if test="orderId != null">
         order_id = #{orderId,jdbcType=VARCHAR},
       </if>
-      <if test="itemName != null" >
+      <if test="itemName != null">
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
+    update trade_order_item
+    set sku_id = #{skuId,jdbcType=INTEGER},
+      color_id = #{colorId,jdbcType=INTEGER},
+      size_id = #{sizeId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      price = #{price,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderItemDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="color_id" jdbcType="INTEGER" property="colorId" />
+    <result column="size_id" jdbcType="INTEGER" property="sizeId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sku_id, color_id, size_id, item_id, number, price, image, order_id, item_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from trade_order_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from trade_order_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
+    insert into trade_order_item (id, sku_id, color_id, 
+      size_id, item_id, number, 
+      price, image, order_id, 
+      item_name)
+    values (#{id,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, #{colorId,jdbcType=INTEGER}, 
+      #{sizeId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{price,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
+    insert into trade_order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="colorId != null">
+        color_id,
+      </if>
+      <if test="sizeId != null">
+        size_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="colorId != null">
+        #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="sizeId != null">
+        #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
+    update trade_order_item
+    <set>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="colorId != null">
+        color_id = #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="sizeId != null">
+        size_id = #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO">
     update trade_order_item
     set sku_id = #{skuId,jdbcType=INTEGER},
       color_id = #{colorId,jdbcType=INTEGER},

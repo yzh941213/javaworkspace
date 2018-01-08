@@ -1,46 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.UsersDOMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UsersDO" >
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="uname" property="uname" jdbcType="VARCHAR" />
-    <result column="unick" property="unick" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="BIT" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
-    <result column="register_type" property="registerType" jdbcType="INTEGER" />
-    <result column="register_ip" property="registerIp" jdbcType="CHAR" />
-    <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
-    <result column="last_login_ip" property="lastLoginIp" jdbcType="CHAR" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
-    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
-    <result column="no_login" property="noLogin" jdbcType="BIT" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="cmessage" property="cmessage" jdbcType="INTEGER" />
-    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
-    <result column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
-    <result column="open_id" property="openId" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="member" property="member" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.UsersDOMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UsersDO">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="unick" jdbcType="VARCHAR" property="unick" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="register_type" jdbcType="INTEGER" property="registerType" />
+    <result column="register_ip" jdbcType="CHAR" property="registerIp" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="last_login_ip" jdbcType="CHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="no_login" jdbcType="BIT" property="noLogin" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="cmessage" jdbcType="INTEGER" property="cmessage" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="true_name" jdbcType="VARCHAR" property="trueName" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="member" jdbcType="INTEGER" property="member" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     user_id, email, uname, unick, sex, password, avatar, register_type, register_ip, 
     register_time, last_login_ip, last_login_time, is_deleted, no_login, status, cmessage, 
     updated, ID, true_name, open_id, phone, member
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from users
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from users
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.UsersDO" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.UsersDO">
     insert into users (user_id, email, uname, 
       unick, sex, password, avatar, 
       register_type, register_ip, register_time, 
@@ -58,215 +58,505 @@
       #{openId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{member,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UsersDO" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UsersDO">
     insert into users
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email,
       </if>
-      <if test="uname != null" >
+      <if test="uname != null">
         uname,
       </if>
-      <if test="unick != null" >
+      <if test="unick != null">
         unick,
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex,
       </if>
-      <if test="password != null" >
+      <if test="password != null">
         password,
       </if>
-      <if test="avatar != null" >
+      <if test="avatar != null">
         avatar,
       </if>
-      <if test="registerType != null" >
+      <if test="registerType != null">
         register_type,
       </if>
-      <if test="registerIp != null" >
+      <if test="registerIp != null">
         register_ip,
       </if>
-      <if test="registerTime != null" >
+      <if test="registerTime != null">
         register_time,
       </if>
-      <if test="lastLoginIp != null" >
+      <if test="lastLoginIp != null">
         last_login_ip,
       </if>
-      <if test="lastLoginTime != null" >
+      <if test="lastLoginTime != null">
         last_login_time,
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         is_deleted,
       </if>
-      <if test="noLogin != null" >
+      <if test="noLogin != null">
         no_login,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="cmessage != null" >
+      <if test="cmessage != null">
         cmessage,
       </if>
-      <if test="updated != null" >
+      <if test="updated != null">
         updated,
       </if>
-      <if test="id != null" >
+      <if test="id != null">
         ID,
       </if>
-      <if test="trueName != null" >
+      <if test="trueName != null">
         true_name,
       </if>
-      <if test="openId != null" >
+      <if test="openId != null">
         open_id,
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone,
       </if>
-      <if test="member != null" >
+      <if test="member != null">
         member,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="uname != null" >
+      <if test="uname != null">
         #{uname,jdbcType=VARCHAR},
       </if>
-      <if test="unick != null" >
+      <if test="unick != null">
         #{unick,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         #{sex,jdbcType=BIT},
       </if>
-      <if test="password != null" >
+      <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null" >
+      <if test="avatar != null">
         #{avatar,jdbcType=VARCHAR},
       </if>
-      <if test="registerType != null" >
+      <if test="registerType != null">
         #{registerType,jdbcType=INTEGER},
       </if>
-      <if test="registerIp != null" >
+      <if test="registerIp != null">
         #{registerIp,jdbcType=CHAR},
       </if>
-      <if test="registerTime != null" >
+      <if test="registerTime != null">
         #{registerTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastLoginIp != null" >
+      <if test="lastLoginIp != null">
         #{lastLoginIp,jdbcType=CHAR},
       </if>
-      <if test="lastLoginTime != null" >
+      <if test="lastLoginTime != null">
         #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         #{isDeleted,jdbcType=BIT},
       </if>
-      <if test="noLogin != null" >
+      <if test="noLogin != null">
         #{noLogin,jdbcType=BIT},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="cmessage != null" >
+      <if test="cmessage != null">
         #{cmessage,jdbcType=INTEGER},
       </if>
-      <if test="updated != null" >
+      <if test="updated != null">
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="id != null" >
+      <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="trueName != null" >
+      <if test="trueName != null">
         #{trueName,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null" >
+      <if test="openId != null">
         #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="member != null" >
+      <if test="member != null">
         #{member,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UsersDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UsersDO">
     update users
-    <set >
-      <if test="email != null" >
+    <set>
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="uname != null" >
+      <if test="uname != null">
         uname = #{uname,jdbcType=VARCHAR},
       </if>
-      <if test="unick != null" >
+      <if test="unick != null">
         unick = #{unick,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex = #{sex,jdbcType=BIT},
       </if>
-      <if test="password != null" >
+      <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null" >
+      <if test="avatar != null">
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
-      <if test="registerType != null" >
+      <if test="registerType != null">
         register_type = #{registerType,jdbcType=INTEGER},
       </if>
-      <if test="registerIp != null" >
+      <if test="registerIp != null">
         register_ip = #{registerIp,jdbcType=CHAR},
       </if>
-      <if test="registerTime != null" >
+      <if test="registerTime != null">
         register_time = #{registerTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastLoginIp != null" >
+      <if test="lastLoginIp != null">
         last_login_ip = #{lastLoginIp,jdbcType=CHAR},
       </if>
-      <if test="lastLoginTime != null" >
+      <if test="lastLoginTime != null">
         last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         is_deleted = #{isDeleted,jdbcType=BIT},
       </if>
-      <if test="noLogin != null" >
+      <if test="noLogin != null">
         no_login = #{noLogin,jdbcType=BIT},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="cmessage != null" >
+      <if test="cmessage != null">
         cmessage = #{cmessage,jdbcType=INTEGER},
       </if>
-      <if test="updated != null" >
+      <if test="updated != null">
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="id != null" >
+      <if test="id != null">
         ID = #{id,jdbcType=VARCHAR},
       </if>
-      <if test="trueName != null" >
+      <if test="trueName != null">
         true_name = #{trueName,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null" >
+      <if test="openId != null">
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="member != null" >
+      <if test="member != null">
         member = #{member,jdbcType=INTEGER},
       </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UsersDO" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UsersDO">
+    update users
+    set email = #{email,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      unick = #{unick,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      password = #{password,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      register_type = #{registerType,jdbcType=INTEGER},
+      register_ip = #{registerIp,jdbcType=CHAR},
+      register_time = #{registerTime,jdbcType=TIMESTAMP},
+      last_login_ip = #{lastLoginIp,jdbcType=CHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      no_login = #{noLogin,jdbcType=BIT},
+      status = #{status,jdbcType=TINYINT},
+      cmessage = #{cmessage,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      ID = #{id,jdbcType=VARCHAR},
+      true_name = #{trueName,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      member = #{member,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UsersDO">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="unick" jdbcType="VARCHAR" property="unick" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="register_type" jdbcType="INTEGER" property="registerType" />
+    <result column="register_ip" jdbcType="CHAR" property="registerIp" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="last_login_ip" jdbcType="CHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="no_login" jdbcType="BIT" property="noLogin" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="cmessage" jdbcType="INTEGER" property="cmessage" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="true_name" jdbcType="VARCHAR" property="trueName" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="member" jdbcType="INTEGER" property="member" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, email, uname, unick, sex, password, avatar, register_type, register_ip, 
+    register_time, last_login_ip, last_login_time, is_deleted, no_login, status, cmessage, 
+    updated, ID, true_name, open_id, phone, member
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from users
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.UsersDO">
+    insert into users (user_id, email, uname, 
+      unick, sex, password, avatar, 
+      register_type, register_ip, register_time, 
+      last_login_ip, last_login_time, is_deleted, 
+      no_login, status, cmessage, 
+      updated, ID, true_name, 
+      open_id, phone, member
+      )
+    values (#{userId,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, 
+      #{unick,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{registerType,jdbcType=INTEGER}, #{registerIp,jdbcType=CHAR}, #{registerTime,jdbcType=TIMESTAMP}, 
+      #{lastLoginIp,jdbcType=CHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, 
+      #{noLogin,jdbcType=BIT}, #{status,jdbcType=TINYINT}, #{cmessage,jdbcType=INTEGER}, 
+      #{updated,jdbcType=TIMESTAMP}, #{id,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{member,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UsersDO">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="unick != null">
+        unick,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="registerType != null">
+        register_type,
+      </if>
+      <if test="registerIp != null">
+        register_ip,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="noLogin != null">
+        no_login,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="cmessage != null">
+        cmessage,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="trueName != null">
+        true_name,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="member != null">
+        member,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="unick != null">
+        #{unick,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="registerType != null">
+        #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="registerIp != null">
+        #{registerIp,jdbcType=CHAR},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="noLogin != null">
+        #{noLogin,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="cmessage != null">
+        #{cmessage,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null">
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="member != null">
+        #{member,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UsersDO">
+    update users
+    <set>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="unick != null">
+        unick = #{unick,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="registerType != null">
+        register_type = #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="registerIp != null">
+        register_ip = #{registerIp,jdbcType=CHAR},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="noLogin != null">
+        no_login = #{noLogin,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="cmessage != null">
+        cmessage = #{cmessage,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id != null">
+        ID = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null">
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="member != null">
+        member = #{member,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UsersDO">
     update users
     set email = #{email,jdbcType=VARCHAR},
       uname = #{uname,jdbcType=VARCHAR},

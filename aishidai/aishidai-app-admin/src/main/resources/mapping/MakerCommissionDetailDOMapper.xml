@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.MakerCommissionDetailDOMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.MakerCommissionDetailDO" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="commission" property="commission" jdbcType="INTEGER" />
-    <result column="maker_name" property="makerName" jdbcType="VARCHAR" />
-    <result column="maker_id" property="makerId" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="other_shop_id" property="otherShopId" jdbcType="BIGINT" />
-    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
-    <result column="create_name" property="createName" jdbcType="VARCHAR" />
-    <result column="create_id" property="createId" jdbcType="BIGINT" />
-    <result column="created" property="created" jdbcType="TIMESTAMP" />
-    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
-    <result column="delete_is" property="deleteIs" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.MakerCommissionDetailDOMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="commission" jdbcType="INTEGER" property="commission" />
+    <result column="maker_name" jdbcType="VARCHAR" property="makerName" />
+    <result column="maker_id" jdbcType="VARCHAR" property="makerId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="other_shop_id" jdbcType="BIGINT" property="otherShopId" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="delete_is" jdbcType="INTEGER" property="deleteIs" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, commission, maker_name, maker_id, type, other_shop_id, shop_id, create_name, 
     create_id, created, updated, delete_is
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from maker_commission_detail
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from maker_commission_detail
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
     insert into maker_commission_detail (id, commission, maker_name, 
       maker_id, type, other_shop_id, 
       shop_id, create_name, create_id, 
@@ -41,125 +41,298 @@
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{deleteIs,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
     insert into maker_commission_detail
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="commission != null" >
+      <if test="commission != null">
         commission,
       </if>
-      <if test="makerName != null" >
+      <if test="makerName != null">
         maker_name,
       </if>
-      <if test="makerId != null" >
+      <if test="makerId != null">
         maker_id,
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type,
       </if>
-      <if test="otherShopId != null" >
+      <if test="otherShopId != null">
         other_shop_id,
       </if>
-      <if test="shopId != null" >
+      <if test="shopId != null">
         shop_id,
       </if>
-      <if test="createName != null" >
+      <if test="createName != null">
         create_name,
       </if>
-      <if test="createId != null" >
+      <if test="createId != null">
         create_id,
       </if>
-      <if test="created != null" >
+      <if test="created != null">
         created,
       </if>
-      <if test="updated != null" >
+      <if test="updated != null">
         updated,
       </if>
-      <if test="deleteIs != null" >
+      <if test="deleteIs != null">
         delete_is,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="commission != null" >
+      <if test="commission != null">
         #{commission,jdbcType=INTEGER},
       </if>
-      <if test="makerName != null" >
+      <if test="makerName != null">
         #{makerName,jdbcType=VARCHAR},
       </if>
-      <if test="makerId != null" >
+      <if test="makerId != null">
         #{makerId,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="otherShopId != null" >
+      <if test="otherShopId != null">
         #{otherShopId,jdbcType=BIGINT},
       </if>
-      <if test="shopId != null" >
+      <if test="shopId != null">
         #{shopId,jdbcType=BIGINT},
       </if>
-      <if test="createName != null" >
+      <if test="createName != null">
         #{createName,jdbcType=VARCHAR},
       </if>
-      <if test="createId != null" >
+      <if test="createId != null">
         #{createId,jdbcType=BIGINT},
       </if>
-      <if test="created != null" >
+      <if test="created != null">
         #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null" >
+      <if test="updated != null">
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteIs != null" >
+      <if test="deleteIs != null">
         #{deleteIs,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
     update maker_commission_detail
-    <set >
-      <if test="commission != null" >
+    <set>
+      <if test="commission != null">
         commission = #{commission,jdbcType=INTEGER},
       </if>
-      <if test="makerName != null" >
+      <if test="makerName != null">
         maker_name = #{makerName,jdbcType=VARCHAR},
       </if>
-      <if test="makerId != null" >
+      <if test="makerId != null">
         maker_id = #{makerId,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="otherShopId != null" >
+      <if test="otherShopId != null">
         other_shop_id = #{otherShopId,jdbcType=BIGINT},
       </if>
-      <if test="shopId != null" >
+      <if test="shopId != null">
         shop_id = #{shopId,jdbcType=BIGINT},
       </if>
-      <if test="createName != null" >
+      <if test="createName != null">
         create_name = #{createName,jdbcType=VARCHAR},
       </if>
-      <if test="createId != null" >
+      <if test="createId != null">
         create_id = #{createId,jdbcType=BIGINT},
       </if>
-      <if test="created != null" >
+      <if test="created != null">
         created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null" >
+      <if test="updated != null">
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteIs != null" >
+      <if test="deleteIs != null">
         delete_is = #{deleteIs,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
+    update maker_commission_detail
+    set commission = #{commission,jdbcType=INTEGER},
+      maker_name = #{makerName,jdbcType=VARCHAR},
+      maker_id = #{makerId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      other_shop_id = #{otherShopId,jdbcType=BIGINT},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      delete_is = #{deleteIs,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="commission" jdbcType="INTEGER" property="commission" />
+    <result column="maker_name" jdbcType="VARCHAR" property="makerName" />
+    <result column="maker_id" jdbcType="VARCHAR" property="makerId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="other_shop_id" jdbcType="BIGINT" property="otherShopId" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="delete_is" jdbcType="INTEGER" property="deleteIs" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, commission, maker_name, maker_id, type, other_shop_id, shop_id, create_name, 
+    create_id, created, updated, delete_is
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from maker_commission_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from maker_commission_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
+    insert into maker_commission_detail (id, commission, maker_name, 
+      maker_id, type, other_shop_id, 
+      shop_id, create_name, create_id, 
+      created, updated, delete_is
+      )
+    values (#{id,jdbcType=VARCHAR}, #{commission,jdbcType=INTEGER}, #{makerName,jdbcType=VARCHAR}, 
+      #{makerId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{otherShopId,jdbcType=BIGINT}, 
+      #{shopId,jdbcType=BIGINT}, #{createName,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{deleteIs,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
+    insert into maker_commission_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="makerName != null">
+        maker_name,
+      </if>
+      <if test="makerId != null">
+        maker_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="otherShopId != null">
+        other_shop_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="createName != null">
+        create_name,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="deleteIs != null">
+        delete_is,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=INTEGER},
+      </if>
+      <if test="makerName != null">
+        #{makerName,jdbcType=VARCHAR},
+      </if>
+      <if test="makerId != null">
+        #{makerId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="otherShopId != null">
+        #{otherShopId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null">
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteIs != null">
+        #{deleteIs,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
+    update maker_commission_detail
+    <set>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=INTEGER},
+      </if>
+      <if test="makerName != null">
+        maker_name = #{makerName,jdbcType=VARCHAR},
+      </if>
+      <if test="makerId != null">
+        maker_id = #{makerId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="otherShopId != null">
+        other_shop_id = #{otherShopId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteIs != null">
+        delete_is = #{deleteIs,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO">
     update maker_commission_detail
     set commission = #{commission,jdbcType=INTEGER},
       maker_name = #{makerName,jdbcType=VARCHAR},

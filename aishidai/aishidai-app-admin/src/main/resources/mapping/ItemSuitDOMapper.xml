@@ -1,78 +1,156 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.ItemSuitDOMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemSuitDO" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="suit_image" property="suitImage" jdbcType="VARCHAR" />
-    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
-    <result column="stratification" property="stratification" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.ItemSuitDOMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemSuitDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="suit_image" jdbcType="VARCHAR" property="suitImage" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="stratification" jdbcType="VARCHAR" property="stratification" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, suit_image, sku_id, stratification
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from item_suit
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from item_suit
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
     insert into item_suit (id, suit_image, sku_id, 
       stratification)
     values (#{id,jdbcType=BIGINT}, #{suitImage,jdbcType=VARCHAR}, #{skuId,jdbcType=INTEGER}, 
       #{stratification,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
     insert into item_suit
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="suitImage != null" >
+      <if test="suitImage != null">
         suit_image,
       </if>
-      <if test="skuId != null" >
+      <if test="skuId != null">
         sku_id,
       </if>
-      <if test="stratification != null" >
+      <if test="stratification != null">
         stratification,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="suitImage != null" >
+      <if test="suitImage != null">
         #{suitImage,jdbcType=VARCHAR},
       </if>
-      <if test="skuId != null" >
+      <if test="skuId != null">
         #{skuId,jdbcType=INTEGER},
       </if>
-      <if test="stratification != null" >
+      <if test="stratification != null">
         #{stratification,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
     update item_suit
-    <set >
-      <if test="suitImage != null" >
+    <set>
+      <if test="suitImage != null">
         suit_image = #{suitImage,jdbcType=VARCHAR},
       </if>
-      <if test="skuId != null" >
+      <if test="skuId != null">
         sku_id = #{skuId,jdbcType=INTEGER},
       </if>
-      <if test="stratification != null" >
+      <if test="stratification != null">
         stratification = #{stratification,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
+    update item_suit
+    set suit_image = #{suitImage,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=INTEGER},
+      stratification = #{stratification,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemSuitDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="suit_image" jdbcType="VARCHAR" property="suitImage" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="stratification" jdbcType="VARCHAR" property="stratification" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, suit_image, sku_id, stratification
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item_suit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from item_suit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
+    insert into item_suit (id, suit_image, sku_id, 
+      stratification)
+    values (#{id,jdbcType=BIGINT}, #{suitImage,jdbcType=VARCHAR}, #{skuId,jdbcType=INTEGER}, 
+      #{stratification,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
+    insert into item_suit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="suitImage != null">
+        suit_image,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="stratification != null">
+        stratification,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="suitImage != null">
+        #{suitImage,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="stratification != null">
+        #{stratification,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
+    update item_suit
+    <set>
+      <if test="suitImage != null">
+        suit_image = #{suitImage,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="stratification != null">
+        stratification = #{stratification,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemSuitDO">
     update item_suit
     set suit_image = #{suitImage,jdbcType=VARCHAR},
       sku_id = #{skuId,jdbcType=INTEGER},

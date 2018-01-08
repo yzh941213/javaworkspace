@@ -1,46 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.UserSizeMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UserSize">
-    <id column="size_id" jdbcType="BIGINT" property="sizeId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="height" jdbcType="VARCHAR" property="height" />
-    <result column="weight" jdbcType="VARCHAR" property="weight" />
-    <result column="waist" jdbcType="VARCHAR" property="waist" />
-    <result column="hip" jdbcType="VARCHAR" property="hip" />
-    <result column="bust" jdbcType="VARCHAR" property="bust" />
-    <result column="shoulder" jdbcType="VARCHAR" property="shoulder" />
-    <result column="thigh" jdbcType="VARCHAR" property="thigh" />
-    <result column="neck" jdbcType="VARCHAR" property="neck" />
-    <result column="upper_arm" jdbcType="VARCHAR" property="upperArm" />
-    <result column="lower_arm" jdbcType="VARCHAR" property="lowerArm" />
-    <result column="feature" jdbcType="VARCHAR" property="feature" />
-    <result column="created" jdbcType="BIGINT" property="created" />
-    <result column="updated" jdbcType="BIGINT" property="updated" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="is_default" jdbcType="TINYINT" property="isDefault" />
-    <result column="mod_count" jdbcType="VARCHAR" property="modCount" />
-    <result column="rephotograph" jdbcType="VARCHAR" property="rephotograph" />
-    <result column="scan_imes" jdbcType="VARCHAR" property="scanImes" />
-    <result column="proportion" jdbcType="VARCHAR" property="proportion" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.UserSizeMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UserSize" >
+    <id column="size_id" property="sizeId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="height" property="height" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="VARCHAR" />
+    <result column="waist" property="waist" jdbcType="VARCHAR" />
+    <result column="hip" property="hip" jdbcType="VARCHAR" />
+    <result column="bust" property="bust" jdbcType="VARCHAR" />
+    <result column="shoulder" property="shoulder" jdbcType="VARCHAR" />
+    <result column="thigh" property="thigh" jdbcType="VARCHAR" />
+    <result column="neck" property="neck" jdbcType="VARCHAR" />
+    <result column="upper_arm" property="upperArm" jdbcType="VARCHAR" />
+    <result column="lower_arm" property="lowerArm" jdbcType="VARCHAR" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="BIGINT" />
+    <result column="updated" property="updated" jdbcType="BIGINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="is_default" property="isDefault" jdbcType="TINYINT" />
+    <result column="mod_count" property="modCount" jdbcType="VARCHAR" />
+    <result column="rephotograph" property="rephotograph" jdbcType="VARCHAR" />
+    <result column="scan_imes" property="scanImes" jdbcType="VARCHAR" />
+    <result column="proportion" property="proportion" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     size_id, user_id, name, height, weight, waist, hip, bust, shoulder, thigh, neck, 
     upper_arm, lower_arm, feature, created, updated, is_deleted, is_default, mod_count, 
     rephotograph, scan_imes, proportion
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from user_size
     where size_id = #{sizeId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from user_size
     where size_id = #{sizeId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.UserSize">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.UserSize" >
     insert into user_size (size_id, user_id, name, 
       height, weight, waist, 
       hip, bust, shoulder, 
@@ -58,795 +58,215 @@
       #{modCount,jdbcType=VARCHAR}, #{rephotograph,jdbcType=VARCHAR}, #{scanImes,jdbcType=VARCHAR}, 
       #{proportion,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UserSize">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UserSize" >
     insert into user_size
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sizeId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sizeId != null" >
         size_id,
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         user_id,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="height != null">
+      <if test="height != null" >
         height,
       </if>
-      <if test="weight != null">
+      <if test="weight != null" >
         weight,
       </if>
-      <if test="waist != null">
+      <if test="waist != null" >
         waist,
       </if>
-      <if test="hip != null">
+      <if test="hip != null" >
         hip,
       </if>
-      <if test="bust != null">
+      <if test="bust != null" >
         bust,
       </if>
-      <if test="shoulder != null">
+      <if test="shoulder != null" >
         shoulder,
       </if>
-      <if test="thigh != null">
+      <if test="thigh != null" >
         thigh,
       </if>
-      <if test="neck != null">
+      <if test="neck != null" >
         neck,
       </if>
-      <if test="upperArm != null">
+      <if test="upperArm != null" >
         upper_arm,
       </if>
-      <if test="lowerArm != null">
+      <if test="lowerArm != null" >
         lower_arm,
       </if>
-      <if test="feature != null">
+      <if test="feature != null" >
         feature,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted,
       </if>
-      <if test="isDefault != null">
+      <if test="isDefault != null" >
         is_default,
       </if>
-      <if test="modCount != null">
+      <if test="modCount != null" >
         mod_count,
       </if>
-      <if test="rephotograph != null">
+      <if test="rephotograph != null" >
         rephotograph,
       </if>
-      <if test="scanImes != null">
+      <if test="scanImes != null" >
         scan_imes,
       </if>
-      <if test="proportion != null">
+      <if test="proportion != null" >
         proportion,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sizeId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sizeId != null" >
         #{sizeId,jdbcType=BIGINT},
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="height != null">
+      <if test="height != null" >
         #{height,jdbcType=VARCHAR},
       </if>
-      <if test="weight != null">
+      <if test="weight != null" >
         #{weight,jdbcType=VARCHAR},
       </if>
-      <if test="waist != null">
+      <if test="waist != null" >
         #{waist,jdbcType=VARCHAR},
       </if>
-      <if test="hip != null">
+      <if test="hip != null" >
         #{hip,jdbcType=VARCHAR},
       </if>
-      <if test="bust != null">
+      <if test="bust != null" >
         #{bust,jdbcType=VARCHAR},
       </if>
-      <if test="shoulder != null">
+      <if test="shoulder != null" >
         #{shoulder,jdbcType=VARCHAR},
       </if>
-      <if test="thigh != null">
+      <if test="thigh != null" >
         #{thigh,jdbcType=VARCHAR},
       </if>
-      <if test="neck != null">
+      <if test="neck != null" >
         #{neck,jdbcType=VARCHAR},
       </if>
-      <if test="upperArm != null">
+      <if test="upperArm != null" >
         #{upperArm,jdbcType=VARCHAR},
       </if>
-      <if test="lowerArm != null">
+      <if test="lowerArm != null" >
         #{lowerArm,jdbcType=VARCHAR},
       </if>
-      <if test="feature != null">
+      <if test="feature != null" >
         #{feature,jdbcType=VARCHAR},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=BIGINT},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=BIGINT},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         #{isDeleted,jdbcType=TINYINT},
       </if>
-      <if test="isDefault != null">
+      <if test="isDefault != null" >
         #{isDefault,jdbcType=TINYINT},
       </if>
-      <if test="modCount != null">
+      <if test="modCount != null" >
         #{modCount,jdbcType=VARCHAR},
       </if>
-      <if test="rephotograph != null">
+      <if test="rephotograph != null" >
         #{rephotograph,jdbcType=VARCHAR},
       </if>
-      <if test="scanImes != null">
+      <if test="scanImes != null" >
         #{scanImes,jdbcType=VARCHAR},
       </if>
-      <if test="proportion != null">
+      <if test="proportion != null" >
         #{proportion,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UserSize">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UserSize" >
     update user_size
-    <set>
-      <if test="userId != null">
+    <set >
+      <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="height != null">
+      <if test="height != null" >
         height = #{height,jdbcType=VARCHAR},
       </if>
-      <if test="weight != null">
+      <if test="weight != null" >
         weight = #{weight,jdbcType=VARCHAR},
       </if>
-      <if test="waist != null">
+      <if test="waist != null" >
         waist = #{waist,jdbcType=VARCHAR},
       </if>
-      <if test="hip != null">
+      <if test="hip != null" >
         hip = #{hip,jdbcType=VARCHAR},
       </if>
-      <if test="bust != null">
+      <if test="bust != null" >
         bust = #{bust,jdbcType=VARCHAR},
       </if>
-      <if test="shoulder != null">
+      <if test="shoulder != null" >
         shoulder = #{shoulder,jdbcType=VARCHAR},
       </if>
-      <if test="thigh != null">
+      <if test="thigh != null" >
         thigh = #{thigh,jdbcType=VARCHAR},
       </if>
-      <if test="neck != null">
+      <if test="neck != null" >
         neck = #{neck,jdbcType=VARCHAR},
       </if>
-      <if test="upperArm != null">
+      <if test="upperArm != null" >
         upper_arm = #{upperArm,jdbcType=VARCHAR},
       </if>
-      <if test="lowerArm != null">
+      <if test="lowerArm != null" >
         lower_arm = #{lowerArm,jdbcType=VARCHAR},
       </if>
-      <if test="feature != null">
+      <if test="feature != null" >
         feature = #{feature,jdbcType=VARCHAR},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=BIGINT},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=BIGINT},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
-      <if test="isDefault != null">
+      <if test="isDefault != null" >
         is_default = #{isDefault,jdbcType=TINYINT},
       </if>
-      <if test="modCount != null">
+      <if test="modCount != null" >
         mod_count = #{modCount,jdbcType=VARCHAR},
       </if>
-      <if test="rephotograph != null">
+      <if test="rephotograph != null" >
         rephotograph = #{rephotograph,jdbcType=VARCHAR},
       </if>
-      <if test="scanImes != null">
+      <if test="scanImes != null" >
         scan_imes = #{scanImes,jdbcType=VARCHAR},
       </if>
-      <if test="proportion != null">
+      <if test="proportion != null" >
         proportion = #{proportion,jdbcType=VARCHAR},
       </if>
     </set>
     where size_id = #{sizeId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UserSize">
-    update user_size
-    set user_id = #{userId,jdbcType=BIGINT},
-      name = #{name,jdbcType=VARCHAR},
-      height = #{height,jdbcType=VARCHAR},
-      weight = #{weight,jdbcType=VARCHAR},
-      waist = #{waist,jdbcType=VARCHAR},
-      hip = #{hip,jdbcType=VARCHAR},
-      bust = #{bust,jdbcType=VARCHAR},
-      shoulder = #{shoulder,jdbcType=VARCHAR},
-      thigh = #{thigh,jdbcType=VARCHAR},
-      neck = #{neck,jdbcType=VARCHAR},
-      upper_arm = #{upperArm,jdbcType=VARCHAR},
-      lower_arm = #{lowerArm,jdbcType=VARCHAR},
-      feature = #{feature,jdbcType=VARCHAR},
-      created = #{created,jdbcType=BIGINT},
-      updated = #{updated,jdbcType=BIGINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      is_default = #{isDefault,jdbcType=TINYINT},
-      mod_count = #{modCount,jdbcType=VARCHAR},
-      rephotograph = #{rephotograph,jdbcType=VARCHAR},
-      scan_imes = #{scanImes,jdbcType=VARCHAR},
-      proportion = #{proportion,jdbcType=VARCHAR}
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UserSize">
-    <id column="size_id" jdbcType="BIGINT" property="sizeId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="height" jdbcType="VARCHAR" property="height" />
-    <result column="weight" jdbcType="VARCHAR" property="weight" />
-    <result column="waist" jdbcType="VARCHAR" property="waist" />
-    <result column="hip" jdbcType="VARCHAR" property="hip" />
-    <result column="bust" jdbcType="VARCHAR" property="bust" />
-    <result column="shoulder" jdbcType="VARCHAR" property="shoulder" />
-    <result column="thigh" jdbcType="VARCHAR" property="thigh" />
-    <result column="neck" jdbcType="VARCHAR" property="neck" />
-    <result column="upper_arm" jdbcType="VARCHAR" property="upperArm" />
-    <result column="lower_arm" jdbcType="VARCHAR" property="lowerArm" />
-    <result column="feature" jdbcType="VARCHAR" property="feature" />
-    <result column="created" jdbcType="BIGINT" property="created" />
-    <result column="updated" jdbcType="BIGINT" property="updated" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="is_default" jdbcType="TINYINT" property="isDefault" />
-    <result column="mod_count" jdbcType="VARCHAR" property="modCount" />
-    <result column="rephotograph" jdbcType="VARCHAR" property="rephotograph" />
-    <result column="scan_imes" jdbcType="VARCHAR" property="scanImes" />
-    <result column="proportion" jdbcType="VARCHAR" property="proportion" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    size_id, user_id, name, height, weight, waist, hip, bust, shoulder, thigh, neck, 
-    upper_arm, lower_arm, feature, created, updated, is_deleted, is_default, mod_count, 
-    rephotograph, scan_imes, proportion
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user_size
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from user_size
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.UserSize">
-    insert into user_size (size_id, user_id, name, 
-      height, weight, waist, 
-      hip, bust, shoulder, 
-      thigh, neck, upper_arm, 
-      lower_arm, feature, created, 
-      updated, is_deleted, is_default, 
-      mod_count, rephotograph, scan_imes, 
-      proportion)
-    values (#{sizeId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{height,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, #{waist,jdbcType=VARCHAR}, 
-      #{hip,jdbcType=VARCHAR}, #{bust,jdbcType=VARCHAR}, #{shoulder,jdbcType=VARCHAR}, 
-      #{thigh,jdbcType=VARCHAR}, #{neck,jdbcType=VARCHAR}, #{upperArm,jdbcType=VARCHAR}, 
-      #{lowerArm,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{created,jdbcType=BIGINT}, 
-      #{updated,jdbcType=BIGINT}, #{isDeleted,jdbcType=TINYINT}, #{isDefault,jdbcType=TINYINT}, 
-      #{modCount,jdbcType=VARCHAR}, #{rephotograph,jdbcType=VARCHAR}, #{scanImes,jdbcType=VARCHAR}, 
-      #{proportion,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UserSize">
-    insert into user_size
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sizeId != null">
-        size_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="height != null">
-        height,
-      </if>
-      <if test="weight != null">
-        weight,
-      </if>
-      <if test="waist != null">
-        waist,
-      </if>
-      <if test="hip != null">
-        hip,
-      </if>
-      <if test="bust != null">
-        bust,
-      </if>
-      <if test="shoulder != null">
-        shoulder,
-      </if>
-      <if test="thigh != null">
-        thigh,
-      </if>
-      <if test="neck != null">
-        neck,
-      </if>
-      <if test="upperArm != null">
-        upper_arm,
-      </if>
-      <if test="lowerArm != null">
-        lower_arm,
-      </if>
-      <if test="feature != null">
-        feature,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="isDefault != null">
-        is_default,
-      </if>
-      <if test="modCount != null">
-        mod_count,
-      </if>
-      <if test="rephotograph != null">
-        rephotograph,
-      </if>
-      <if test="scanImes != null">
-        scan_imes,
-      </if>
-      <if test="proportion != null">
-        proportion,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sizeId != null">
-        #{sizeId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null">
-        #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null">
-        #{weight,jdbcType=VARCHAR},
-      </if>
-      <if test="waist != null">
-        #{waist,jdbcType=VARCHAR},
-      </if>
-      <if test="hip != null">
-        #{hip,jdbcType=VARCHAR},
-      </if>
-      <if test="bust != null">
-        #{bust,jdbcType=VARCHAR},
-      </if>
-      <if test="shoulder != null">
-        #{shoulder,jdbcType=VARCHAR},
-      </if>
-      <if test="thigh != null">
-        #{thigh,jdbcType=VARCHAR},
-      </if>
-      <if test="neck != null">
-        #{neck,jdbcType=VARCHAR},
-      </if>
-      <if test="upperArm != null">
-        #{upperArm,jdbcType=VARCHAR},
-      </if>
-      <if test="lowerArm != null">
-        #{lowerArm,jdbcType=VARCHAR},
-      </if>
-      <if test="feature != null">
-        #{feature,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=BIGINT},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=BIGINT},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="isDefault != null">
-        #{isDefault,jdbcType=TINYINT},
-      </if>
-      <if test="modCount != null">
-        #{modCount,jdbcType=VARCHAR},
-      </if>
-      <if test="rephotograph != null">
-        #{rephotograph,jdbcType=VARCHAR},
-      </if>
-      <if test="scanImes != null">
-        #{scanImes,jdbcType=VARCHAR},
-      </if>
-      <if test="proportion != null">
-        #{proportion,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UserSize">
-    update user_size
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null">
-        height = #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null">
-        weight = #{weight,jdbcType=VARCHAR},
-      </if>
-      <if test="waist != null">
-        waist = #{waist,jdbcType=VARCHAR},
-      </if>
-      <if test="hip != null">
-        hip = #{hip,jdbcType=VARCHAR},
-      </if>
-      <if test="bust != null">
-        bust = #{bust,jdbcType=VARCHAR},
-      </if>
-      <if test="shoulder != null">
-        shoulder = #{shoulder,jdbcType=VARCHAR},
-      </if>
-      <if test="thigh != null">
-        thigh = #{thigh,jdbcType=VARCHAR},
-      </if>
-      <if test="neck != null">
-        neck = #{neck,jdbcType=VARCHAR},
-      </if>
-      <if test="upperArm != null">
-        upper_arm = #{upperArm,jdbcType=VARCHAR},
-      </if>
-      <if test="lowerArm != null">
-        lower_arm = #{lowerArm,jdbcType=VARCHAR},
-      </if>
-      <if test="feature != null">
-        feature = #{feature,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=BIGINT},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=BIGINT},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="isDefault != null">
-        is_default = #{isDefault,jdbcType=TINYINT},
-      </if>
-      <if test="modCount != null">
-        mod_count = #{modCount,jdbcType=VARCHAR},
-      </if>
-      <if test="rephotograph != null">
-        rephotograph = #{rephotograph,jdbcType=VARCHAR},
-      </if>
-      <if test="scanImes != null">
-        scan_imes = #{scanImes,jdbcType=VARCHAR},
-      </if>
-      <if test="proportion != null">
-        proportion = #{proportion,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UserSize">
-    update user_size
-    set user_id = #{userId,jdbcType=BIGINT},
-      name = #{name,jdbcType=VARCHAR},
-      height = #{height,jdbcType=VARCHAR},
-      weight = #{weight,jdbcType=VARCHAR},
-      waist = #{waist,jdbcType=VARCHAR},
-      hip = #{hip,jdbcType=VARCHAR},
-      bust = #{bust,jdbcType=VARCHAR},
-      shoulder = #{shoulder,jdbcType=VARCHAR},
-      thigh = #{thigh,jdbcType=VARCHAR},
-      neck = #{neck,jdbcType=VARCHAR},
-      upper_arm = #{upperArm,jdbcType=VARCHAR},
-      lower_arm = #{lowerArm,jdbcType=VARCHAR},
-      feature = #{feature,jdbcType=VARCHAR},
-      created = #{created,jdbcType=BIGINT},
-      updated = #{updated,jdbcType=BIGINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      is_default = #{isDefault,jdbcType=TINYINT},
-      mod_count = #{modCount,jdbcType=VARCHAR},
-      rephotograph = #{rephotograph,jdbcType=VARCHAR},
-      scan_imes = #{scanImes,jdbcType=VARCHAR},
-      proportion = #{proportion,jdbcType=VARCHAR}
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.UserSize">
-    <id column="size_id" jdbcType="BIGINT" property="sizeId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="height" jdbcType="VARCHAR" property="height" />
-    <result column="weight" jdbcType="VARCHAR" property="weight" />
-    <result column="waist" jdbcType="VARCHAR" property="waist" />
-    <result column="hip" jdbcType="VARCHAR" property="hip" />
-    <result column="bust" jdbcType="VARCHAR" property="bust" />
-    <result column="shoulder" jdbcType="VARCHAR" property="shoulder" />
-    <result column="thigh" jdbcType="VARCHAR" property="thigh" />
-    <result column="neck" jdbcType="VARCHAR" property="neck" />
-    <result column="upper_arm" jdbcType="VARCHAR" property="upperArm" />
-    <result column="lower_arm" jdbcType="VARCHAR" property="lowerArm" />
-    <result column="feature" jdbcType="VARCHAR" property="feature" />
-    <result column="created" jdbcType="BIGINT" property="created" />
-    <result column="updated" jdbcType="BIGINT" property="updated" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="is_default" jdbcType="TINYINT" property="isDefault" />
-    <result column="mod_count" jdbcType="VARCHAR" property="modCount" />
-    <result column="rephotograph" jdbcType="VARCHAR" property="rephotograph" />
-    <result column="scan_imes" jdbcType="VARCHAR" property="scanImes" />
-    <result column="proportion" jdbcType="VARCHAR" property="proportion" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    size_id, user_id, name, height, weight, waist, hip, bust, shoulder, thigh, neck, 
-    upper_arm, lower_arm, feature, created, updated, is_deleted, is_default, mod_count, 
-    rephotograph, scan_imes, proportion
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user_size
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from user_size
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.UserSize">
-    insert into user_size (size_id, user_id, name, 
-      height, weight, waist, 
-      hip, bust, shoulder, 
-      thigh, neck, upper_arm, 
-      lower_arm, feature, created, 
-      updated, is_deleted, is_default, 
-      mod_count, rephotograph, scan_imes, 
-      proportion)
-    values (#{sizeId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{height,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, #{waist,jdbcType=VARCHAR}, 
-      #{hip,jdbcType=VARCHAR}, #{bust,jdbcType=VARCHAR}, #{shoulder,jdbcType=VARCHAR}, 
-      #{thigh,jdbcType=VARCHAR}, #{neck,jdbcType=VARCHAR}, #{upperArm,jdbcType=VARCHAR}, 
-      #{lowerArm,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{created,jdbcType=BIGINT}, 
-      #{updated,jdbcType=BIGINT}, #{isDeleted,jdbcType=TINYINT}, #{isDefault,jdbcType=TINYINT}, 
-      #{modCount,jdbcType=VARCHAR}, #{rephotograph,jdbcType=VARCHAR}, #{scanImes,jdbcType=VARCHAR}, 
-      #{proportion,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.UserSize">
-    insert into user_size
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sizeId != null">
-        size_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="height != null">
-        height,
-      </if>
-      <if test="weight != null">
-        weight,
-      </if>
-      <if test="waist != null">
-        waist,
-      </if>
-      <if test="hip != null">
-        hip,
-      </if>
-      <if test="bust != null">
-        bust,
-      </if>
-      <if test="shoulder != null">
-        shoulder,
-      </if>
-      <if test="thigh != null">
-        thigh,
-      </if>
-      <if test="neck != null">
-        neck,
-      </if>
-      <if test="upperArm != null">
-        upper_arm,
-      </if>
-      <if test="lowerArm != null">
-        lower_arm,
-      </if>
-      <if test="feature != null">
-        feature,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="isDefault != null">
-        is_default,
-      </if>
-      <if test="modCount != null">
-        mod_count,
-      </if>
-      <if test="rephotograph != null">
-        rephotograph,
-      </if>
-      <if test="scanImes != null">
-        scan_imes,
-      </if>
-      <if test="proportion != null">
-        proportion,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sizeId != null">
-        #{sizeId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null">
-        #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null">
-        #{weight,jdbcType=VARCHAR},
-      </if>
-      <if test="waist != null">
-        #{waist,jdbcType=VARCHAR},
-      </if>
-      <if test="hip != null">
-        #{hip,jdbcType=VARCHAR},
-      </if>
-      <if test="bust != null">
-        #{bust,jdbcType=VARCHAR},
-      </if>
-      <if test="shoulder != null">
-        #{shoulder,jdbcType=VARCHAR},
-      </if>
-      <if test="thigh != null">
-        #{thigh,jdbcType=VARCHAR},
-      </if>
-      <if test="neck != null">
-        #{neck,jdbcType=VARCHAR},
-      </if>
-      <if test="upperArm != null">
-        #{upperArm,jdbcType=VARCHAR},
-      </if>
-      <if test="lowerArm != null">
-        #{lowerArm,jdbcType=VARCHAR},
-      </if>
-      <if test="feature != null">
-        #{feature,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=BIGINT},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=BIGINT},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="isDefault != null">
-        #{isDefault,jdbcType=TINYINT},
-      </if>
-      <if test="modCount != null">
-        #{modCount,jdbcType=VARCHAR},
-      </if>
-      <if test="rephotograph != null">
-        #{rephotograph,jdbcType=VARCHAR},
-      </if>
-      <if test="scanImes != null">
-        #{scanImes,jdbcType=VARCHAR},
-      </if>
-      <if test="proportion != null">
-        #{proportion,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.UserSize">
-    update user_size
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null">
-        height = #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null">
-        weight = #{weight,jdbcType=VARCHAR},
-      </if>
-      <if test="waist != null">
-        waist = #{waist,jdbcType=VARCHAR},
-      </if>
-      <if test="hip != null">
-        hip = #{hip,jdbcType=VARCHAR},
-      </if>
-      <if test="bust != null">
-        bust = #{bust,jdbcType=VARCHAR},
-      </if>
-      <if test="shoulder != null">
-        shoulder = #{shoulder,jdbcType=VARCHAR},
-      </if>
-      <if test="thigh != null">
-        thigh = #{thigh,jdbcType=VARCHAR},
-      </if>
-      <if test="neck != null">
-        neck = #{neck,jdbcType=VARCHAR},
-      </if>
-      <if test="upperArm != null">
-        upper_arm = #{upperArm,jdbcType=VARCHAR},
-      </if>
-      <if test="lowerArm != null">
-        lower_arm = #{lowerArm,jdbcType=VARCHAR},
-      </if>
-      <if test="feature != null">
-        feature = #{feature,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=BIGINT},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=BIGINT},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="isDefault != null">
-        is_default = #{isDefault,jdbcType=TINYINT},
-      </if>
-      <if test="modCount != null">
-        mod_count = #{modCount,jdbcType=VARCHAR},
-      </if>
-      <if test="rephotograph != null">
-        rephotograph = #{rephotograph,jdbcType=VARCHAR},
-      </if>
-      <if test="scanImes != null">
-        scan_imes = #{scanImes,jdbcType=VARCHAR},
-      </if>
-      <if test="proportion != null">
-        proportion = #{proportion,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where size_id = #{sizeId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.UserSize">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UserSize" >
     update user_size
     set user_id = #{userId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},

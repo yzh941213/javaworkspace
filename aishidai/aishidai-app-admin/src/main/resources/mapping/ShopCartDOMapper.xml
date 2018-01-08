@@ -1,36 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.ShopCartDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopCartDO">
-    <id column="shop_cart_id" jdbcType="BIGINT" property="shopCartId" />
-    <result column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="is_buy" jdbcType="TINYINT" property="isBuy" />
-    <result column="buy_time" jdbcType="INTEGER" property="buyTime" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
-    <result column="stratification" jdbcType="VARCHAR" property="stratification" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ShopCartDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopCartDO" >
+    <id column="shop_cart_id" property="shopCartId" jdbcType="BIGINT" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="is_buy" property="isBuy" jdbcType="TINYINT" />
+    <result column="buy_time" property="buyTime" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="stratification" property="stratification" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     shop_cart_id, item_id, user_id, number, created, updated, is_buy, buy_time, is_deleted, 
     picture_url, type, sku_id, stratification
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from shop_cart
     where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from shop_cart
     where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopCartDO" >
     insert into shop_cart (shop_cart_id, item_id, user_id, 
       number, created, updated, 
       is_buy, buy_time, is_deleted, 
@@ -42,502 +42,134 @@
       #{pictureUrl,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, 
       #{stratification,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO" >
     insert into shop_cart
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shopCartId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopCartId != null" >
         shop_cart_id,
       </if>
-      <if test="itemId != null">
+      <if test="itemId != null" >
         item_id,
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         user_id,
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="isBuy != null">
+      <if test="isBuy != null" >
         is_buy,
       </if>
-      <if test="buyTime != null">
+      <if test="buyTime != null" >
         buy_time,
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted,
       </if>
-      <if test="pictureUrl != null">
+      <if test="pictureUrl != null" >
         picture_url,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type,
       </if>
-      <if test="skuId != null">
+      <if test="skuId != null" >
         sku_id,
       </if>
-      <if test="stratification != null">
+      <if test="stratification != null" >
         stratification,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shopCartId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopCartId != null" >
         #{shopCartId,jdbcType=BIGINT},
       </if>
-      <if test="itemId != null">
+      <if test="itemId != null" >
         #{itemId,jdbcType=BIGINT},
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         #{number,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=INTEGER},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=INTEGER},
       </if>
-      <if test="isBuy != null">
+      <if test="isBuy != null" >
         #{isBuy,jdbcType=TINYINT},
       </if>
-      <if test="buyTime != null">
+      <if test="buyTime != null" >
         #{buyTime,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         #{isDeleted,jdbcType=TINYINT},
       </if>
-      <if test="pictureUrl != null">
+      <if test="pictureUrl != null" >
         #{pictureUrl,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="skuId != null">
+      <if test="skuId != null" >
         #{skuId,jdbcType=INTEGER},
       </if>
-      <if test="stratification != null">
+      <if test="stratification != null" >
         #{stratification,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO" >
     update shop_cart
-    <set>
-      <if test="itemId != null">
+    <set >
+      <if test="itemId != null" >
         item_id = #{itemId,jdbcType=BIGINT},
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=INTEGER},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=INTEGER},
       </if>
-      <if test="isBuy != null">
+      <if test="isBuy != null" >
         is_buy = #{isBuy,jdbcType=TINYINT},
       </if>
-      <if test="buyTime != null">
+      <if test="buyTime != null" >
         buy_time = #{buyTime,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
-      <if test="pictureUrl != null">
+      <if test="pictureUrl != null" >
         picture_url = #{pictureUrl,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="skuId != null">
+      <if test="skuId != null" >
         sku_id = #{skuId,jdbcType=INTEGER},
       </if>
-      <if test="stratification != null">
+      <if test="stratification != null" >
         stratification = #{stratification,jdbcType=VARCHAR},
       </if>
     </set>
     where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
-    update shop_cart
-    set item_id = #{itemId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      number = #{number,jdbcType=INTEGER},
-      created = #{created,jdbcType=INTEGER},
-      updated = #{updated,jdbcType=INTEGER},
-      is_buy = #{isBuy,jdbcType=TINYINT},
-      buy_time = #{buyTime,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      picture_url = #{pictureUrl,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      sku_id = #{skuId,jdbcType=INTEGER},
-      stratification = #{stratification,jdbcType=VARCHAR}
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopCartDO">
-    <id column="shop_cart_id" jdbcType="BIGINT" property="shopCartId" />
-    <result column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="is_buy" jdbcType="TINYINT" property="isBuy" />
-    <result column="buy_time" jdbcType="INTEGER" property="buyTime" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
-    <result column="stratification" jdbcType="VARCHAR" property="stratification" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    shop_cart_id, item_id, user_id, number, created, updated, is_buy, buy_time, is_deleted, 
-    picture_url, type, sku_id, stratification
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from shop_cart
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from shop_cart
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
-    insert into shop_cart (shop_cart_id, item_id, user_id, 
-      number, created, updated, 
-      is_buy, buy_time, is_deleted, 
-      picture_url, type, sku_id, 
-      stratification)
-    values (#{shopCartId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{number,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
-      #{isBuy,jdbcType=TINYINT}, #{buyTime,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}, 
-      #{pictureUrl,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, 
-      #{stratification,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
-    insert into shop_cart
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shopCartId != null">
-        shop_cart_id,
-      </if>
-      <if test="itemId != null">
-        item_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="isBuy != null">
-        is_buy,
-      </if>
-      <if test="buyTime != null">
-        buy_time,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="pictureUrl != null">
-        picture_url,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="skuId != null">
-        sku_id,
-      </if>
-      <if test="stratification != null">
-        stratification,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shopCartId != null">
-        #{shopCartId,jdbcType=BIGINT},
-      </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="isBuy != null">
-        #{isBuy,jdbcType=TINYINT},
-      </if>
-      <if test="buyTime != null">
-        #{buyTime,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="pictureUrl != null">
-        #{pictureUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="skuId != null">
-        #{skuId,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        #{stratification,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
-    update shop_cart
-    <set>
-      <if test="itemId != null">
-        item_id = #{itemId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        number = #{number,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="isBuy != null">
-        is_buy = #{isBuy,jdbcType=TINYINT},
-      </if>
-      <if test="buyTime != null">
-        buy_time = #{buyTime,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="pictureUrl != null">
-        picture_url = #{pictureUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="skuId != null">
-        sku_id = #{skuId,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        stratification = #{stratification,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopCartDO">
-    update shop_cart
-    set item_id = #{itemId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      number = #{number,jdbcType=INTEGER},
-      created = #{created,jdbcType=INTEGER},
-      updated = #{updated,jdbcType=INTEGER},
-      is_buy = #{isBuy,jdbcType=TINYINT},
-      buy_time = #{buyTime,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      picture_url = #{pictureUrl,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      sku_id = #{skuId,jdbcType=INTEGER},
-      stratification = #{stratification,jdbcType=VARCHAR}
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.ShopCartDO">
-    <id column="shop_cart_id" jdbcType="BIGINT" property="shopCartId" />
-    <result column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="is_buy" jdbcType="TINYINT" property="isBuy" />
-    <result column="buy_time" jdbcType="INTEGER" property="buyTime" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
-    <result column="stratification" jdbcType="VARCHAR" property="stratification" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    shop_cart_id, item_id, user_id, number, created, updated, is_buy, buy_time, is_deleted, 
-    picture_url, type, sku_id, stratification
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from shop_cart
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from shop_cart
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.ShopCartDO">
-    insert into shop_cart (shop_cart_id, item_id, user_id, 
-      number, created, updated, 
-      is_buy, buy_time, is_deleted, 
-      picture_url, type, sku_id, 
-      stratification)
-    values (#{shopCartId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{number,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
-      #{isBuy,jdbcType=TINYINT}, #{buyTime,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}, 
-      #{pictureUrl,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, 
-      #{stratification,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.ShopCartDO">
-    insert into shop_cart
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shopCartId != null">
-        shop_cart_id,
-      </if>
-      <if test="itemId != null">
-        item_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="isBuy != null">
-        is_buy,
-      </if>
-      <if test="buyTime != null">
-        buy_time,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="pictureUrl != null">
-        picture_url,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="skuId != null">
-        sku_id,
-      </if>
-      <if test="stratification != null">
-        stratification,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shopCartId != null">
-        #{shopCartId,jdbcType=BIGINT},
-      </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="isBuy != null">
-        #{isBuy,jdbcType=TINYINT},
-      </if>
-      <if test="buyTime != null">
-        #{buyTime,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="pictureUrl != null">
-        #{pictureUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="skuId != null">
-        #{skuId,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        #{stratification,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.ShopCartDO">
-    update shop_cart
-    <set>
-      <if test="itemId != null">
-        item_id = #{itemId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="number != null">
-        number = #{number,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="isBuy != null">
-        is_buy = #{isBuy,jdbcType=TINYINT},
-      </if>
-      <if test="buyTime != null">
-        buy_time = #{buyTime,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="pictureUrl != null">
-        picture_url = #{pictureUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="skuId != null">
-        sku_id = #{skuId,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        stratification = #{stratification,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.ShopCartDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopCartDO" >
     update shop_cart
     set item_id = #{itemId,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},

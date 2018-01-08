@@ -1,38 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.ServicesDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ServicesDO">
-    <id column="service_id" jdbcType="BIGINT" property="serviceId" />
-    <result column="apply_id" jdbcType="BIGINT" property="applyId" />
-    <result column="orders_type" jdbcType="BIGINT" property="ordersType" />
-    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
-    <result column="users_id" jdbcType="BIGINT" property="usersId" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="result" jdbcType="VARCHAR" property="result" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="type" jdbcType="INTEGER" property="type" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ServicesDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ServicesDO" >
+    <id column="service_id" property="serviceId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="orders_type" property="ordersType" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="users_id" property="usersId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="services" property="services" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     service_id, apply_id, orders_type, shop_id, users_id, created, updated, start_time, 
     end_time, status, result, number, phone, services, type
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from services
     where service_id = #{serviceId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from services
     where service_id = #{serviceId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ServicesDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ServicesDO" >
     insert into services (service_id, apply_id, orders_type, 
       shop_id, users_id, created, 
       updated, start_time, end_time, 
@@ -46,152 +46,152 @@
       #{phone,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ServicesDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ServicesDO" >
     insert into services
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="serviceId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
         service_id,
       </if>
-      <if test="applyId != null">
+      <if test="applyId != null" >
         apply_id,
       </if>
-      <if test="ordersType != null">
+      <if test="ordersType != null" >
         orders_type,
       </if>
-      <if test="shopId != null">
+      <if test="shopId != null" >
         shop_id,
       </if>
-      <if test="usersId != null">
+      <if test="usersId != null" >
         users_id,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         start_time,
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         end_time,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="result != null">
+      <if test="result != null" >
         result,
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number,
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         phone,
       </if>
-      <if test="services != null">
+      <if test="services != null" >
         services,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="serviceId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
         #{serviceId,jdbcType=BIGINT},
       </if>
-      <if test="applyId != null">
+      <if test="applyId != null" >
         #{applyId,jdbcType=BIGINT},
       </if>
-      <if test="ordersType != null">
+      <if test="ordersType != null" >
         #{ordersType,jdbcType=BIGINT},
       </if>
-      <if test="shopId != null">
+      <if test="shopId != null" >
         #{shopId,jdbcType=BIGINT},
       </if>
-      <if test="usersId != null">
+      <if test="usersId != null" >
         #{usersId,jdbcType=BIGINT},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=BIT},
       </if>
-      <if test="result != null">
+      <if test="result != null" >
         #{result,jdbcType=VARCHAR},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         #{number,jdbcType=INTEGER},
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="services != null">
+      <if test="services != null" >
         #{services,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ServicesDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ServicesDO" >
     update services
-    <set>
-      <if test="applyId != null">
+    <set >
+      <if test="applyId != null" >
         apply_id = #{applyId,jdbcType=BIGINT},
       </if>
-      <if test="ordersType != null">
+      <if test="ordersType != null" >
         orders_type = #{ordersType,jdbcType=BIGINT},
       </if>
-      <if test="shopId != null">
+      <if test="shopId != null" >
         shop_id = #{shopId,jdbcType=BIGINT},
       </if>
-      <if test="usersId != null">
+      <if test="usersId != null" >
         users_id = #{usersId,jdbcType=BIGINT},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status = #{status,jdbcType=BIT},
       </if>
-      <if test="result != null">
+      <if test="result != null" >
         result = #{result,jdbcType=VARCHAR},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="services != null">
+      <if test="services != null" >
         services = #{services,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
     </set>
     where service_id = #{serviceId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ServicesDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ServicesDO" >
     update services
     set apply_id = #{applyId,jdbcType=BIGINT},
       orders_type = #{ordersType,jdbcType=BIGINT},
@@ -208,421 +208,5 @@
       services = #{services,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER}
     where service_id = #{serviceId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ServicesDO">
-    <id column="service_id" jdbcType="INTEGER" property="serviceId" />
-    <result column="apply_id" jdbcType="INTEGER" property="applyId" />
-    <result column="orders_type" jdbcType="INTEGER" property="ordersType" />
-    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
-    <result column="users_id" jdbcType="INTEGER" property="usersId" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="result" jdbcType="VARCHAR" property="result" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    service_id, apply_id, orders_type, shop_id, users_id, created, updated, start_time, 
-    end_time, status, result, number, phone, services, type
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from services
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from services
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ServicesDO">
-    insert into services (service_id, apply_id, orders_type, 
-      shop_id, users_id, created, 
-      updated, start_time, end_time, 
-      status, result, number, 
-      phone, services, type
-      )
-    values (#{serviceId,jdbcType=INTEGER}, #{applyId,jdbcType=INTEGER}, #{ordersType,jdbcType=INTEGER}, 
-      #{shopId,jdbcType=INTEGER}, #{usersId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=BIT}, #{result,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
-      #{phone,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ServicesDO">
-    insert into services
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="serviceId != null">
-        service_id,
-      </if>
-      <if test="applyId != null">
-        apply_id,
-      </if>
-      <if test="ordersType != null">
-        orders_type,
-      </if>
-      <if test="shopId != null">
-        shop_id,
-      </if>
-      <if test="usersId != null">
-        users_id,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="startTime != null">
-        start_time,
-      </if>
-      <if test="endTime != null">
-        end_time,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="result != null">
-        result,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="serviceId != null">
-        #{serviceId,jdbcType=INTEGER},
-      </if>
-      <if test="applyId != null">
-        #{applyId,jdbcType=INTEGER},
-      </if>
-      <if test="ordersType != null">
-        #{ordersType,jdbcType=INTEGER},
-      </if>
-      <if test="shopId != null">
-        #{shopId,jdbcType=INTEGER},
-      </if>
-      <if test="usersId != null">
-        #{usersId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=BIT},
-      </if>
-      <if test="result != null">
-        #{result,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ServicesDO">
-    update services
-    <set>
-      <if test="applyId != null">
-        apply_id = #{applyId,jdbcType=INTEGER},
-      </if>
-      <if test="ordersType != null">
-        orders_type = #{ordersType,jdbcType=INTEGER},
-      </if>
-      <if test="shopId != null">
-        shop_id = #{shopId,jdbcType=INTEGER},
-      </if>
-      <if test="usersId != null">
-        users_id = #{usersId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="startTime != null">
-        start_time = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=BIT},
-      </if>
-      <if test="result != null">
-        result = #{result,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null">
-        number = #{number,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
-      </if>
-    </set>
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ServicesDO">
-    update services
-    set apply_id = #{applyId,jdbcType=INTEGER},
-      orders_type = #{ordersType,jdbcType=INTEGER},
-      shop_id = #{shopId,jdbcType=INTEGER},
-      users_id = #{usersId,jdbcType=INTEGER},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=BIT},
-      result = #{result,jdbcType=VARCHAR},
-      number = #{number,jdbcType=INTEGER},
-      phone = #{phone,jdbcType=VARCHAR},
-      services = #{services,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER}
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.ServicesDO">
-    <id column="service_id" jdbcType="INTEGER" property="serviceId" />
-    <result column="apply_id" jdbcType="INTEGER" property="applyId" />
-    <result column="orders_type" jdbcType="INTEGER" property="ordersType" />
-    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
-    <result column="users_id" jdbcType="INTEGER" property="usersId" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="result" jdbcType="VARCHAR" property="result" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    service_id, apply_id, orders_type, shop_id, users_id, created, updated, start_time, 
-    end_time, status, result, number, phone, services, type
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from services
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from services
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.ServicesDO">
-    insert into services (service_id, apply_id, orders_type, 
-      shop_id, users_id, created, 
-      updated, start_time, end_time, 
-      status, result, number, 
-      phone, services, type
-      )
-    values (#{serviceId,jdbcType=INTEGER}, #{applyId,jdbcType=INTEGER}, #{ordersType,jdbcType=INTEGER}, 
-      #{shopId,jdbcType=INTEGER}, #{usersId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=BIT}, #{result,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
-      #{phone,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.ServicesDO">
-    insert into services
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="serviceId != null">
-        service_id,
-      </if>
-      <if test="applyId != null">
-        apply_id,
-      </if>
-      <if test="ordersType != null">
-        orders_type,
-      </if>
-      <if test="shopId != null">
-        shop_id,
-      </if>
-      <if test="usersId != null">
-        users_id,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="startTime != null">
-        start_time,
-      </if>
-      <if test="endTime != null">
-        end_time,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="result != null">
-        result,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="serviceId != null">
-        #{serviceId,jdbcType=INTEGER},
-      </if>
-      <if test="applyId != null">
-        #{applyId,jdbcType=INTEGER},
-      </if>
-      <if test="ordersType != null">
-        #{ordersType,jdbcType=INTEGER},
-      </if>
-      <if test="shopId != null">
-        #{shopId,jdbcType=INTEGER},
-      </if>
-      <if test="usersId != null">
-        #{usersId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=BIT},
-      </if>
-      <if test="result != null">
-        #{result,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.ServicesDO">
-    update services
-    <set>
-      <if test="applyId != null">
-        apply_id = #{applyId,jdbcType=INTEGER},
-      </if>
-      <if test="ordersType != null">
-        orders_type = #{ordersType,jdbcType=INTEGER},
-      </if>
-      <if test="shopId != null">
-        shop_id = #{shopId,jdbcType=INTEGER},
-      </if>
-      <if test="usersId != null">
-        users_id = #{usersId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="startTime != null">
-        start_time = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=BIT},
-      </if>
-      <if test="result != null">
-        result = #{result,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null">
-        number = #{number,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
-      </if>
-    </set>
-    where service_id = #{serviceId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.ServicesDO">
-    update services
-    set apply_id = #{applyId,jdbcType=INTEGER},
-      orders_type = #{ordersType,jdbcType=INTEGER},
-      shop_id = #{shopId,jdbcType=INTEGER},
-      users_id = #{usersId,jdbcType=INTEGER},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=BIT},
-      result = #{result,jdbcType=VARCHAR},
-      number = #{number,jdbcType=INTEGER},
-      phone = #{phone,jdbcType=VARCHAR},
-      services = #{services,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER}
-    where service_id = #{serviceId,jdbcType=INTEGER}
   </update>
 </mapper>

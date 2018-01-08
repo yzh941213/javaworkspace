@@ -1,48 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.ShopsDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopsDO">
-    <id column="shops_id" jdbcType="BIGINT" property="shopsId" />
-    <result column="distributor_id" jdbcType="INTEGER" property="distributorId" />
-    <result column="shops_name" jdbcType="VARCHAR" property="shopsName" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="shops_url" jdbcType="VARCHAR" property="shopsUrl" />
-    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
-    <result column="area" jdbcType="VARCHAR" property="area" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="province" jdbcType="VARCHAR" property="province" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="activity" jdbcType="VARCHAR" property="activity" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
-    <result column="shop_hours_open" jdbcType="VARCHAR" property="shopHoursOpen" />
-    <result column="shop_hours_close" jdbcType="VARCHAR" property="shopHoursClose" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="services_type" jdbcType="VARCHAR" property="servicesType" />
-    <result column="device_id" jdbcType="BIGINT" property="deviceId" />
-    <result column="device_is" jdbcType="INTEGER" property="deviceIs" />
-    <result column="audit" jdbcType="INTEGER" property="audit" />
-    <result column="star" jdbcType="TINYINT" property="star" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ShopsDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopsDO" >
+    <id column="shops_id" property="shopsId" jdbcType="BIGINT" />
+    <result column="distributor_id" property="distributorId" jdbcType="INTEGER" />
+    <result column="shops_name" property="shopsName" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="shops_url" property="shopsUrl" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="activity" property="activity" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="sys_user_id" property="sysUserId" jdbcType="INTEGER" />
+    <result column="shop_hours_open" property="shopHoursOpen" jdbcType="VARCHAR" />
+    <result column="shop_hours_close" property="shopHoursClose" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="services" property="services" jdbcType="VARCHAR" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
+    <result column="services_type" property="servicesType" jdbcType="VARCHAR" />
+    <result column="device_id" property="deviceId" jdbcType="BIGINT" />
+    <result column="device_is" property="deviceIs" jdbcType="INTEGER" />
+    <result column="audit" property="audit" jdbcType="INTEGER" />
+    <result column="star" property="star" jdbcType="TINYINT" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     shops_id, distributor_id, shops_name, introduce, shops_url, telephone, area, address, 
     province, city, activity, created, updated, sys_user_id, shop_hours_open, shop_hours_close, 
     is_deleted, services, hot, services_type, device_id, device_is, audit, star
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from shops
     where shops_id = #{shopsId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from shops
     where shops_id = #{shopsId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopsDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     insert into shops (shops_id, distributor_id, shops_name, 
       introduce, shops_url, telephone, 
       area, address, province, 
@@ -62,861 +62,233 @@
       #{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopsDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     insert into shops
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shopsId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopsId != null" >
         shops_id,
       </if>
-      <if test="distributorId != null">
+      <if test="distributorId != null" >
         distributor_id,
       </if>
-      <if test="shopsName != null">
+      <if test="shopsName != null" >
         shops_name,
       </if>
-      <if test="introduce != null">
+      <if test="introduce != null" >
         introduce,
       </if>
-      <if test="shopsUrl != null">
+      <if test="shopsUrl != null" >
         shops_url,
       </if>
-      <if test="telephone != null">
+      <if test="telephone != null" >
         telephone,
       </if>
-      <if test="area != null">
+      <if test="area != null" >
         area,
       </if>
-      <if test="address != null">
+      <if test="address != null" >
         address,
       </if>
-      <if test="province != null">
+      <if test="province != null" >
         province,
       </if>
-      <if test="city != null">
+      <if test="city != null" >
         city,
       </if>
-      <if test="activity != null">
+      <if test="activity != null" >
         activity,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="sysUserId != null">
+      <if test="sysUserId != null" >
         sys_user_id,
       </if>
-      <if test="shopHoursOpen != null">
+      <if test="shopHoursOpen != null" >
         shop_hours_open,
       </if>
-      <if test="shopHoursClose != null">
+      <if test="shopHoursClose != null" >
         shop_hours_close,
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted,
       </if>
-      <if test="services != null">
+      <if test="services != null" >
         services,
       </if>
-      <if test="hot != null">
+      <if test="hot != null" >
         hot,
       </if>
-      <if test="servicesType != null">
+      <if test="servicesType != null" >
         services_type,
       </if>
-      <if test="deviceId != null">
+      <if test="deviceId != null" >
         device_id,
       </if>
-      <if test="deviceIs != null">
+      <if test="deviceIs != null" >
         device_is,
       </if>
-      <if test="audit != null">
+      <if test="audit != null" >
         audit,
       </if>
-      <if test="star != null">
+      <if test="star != null" >
         star,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shopsId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopsId != null" >
         #{shopsId,jdbcType=BIGINT},
       </if>
-      <if test="distributorId != null">
+      <if test="distributorId != null" >
         #{distributorId,jdbcType=INTEGER},
       </if>
-      <if test="shopsName != null">
+      <if test="shopsName != null" >
         #{shopsName,jdbcType=VARCHAR},
       </if>
-      <if test="introduce != null">
+      <if test="introduce != null" >
         #{introduce,jdbcType=VARCHAR},
       </if>
-      <if test="shopsUrl != null">
+      <if test="shopsUrl != null" >
         #{shopsUrl,jdbcType=VARCHAR},
       </if>
-      <if test="telephone != null">
+      <if test="telephone != null" >
         #{telephone,jdbcType=VARCHAR},
       </if>
-      <if test="area != null">
+      <if test="area != null" >
         #{area,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
+      <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="province != null">
+      <if test="province != null" >
         #{province,jdbcType=VARCHAR},
       </if>
-      <if test="city != null">
+      <if test="city != null" >
         #{city,jdbcType=VARCHAR},
       </if>
-      <if test="activity != null">
+      <if test="activity != null" >
         #{activity,jdbcType=VARCHAR},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="sysUserId != null">
+      <if test="sysUserId != null" >
         #{sysUserId,jdbcType=INTEGER},
       </if>
-      <if test="shopHoursOpen != null">
+      <if test="shopHoursOpen != null" >
         #{shopHoursOpen,jdbcType=VARCHAR},
       </if>
-      <if test="shopHoursClose != null">
+      <if test="shopHoursClose != null" >
         #{shopHoursClose,jdbcType=VARCHAR},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         #{isDeleted,jdbcType=TINYINT},
       </if>
-      <if test="services != null">
+      <if test="services != null" >
         #{services,jdbcType=VARCHAR},
       </if>
-      <if test="hot != null">
+      <if test="hot != null" >
         #{hot,jdbcType=INTEGER},
       </if>
-      <if test="servicesType != null">
+      <if test="servicesType != null" >
         #{servicesType,jdbcType=VARCHAR},
       </if>
-      <if test="deviceId != null">
+      <if test="deviceId != null" >
         #{deviceId,jdbcType=BIGINT},
       </if>
-      <if test="deviceIs != null">
+      <if test="deviceIs != null" >
         #{deviceIs,jdbcType=INTEGER},
       </if>
-      <if test="audit != null">
+      <if test="audit != null" >
         #{audit,jdbcType=INTEGER},
       </if>
-      <if test="star != null">
+      <if test="star != null" >
         #{star,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopsDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     update shops
-    <set>
-      <if test="distributorId != null">
+    <set >
+      <if test="distributorId != null" >
         distributor_id = #{distributorId,jdbcType=INTEGER},
       </if>
-      <if test="shopsName != null">
+      <if test="shopsName != null" >
         shops_name = #{shopsName,jdbcType=VARCHAR},
       </if>
-      <if test="introduce != null">
+      <if test="introduce != null" >
         introduce = #{introduce,jdbcType=VARCHAR},
       </if>
-      <if test="shopsUrl != null">
+      <if test="shopsUrl != null" >
         shops_url = #{shopsUrl,jdbcType=VARCHAR},
       </if>
-      <if test="telephone != null">
+      <if test="telephone != null" >
         telephone = #{telephone,jdbcType=VARCHAR},
       </if>
-      <if test="area != null">
+      <if test="area != null" >
         area = #{area,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
+      <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="province != null">
+      <if test="province != null" >
         province = #{province,jdbcType=VARCHAR},
       </if>
-      <if test="city != null">
+      <if test="city != null" >
         city = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="activity != null">
+      <if test="activity != null" >
         activity = #{activity,jdbcType=VARCHAR},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="sysUserId != null">
+      <if test="sysUserId != null" >
         sys_user_id = #{sysUserId,jdbcType=INTEGER},
       </if>
-      <if test="shopHoursOpen != null">
+      <if test="shopHoursOpen != null" >
         shop_hours_open = #{shopHoursOpen,jdbcType=VARCHAR},
       </if>
-      <if test="shopHoursClose != null">
+      <if test="shopHoursClose != null" >
         shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
-      <if test="services != null">
+      <if test="services != null" >
         services = #{services,jdbcType=VARCHAR},
       </if>
-      <if test="hot != null">
+      <if test="hot != null" >
         hot = #{hot,jdbcType=INTEGER},
       </if>
-      <if test="servicesType != null">
+      <if test="servicesType != null" >
         services_type = #{servicesType,jdbcType=VARCHAR},
       </if>
-      <if test="deviceId != null">
+      <if test="deviceId != null" >
         device_id = #{deviceId,jdbcType=BIGINT},
       </if>
-      <if test="deviceIs != null">
+      <if test="deviceIs != null" >
         device_is = #{deviceIs,jdbcType=INTEGER},
       </if>
-      <if test="audit != null">
+      <if test="audit != null" >
         audit = #{audit,jdbcType=INTEGER},
       </if>
-      <if test="star != null">
+      <if test="star != null" >
         star = #{star,jdbcType=TINYINT},
       </if>
     </set>
     where shops_id = #{shopsId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopsDO">
-    update shops
-    set distributor_id = #{distributorId,jdbcType=INTEGER},
-      shops_name = #{shopsName,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR},
-      shops_url = #{shopsUrl,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=VARCHAR},
-      area = #{area,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      province = #{province,jdbcType=VARCHAR},
-      city = #{city,jdbcType=VARCHAR},
-      activity = #{activity,jdbcType=VARCHAR},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      sys_user_id = #{sysUserId,jdbcType=INTEGER},
-      shop_hours_open = #{shopHoursOpen,jdbcType=VARCHAR},
-      shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      services = #{services,jdbcType=VARCHAR},
-      hot = #{hot,jdbcType=INTEGER},
-      services_type = #{servicesType,jdbcType=VARCHAR},
-      device_id = #{deviceId,jdbcType=BIGINT},
-      device_is = #{deviceIs,jdbcType=INTEGER},
-      audit = #{audit,jdbcType=INTEGER},
-      star = #{star,jdbcType=TINYINT}
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopsDO">
-    <id column="shops_id" jdbcType="BIGINT" property="shopsId" />
-    <result column="distributor_id" jdbcType="INTEGER" property="distributorId" />
-    <result column="shops_name" jdbcType="VARCHAR" property="shopsName" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="shops_url" jdbcType="VARCHAR" property="shopsUrl" />
-    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
-    <result column="area" jdbcType="VARCHAR" property="area" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="province" jdbcType="VARCHAR" property="province" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="activity" jdbcType="VARCHAR" property="activity" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
-    <result column="shop_hours_open" jdbcType="VARCHAR" property="shopHoursOpen" />
-    <result column="shop_hours_close" jdbcType="VARCHAR" property="shopHoursClose" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="services_type" jdbcType="VARCHAR" property="servicesType" />
-    <result column="device_id" jdbcType="BIGINT" property="deviceId" />
-    <result column="device_is" jdbcType="INTEGER" property="deviceIs" />
-    <result column="audit" jdbcType="INTEGER" property="audit" />
-    <result column="star" jdbcType="TINYINT" property="star" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    shops_id, distributor_id, shops_name, introduce, shops_url, telephone, area, address, 
-    province, city, activity, created, updated, sys_user_id, shop_hours_open, shop_hours_close, 
-    is_deleted, services, hot, services_type, device_id, device_is, audit, star
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from shops
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from shops
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopsDO">
-    insert into shops (shops_id, distributor_id, shops_name, 
-      introduce, shops_url, telephone, 
-      area, address, province, 
-      city, activity, created, 
-      updated, sys_user_id, shop_hours_open, 
-      shop_hours_close, is_deleted, services, 
-      hot, services_type, device_id, 
-      device_is, audit, star
-      )
-    values (#{shopsId,jdbcType=BIGINT}, #{distributorId,jdbcType=INTEGER}, #{shopsName,jdbcType=VARCHAR}, 
-      #{introduce,jdbcType=VARCHAR}, #{shopsUrl,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{activity,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{sysUserId,jdbcType=INTEGER}, #{shopHoursOpen,jdbcType=VARCHAR}, 
-      #{shopHoursClose,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{services,jdbcType=VARCHAR}, 
-      #{hot,jdbcType=INTEGER}, #{servicesType,jdbcType=VARCHAR}, #{deviceId,jdbcType=BIGINT}, 
-      #{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=TINYINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopsDO">
-    insert into shops
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shopsId != null">
-        shops_id,
-      </if>
-      <if test="distributorId != null">
-        distributor_id,
-      </if>
-      <if test="shopsName != null">
-        shops_name,
-      </if>
-      <if test="introduce != null">
-        introduce,
-      </if>
-      <if test="shopsUrl != null">
-        shops_url,
-      </if>
-      <if test="telephone != null">
-        telephone,
-      </if>
-      <if test="area != null">
-        area,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="province != null">
-        province,
-      </if>
-      <if test="city != null">
-        city,
-      </if>
-      <if test="activity != null">
-        activity,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="sysUserId != null">
-        sys_user_id,
-      </if>
-      <if test="shopHoursOpen != null">
-        shop_hours_open,
-      </if>
-      <if test="shopHoursClose != null">
-        shop_hours_close,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="hot != null">
-        hot,
-      </if>
-      <if test="servicesType != null">
-        services_type,
-      </if>
-      <if test="deviceId != null">
-        device_id,
-      </if>
-      <if test="deviceIs != null">
-        device_is,
-      </if>
-      <if test="audit != null">
-        audit,
-      </if>
-      <if test="star != null">
-        star,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shopsId != null">
-        #{shopsId,jdbcType=BIGINT},
-      </if>
-      <if test="distributorId != null">
-        #{distributorId,jdbcType=INTEGER},
-      </if>
-      <if test="shopsName != null">
-        #{shopsName,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="shopsUrl != null">
-        #{shopsUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null">
-        #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        #{province,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="activity != null">
-        #{activity,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="sysUserId != null">
-        #{sysUserId,jdbcType=INTEGER},
-      </if>
-      <if test="shopHoursOpen != null">
-        #{shopHoursOpen,jdbcType=VARCHAR},
-      </if>
-      <if test="shopHoursClose != null">
-        #{shopHoursClose,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="hot != null">
-        #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="servicesType != null">
-        #{servicesType,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceId != null">
-        #{deviceId,jdbcType=BIGINT},
-      </if>
-      <if test="deviceIs != null">
-        #{deviceIs,jdbcType=INTEGER},
-      </if>
-      <if test="audit != null">
-        #{audit,jdbcType=INTEGER},
-      </if>
-      <if test="star != null">
-        #{star,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopsDO">
-    update shops
-    <set>
-      <if test="distributorId != null">
-        distributor_id = #{distributorId,jdbcType=INTEGER},
-      </if>
-      <if test="shopsName != null">
-        shops_name = #{shopsName,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        introduce = #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="shopsUrl != null">
-        shops_url = #{shopsUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        telephone = #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null">
-        area = #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        province = #{province,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="activity != null">
-        activity = #{activity,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="sysUserId != null">
-        sys_user_id = #{sysUserId,jdbcType=INTEGER},
-      </if>
-      <if test="shopHoursOpen != null">
-        shop_hours_open = #{shopHoursOpen,jdbcType=VARCHAR},
-      </if>
-      <if test="shopHoursClose != null">
-        shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="hot != null">
-        hot = #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="servicesType != null">
-        services_type = #{servicesType,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceId != null">
-        device_id = #{deviceId,jdbcType=BIGINT},
-      </if>
-      <if test="deviceIs != null">
-        device_is = #{deviceIs,jdbcType=INTEGER},
-      </if>
-      <if test="audit != null">
-        audit = #{audit,jdbcType=INTEGER},
-      </if>
-      <if test="star != null">
-        star = #{star,jdbcType=TINYINT},
-      </if>
-    </set>
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopsDO">
-    update shops
-    set distributor_id = #{distributorId,jdbcType=INTEGER},
-      shops_name = #{shopsName,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR},
-      shops_url = #{shopsUrl,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=VARCHAR},
-      area = #{area,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      province = #{province,jdbcType=VARCHAR},
-      city = #{city,jdbcType=VARCHAR},
-      activity = #{activity,jdbcType=VARCHAR},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      sys_user_id = #{sysUserId,jdbcType=INTEGER},
-      shop_hours_open = #{shopHoursOpen,jdbcType=VARCHAR},
-      shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      services = #{services,jdbcType=VARCHAR},
-      hot = #{hot,jdbcType=INTEGER},
-      services_type = #{servicesType,jdbcType=VARCHAR},
-      device_id = #{deviceId,jdbcType=BIGINT},
-      device_is = #{deviceIs,jdbcType=INTEGER},
-      audit = #{audit,jdbcType=INTEGER},
-      star = #{star,jdbcType=TINYINT}
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.ShopsDO">
-    <id column="shops_id" jdbcType="BIGINT" property="shopsId" />
-    <result column="distributor_id" jdbcType="INTEGER" property="distributorId" />
-    <result column="shops_name" jdbcType="VARCHAR" property="shopsName" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="shops_url" jdbcType="VARCHAR" property="shopsUrl" />
-    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
-    <result column="area" jdbcType="VARCHAR" property="area" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="province" jdbcType="VARCHAR" property="province" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="activity" jdbcType="VARCHAR" property="activity" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
-    <result column="shop_hours_open" jdbcType="VARCHAR" property="shopHoursOpen" />
-    <result column="shop_hours_close" jdbcType="VARCHAR" property="shopHoursClose" />
-    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="services_type" jdbcType="VARCHAR" property="servicesType" />
-    <result column="device_id" jdbcType="BIGINT" property="deviceId" />
-    <result column="device_is" jdbcType="INTEGER" property="deviceIs" />
-    <result column="audit" jdbcType="INTEGER" property="audit" />
-    <result column="star" jdbcType="TINYINT" property="star" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    shops_id, distributor_id, shops_name, introduce, shops_url, telephone, area, address, 
-    province, city, activity, created, updated, sys_user_id, shop_hours_open, shop_hours_close, 
-    is_deleted, services, hot, services_type, device_id, device_is, audit, star
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from shops
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from shops
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.ShopsDO">
-    insert into shops (shops_id, distributor_id, shops_name, 
-      introduce, shops_url, telephone, 
-      area, address, province, 
-      city, activity, created, 
-      updated, sys_user_id, shop_hours_open, 
-      shop_hours_close, is_deleted, services, 
-      hot, services_type, device_id, 
-      device_is, audit, star
-      )
-    values (#{shopsId,jdbcType=BIGINT}, #{distributorId,jdbcType=INTEGER}, #{shopsName,jdbcType=VARCHAR}, 
-      #{introduce,jdbcType=VARCHAR}, #{shopsUrl,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{activity,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{sysUserId,jdbcType=INTEGER}, #{shopHoursOpen,jdbcType=VARCHAR}, 
-      #{shopHoursClose,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{services,jdbcType=VARCHAR}, 
-      #{hot,jdbcType=INTEGER}, #{servicesType,jdbcType=VARCHAR}, #{deviceId,jdbcType=BIGINT}, 
-      #{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=TINYINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.ShopsDO">
-    insert into shops
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shopsId != null">
-        shops_id,
-      </if>
-      <if test="distributorId != null">
-        distributor_id,
-      </if>
-      <if test="shopsName != null">
-        shops_name,
-      </if>
-      <if test="introduce != null">
-        introduce,
-      </if>
-      <if test="shopsUrl != null">
-        shops_url,
-      </if>
-      <if test="telephone != null">
-        telephone,
-      </if>
-      <if test="area != null">
-        area,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="province != null">
-        province,
-      </if>
-      <if test="city != null">
-        city,
-      </if>
-      <if test="activity != null">
-        activity,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="sysUserId != null">
-        sys_user_id,
-      </if>
-      <if test="shopHoursOpen != null">
-        shop_hours_open,
-      </if>
-      <if test="shopHoursClose != null">
-        shop_hours_close,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="hot != null">
-        hot,
-      </if>
-      <if test="servicesType != null">
-        services_type,
-      </if>
-      <if test="deviceId != null">
-        device_id,
-      </if>
-      <if test="deviceIs != null">
-        device_is,
-      </if>
-      <if test="audit != null">
-        audit,
-      </if>
-      <if test="star != null">
-        star,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shopsId != null">
-        #{shopsId,jdbcType=BIGINT},
-      </if>
-      <if test="distributorId != null">
-        #{distributorId,jdbcType=INTEGER},
-      </if>
-      <if test="shopsName != null">
-        #{shopsName,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="shopsUrl != null">
-        #{shopsUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null">
-        #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        #{province,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="activity != null">
-        #{activity,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="sysUserId != null">
-        #{sysUserId,jdbcType=INTEGER},
-      </if>
-      <if test="shopHoursOpen != null">
-        #{shopHoursOpen,jdbcType=VARCHAR},
-      </if>
-      <if test="shopHoursClose != null">
-        #{shopHoursClose,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="hot != null">
-        #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="servicesType != null">
-        #{servicesType,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceId != null">
-        #{deviceId,jdbcType=BIGINT},
-      </if>
-      <if test="deviceIs != null">
-        #{deviceIs,jdbcType=INTEGER},
-      </if>
-      <if test="audit != null">
-        #{audit,jdbcType=INTEGER},
-      </if>
-      <if test="star != null">
-        #{star,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.ShopsDO">
-    update shops
-    <set>
-      <if test="distributorId != null">
-        distributor_id = #{distributorId,jdbcType=INTEGER},
-      </if>
-      <if test="shopsName != null">
-        shops_name = #{shopsName,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        introduce = #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="shopsUrl != null">
-        shops_url = #{shopsUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        telephone = #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null">
-        area = #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        province = #{province,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="activity != null">
-        activity = #{activity,jdbcType=VARCHAR},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="sysUserId != null">
-        sys_user_id = #{sysUserId,jdbcType=INTEGER},
-      </if>
-      <if test="shopHoursOpen != null">
-        shop_hours_open = #{shopHoursOpen,jdbcType=VARCHAR},
-      </if>
-      <if test="shopHoursClose != null">
-        shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="hot != null">
-        hot = #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="servicesType != null">
-        services_type = #{servicesType,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceId != null">
-        device_id = #{deviceId,jdbcType=BIGINT},
-      </if>
-      <if test="deviceIs != null">
-        device_is = #{deviceIs,jdbcType=INTEGER},
-      </if>
-      <if test="audit != null">
-        audit = #{audit,jdbcType=INTEGER},
-      </if>
-      <if test="star != null">
-        star = #{star,jdbcType=TINYINT},
-      </if>
-    </set>
-    where shops_id = #{shopsId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.ShopsDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     update shops
     set distributor_id = #{distributorId,jdbcType=INTEGER},
       shops_name = #{shopsName,jdbcType=VARCHAR},

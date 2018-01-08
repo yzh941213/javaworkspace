@@ -1,266 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.TradeOrderLogisticsDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="ship_time" jdbcType="VARCHAR" property="shipTime" />
-    <result column="express_company" jdbcType="VARCHAR" property="expressCompany" />
-    <result column="tracking_num" jdbcType="INTEGER" property="trackingNum" />
-    <result column="address_id" jdbcType="INTEGER" property="addressId" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.TradeOrderLogisticsDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ship_time" property="shipTime" jdbcType="VARCHAR" />
+    <result column="express_company" property="expressCompany" jdbcType="VARCHAR" />
+    <result column="tracking_num" property="trackingNum" jdbcType="INTEGER" />
+    <result column="address_id" property="addressId" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     id, ship_time, express_company, tracking_num, address_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from trade_order_logistics
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from trade_order_logistics
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     insert into trade_order_logistics (id, ship_time, express_company, 
       tracking_num, address_id)
     values (#{id,jdbcType=INTEGER}, #{shipTime,jdbcType=VARCHAR}, #{expressCompany,jdbcType=VARCHAR}, 
       #{trackingNum,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     insert into trade_order_logistics
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="shipTime != null">
+      <if test="shipTime != null" >
         ship_time,
       </if>
-      <if test="expressCompany != null">
+      <if test="expressCompany != null" >
         express_company,
       </if>
-      <if test="trackingNum != null">
+      <if test="trackingNum != null" >
         tracking_num,
       </if>
-      <if test="addressId != null">
+      <if test="addressId != null" >
         address_id,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="shipTime != null">
+      <if test="shipTime != null" >
         #{shipTime,jdbcType=VARCHAR},
       </if>
-      <if test="expressCompany != null">
+      <if test="expressCompany != null" >
         #{expressCompany,jdbcType=VARCHAR},
       </if>
-      <if test="trackingNum != null">
+      <if test="trackingNum != null" >
         #{trackingNum,jdbcType=INTEGER},
       </if>
-      <if test="addressId != null">
+      <if test="addressId != null" >
         #{addressId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     update trade_order_logistics
-    <set>
-      <if test="shipTime != null">
+    <set >
+      <if test="shipTime != null" >
         ship_time = #{shipTime,jdbcType=VARCHAR},
       </if>
-      <if test="expressCompany != null">
+      <if test="expressCompany != null" >
         express_company = #{expressCompany,jdbcType=VARCHAR},
       </if>
-      <if test="trackingNum != null">
+      <if test="trackingNum != null" >
         tracking_num = #{trackingNum,jdbcType=INTEGER},
       </if>
-      <if test="addressId != null">
+      <if test="addressId != null" >
         address_id = #{addressId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    update trade_order_logistics
-    set ship_time = #{shipTime,jdbcType=VARCHAR},
-      express_company = #{expressCompany,jdbcType=VARCHAR},
-      tracking_num = #{trackingNum,jdbcType=INTEGER},
-      address_id = #{addressId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="ship_time" jdbcType="VARCHAR" property="shipTime" />
-    <result column="express_company" jdbcType="VARCHAR" property="expressCompany" />
-    <result column="tracking_num" jdbcType="INTEGER" property="trackingNum" />
-    <result column="address_id" jdbcType="INTEGER" property="addressId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, ship_time, express_company, tracking_num, address_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from trade_order_logistics
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from trade_order_logistics
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    insert into trade_order_logistics (id, ship_time, express_company, 
-      tracking_num, address_id)
-    values (#{id,jdbcType=INTEGER}, #{shipTime,jdbcType=VARCHAR}, #{expressCompany,jdbcType=VARCHAR}, 
-      #{trackingNum,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    insert into trade_order_logistics
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="shipTime != null">
-        ship_time,
-      </if>
-      <if test="expressCompany != null">
-        express_company,
-      </if>
-      <if test="trackingNum != null">
-        tracking_num,
-      </if>
-      <if test="addressId != null">
-        address_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="shipTime != null">
-        #{shipTime,jdbcType=VARCHAR},
-      </if>
-      <if test="expressCompany != null">
-        #{expressCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="trackingNum != null">
-        #{trackingNum,jdbcType=INTEGER},
-      </if>
-      <if test="addressId != null">
-        #{addressId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    update trade_order_logistics
-    <set>
-      <if test="shipTime != null">
-        ship_time = #{shipTime,jdbcType=VARCHAR},
-      </if>
-      <if test="expressCompany != null">
-        express_company = #{expressCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="trackingNum != null">
-        tracking_num = #{trackingNum,jdbcType=INTEGER},
-      </if>
-      <if test="addressId != null">
-        address_id = #{addressId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO">
-    update trade_order_logistics
-    set ship_time = #{shipTime,jdbcType=VARCHAR},
-      express_company = #{expressCompany,jdbcType=VARCHAR},
-      tracking_num = #{trackingNum,jdbcType=INTEGER},
-      address_id = #{addressId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.TradeOrderLogisticsDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="ship_time" jdbcType="VARCHAR" property="shipTime" />
-    <result column="express_company" jdbcType="VARCHAR" property="expressCompany" />
-    <result column="tracking_num" jdbcType="INTEGER" property="trackingNum" />
-    <result column="address_id" jdbcType="INTEGER" property="addressId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, ship_time, express_company, tracking_num, address_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from trade_order_logistics
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from trade_order_logistics
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.TradeOrderLogisticsDO">
-    insert into trade_order_logistics (id, ship_time, express_company, 
-      tracking_num, address_id)
-    values (#{id,jdbcType=INTEGER}, #{shipTime,jdbcType=VARCHAR}, #{expressCompany,jdbcType=VARCHAR}, 
-      #{trackingNum,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.TradeOrderLogisticsDO">
-    insert into trade_order_logistics
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="shipTime != null">
-        ship_time,
-      </if>
-      <if test="expressCompany != null">
-        express_company,
-      </if>
-      <if test="trackingNum != null">
-        tracking_num,
-      </if>
-      <if test="addressId != null">
-        address_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="shipTime != null">
-        #{shipTime,jdbcType=VARCHAR},
-      </if>
-      <if test="expressCompany != null">
-        #{expressCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="trackingNum != null">
-        #{trackingNum,jdbcType=INTEGER},
-      </if>
-      <if test="addressId != null">
-        #{addressId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.TradeOrderLogisticsDO">
-    update trade_order_logistics
-    <set>
-      <if test="shipTime != null">
-        ship_time = #{shipTime,jdbcType=VARCHAR},
-      </if>
-      <if test="expressCompany != null">
-        express_company = #{expressCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="trackingNum != null">
-        tracking_num = #{trackingNum,jdbcType=INTEGER},
-      </if>
-      <if test="addressId != null">
-        address_id = #{addressId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.TradeOrderLogisticsDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     update trade_order_logistics
     set ship_time = #{shipTime,jdbcType=VARCHAR},
       express_company = #{expressCompany,jdbcType=VARCHAR},

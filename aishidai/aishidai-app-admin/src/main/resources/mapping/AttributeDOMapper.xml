@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.AttributeDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AttributeDO">
-    <id column="attribute_id" jdbcType="INTEGER" property="attributeId" />
-    <result column="attr_name" jdbcType="VARCHAR" property="attrName" />
-    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="stratification" jdbcType="INTEGER" property="stratification" />
-    <result column="category" jdbcType="INTEGER" property="category" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.AttributeDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AttributeDO" >
+    <id column="attribute_id" property="attributeId" jdbcType="INTEGER" />
+    <result column="attr_name" property="attrName" jdbcType="VARCHAR" />
+    <result column="img_path" property="imgPath" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
+    <result column="stratification" property="stratification" jdbcType="INTEGER" />
+    <result column="category" property="category" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     attribute_id, attr_name, img_path, description, parent_id, created, updated, status, 
     hot, stratification, category
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from attribute
     where attribute_id = #{attributeId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from attribute
     where attribute_id = #{attributeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.AttributeDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.AttributeDO" >
     insert into attribute (attribute_id, attr_name, img_path, 
       description, parent_id, created, 
       updated, status, hot, 
@@ -38,436 +38,116 @@
       #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{hot,jdbcType=INTEGER}, 
       #{stratification,jdbcType=INTEGER}, #{category,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.AttributeDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.AttributeDO" >
     insert into attribute
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="attributeId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attributeId != null" >
         attribute_id,
       </if>
-      <if test="attrName != null">
+      <if test="attrName != null" >
         attr_name,
       </if>
-      <if test="imgPath != null">
+      <if test="imgPath != null" >
         img_path,
       </if>
-      <if test="description != null">
+      <if test="description != null" >
         description,
       </if>
-      <if test="parentId != null">
+      <if test="parentId != null" >
         parent_id,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="hot != null">
+      <if test="hot != null" >
         hot,
       </if>
-      <if test="stratification != null">
+      <if test="stratification != null" >
         stratification,
       </if>
-      <if test="category != null">
+      <if test="category != null" >
         category,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="attributeId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attributeId != null" >
         #{attributeId,jdbcType=INTEGER},
       </if>
-      <if test="attrName != null">
+      <if test="attrName != null" >
         #{attrName,jdbcType=VARCHAR},
       </if>
-      <if test="imgPath != null">
+      <if test="imgPath != null" >
         #{imgPath,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
+      <if test="description != null" >
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="parentId != null">
+      <if test="parentId != null" >
         #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="hot != null">
+      <if test="hot != null" >
         #{hot,jdbcType=INTEGER},
       </if>
-      <if test="stratification != null">
+      <if test="stratification != null" >
         #{stratification,jdbcType=INTEGER},
       </if>
-      <if test="category != null">
+      <if test="category != null" >
         #{category,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.AttributeDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.AttributeDO" >
     update attribute
-    <set>
-      <if test="attrName != null">
+    <set >
+      <if test="attrName != null" >
         attr_name = #{attrName,jdbcType=VARCHAR},
       </if>
-      <if test="imgPath != null">
+      <if test="imgPath != null" >
         img_path = #{imgPath,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
+      <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="parentId != null">
+      <if test="parentId != null" >
         parent_id = #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="hot != null">
+      <if test="hot != null" >
         hot = #{hot,jdbcType=INTEGER},
       </if>
-      <if test="stratification != null">
+      <if test="stratification != null" >
         stratification = #{stratification,jdbcType=INTEGER},
       </if>
-      <if test="category != null">
+      <if test="category != null" >
         category = #{category,jdbcType=INTEGER},
       </if>
     </set>
     where attribute_id = #{attributeId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.AttributeDO">
-    update attribute
-    set attr_name = #{attrName,jdbcType=VARCHAR},
-      img_path = #{imgPath,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
-      hot = #{hot,jdbcType=INTEGER},
-      stratification = #{stratification,jdbcType=INTEGER},
-      category = #{category,jdbcType=INTEGER}
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AttributeDO">
-    <id column="attribute_id" jdbcType="INTEGER" property="attributeId" />
-    <result column="attr_name" jdbcType="VARCHAR" property="attrName" />
-    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="stratification" jdbcType="INTEGER" property="stratification" />
-    <result column="category" jdbcType="INTEGER" property="category" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    attribute_id, attr_name, img_path, description, parent_id, created, updated, status, 
-    hot, stratification, category
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from attribute
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from attribute
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.AttributeDO">
-    insert into attribute (attribute_id, attr_name, img_path, 
-      description, parent_id, created, 
-      updated, status, hot, 
-      stratification, category)
-    values (#{attributeId,jdbcType=INTEGER}, #{attrName,jdbcType=VARCHAR}, #{imgPath,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{hot,jdbcType=INTEGER}, 
-      #{stratification,jdbcType=INTEGER}, #{category,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.AttributeDO">
-    insert into attribute
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="attributeId != null">
-        attribute_id,
-      </if>
-      <if test="attrName != null">
-        attr_name,
-      </if>
-      <if test="imgPath != null">
-        img_path,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="parentId != null">
-        parent_id,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="hot != null">
-        hot,
-      </if>
-      <if test="stratification != null">
-        stratification,
-      </if>
-      <if test="category != null">
-        category,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="attributeId != null">
-        #{attributeId,jdbcType=INTEGER},
-      </if>
-      <if test="attrName != null">
-        #{attrName,jdbcType=VARCHAR},
-      </if>
-      <if test="imgPath != null">
-        #{imgPath,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="hot != null">
-        #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        #{stratification,jdbcType=INTEGER},
-      </if>
-      <if test="category != null">
-        #{category,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.AttributeDO">
-    update attribute
-    <set>
-      <if test="attrName != null">
-        attr_name = #{attrName,jdbcType=VARCHAR},
-      </if>
-      <if test="imgPath != null">
-        img_path = #{imgPath,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null">
-        parent_id = #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="hot != null">
-        hot = #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        stratification = #{stratification,jdbcType=INTEGER},
-      </if>
-      <if test="category != null">
-        category = #{category,jdbcType=INTEGER},
-      </if>
-    </set>
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.AttributeDO">
-    update attribute
-    set attr_name = #{attrName,jdbcType=VARCHAR},
-      img_path = #{imgPath,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
-      hot = #{hot,jdbcType=INTEGER},
-      stratification = #{stratification,jdbcType=INTEGER},
-      category = #{category,jdbcType=INTEGER}
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.AttributeDO">
-    <id column="attribute_id" jdbcType="INTEGER" property="attributeId" />
-    <result column="attr_name" jdbcType="VARCHAR" property="attrName" />
-    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="created" jdbcType="TIMESTAMP" property="created" />
-    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="stratification" jdbcType="INTEGER" property="stratification" />
-    <result column="category" jdbcType="INTEGER" property="category" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    attribute_id, attr_name, img_path, description, parent_id, created, updated, status, 
-    hot, stratification, category
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from attribute
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from attribute
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.AttributeDO">
-    insert into attribute (attribute_id, attr_name, img_path, 
-      description, parent_id, created, 
-      updated, status, hot, 
-      stratification, category)
-    values (#{attributeId,jdbcType=INTEGER}, #{attrName,jdbcType=VARCHAR}, #{imgPath,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{hot,jdbcType=INTEGER}, 
-      #{stratification,jdbcType=INTEGER}, #{category,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.AttributeDO">
-    insert into attribute
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="attributeId != null">
-        attribute_id,
-      </if>
-      <if test="attrName != null">
-        attr_name,
-      </if>
-      <if test="imgPath != null">
-        img_path,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="parentId != null">
-        parent_id,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="hot != null">
-        hot,
-      </if>
-      <if test="stratification != null">
-        stratification,
-      </if>
-      <if test="category != null">
-        category,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="attributeId != null">
-        #{attributeId,jdbcType=INTEGER},
-      </if>
-      <if test="attrName != null">
-        #{attrName,jdbcType=VARCHAR},
-      </if>
-      <if test="imgPath != null">
-        #{imgPath,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="hot != null">
-        #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        #{stratification,jdbcType=INTEGER},
-      </if>
-      <if test="category != null">
-        #{category,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.AttributeDO">
-    update attribute
-    <set>
-      <if test="attrName != null">
-        attr_name = #{attrName,jdbcType=VARCHAR},
-      </if>
-      <if test="imgPath != null">
-        img_path = #{imgPath,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null">
-        parent_id = #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="hot != null">
-        hot = #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="stratification != null">
-        stratification = #{stratification,jdbcType=INTEGER},
-      </if>
-      <if test="category != null">
-        category = #{category,jdbcType=INTEGER},
-      </if>
-    </set>
-    where attribute_id = #{attributeId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.AttributeDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.AttributeDO" >
     update attribute
     set attr_name = #{attrName,jdbcType=VARCHAR},
       img_path = #{imgPath,jdbcType=VARCHAR},

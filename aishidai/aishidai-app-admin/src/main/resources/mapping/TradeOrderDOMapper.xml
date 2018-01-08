@@ -1,56 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aishidai.app.dao.TradeOrderDOMapper">
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderDO">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="buyer_user_id" jdbcType="BIGINT" property="buyerUserId" />
-    <result column="seller_user_id" jdbcType="BIGINT" property="sellerUserId" />
-    <result column="order_type" jdbcType="INTEGER" property="orderType" />
-    <result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
-    <result column="promotion" jdbcType="VARCHAR" property="promotion" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="reverse_status" jdbcType="INTEGER" property="reverseStatus" />
-    <result column="pay_time" jdbcType="INTEGER" property="payTime" />
-    <result column="pay_id" jdbcType="VARCHAR" property="payId" />
-    <result column="receive_time" jdbcType="INTEGER" property="receiveTime" />
-    <result column="receive_type" jdbcType="TINYINT" property="receiveType" />
-    <result column="rate_from_buyer_visible" jdbcType="TINYINT" property="rateFromBuyerVisible" />
-    <result column="cancel_time" jdbcType="INTEGER" property="cancelTime" />
-    <result column="settlement_time" jdbcType="INTEGER" property="settlementTime" />
-    <result column="expired_time" jdbcType="INTEGER" property="expiredTime" />
-    <result column="cancel_reason" jdbcType="VARCHAR" property="cancelReason" />
-    <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
-    <result column="is_invoice" jdbcType="INTEGER" property="isInvoice" />
-    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
-    <result column="invoice_title" jdbcType="VARCHAR" property="invoiceTitle" />
-    <result column="invoice_number" jdbcType="VARCHAR" property="invoiceNumber" />
-    <result column="address_id" jdbcType="INTEGER" property="addressId" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
-    <result column="pay_type" jdbcType="INTEGER" property="payType" />
-    <result column="actual_pay" jdbcType="VARCHAR" property="actualPay" />
-    <result column="order_source" jdbcType="VARCHAR" property="orderSource" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.TradeOrderDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderDO" >
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="buyer_user_id" property="buyerUserId" jdbcType="BIGINT" />
+    <result column="seller_user_id" property="sellerUserId" jdbcType="BIGINT" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="VARCHAR" />
+    <result column="promotion" property="promotion" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reverse_status" property="reverseStatus" jdbcType="INTEGER" />
+    <result column="pay_time" property="payTime" jdbcType="INTEGER" />
+    <result column="pay_id" property="payId" jdbcType="VARCHAR" />
+    <result column="receive_time" property="receiveTime" jdbcType="INTEGER" />
+    <result column="receive_type" property="receiveType" jdbcType="TINYINT" />
+    <result column="rate_from_buyer_visible" property="rateFromBuyerVisible" jdbcType="TINYINT" />
+    <result column="cancel_time" property="cancelTime" jdbcType="INTEGER" />
+    <result column="settlement_time" property="settlementTime" jdbcType="INTEGER" />
+    <result column="expired_time" property="expiredTime" jdbcType="INTEGER" />
+    <result column="cancel_reason" property="cancelReason" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="is_invoice" property="isInvoice" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="invoice_number" property="invoiceNumber" jdbcType="VARCHAR" />
+    <result column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="actual_pay" property="actualPay" jdbcType="VARCHAR" />
+    <result column="order_source" property="orderSource" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     order_id, buyer_user_id, seller_user_id, order_type, total_price, promotion, status, 
     reverse_status, pay_time, pay_id, receive_time, receive_type, rate_from_buyer_visible, 
     cancel_time, settlement_time, expired_time, cancel_reason, version, created, updated, 
     order_num, is_invoice, remarks, invoice_title, invoice_number, address_id, is_deleted, 
     pay_type, actual_pay, order_source
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from trade_order
     where order_id = #{orderId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from trade_order
     where order_id = #{orderId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderDO" >
     insert into trade_order (order_id, buyer_user_id, seller_user_id, 
       order_type, total_price, promotion, 
       status, reverse_status, pay_time, 
@@ -74,1059 +74,287 @@
       #{payType,jdbcType=INTEGER}, #{actualPay,jdbcType=VARCHAR}, #{orderSource,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO" >
     insert into trade_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
         order_id,
       </if>
-      <if test="buyerUserId != null">
+      <if test="buyerUserId != null" >
         buyer_user_id,
       </if>
-      <if test="sellerUserId != null">
+      <if test="sellerUserId != null" >
         seller_user_id,
       </if>
-      <if test="orderType != null">
+      <if test="orderType != null" >
         order_type,
       </if>
-      <if test="totalPrice != null">
+      <if test="totalPrice != null" >
         total_price,
       </if>
-      <if test="promotion != null">
+      <if test="promotion != null" >
         promotion,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="reverseStatus != null">
+      <if test="reverseStatus != null" >
         reverse_status,
       </if>
-      <if test="payTime != null">
+      <if test="payTime != null" >
         pay_time,
       </if>
-      <if test="payId != null">
+      <if test="payId != null" >
         pay_id,
       </if>
-      <if test="receiveTime != null">
+      <if test="receiveTime != null" >
         receive_time,
       </if>
-      <if test="receiveType != null">
+      <if test="receiveType != null" >
         receive_type,
       </if>
-      <if test="rateFromBuyerVisible != null">
+      <if test="rateFromBuyerVisible != null" >
         rate_from_buyer_visible,
       </if>
-      <if test="cancelTime != null">
+      <if test="cancelTime != null" >
         cancel_time,
       </if>
-      <if test="settlementTime != null">
+      <if test="settlementTime != null" >
         settlement_time,
       </if>
-      <if test="expiredTime != null">
+      <if test="expiredTime != null" >
         expired_time,
       </if>
-      <if test="cancelReason != null">
+      <if test="cancelReason != null" >
         cancel_reason,
       </if>
-      <if test="version != null">
+      <if test="version != null" >
         version,
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created,
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated,
       </if>
-      <if test="orderNum != null">
+      <if test="orderNum != null" >
         order_num,
       </if>
-      <if test="isInvoice != null">
+      <if test="isInvoice != null" >
         is_invoice,
       </if>
-      <if test="remarks != null">
+      <if test="remarks != null" >
         remarks,
       </if>
-      <if test="invoiceTitle != null">
+      <if test="invoiceTitle != null" >
         invoice_title,
       </if>
-      <if test="invoiceNumber != null">
+      <if test="invoiceNumber != null" >
         invoice_number,
       </if>
-      <if test="addressId != null">
+      <if test="addressId != null" >
         address_id,
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted,
       </if>
-      <if test="payType != null">
+      <if test="payType != null" >
         pay_type,
       </if>
-      <if test="actualPay != null">
+      <if test="actualPay != null" >
         actual_pay,
       </if>
-      <if test="orderSource != null">
+      <if test="orderSource != null" >
         order_source,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
         #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="buyerUserId != null">
+      <if test="buyerUserId != null" >
         #{buyerUserId,jdbcType=BIGINT},
       </if>
-      <if test="sellerUserId != null">
+      <if test="sellerUserId != null" >
         #{sellerUserId,jdbcType=BIGINT},
       </if>
-      <if test="orderType != null">
+      <if test="orderType != null" >
         #{orderType,jdbcType=INTEGER},
       </if>
-      <if test="totalPrice != null">
+      <if test="totalPrice != null" >
         #{totalPrice,jdbcType=VARCHAR},
       </if>
-      <if test="promotion != null">
+      <if test="promotion != null" >
         #{promotion,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="reverseStatus != null">
+      <if test="reverseStatus != null" >
         #{reverseStatus,jdbcType=INTEGER},
       </if>
-      <if test="payTime != null">
+      <if test="payTime != null" >
         #{payTime,jdbcType=INTEGER},
       </if>
-      <if test="payId != null">
+      <if test="payId != null" >
         #{payId,jdbcType=VARCHAR},
       </if>
-      <if test="receiveTime != null">
+      <if test="receiveTime != null" >
         #{receiveTime,jdbcType=INTEGER},
       </if>
-      <if test="receiveType != null">
+      <if test="receiveType != null" >
         #{receiveType,jdbcType=TINYINT},
       </if>
-      <if test="rateFromBuyerVisible != null">
+      <if test="rateFromBuyerVisible != null" >
         #{rateFromBuyerVisible,jdbcType=TINYINT},
       </if>
-      <if test="cancelTime != null">
+      <if test="cancelTime != null" >
         #{cancelTime,jdbcType=INTEGER},
       </if>
-      <if test="settlementTime != null">
+      <if test="settlementTime != null" >
         #{settlementTime,jdbcType=INTEGER},
       </if>
-      <if test="expiredTime != null">
+      <if test="expiredTime != null" >
         #{expiredTime,jdbcType=INTEGER},
       </if>
-      <if test="cancelReason != null">
+      <if test="cancelReason != null" >
         #{cancelReason,jdbcType=VARCHAR},
       </if>
-      <if test="version != null">
+      <if test="version != null" >
         #{version,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         #{created,jdbcType=INTEGER},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         #{updated,jdbcType=INTEGER},
       </if>
-      <if test="orderNum != null">
+      <if test="orderNum != null" >
         #{orderNum,jdbcType=VARCHAR},
       </if>
-      <if test="isInvoice != null">
+      <if test="isInvoice != null" >
         #{isInvoice,jdbcType=INTEGER},
       </if>
-      <if test="remarks != null">
+      <if test="remarks != null" >
         #{remarks,jdbcType=VARCHAR},
       </if>
-      <if test="invoiceTitle != null">
+      <if test="invoiceTitle != null" >
         #{invoiceTitle,jdbcType=VARCHAR},
       </if>
-      <if test="invoiceNumber != null">
+      <if test="invoiceNumber != null" >
         #{invoiceNumber,jdbcType=VARCHAR},
       </if>
-      <if test="addressId != null">
+      <if test="addressId != null" >
         #{addressId,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         #{isDeleted,jdbcType=INTEGER},
       </if>
-      <if test="payType != null">
+      <if test="payType != null" >
         #{payType,jdbcType=INTEGER},
       </if>
-      <if test="actualPay != null">
+      <if test="actualPay != null" >
         #{actualPay,jdbcType=VARCHAR},
       </if>
-      <if test="orderSource != null">
+      <if test="orderSource != null" >
         #{orderSource,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO" >
     update trade_order
-    <set>
-      <if test="buyerUserId != null">
+    <set >
+      <if test="buyerUserId != null" >
         buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
       </if>
-      <if test="sellerUserId != null">
+      <if test="sellerUserId != null" >
         seller_user_id = #{sellerUserId,jdbcType=BIGINT},
       </if>
-      <if test="orderType != null">
+      <if test="orderType != null" >
         order_type = #{orderType,jdbcType=INTEGER},
       </if>
-      <if test="totalPrice != null">
+      <if test="totalPrice != null" >
         total_price = #{totalPrice,jdbcType=VARCHAR},
       </if>
-      <if test="promotion != null">
+      <if test="promotion != null" >
         promotion = #{promotion,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="reverseStatus != null">
+      <if test="reverseStatus != null" >
         reverse_status = #{reverseStatus,jdbcType=INTEGER},
       </if>
-      <if test="payTime != null">
+      <if test="payTime != null" >
         pay_time = #{payTime,jdbcType=INTEGER},
       </if>
-      <if test="payId != null">
+      <if test="payId != null" >
         pay_id = #{payId,jdbcType=VARCHAR},
       </if>
-      <if test="receiveTime != null">
+      <if test="receiveTime != null" >
         receive_time = #{receiveTime,jdbcType=INTEGER},
       </if>
-      <if test="receiveType != null">
+      <if test="receiveType != null" >
         receive_type = #{receiveType,jdbcType=TINYINT},
       </if>
-      <if test="rateFromBuyerVisible != null">
+      <if test="rateFromBuyerVisible != null" >
         rate_from_buyer_visible = #{rateFromBuyerVisible,jdbcType=TINYINT},
       </if>
-      <if test="cancelTime != null">
+      <if test="cancelTime != null" >
         cancel_time = #{cancelTime,jdbcType=INTEGER},
       </if>
-      <if test="settlementTime != null">
+      <if test="settlementTime != null" >
         settlement_time = #{settlementTime,jdbcType=INTEGER},
       </if>
-      <if test="expiredTime != null">
+      <if test="expiredTime != null" >
         expired_time = #{expiredTime,jdbcType=INTEGER},
       </if>
-      <if test="cancelReason != null">
+      <if test="cancelReason != null" >
         cancel_reason = #{cancelReason,jdbcType=VARCHAR},
       </if>
-      <if test="version != null">
+      <if test="version != null" >
         version = #{version,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
+      <if test="created != null" >
         created = #{created,jdbcType=INTEGER},
       </if>
-      <if test="updated != null">
+      <if test="updated != null" >
         updated = #{updated,jdbcType=INTEGER},
       </if>
-      <if test="orderNum != null">
+      <if test="orderNum != null" >
         order_num = #{orderNum,jdbcType=VARCHAR},
       </if>
-      <if test="isInvoice != null">
+      <if test="isInvoice != null" >
         is_invoice = #{isInvoice,jdbcType=INTEGER},
       </if>
-      <if test="remarks != null">
+      <if test="remarks != null" >
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
-      <if test="invoiceTitle != null">
+      <if test="invoiceTitle != null" >
         invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
       </if>
-      <if test="invoiceNumber != null">
+      <if test="invoiceNumber != null" >
         invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
       </if>
-      <if test="addressId != null">
+      <if test="addressId != null" >
         address_id = #{addressId,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null">
+      <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
-      <if test="payType != null">
+      <if test="payType != null" >
         pay_type = #{payType,jdbcType=INTEGER},
       </if>
-      <if test="actualPay != null">
+      <if test="actualPay != null" >
         actual_pay = #{actualPay,jdbcType=VARCHAR},
       </if>
-      <if test="orderSource != null">
+      <if test="orderSource != null" >
         order_source = #{orderSource,jdbcType=VARCHAR},
       </if>
     </set>
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
-    update trade_order
-    set buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
-      seller_user_id = #{sellerUserId,jdbcType=BIGINT},
-      order_type = #{orderType,jdbcType=INTEGER},
-      total_price = #{totalPrice,jdbcType=VARCHAR},
-      promotion = #{promotion,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      reverse_status = #{reverseStatus,jdbcType=INTEGER},
-      pay_time = #{payTime,jdbcType=INTEGER},
-      pay_id = #{payId,jdbcType=VARCHAR},
-      receive_time = #{receiveTime,jdbcType=INTEGER},
-      receive_type = #{receiveType,jdbcType=TINYINT},
-      rate_from_buyer_visible = #{rateFromBuyerVisible,jdbcType=TINYINT},
-      cancel_time = #{cancelTime,jdbcType=INTEGER},
-      settlement_time = #{settlementTime,jdbcType=INTEGER},
-      expired_time = #{expiredTime,jdbcType=INTEGER},
-      cancel_reason = #{cancelReason,jdbcType=VARCHAR},
-      version = #{version,jdbcType=INTEGER},
-      created = #{created,jdbcType=INTEGER},
-      updated = #{updated,jdbcType=INTEGER},
-      order_num = #{orderNum,jdbcType=VARCHAR},
-      is_invoice = #{isInvoice,jdbcType=INTEGER},
-      remarks = #{remarks,jdbcType=VARCHAR},
-      invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
-      invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
-      address_id = #{addressId,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
-      pay_type = #{payType,jdbcType=INTEGER},
-      actual_pay = #{actualPay,jdbcType=VARCHAR},
-      order_source = #{orderSource,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderDO">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="buyer_user_id" jdbcType="BIGINT" property="buyerUserId" />
-    <result column="seller_user_id" jdbcType="BIGINT" property="sellerUserId" />
-    <result column="order_type" jdbcType="INTEGER" property="orderType" />
-    <result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
-    <result column="promotion" jdbcType="VARCHAR" property="promotion" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="reverse_status" jdbcType="INTEGER" property="reverseStatus" />
-    <result column="pay_time" jdbcType="INTEGER" property="payTime" />
-    <result column="pay_id" jdbcType="VARCHAR" property="payId" />
-    <result column="receive_time" jdbcType="INTEGER" property="receiveTime" />
-    <result column="receive_type" jdbcType="TINYINT" property="receiveType" />
-    <result column="rate_from_buyer_visible" jdbcType="TINYINT" property="rateFromBuyerVisible" />
-    <result column="cancel_time" jdbcType="INTEGER" property="cancelTime" />
-    <result column="settlement_time" jdbcType="INTEGER" property="settlementTime" />
-    <result column="expired_time" jdbcType="INTEGER" property="expiredTime" />
-    <result column="cancel_reason" jdbcType="VARCHAR" property="cancelReason" />
-    <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
-    <result column="is_invoice" jdbcType="INTEGER" property="isInvoice" />
-    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
-    <result column="invoice_title" jdbcType="VARCHAR" property="invoiceTitle" />
-    <result column="invoice_number" jdbcType="VARCHAR" property="invoiceNumber" />
-    <result column="address_id" jdbcType="INTEGER" property="addressId" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
-    <result column="pay_type" jdbcType="INTEGER" property="payType" />
-    <result column="actual_pay" jdbcType="VARCHAR" property="actualPay" />
-    <result column="order_source" jdbcType="VARCHAR" property="orderSource" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    order_id, buyer_user_id, seller_user_id, order_type, total_price, promotion, status, 
-    reverse_status, pay_time, pay_id, receive_time, receive_type, rate_from_buyer_visible, 
-    cancel_time, settlement_time, expired_time, cancel_reason, version, created, updated, 
-    order_num, is_invoice, remarks, invoice_title, invoice_number, address_id, is_deleted, 
-    pay_type, actual_pay, order_source
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from trade_order
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from trade_order
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
-    insert into trade_order (order_id, buyer_user_id, seller_user_id, 
-      order_type, total_price, promotion, 
-      status, reverse_status, pay_time, 
-      pay_id, receive_time, receive_type, 
-      rate_from_buyer_visible, cancel_time, settlement_time, 
-      expired_time, cancel_reason, version, 
-      created, updated, order_num, 
-      is_invoice, remarks, invoice_title, 
-      invoice_number, address_id, is_deleted, 
-      pay_type, actual_pay, order_source
-      )
-    values (#{orderId,jdbcType=BIGINT}, #{buyerUserId,jdbcType=BIGINT}, #{sellerUserId,jdbcType=BIGINT}, 
-      #{orderType,jdbcType=INTEGER}, #{totalPrice,jdbcType=VARCHAR}, #{promotion,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{reverseStatus,jdbcType=INTEGER}, #{payTime,jdbcType=INTEGER}, 
-      #{payId,jdbcType=VARCHAR}, #{receiveTime,jdbcType=INTEGER}, #{receiveType,jdbcType=TINYINT}, 
-      #{rateFromBuyerVisible,jdbcType=TINYINT}, #{cancelTime,jdbcType=INTEGER}, #{settlementTime,jdbcType=INTEGER}, 
-      #{expiredTime,jdbcType=INTEGER}, #{cancelReason,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
-      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
-      #{isInvoice,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{invoiceTitle,jdbcType=VARCHAR}, 
-      #{invoiceNumber,jdbcType=VARCHAR}, #{addressId,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
-      #{payType,jdbcType=INTEGER}, #{actualPay,jdbcType=VARCHAR}, #{orderSource,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
-    insert into trade_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="buyerUserId != null">
-        buyer_user_id,
-      </if>
-      <if test="sellerUserId != null">
-        seller_user_id,
-      </if>
-      <if test="orderType != null">
-        order_type,
-      </if>
-      <if test="totalPrice != null">
-        total_price,
-      </if>
-      <if test="promotion != null">
-        promotion,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="reverseStatus != null">
-        reverse_status,
-      </if>
-      <if test="payTime != null">
-        pay_time,
-      </if>
-      <if test="payId != null">
-        pay_id,
-      </if>
-      <if test="receiveTime != null">
-        receive_time,
-      </if>
-      <if test="receiveType != null">
-        receive_type,
-      </if>
-      <if test="rateFromBuyerVisible != null">
-        rate_from_buyer_visible,
-      </if>
-      <if test="cancelTime != null">
-        cancel_time,
-      </if>
-      <if test="settlementTime != null">
-        settlement_time,
-      </if>
-      <if test="expiredTime != null">
-        expired_time,
-      </if>
-      <if test="cancelReason != null">
-        cancel_reason,
-      </if>
-      <if test="version != null">
-        version,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="orderNum != null">
-        order_num,
-      </if>
-      <if test="isInvoice != null">
-        is_invoice,
-      </if>
-      <if test="remarks != null">
-        remarks,
-      </if>
-      <if test="invoiceTitle != null">
-        invoice_title,
-      </if>
-      <if test="invoiceNumber != null">
-        invoice_number,
-      </if>
-      <if test="addressId != null">
-        address_id,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="payType != null">
-        pay_type,
-      </if>
-      <if test="actualPay != null">
-        actual_pay,
-      </if>
-      <if test="orderSource != null">
-        order_source,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="buyerUserId != null">
-        #{buyerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="sellerUserId != null">
-        #{sellerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="orderType != null">
-        #{orderType,jdbcType=INTEGER},
-      </if>
-      <if test="totalPrice != null">
-        #{totalPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="promotion != null">
-        #{promotion,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="reverseStatus != null">
-        #{reverseStatus,jdbcType=INTEGER},
-      </if>
-      <if test="payTime != null">
-        #{payTime,jdbcType=INTEGER},
-      </if>
-      <if test="payId != null">
-        #{payId,jdbcType=VARCHAR},
-      </if>
-      <if test="receiveTime != null">
-        #{receiveTime,jdbcType=INTEGER},
-      </if>
-      <if test="receiveType != null">
-        #{receiveType,jdbcType=TINYINT},
-      </if>
-      <if test="rateFromBuyerVisible != null">
-        #{rateFromBuyerVisible,jdbcType=TINYINT},
-      </if>
-      <if test="cancelTime != null">
-        #{cancelTime,jdbcType=INTEGER},
-      </if>
-      <if test="settlementTime != null">
-        #{settlementTime,jdbcType=INTEGER},
-      </if>
-      <if test="expiredTime != null">
-        #{expiredTime,jdbcType=INTEGER},
-      </if>
-      <if test="cancelReason != null">
-        #{cancelReason,jdbcType=VARCHAR},
-      </if>
-      <if test="version != null">
-        #{version,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="orderNum != null">
-        #{orderNum,jdbcType=VARCHAR},
-      </if>
-      <if test="isInvoice != null">
-        #{isInvoice,jdbcType=INTEGER},
-      </if>
-      <if test="remarks != null">
-        #{remarks,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceTitle != null">
-        #{invoiceTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceNumber != null">
-        #{invoiceNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="addressId != null">
-        #{addressId,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
-      </if>
-      <if test="payType != null">
-        #{payType,jdbcType=INTEGER},
-      </if>
-      <if test="actualPay != null">
-        #{actualPay,jdbcType=VARCHAR},
-      </if>
-      <if test="orderSource != null">
-        #{orderSource,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
-    update trade_order
-    <set>
-      <if test="buyerUserId != null">
-        buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="sellerUserId != null">
-        seller_user_id = #{sellerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="orderType != null">
-        order_type = #{orderType,jdbcType=INTEGER},
-      </if>
-      <if test="totalPrice != null">
-        total_price = #{totalPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="promotion != null">
-        promotion = #{promotion,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="reverseStatus != null">
-        reverse_status = #{reverseStatus,jdbcType=INTEGER},
-      </if>
-      <if test="payTime != null">
-        pay_time = #{payTime,jdbcType=INTEGER},
-      </if>
-      <if test="payId != null">
-        pay_id = #{payId,jdbcType=VARCHAR},
-      </if>
-      <if test="receiveTime != null">
-        receive_time = #{receiveTime,jdbcType=INTEGER},
-      </if>
-      <if test="receiveType != null">
-        receive_type = #{receiveType,jdbcType=TINYINT},
-      </if>
-      <if test="rateFromBuyerVisible != null">
-        rate_from_buyer_visible = #{rateFromBuyerVisible,jdbcType=TINYINT},
-      </if>
-      <if test="cancelTime != null">
-        cancel_time = #{cancelTime,jdbcType=INTEGER},
-      </if>
-      <if test="settlementTime != null">
-        settlement_time = #{settlementTime,jdbcType=INTEGER},
-      </if>
-      <if test="expiredTime != null">
-        expired_time = #{expiredTime,jdbcType=INTEGER},
-      </if>
-      <if test="cancelReason != null">
-        cancel_reason = #{cancelReason,jdbcType=VARCHAR},
-      </if>
-      <if test="version != null">
-        version = #{version,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="orderNum != null">
-        order_num = #{orderNum,jdbcType=VARCHAR},
-      </if>
-      <if test="isInvoice != null">
-        is_invoice = #{isInvoice,jdbcType=INTEGER},
-      </if>
-      <if test="remarks != null">
-        remarks = #{remarks,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceTitle != null">
-        invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceNumber != null">
-        invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="addressId != null">
-        address_id = #{addressId,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
-      </if>
-      <if test="payType != null">
-        pay_type = #{payType,jdbcType=INTEGER},
-      </if>
-      <if test="actualPay != null">
-        actual_pay = #{actualPay,jdbcType=VARCHAR},
-      </if>
-      <if test="orderSource != null">
-        order_source = #{orderSource,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
-    update trade_order
-    set buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
-      seller_user_id = #{sellerUserId,jdbcType=BIGINT},
-      order_type = #{orderType,jdbcType=INTEGER},
-      total_price = #{totalPrice,jdbcType=VARCHAR},
-      promotion = #{promotion,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      reverse_status = #{reverseStatus,jdbcType=INTEGER},
-      pay_time = #{payTime,jdbcType=INTEGER},
-      pay_id = #{payId,jdbcType=VARCHAR},
-      receive_time = #{receiveTime,jdbcType=INTEGER},
-      receive_type = #{receiveType,jdbcType=TINYINT},
-      rate_from_buyer_visible = #{rateFromBuyerVisible,jdbcType=TINYINT},
-      cancel_time = #{cancelTime,jdbcType=INTEGER},
-      settlement_time = #{settlementTime,jdbcType=INTEGER},
-      expired_time = #{expiredTime,jdbcType=INTEGER},
-      cancel_reason = #{cancelReason,jdbcType=VARCHAR},
-      version = #{version,jdbcType=INTEGER},
-      created = #{created,jdbcType=INTEGER},
-      updated = #{updated,jdbcType=INTEGER},
-      order_num = #{orderNum,jdbcType=VARCHAR},
-      is_invoice = #{isInvoice,jdbcType=INTEGER},
-      remarks = #{remarks,jdbcType=VARCHAR},
-      invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
-      invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
-      address_id = #{addressId,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
-      pay_type = #{payType,jdbcType=INTEGER},
-      actual_pay = #{actualPay,jdbcType=VARCHAR},
-      order_source = #{orderSource,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.TradeOrderDO">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="buyer_user_id" jdbcType="BIGINT" property="buyerUserId" />
-    <result column="seller_user_id" jdbcType="BIGINT" property="sellerUserId" />
-    <result column="order_type" jdbcType="INTEGER" property="orderType" />
-    <result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
-    <result column="promotion" jdbcType="VARCHAR" property="promotion" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="reverse_status" jdbcType="INTEGER" property="reverseStatus" />
-    <result column="pay_time" jdbcType="INTEGER" property="payTime" />
-    <result column="pay_id" jdbcType="VARCHAR" property="payId" />
-    <result column="receive_time" jdbcType="INTEGER" property="receiveTime" />
-    <result column="receive_type" jdbcType="TINYINT" property="receiveType" />
-    <result column="rate_from_buyer_visible" jdbcType="TINYINT" property="rateFromBuyerVisible" />
-    <result column="cancel_time" jdbcType="INTEGER" property="cancelTime" />
-    <result column="settlement_time" jdbcType="INTEGER" property="settlementTime" />
-    <result column="expired_time" jdbcType="INTEGER" property="expiredTime" />
-    <result column="cancel_reason" jdbcType="VARCHAR" property="cancelReason" />
-    <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="created" jdbcType="INTEGER" property="created" />
-    <result column="updated" jdbcType="INTEGER" property="updated" />
-    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
-    <result column="is_invoice" jdbcType="INTEGER" property="isInvoice" />
-    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
-    <result column="invoice_title" jdbcType="VARCHAR" property="invoiceTitle" />
-    <result column="invoice_number" jdbcType="VARCHAR" property="invoiceNumber" />
-    <result column="address_id" jdbcType="INTEGER" property="addressId" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
-    <result column="pay_type" jdbcType="INTEGER" property="payType" />
-    <result column="actual_pay" jdbcType="VARCHAR" property="actualPay" />
-    <result column="order_source" jdbcType="VARCHAR" property="orderSource" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    order_id, buyer_user_id, seller_user_id, order_type, total_price, promotion, status, 
-    reverse_status, pay_time, pay_id, receive_time, receive_type, rate_from_buyer_visible, 
-    cancel_time, settlement_time, expired_time, cancel_reason, version, created, updated, 
-    order_num, is_invoice, remarks, invoice_title, invoice_number, address_id, is_deleted, 
-    pay_type, actual_pay, order_source
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from trade_order
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from trade_order
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.entity.TradeOrderDO">
-    insert into trade_order (order_id, buyer_user_id, seller_user_id, 
-      order_type, total_price, promotion, 
-      status, reverse_status, pay_time, 
-      pay_id, receive_time, receive_type, 
-      rate_from_buyer_visible, cancel_time, settlement_time, 
-      expired_time, cancel_reason, version, 
-      created, updated, order_num, 
-      is_invoice, remarks, invoice_title, 
-      invoice_number, address_id, is_deleted, 
-      pay_type, actual_pay, order_source
-      )
-    values (#{orderId,jdbcType=BIGINT}, #{buyerUserId,jdbcType=BIGINT}, #{sellerUserId,jdbcType=BIGINT}, 
-      #{orderType,jdbcType=INTEGER}, #{totalPrice,jdbcType=VARCHAR}, #{promotion,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{reverseStatus,jdbcType=INTEGER}, #{payTime,jdbcType=INTEGER}, 
-      #{payId,jdbcType=VARCHAR}, #{receiveTime,jdbcType=INTEGER}, #{receiveType,jdbcType=TINYINT}, 
-      #{rateFromBuyerVisible,jdbcType=TINYINT}, #{cancelTime,jdbcType=INTEGER}, #{settlementTime,jdbcType=INTEGER}, 
-      #{expiredTime,jdbcType=INTEGER}, #{cancelReason,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
-      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
-      #{isInvoice,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{invoiceTitle,jdbcType=VARCHAR}, 
-      #{invoiceNumber,jdbcType=VARCHAR}, #{addressId,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
-      #{payType,jdbcType=INTEGER}, #{actualPay,jdbcType=VARCHAR}, #{orderSource,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.TradeOrderDO">
-    insert into trade_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="buyerUserId != null">
-        buyer_user_id,
-      </if>
-      <if test="sellerUserId != null">
-        seller_user_id,
-      </if>
-      <if test="orderType != null">
-        order_type,
-      </if>
-      <if test="totalPrice != null">
-        total_price,
-      </if>
-      <if test="promotion != null">
-        promotion,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="reverseStatus != null">
-        reverse_status,
-      </if>
-      <if test="payTime != null">
-        pay_time,
-      </if>
-      <if test="payId != null">
-        pay_id,
-      </if>
-      <if test="receiveTime != null">
-        receive_time,
-      </if>
-      <if test="receiveType != null">
-        receive_type,
-      </if>
-      <if test="rateFromBuyerVisible != null">
-        rate_from_buyer_visible,
-      </if>
-      <if test="cancelTime != null">
-        cancel_time,
-      </if>
-      <if test="settlementTime != null">
-        settlement_time,
-      </if>
-      <if test="expiredTime != null">
-        expired_time,
-      </if>
-      <if test="cancelReason != null">
-        cancel_reason,
-      </if>
-      <if test="version != null">
-        version,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="updated != null">
-        updated,
-      </if>
-      <if test="orderNum != null">
-        order_num,
-      </if>
-      <if test="isInvoice != null">
-        is_invoice,
-      </if>
-      <if test="remarks != null">
-        remarks,
-      </if>
-      <if test="invoiceTitle != null">
-        invoice_title,
-      </if>
-      <if test="invoiceNumber != null">
-        invoice_number,
-      </if>
-      <if test="addressId != null">
-        address_id,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-      <if test="payType != null">
-        pay_type,
-      </if>
-      <if test="actualPay != null">
-        actual_pay,
-      </if>
-      <if test="orderSource != null">
-        order_source,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="buyerUserId != null">
-        #{buyerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="sellerUserId != null">
-        #{sellerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="orderType != null">
-        #{orderType,jdbcType=INTEGER},
-      </if>
-      <if test="totalPrice != null">
-        #{totalPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="promotion != null">
-        #{promotion,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="reverseStatus != null">
-        #{reverseStatus,jdbcType=INTEGER},
-      </if>
-      <if test="payTime != null">
-        #{payTime,jdbcType=INTEGER},
-      </if>
-      <if test="payId != null">
-        #{payId,jdbcType=VARCHAR},
-      </if>
-      <if test="receiveTime != null">
-        #{receiveTime,jdbcType=INTEGER},
-      </if>
-      <if test="receiveType != null">
-        #{receiveType,jdbcType=TINYINT},
-      </if>
-      <if test="rateFromBuyerVisible != null">
-        #{rateFromBuyerVisible,jdbcType=TINYINT},
-      </if>
-      <if test="cancelTime != null">
-        #{cancelTime,jdbcType=INTEGER},
-      </if>
-      <if test="settlementTime != null">
-        #{settlementTime,jdbcType=INTEGER},
-      </if>
-      <if test="expiredTime != null">
-        #{expiredTime,jdbcType=INTEGER},
-      </if>
-      <if test="cancelReason != null">
-        #{cancelReason,jdbcType=VARCHAR},
-      </if>
-      <if test="version != null">
-        #{version,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="orderNum != null">
-        #{orderNum,jdbcType=VARCHAR},
-      </if>
-      <if test="isInvoice != null">
-        #{isInvoice,jdbcType=INTEGER},
-      </if>
-      <if test="remarks != null">
-        #{remarks,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceTitle != null">
-        #{invoiceTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceNumber != null">
-        #{invoiceNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="addressId != null">
-        #{addressId,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
-      </if>
-      <if test="payType != null">
-        #{payType,jdbcType=INTEGER},
-      </if>
-      <if test="actualPay != null">
-        #{actualPay,jdbcType=VARCHAR},
-      </if>
-      <if test="orderSource != null">
-        #{orderSource,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.TradeOrderDO">
-    update trade_order
-    <set>
-      <if test="buyerUserId != null">
-        buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="sellerUserId != null">
-        seller_user_id = #{sellerUserId,jdbcType=BIGINT},
-      </if>
-      <if test="orderType != null">
-        order_type = #{orderType,jdbcType=INTEGER},
-      </if>
-      <if test="totalPrice != null">
-        total_price = #{totalPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="promotion != null">
-        promotion = #{promotion,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="reverseStatus != null">
-        reverse_status = #{reverseStatus,jdbcType=INTEGER},
-      </if>
-      <if test="payTime != null">
-        pay_time = #{payTime,jdbcType=INTEGER},
-      </if>
-      <if test="payId != null">
-        pay_id = #{payId,jdbcType=VARCHAR},
-      </if>
-      <if test="receiveTime != null">
-        receive_time = #{receiveTime,jdbcType=INTEGER},
-      </if>
-      <if test="receiveType != null">
-        receive_type = #{receiveType,jdbcType=TINYINT},
-      </if>
-      <if test="rateFromBuyerVisible != null">
-        rate_from_buyer_visible = #{rateFromBuyerVisible,jdbcType=TINYINT},
-      </if>
-      <if test="cancelTime != null">
-        cancel_time = #{cancelTime,jdbcType=INTEGER},
-      </if>
-      <if test="settlementTime != null">
-        settlement_time = #{settlementTime,jdbcType=INTEGER},
-      </if>
-      <if test="expiredTime != null">
-        expired_time = #{expiredTime,jdbcType=INTEGER},
-      </if>
-      <if test="cancelReason != null">
-        cancel_reason = #{cancelReason,jdbcType=VARCHAR},
-      </if>
-      <if test="version != null">
-        version = #{version,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=INTEGER},
-      </if>
-      <if test="updated != null">
-        updated = #{updated,jdbcType=INTEGER},
-      </if>
-      <if test="orderNum != null">
-        order_num = #{orderNum,jdbcType=VARCHAR},
-      </if>
-      <if test="isInvoice != null">
-        is_invoice = #{isInvoice,jdbcType=INTEGER},
-      </if>
-      <if test="remarks != null">
-        remarks = #{remarks,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceTitle != null">
-        invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="invoiceNumber != null">
-        invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="addressId != null">
-        address_id = #{addressId,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
-      </if>
-      <if test="payType != null">
-        pay_type = #{payType,jdbcType=INTEGER},
-      </if>
-      <if test="actualPay != null">
-        actual_pay = #{actualPay,jdbcType=VARCHAR},
-      </if>
-      <if test="orderSource != null">
-        order_source = #{orderSource,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.TradeOrderDO">
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderDO" >
     update trade_order
     set buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
       seller_user_id = #{sellerUserId,jdbcType=BIGINT},

@@ -1,0 +1,25 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          username: hanfeihu
+          uri: http://gitlab.asdaimeiye.com/java/config.git
+          password: 11111111
+  application:
+    name: config-server
+eureka:
+  instance:
+    hostname: 101.37.147.46
+    ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://101.37.147.46:/eureka/
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+

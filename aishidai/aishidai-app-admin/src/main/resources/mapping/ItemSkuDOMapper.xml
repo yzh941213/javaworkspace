@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.ItemSkuDOMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemSkuDO">
+    <id column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="sales_price" jdbcType="VARCHAR" property="salesPrice" />
+    <result column="color_id" jdbcType="BIGINT" property="colorId" />
+    <result column="size_id" jdbcType="VARCHAR" property="sizeId" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="feature" jdbcType="VARCHAR" property="feature" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="salse_volume" jdbcType="INTEGER" property="salseVolume" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sku_id, price, sales_price, color_id, size_id, image, description, feature, stock, 
+    salse_volume, created, updated, status, item_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item_sku
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from item_sku
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSkuDO">
+    insert into item_sku (sku_id, price, sales_price, 
+      color_id, size_id, image, 
+      description, feature, stock, 
+      salse_volume, created, updated, 
+      status, item_id)
+    values (#{skuId,jdbcType=BIGINT}, #{price,jdbcType=VARCHAR}, #{salesPrice,jdbcType=VARCHAR}, 
+      #{colorId,jdbcType=BIGINT}, #{sizeId,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, 
+      #{salseVolume,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{itemId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemSkuDO">
+    insert into item_sku
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="colorId != null">
+        color_id,
+      </if>
+      <if test="sizeId != null">
+        size_id,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="feature != null">
+        feature,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="salseVolume != null">
+        salse_volume,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null">
+        #{colorId,jdbcType=BIGINT},
+      </if>
+      <if test="sizeId != null">
+        #{sizeId,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="feature != null">
+        #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="salseVolume != null">
+        #{salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemSkuDO">
+    update item_sku
+    <set>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null">
+        color_id = #{colorId,jdbcType=BIGINT},
+      </if>
+      <if test="sizeId != null">
+        size_id = #{sizeId,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="feature != null">
+        feature = #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="salseVolume != null">
+        salse_volume = #{salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemSkuDO">
+    update item_sku
+    set price = #{price,jdbcType=VARCHAR},
+      sales_price = #{salesPrice,jdbcType=VARCHAR},
+      color_id = #{colorId,jdbcType=BIGINT},
+      size_id = #{sizeId,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      feature = #{feature,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      salse_volume = #{salseVolume,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=BIGINT}
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.ItemSkuDO">
+    <id column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="sales_price" jdbcType="VARCHAR" property="salesPrice" />
+    <result column="color_id" jdbcType="BIGINT" property="colorId" />
+    <result column="size_id" jdbcType="VARCHAR" property="sizeId" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="feature" jdbcType="VARCHAR" property="feature" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="salse_volume" jdbcType="INTEGER" property="salseVolume" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sku_id, price, sales_price, color_id, size_id, image, description, feature, stock, 
+    salse_volume, created, updated, status, item_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item_sku
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from item_sku
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.entity.ItemSkuDO">
+    insert into item_sku (sku_id, price, sales_price, 
+      color_id, size_id, image, 
+      description, feature, stock, 
+      salse_volume, created, updated, 
+      status, item_id)
+    values (#{skuId,jdbcType=BIGINT}, #{price,jdbcType=VARCHAR}, #{salesPrice,jdbcType=VARCHAR}, 
+      #{colorId,jdbcType=BIGINT}, #{sizeId,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, 
+      #{salseVolume,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{itemId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.ItemSkuDO">
+    insert into item_sku
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="colorId != null">
+        color_id,
+      </if>
+      <if test="sizeId != null">
+        size_id,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="feature != null">
+        feature,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="salseVolume != null">
+        salse_volume,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null">
+        #{colorId,jdbcType=BIGINT},
+      </if>
+      <if test="sizeId != null">
+        #{sizeId,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="feature != null">
+        #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="salseVolume != null">
+        #{salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.ItemSkuDO">
+    update item_sku
+    <set>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null">
+        color_id = #{colorId,jdbcType=BIGINT},
+      </if>
+      <if test="sizeId != null">
+        size_id = #{sizeId,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="feature != null">
+        feature = #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="salseVolume != null">
+        salse_volume = #{salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.ItemSkuDO">
+    update item_sku
+    set price = #{price,jdbcType=VARCHAR},
+      sales_price = #{salesPrice,jdbcType=VARCHAR},
+      color_id = #{colorId,jdbcType=BIGINT},
+      size_id = #{sizeId,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      feature = #{feature,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      salse_volume = #{salseVolume,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=BIGINT}
+    where sku_id = #{skuId,jdbcType=BIGINT}
+  </update>
+</mapper>

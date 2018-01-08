@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.ItemMetaPropertyDOMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemMetaPropertyDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sequence" jdbcType="BIGINT" property="sequence" />
+    <result column="image_key" jdbcType="VARCHAR" property="imageKey" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    <result column="field_type" jdbcType="INTEGER" property="fieldType" />
+    <result column="value_type" jdbcType="INTEGER" property="valueType" />
+    <result column="max_length" jdbcType="DOUBLE" property="maxLength" />
+    <result column="min_length" jdbcType="DOUBLE" property="minLength" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_require" jdbcType="INTEGER" property="isRequire" />
+    <result column="meta_property_values" jdbcType="VARCHAR" property="metaPropertyValues" />
+    <result column="template_id" jdbcType="BIGINT" property="templateId" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, sequence, image_key, code, category_id, field_type, value_type, max_length, 
+    min_length, unit, status, is_require, meta_property_values, template_id, template_name, 
+    description, created, updated
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item_meta_property
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from item_meta_property
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDO">
+    insert into item_meta_property (id, name, sequence, 
+      image_key, code, category_id, 
+      field_type, value_type, max_length, 
+      min_length, unit, status, 
+      is_require, meta_property_values, template_id, 
+      template_name, description, created, 
+      updated)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sequence,jdbcType=BIGINT}, 
+      #{imageKey,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, 
+      #{fieldType,jdbcType=INTEGER}, #{valueType,jdbcType=INTEGER}, #{maxLength,jdbcType=DOUBLE}, 
+      #{minLength,jdbcType=DOUBLE}, #{unit,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isRequire,jdbcType=INTEGER}, #{metaPropertyValues,jdbcType=VARCHAR}, #{templateId,jdbcType=BIGINT}, 
+      #{templateName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDO">
+    insert into item_meta_property
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="imageKey != null">
+        image_key,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="fieldType != null">
+        field_type,
+      </if>
+      <if test="valueType != null">
+        value_type,
+      </if>
+      <if test="maxLength != null">
+        max_length,
+      </if>
+      <if test="minLength != null">
+        min_length,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isRequire != null">
+        is_require,
+      </if>
+      <if test="metaPropertyValues != null">
+        meta_property_values,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="templateName != null">
+        template_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=BIGINT},
+      </if>
+      <if test="imageKey != null">
+        #{imageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldType != null">
+        #{fieldType,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null">
+        #{maxLength,jdbcType=DOUBLE},
+      </if>
+      <if test="minLength != null">
+        #{minLength,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isRequire != null">
+        #{isRequire,jdbcType=INTEGER},
+      </if>
+      <if test="metaPropertyValues != null">
+        #{metaPropertyValues,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null">
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDO">
+    update item_meta_property
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=BIGINT},
+      </if>
+      <if test="imageKey != null">
+        image_key = #{imageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldType != null">
+        field_type = #{fieldType,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        value_type = #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null">
+        max_length = #{maxLength,jdbcType=DOUBLE},
+      </if>
+      <if test="minLength != null">
+        min_length = #{minLength,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isRequire != null">
+        is_require = #{isRequire,jdbcType=INTEGER},
+      </if>
+      <if test="metaPropertyValues != null">
+        meta_property_values = #{metaPropertyValues,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null">
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDO">
+    update item_meta_property
+    set name = #{name,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=BIGINT},
+      image_key = #{imageKey,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=BIGINT},
+      field_type = #{fieldType,jdbcType=INTEGER},
+      value_type = #{valueType,jdbcType=INTEGER},
+      max_length = #{maxLength,jdbcType=DOUBLE},
+      min_length = #{minLength,jdbcType=DOUBLE},
+      unit = #{unit,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_require = #{isRequire,jdbcType=INTEGER},
+      meta_property_values = #{metaPropertyValues,jdbcType=VARCHAR},
+      template_id = #{templateId,jdbcType=BIGINT},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.entity.ItemMetaPropertyDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sequence" jdbcType="BIGINT" property="sequence" />
+    <result column="image_key" jdbcType="VARCHAR" property="imageKey" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    <result column="field_type" jdbcType="INTEGER" property="fieldType" />
+    <result column="value_type" jdbcType="INTEGER" property="valueType" />
+    <result column="max_length" jdbcType="DOUBLE" property="maxLength" />
+    <result column="min_length" jdbcType="DOUBLE" property="minLength" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_require" jdbcType="INTEGER" property="isRequire" />
+    <result column="meta_property_values" jdbcType="VARCHAR" property="metaPropertyValues" />
+    <result column="template_id" jdbcType="BIGINT" property="templateId" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, sequence, image_key, code, category_id, field_type, value_type, max_length, 
+    min_length, unit, status, is_require, meta_property_values, template_id, template_name, 
+    description, created, updated
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item_meta_property
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from item_meta_property
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.entity.ItemMetaPropertyDO">
+    insert into item_meta_property (id, name, sequence, 
+      image_key, code, category_id, 
+      field_type, value_type, max_length, 
+      min_length, unit, status, 
+      is_require, meta_property_values, template_id, 
+      template_name, description, created, 
+      updated)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sequence,jdbcType=BIGINT}, 
+      #{imageKey,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, 
+      #{fieldType,jdbcType=INTEGER}, #{valueType,jdbcType=INTEGER}, #{maxLength,jdbcType=DOUBLE}, 
+      #{minLength,jdbcType=DOUBLE}, #{unit,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isRequire,jdbcType=INTEGER}, #{metaPropertyValues,jdbcType=VARCHAR}, #{templateId,jdbcType=BIGINT}, 
+      #{templateName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.entity.ItemMetaPropertyDO">
+    insert into item_meta_property
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="imageKey != null">
+        image_key,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="fieldType != null">
+        field_type,
+      </if>
+      <if test="valueType != null">
+        value_type,
+      </if>
+      <if test="maxLength != null">
+        max_length,
+      </if>
+      <if test="minLength != null">
+        min_length,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isRequire != null">
+        is_require,
+      </if>
+      <if test="metaPropertyValues != null">
+        meta_property_values,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="templateName != null">
+        template_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=BIGINT},
+      </if>
+      <if test="imageKey != null">
+        #{imageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldType != null">
+        #{fieldType,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null">
+        #{maxLength,jdbcType=DOUBLE},
+      </if>
+      <if test="minLength != null">
+        #{minLength,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isRequire != null">
+        #{isRequire,jdbcType=INTEGER},
+      </if>
+      <if test="metaPropertyValues != null">
+        #{metaPropertyValues,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null">
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.entity.ItemMetaPropertyDO">
+    update item_meta_property
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=BIGINT},
+      </if>
+      <if test="imageKey != null">
+        image_key = #{imageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldType != null">
+        field_type = #{fieldType,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        value_type = #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null">
+        max_length = #{maxLength,jdbcType=DOUBLE},
+      </if>
+      <if test="minLength != null">
+        min_length = #{minLength,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isRequire != null">
+        is_require = #{isRequire,jdbcType=INTEGER},
+      </if>
+      <if test="metaPropertyValues != null">
+        meta_property_values = #{metaPropertyValues,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null">
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.entity.ItemMetaPropertyDO">
+    update item_meta_property
+    set name = #{name,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=BIGINT},
+      image_key = #{imageKey,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=BIGINT},
+      field_type = #{fieldType,jdbcType=INTEGER},
+      value_type = #{valueType,jdbcType=INTEGER},
+      max_length = #{maxLength,jdbcType=DOUBLE},
+      min_length = #{minLength,jdbcType=DOUBLE},
+      unit = #{unit,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_require = #{isRequire,jdbcType=INTEGER},
+      meta_property_values = #{metaPropertyValues,jdbcType=VARCHAR},
+      template_id = #{templateId,jdbcType=BIGINT},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

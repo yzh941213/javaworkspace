@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.ReOrderRecordMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ReOrderRecord" >
+<mapper namespace="com.aishidai.app.dao.ReOrderRecordDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ReOrderRecordDO" >
     <id column="record_id" property="recordId" jdbcType="BIGINT" />
     <result column="operate_user_id" property="operateUserId" jdbcType="BIGINT" />
     <result column="return_order_id" property="returnOrderId" jdbcType="BIGINT" />
@@ -34,7 +34,7 @@
     delete from re_order_record
     where record_id = #{recordId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ReOrderRecord" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ReOrderRecordDO" >
     insert into re_order_record (record_id, operate_user_id, return_order_id, 
       status, express_company, tracking_num, 
       shop_time, pay_id, paty_time, 
@@ -48,7 +48,7 @@
       #{userType,jdbcType=TINYINT}, #{returnMoney,jdbcType=DECIMAL}, #{updated,jdbcType=INTEGER}, 
       #{isDeleted,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ReOrderRecord" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ReOrderRecordDO" >
     insert into re_order_record
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="recordId != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ReOrderRecord" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ReOrderRecordDO" >
     update re_order_record
     <set >
       <if test="operateUserId != null" >
@@ -202,7 +202,7 @@
     </set>
     where record_id = #{recordId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ReOrderRecord" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ReOrderRecordDO" >
     update re_order_record
     set operate_user_id = #{operateUserId,jdbcType=BIGINT},
       return_order_id = #{returnOrderId,jdbcType=BIGINT},

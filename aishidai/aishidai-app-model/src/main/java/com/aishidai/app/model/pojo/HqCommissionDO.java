@@ -2,7 +2,7 @@ package com.aishidai.app.model.pojo;
 
 import java.util.Date;
 
-public class HqCommission {
+public class HqCommissionDO {
     private String id;
 
     private Integer hqCommission;

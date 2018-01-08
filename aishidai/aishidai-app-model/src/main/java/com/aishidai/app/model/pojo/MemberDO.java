@@ -2,7 +2,7 @@ package com.aishidai.app.model.pojo;
 
 import java.util.Date;
 
-public class member {
+public class MemberDO {
     private Long memberId;
 
     private Long userId;

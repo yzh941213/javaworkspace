@@ -5,7 +5,7 @@ public class ItemSuitDO {
 
     private String suitImage;
 
-    private Integer skuId;
+    private Long skuId;
 
     private String stratification;
 
@@ -25,11 +25,11 @@ public class ItemSuitDO {
         this.suitImage = suitImage == null ? null : suitImage.trim();
     }
 
-    public Integer getSkuId() {
+    public Long getSkuId() {
         return skuId;
     }
 
-    public void setSkuId(Integer skuId) {
+    public void setSkuId(Long skuId) {
         this.skuId = skuId;
     }
 

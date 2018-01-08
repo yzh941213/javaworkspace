@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemSuitDO" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="suit_image" property="suitImage" jdbcType="VARCHAR" />
-    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
     <result column="stratification" property="stratification" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -23,7 +23,7 @@
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
     insert into item_suit (id, suit_image, sku_id, 
       stratification)
-    values (#{id,jdbcType=BIGINT}, #{suitImage,jdbcType=VARCHAR}, #{skuId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{suitImage,jdbcType=VARCHAR}, #{skuId,jdbcType=BIGINT}, 
       #{stratification,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
@@ -50,7 +50,7 @@
         #{suitImage,jdbcType=VARCHAR},
       </if>
       <if test="skuId != null" >
-        #{skuId,jdbcType=INTEGER},
+        #{skuId,jdbcType=BIGINT},
       </if>
       <if test="stratification != null" >
         #{stratification,jdbcType=VARCHAR},
@@ -64,7 +64,7 @@
         suit_image = #{suitImage,jdbcType=VARCHAR},
       </if>
       <if test="skuId != null" >
-        sku_id = #{skuId,jdbcType=INTEGER},
+        sku_id = #{skuId,jdbcType=BIGINT},
       </if>
       <if test="stratification != null" >
         stratification = #{stratification,jdbcType=VARCHAR},
@@ -75,7 +75,7 @@
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemSuitDO" >
     update item_suit
     set suit_image = #{suitImage,jdbcType=VARCHAR},
-      sku_id = #{skuId,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=BIGINT},
       stratification = #{stratification,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.makerMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.maker" >
+<mapper namespace="com.aishidai.app.dao.MakerDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.MakerDO" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="distributor_id" property="distributorId" jdbcType="INTEGER" />
@@ -27,7 +27,7 @@
     delete from maker
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.maker" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.MakerDO" >
     insert into maker (id, name, distributor_id, 
       mobile, remark, created, 
       updated, status, sys_user_id, 
@@ -37,7 +37,7 @@
       #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{sysUserId,jdbcType=INTEGER}, 
       #{audit,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.maker" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.MakerDO" >
     insert into maker
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.maker" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.MakerDO" >
     update maker
     <set >
       <if test="name != null" >
@@ -137,7 +137,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.maker" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.MakerDO" >
     update maker
     set name = #{name,jdbcType=VARCHAR},
       distributor_id = #{distributorId,jdbcType=INTEGER},

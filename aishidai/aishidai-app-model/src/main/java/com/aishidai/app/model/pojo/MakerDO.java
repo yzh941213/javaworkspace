@@ -2,7 +2,7 @@ package com.aishidai.app.model.pojo;
 
 import java.util.Date;
 
-public class maker {
+public class MakerDO {
     private Integer id;
 
     private String name;

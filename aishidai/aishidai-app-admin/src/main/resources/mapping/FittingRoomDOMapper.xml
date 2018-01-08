@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.FittingRoomMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.FittingRoom" >
+<mapper namespace="com.aishidai.app.dao.FittingRoomDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.FittingRoomDO" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="buyer_user_id" property="buyerUserId" jdbcType="BIGINT" />
     <result column="item_id" property="itemId" jdbcType="BIGINT" />
@@ -26,7 +26,7 @@
     delete from fitting_room
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.FittingRoom" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.FittingRoomDO" >
     insert into fitting_room (id, buyer_user_id, item_id, 
       sku_id, model_id, number, 
       extra, created, updated, 
@@ -36,7 +36,7 @@
       #{extra,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
       #{isDeleted,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.FittingRoom" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.FittingRoomDO" >
     insert into fitting_room
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -103,7 +103,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.FittingRoom" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.FittingRoomDO" >
     update fitting_room
     <set >
       <if test="buyerUserId != null" >
@@ -136,7 +136,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.FittingRoom" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.FittingRoomDO" >
     update fitting_room
     set buyer_user_id = #{buyerUserId,jdbcType=BIGINT},
       item_id = #{itemId,jdbcType=BIGINT},

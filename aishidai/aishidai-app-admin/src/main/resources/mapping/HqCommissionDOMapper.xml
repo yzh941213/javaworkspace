@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aishidai.app.dao.HqCommissionMapper" >
-  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.HqCommission" >
+<mapper namespace="com.aishidai.app.dao.HqCommissionDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.HqCommissionDO" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="hq_commission" property="hqCommission" jdbcType="INTEGER" />
     <result column="distributor_commission" property="distributorCommission" jdbcType="INTEGER" />
@@ -27,7 +27,7 @@
     delete from hq_commission
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.HqCommission" >
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.HqCommissionDO" >
     insert into hq_commission (id, hq_commission, distributor_commission, 
       distributor_name, distributor_id, create_id, 
       create_name, created, updated, 
@@ -37,7 +37,7 @@
       #{createName,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
       #{deleteIs,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.HqCommission" >
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.HqCommissionDO" >
     insert into hq_commission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.HqCommission" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.HqCommissionDO" >
     update hq_commission
     <set >
       <if test="hqCommission != null" >
@@ -137,7 +137,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.HqCommission" >
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.HqCommissionDO" >
     update hq_commission
     set hq_commission = #{hqCommission,jdbcType=INTEGER},
       distributor_commission = #{distributorCommission,jdbcType=INTEGER},

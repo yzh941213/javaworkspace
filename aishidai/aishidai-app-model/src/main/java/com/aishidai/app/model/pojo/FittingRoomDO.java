@@ -1,6 +1,6 @@
 package com.aishidai.app.model.pojo;
 
-public class FittingRoom {
+public class FittingRoomDO {
     private Long id;
 
     private Long buyerUserId;

@@ -2,7 +2,7 @@ package com.aishidai.app.model.pojo;
 
 import java.math.BigDecimal;
 
-public class re_order_record {
+public class ReOrderRecord {
     private Long recordId;
 
     private Long operateUserId;

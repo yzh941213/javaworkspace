@@ -23,7 +23,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.aishidai.app.service.impl</groupId>
-			<artifactId>service-impl</artifactId>
+			<artifactId>aishidai-app-service-impl</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

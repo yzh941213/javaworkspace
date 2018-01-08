@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.aishidai.app.service.impl</groupId>
-    <artifactId>service-impl</artifactId>
+    <artifactId>aishidai-app-service-impl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -21,17 +21,17 @@
     <dependencies>
         <dependency>
             <groupId>com.aishidai.app.service.interface</groupId>
-            <artifactId>service-interface</artifactId>
+            <artifactId>aishidai-app-service-interface</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.aishidai.app.model</groupId>
-            <artifactId>model</artifactId>
+            <artifactId>aishidai-app-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.aishidai.app.dao</groupId>
-            <artifactId>dao</artifactId>
+            <artifactId>aishidai-app-dao</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

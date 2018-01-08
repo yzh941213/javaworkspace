@@ -16,7 +16,13 @@
         <artifactId>aishidai</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
+ <dependencies>
+        <dependency>
+            <groupId>com.aishidai.app.model</groupId>
+            <artifactId>aishidai-app-model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+ </dependencies>
 
 
 

@@ -1,6 +1,7 @@
 package com.zhezhuo.biz.manager;
 
 import com.zhezhuo.model.Result;
+
 import com.zhezhuo.model.entity.PropertyDO;
 import com.zhezhuo.model.query.PropertyQuery;
 

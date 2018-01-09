@@ -33,6 +33,64 @@
     <result column="actual_pay" property="actualPay" jdbcType="VARCHAR" />
     <result column="order_source" property="orderSource" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     order_id, buyer_user_id, seller_user_id, order_type, total_price, promotion, status, 
     reverse_status, pay_time, pay_id, receive_time, receive_type, rate_from_buyer_visible, 
@@ -40,6 +98,21 @@
     order_num, is_invoice, remarks, invoice_title, invoice_number, address_id, is_deleted, 
     pay_type, actual_pay, order_source
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.TradeOrderDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from trade_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -49,6 +122,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from trade_order
     where order_id = #{orderId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.TradeOrderDOExample" >
+    delete from trade_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderDO" >
     insert into trade_order (order_id, buyer_user_id, seller_user_id, 
@@ -261,6 +340,146 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.TradeOrderDOExample" resultType="java.lang.Integer" >
+    select count(*) from trade_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update trade_order
+    <set >
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.buyerUserId != null" >
+        buyer_user_id = #{record.buyerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sellerUserId != null" >
+        seller_user_id = #{record.sellerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderType != null" >
+        order_type = #{record.orderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalPrice != null" >
+        total_price = #{record.totalPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promotion != null" >
+        promotion = #{record.promotion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.reverseStatus != null" >
+        reverse_status = #{record.reverseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.payTime != null" >
+        pay_time = #{record.payTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.payId != null" >
+        pay_id = #{record.payId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveTime != null" >
+        receive_time = #{record.receiveTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveType != null" >
+        receive_type = #{record.receiveType,jdbcType=TINYINT},
+      </if>
+      <if test="record.rateFromBuyerVisible != null" >
+        rate_from_buyer_visible = #{record.rateFromBuyerVisible,jdbcType=TINYINT},
+      </if>
+      <if test="record.cancelTime != null" >
+        cancel_time = #{record.cancelTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.settlementTime != null" >
+        settlement_time = #{record.settlementTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.expiredTime != null" >
+        expired_time = #{record.expiredTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.cancelReason != null" >
+        cancel_reason = #{record.cancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.version != null" >
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=INTEGER},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderNum != null" >
+        order_num = #{record.orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isInvoice != null" >
+        is_invoice = #{record.isInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTitle != null" >
+        invoice_title = #{record.invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceNumber != null" >
+        invoice_number = #{record.invoiceNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressId != null" >
+        address_id = #{record.addressId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.payType != null" >
+        pay_type = #{record.payType,jdbcType=INTEGER},
+      </if>
+      <if test="record.actualPay != null" >
+        actual_pay = #{record.actualPay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSource != null" >
+        order_source = #{record.orderSource,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update trade_order
+    set order_id = #{record.orderId,jdbcType=BIGINT},
+      buyer_user_id = #{record.buyerUserId,jdbcType=BIGINT},
+      seller_user_id = #{record.sellerUserId,jdbcType=BIGINT},
+      order_type = #{record.orderType,jdbcType=INTEGER},
+      total_price = #{record.totalPrice,jdbcType=VARCHAR},
+      promotion = #{record.promotion,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      reverse_status = #{record.reverseStatus,jdbcType=INTEGER},
+      pay_time = #{record.payTime,jdbcType=INTEGER},
+      pay_id = #{record.payId,jdbcType=VARCHAR},
+      receive_time = #{record.receiveTime,jdbcType=INTEGER},
+      receive_type = #{record.receiveType,jdbcType=TINYINT},
+      rate_from_buyer_visible = #{record.rateFromBuyerVisible,jdbcType=TINYINT},
+      cancel_time = #{record.cancelTime,jdbcType=INTEGER},
+      settlement_time = #{record.settlementTime,jdbcType=INTEGER},
+      expired_time = #{record.expiredTime,jdbcType=INTEGER},
+      cancel_reason = #{record.cancelReason,jdbcType=VARCHAR},
+      version = #{record.version,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER},
+      updated = #{record.updated,jdbcType=INTEGER},
+      order_num = #{record.orderNum,jdbcType=VARCHAR},
+      is_invoice = #{record.isInvoice,jdbcType=INTEGER},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      invoice_title = #{record.invoiceTitle,jdbcType=VARCHAR},
+      invoice_number = #{record.invoiceNumber,jdbcType=VARCHAR},
+      address_id = #{record.addressId,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      pay_type = #{record.payType,jdbcType=INTEGER},
+      actual_pay = #{record.actualPay,jdbcType=VARCHAR},
+      order_source = #{record.orderSource,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.TradeOrderDO" >
     update trade_order
     <set >

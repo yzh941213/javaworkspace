@@ -22,11 +22,84 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     id, name, sequence, image_key, code, category_id, field_type, value_type, max_length, 
     min_length, unit, status, is_require, meta_property_values, template_id, template_name, 
     description, created, updated
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from item_meta_property
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -36,6 +109,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from item_meta_property
     where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDOExample" >
+    delete from item_meta_property
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDO" >
     insert into item_meta_property (id, name, sequence, 
@@ -174,6 +253,102 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDOExample" resultType="java.lang.Integer" >
+    select count(*) from item_meta_property
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update item_meta_property
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sequence != null" >
+        sequence = #{record.sequence,jdbcType=BIGINT},
+      </if>
+      <if test="record.imageKey != null" >
+        image_key = #{record.imageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryId != null" >
+        category_id = #{record.categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="record.fieldType != null" >
+        field_type = #{record.fieldType,jdbcType=INTEGER},
+      </if>
+      <if test="record.valueType != null" >
+        value_type = #{record.valueType,jdbcType=INTEGER},
+      </if>
+      <if test="record.maxLength != null" >
+        max_length = #{record.maxLength,jdbcType=DOUBLE},
+      </if>
+      <if test="record.minLength != null" >
+        min_length = #{record.minLength,jdbcType=DOUBLE},
+      </if>
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.isRequire != null" >
+        is_require = #{record.isRequire,jdbcType=INTEGER},
+      </if>
+      <if test="record.metaPropertyValues != null" >
+        meta_property_values = #{record.metaPropertyValues,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templateId != null" >
+        template_id = #{record.templateId,jdbcType=BIGINT},
+      </if>
+      <if test="record.templateName != null" >
+        template_name = #{record.templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update item_meta_property
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      sequence = #{record.sequence,jdbcType=BIGINT},
+      image_key = #{record.imageKey,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=BIGINT},
+      field_type = #{record.fieldType,jdbcType=INTEGER},
+      value_type = #{record.valueType,jdbcType=INTEGER},
+      max_length = #{record.maxLength,jdbcType=DOUBLE},
+      min_length = #{record.minLength,jdbcType=DOUBLE},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      is_require = #{record.isRequire,jdbcType=INTEGER},
+      meta_property_values = #{record.metaPropertyValues,jdbcType=VARCHAR},
+      template_id = #{record.templateId,jdbcType=BIGINT},
+      template_name = #{record.templateName,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemMetaPropertyDO" >
     update item_meta_property
     <set >

@@ -16,10 +16,83 @@
     <result column="sku_id" property="skuId" jdbcType="INTEGER" />
     <result column="stratification" property="stratification" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     shop_cart_id, item_id, user_id, number, created, updated, is_buy, buy_time, is_deleted, 
     picture_url, type, sku_id, stratification
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ShopCartDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from shop_cart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -29,6 +102,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from shop_cart
     where shop_cart_id = #{shopCartId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.ShopCartDOExample" >
+    delete from shop_cart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopCartDO" >
     insert into shop_cart (shop_cart_id, item_id, user_id, 
@@ -127,6 +206,78 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.ShopCartDOExample" resultType="java.lang.Integer" >
+    select count(*) from shop_cart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update shop_cart
+    <set >
+      <if test="record.shopCartId != null" >
+        shop_cart_id = #{record.shopCartId,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=INTEGER},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=INTEGER},
+      </if>
+      <if test="record.isBuy != null" >
+        is_buy = #{record.isBuy,jdbcType=TINYINT},
+      </if>
+      <if test="record.buyTime != null" >
+        buy_time = #{record.buyTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="record.pictureUrl != null" >
+        picture_url = #{record.pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.skuId != null" >
+        sku_id = #{record.skuId,jdbcType=INTEGER},
+      </if>
+      <if test="record.stratification != null" >
+        stratification = #{record.stratification,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update shop_cart
+    set shop_cart_id = #{record.shopCartId,jdbcType=BIGINT},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      number = #{record.number,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER},
+      updated = #{record.updated,jdbcType=INTEGER},
+      is_buy = #{record.isBuy,jdbcType=TINYINT},
+      buy_time = #{record.buyTime,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      picture_url = #{record.pictureUrl,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      sku_id = #{record.skuId,jdbcType=INTEGER},
+      stratification = #{record.stratification,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopCartDO" >
     update shop_cart
     <set >

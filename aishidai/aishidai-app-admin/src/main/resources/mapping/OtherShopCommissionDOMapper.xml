@@ -20,11 +20,84 @@
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
     <result column="delete_is" property="deleteIs" jdbcType="INTEGER" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     id, other_shop_commission, distributor_id, distributor_name, distributor_commission, 
     barbershop_commission, other_shop_name, shop_name, shop_id, other_shop_id, maker_commission, 
     type, create_id, create_name, created, updated, delete_is
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.OtherShopCommissionDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from other_shop_commission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -34,6 +107,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from other_shop_commission
     where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.OtherShopCommissionDOExample" >
+    delete from other_shop_commission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.OtherShopCommissionDO" >
     insert into other_shop_commission (id, other_shop_commission, distributor_id, 
@@ -160,6 +239,94 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.OtherShopCommissionDOExample" resultType="java.lang.Integer" >
+    select count(*) from other_shop_commission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update other_shop_commission
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherShopCommission != null" >
+        other_shop_commission = #{record.otherShopCommission,jdbcType=INTEGER},
+      </if>
+      <if test="record.distributorId != null" >
+        distributor_id = #{record.distributorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.distributorName != null" >
+        distributor_name = #{record.distributorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.distributorCommission != null" >
+        distributor_commission = #{record.distributorCommission,jdbcType=INTEGER},
+      </if>
+      <if test="record.barbershopCommission != null" >
+        barbershop_commission = #{record.barbershopCommission,jdbcType=INTEGER},
+      </if>
+      <if test="record.otherShopName != null" >
+        other_shop_name = #{record.otherShopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null" >
+        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.otherShopId != null" >
+        other_shop_id = #{record.otherShopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.makerCommission != null" >
+        maker_commission = #{record.makerCommission,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.createId != null" >
+        create_id = #{record.createId,jdbcType=BIGINT},
+      </if>
+      <if test="record.createName != null" >
+        create_name = #{record.createName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deleteIs != null" >
+        delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update other_shop_commission
+    set id = #{record.id,jdbcType=VARCHAR},
+      other_shop_commission = #{record.otherShopCommission,jdbcType=INTEGER},
+      distributor_id = #{record.distributorId,jdbcType=BIGINT},
+      distributor_name = #{record.distributorName,jdbcType=VARCHAR},
+      distributor_commission = #{record.distributorCommission,jdbcType=INTEGER},
+      barbershop_commission = #{record.barbershopCommission,jdbcType=INTEGER},
+      other_shop_name = #{record.otherShopName,jdbcType=VARCHAR},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      shop_id = #{record.shopId,jdbcType=BIGINT},
+      other_shop_id = #{record.otherShopId,jdbcType=BIGINT},
+      maker_commission = #{record.makerCommission,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      create_id = #{record.createId,jdbcType=BIGINT},
+      create_name = #{record.createName,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      delete_is = #{record.deleteIs,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.OtherShopCommissionDO" >
     update other_shop_commission
     <set >

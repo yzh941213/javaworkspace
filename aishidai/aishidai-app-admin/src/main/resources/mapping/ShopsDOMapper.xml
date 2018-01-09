@@ -29,12 +29,85 @@
     <result column="lat" property="lat" jdbcType="VARCHAR" />
     <result column="lnt" property="lnt" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     shops_id, distributor_id, shops_name, introduce, shops_url, telephone, area, address, 
     province, city, activity, created, updated, sys_user_id, shop_hours_open, shop_hours_close, 
     is_deleted, services, hot, services_type, device_id, device_is, audit, star, lat, 
     lnt
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ShopsDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from shops
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -44,6 +117,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from shops
     where shops_id = #{shopsId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.ShopsDOExample" >
+    delete from shops
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     insert into shops (shops_id, distributor_id, shops_name, 
@@ -228,6 +307,130 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.ShopsDOExample" resultType="java.lang.Integer" >
+    select count(*) from shops
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update shops
+    <set >
+      <if test="record.shopsId != null" >
+        shops_id = #{record.shopsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.distributorId != null" >
+        distributor_id = #{record.distributorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopsName != null" >
+        shops_name = #{record.shopsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduce != null" >
+        introduce = #{record.introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopsUrl != null" >
+        shops_url = #{record.shopsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activity != null" >
+        activity = #{record.activity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sysUserId != null" >
+        sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopHoursOpen != null" >
+        shop_hours_open = #{record.shopHoursOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopHoursClose != null" >
+        shop_hours_close = #{record.shopHoursClose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="record.services != null" >
+        services = #{record.services,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hot != null" >
+        hot = #{record.hot,jdbcType=INTEGER},
+      </if>
+      <if test="record.servicesType != null" >
+        services_type = #{record.servicesType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceId != null" >
+        device_id = #{record.deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceIs != null" >
+        device_is = #{record.deviceIs,jdbcType=INTEGER},
+      </if>
+      <if test="record.audit != null" >
+        audit = #{record.audit,jdbcType=INTEGER},
+      </if>
+      <if test="record.star != null" >
+        star = #{record.star,jdbcType=TINYINT},
+      </if>
+      <if test="record.lat != null" >
+        lat = #{record.lat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lnt != null" >
+        lnt = #{record.lnt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update shops
+    set shops_id = #{record.shopsId,jdbcType=BIGINT},
+      distributor_id = #{record.distributorId,jdbcType=INTEGER},
+      shops_name = #{record.shopsName,jdbcType=VARCHAR},
+      introduce = #{record.introduce,jdbcType=VARCHAR},
+      shops_url = #{record.shopsUrl,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      activity = #{record.activity,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
+      shop_hours_open = #{record.shopHoursOpen,jdbcType=VARCHAR},
+      shop_hours_close = #{record.shopHoursClose,jdbcType=VARCHAR},
+      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      services = #{record.services,jdbcType=VARCHAR},
+      hot = #{record.hot,jdbcType=INTEGER},
+      services_type = #{record.servicesType,jdbcType=VARCHAR},
+      device_id = #{record.deviceId,jdbcType=BIGINT},
+      device_is = #{record.deviceIs,jdbcType=INTEGER},
+      audit = #{record.audit,jdbcType=INTEGER},
+      star = #{record.star,jdbcType=TINYINT},
+      lat = #{record.lat,jdbcType=VARCHAR},
+      lnt = #{record.lnt,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     update shops
     <set >

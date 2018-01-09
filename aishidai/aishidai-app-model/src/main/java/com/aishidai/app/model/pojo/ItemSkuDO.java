@@ -11,7 +11,7 @@ public class ItemSkuDO {
 
     private Long colorId;
 
-    private String sizeId;
+    private Long sizeId;
 
     private String image;
 
@@ -63,12 +63,12 @@ public class ItemSkuDO {
         this.colorId = colorId;
     }
 
-    public String getSizeId() {
+    public Long getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(String sizeId) {
-        this.sizeId = sizeId == null ? null : sizeId.trim();
+    public void setSizeId(Long sizeId) {
+        this.sizeId = sizeId;
     }
 
     public String getImage() {

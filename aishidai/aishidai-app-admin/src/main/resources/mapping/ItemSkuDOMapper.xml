@@ -6,7 +6,7 @@
     <result column="price" property="price" jdbcType="VARCHAR" />
     <result column="sales_price" property="salesPrice" jdbcType="VARCHAR" />
     <result column="color_id" property="colorId" jdbcType="BIGINT" />
-    <result column="size_id" property="sizeId" jdbcType="VARCHAR" />
+    <result column="size_id" property="sizeId" jdbcType="BIGINT" />
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="feature" property="feature" jdbcType="VARCHAR" />
@@ -17,10 +17,83 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="item_id" property="itemId" jdbcType="BIGINT" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     sku_id, price, sales_price, color_id, size_id, image, description, feature, stock, 
     salse_volume, created, updated, status, item_id
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ItemSkuDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from item_sku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -31,6 +104,12 @@
     delete from item_sku
     where sku_id = #{skuId,jdbcType=BIGINT}
   </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.ItemSkuDOExample" >
+    delete from item_sku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSkuDO" >
     insert into item_sku (sku_id, price, sales_price, 
       color_id, size_id, image, 
@@ -38,7 +117,7 @@
       salse_volume, created, updated, 
       status, item_id)
     values (#{skuId,jdbcType=BIGINT}, #{price,jdbcType=VARCHAR}, #{salesPrice,jdbcType=VARCHAR}, 
-      #{colorId,jdbcType=BIGINT}, #{sizeId,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{colorId,jdbcType=BIGINT}, #{sizeId,jdbcType=BIGINT}, #{image,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, 
       #{salseVolume,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{itemId,jdbcType=BIGINT})
@@ -103,7 +182,7 @@
         #{colorId,jdbcType=BIGINT},
       </if>
       <if test="sizeId != null" >
-        #{sizeId,jdbcType=VARCHAR},
+        #{sizeId,jdbcType=BIGINT},
       </if>
       <if test="image != null" >
         #{image,jdbcType=VARCHAR},
@@ -134,6 +213,82 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.ItemSkuDOExample" resultType="java.lang.Integer" >
+    select count(*) from item_sku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update item_sku
+    <set >
+      <if test="record.skuId != null" >
+        sku_id = #{record.skuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salesPrice != null" >
+        sales_price = #{record.salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colorId != null" >
+        color_id = #{record.colorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sizeId != null" >
+        size_id = #{record.sizeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.image != null" >
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feature != null" >
+        feature = #{record.feature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stock != null" >
+        stock = #{record.stock,jdbcType=INTEGER},
+      </if>
+      <if test="record.salseVolume != null" >
+        salse_volume = #{record.salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update item_sku
+    set sku_id = #{record.skuId,jdbcType=BIGINT},
+      price = #{record.price,jdbcType=VARCHAR},
+      sales_price = #{record.salesPrice,jdbcType=VARCHAR},
+      color_id = #{record.colorId,jdbcType=BIGINT},
+      size_id = #{record.sizeId,jdbcType=BIGINT},
+      image = #{record.image,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      feature = #{record.feature,jdbcType=VARCHAR},
+      stock = #{record.stock,jdbcType=INTEGER},
+      salse_volume = #{record.salseVolume,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      item_id = #{record.itemId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemSkuDO" >
     update item_sku
     <set >
@@ -147,7 +302,7 @@
         color_id = #{colorId,jdbcType=BIGINT},
       </if>
       <if test="sizeId != null" >
-        size_id = #{sizeId,jdbcType=VARCHAR},
+        size_id = #{sizeId,jdbcType=BIGINT},
       </if>
       <if test="image != null" >
         image = #{image,jdbcType=VARCHAR},
@@ -184,7 +339,7 @@
     set price = #{price,jdbcType=VARCHAR},
       sales_price = #{salesPrice,jdbcType=VARCHAR},
       color_id = #{colorId,jdbcType=BIGINT},
-      size_id = #{sizeId,jdbcType=VARCHAR},
+      size_id = #{sizeId,jdbcType=BIGINT},
       image = #{image,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       feature = #{feature,jdbcType=VARCHAR},

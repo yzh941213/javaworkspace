@@ -29,12 +29,85 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     id, body_data, angle_switching, fitting_room, face, face_save, p_times, shop_cart, 
     register, quit, personal, scene, login, shoes, accessories, clothing, hairstyle, 
     gallery, standard_stature, healthy, natural, ruddy, fair, normal_color, created, 
     updated
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.DataCollectDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from data_collect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -44,6 +117,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from data_collect
     where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.DataCollectDOExample" >
+    delete from data_collect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.DataCollectDO" >
     insert into data_collect (id, body_data, angle_switching, 
@@ -228,6 +307,130 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.DataCollectDOExample" resultType="java.lang.Integer" >
+    select count(*) from data_collect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update data_collect
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.bodyData != null" >
+        body_data = #{record.bodyData,jdbcType=BIGINT},
+      </if>
+      <if test="record.angleSwitching != null" >
+        angle_switching = #{record.angleSwitching,jdbcType=BIGINT},
+      </if>
+      <if test="record.fittingRoom != null" >
+        fitting_room = #{record.fittingRoom,jdbcType=BIGINT},
+      </if>
+      <if test="record.face != null" >
+        face = #{record.face,jdbcType=BIGINT},
+      </if>
+      <if test="record.faceSave != null" >
+        face_save = #{record.faceSave,jdbcType=BIGINT},
+      </if>
+      <if test="record.pTimes != null" >
+        p_times = #{record.pTimes,jdbcType=BIGINT},
+      </if>
+      <if test="record.shopCart != null" >
+        shop_cart = #{record.shopCart,jdbcType=BIGINT},
+      </if>
+      <if test="record.register != null" >
+        register = #{record.register,jdbcType=BIGINT},
+      </if>
+      <if test="record.quit != null" >
+        quit = #{record.quit,jdbcType=BIGINT},
+      </if>
+      <if test="record.personal != null" >
+        personal = #{record.personal,jdbcType=BIGINT},
+      </if>
+      <if test="record.scene != null" >
+        scene = #{record.scene,jdbcType=BIGINT},
+      </if>
+      <if test="record.login != null" >
+        login = #{record.login,jdbcType=BIGINT},
+      </if>
+      <if test="record.shoes != null" >
+        shoes = #{record.shoes,jdbcType=BIGINT},
+      </if>
+      <if test="record.accessories != null" >
+        accessories = #{record.accessories,jdbcType=BIGINT},
+      </if>
+      <if test="record.clothing != null" >
+        clothing = #{record.clothing,jdbcType=BIGINT},
+      </if>
+      <if test="record.hairstyle != null" >
+        hairstyle = #{record.hairstyle,jdbcType=BIGINT},
+      </if>
+      <if test="record.gallery != null" >
+        gallery = #{record.gallery,jdbcType=BIGINT},
+      </if>
+      <if test="record.standardStature != null" >
+        standard_stature = #{record.standardStature,jdbcType=BIGINT},
+      </if>
+      <if test="record.healthy != null" >
+        healthy = #{record.healthy,jdbcType=BIGINT},
+      </if>
+      <if test="record.natural != null" >
+        natural = #{record.natural,jdbcType=BIGINT},
+      </if>
+      <if test="record.ruddy != null" >
+        ruddy = #{record.ruddy,jdbcType=BIGINT},
+      </if>
+      <if test="record.fair != null" >
+        fair = #{record.fair,jdbcType=BIGINT},
+      </if>
+      <if test="record.normalColor != null" >
+        normal_color = #{record.normalColor,jdbcType=BIGINT},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update data_collect
+    set id = #{record.id,jdbcType=INTEGER},
+      body_data = #{record.bodyData,jdbcType=BIGINT},
+      angle_switching = #{record.angleSwitching,jdbcType=BIGINT},
+      fitting_room = #{record.fittingRoom,jdbcType=BIGINT},
+      face = #{record.face,jdbcType=BIGINT},
+      face_save = #{record.faceSave,jdbcType=BIGINT},
+      p_times = #{record.pTimes,jdbcType=BIGINT},
+      shop_cart = #{record.shopCart,jdbcType=BIGINT},
+      register = #{record.register,jdbcType=BIGINT},
+      quit = #{record.quit,jdbcType=BIGINT},
+      personal = #{record.personal,jdbcType=BIGINT},
+      scene = #{record.scene,jdbcType=BIGINT},
+      login = #{record.login,jdbcType=BIGINT},
+      shoes = #{record.shoes,jdbcType=BIGINT},
+      accessories = #{record.accessories,jdbcType=BIGINT},
+      clothing = #{record.clothing,jdbcType=BIGINT},
+      hairstyle = #{record.hairstyle,jdbcType=BIGINT},
+      gallery = #{record.gallery,jdbcType=BIGINT},
+      standard_stature = #{record.standardStature,jdbcType=BIGINT},
+      healthy = #{record.healthy,jdbcType=BIGINT},
+      natural = #{record.natural,jdbcType=BIGINT},
+      ruddy = #{record.ruddy,jdbcType=BIGINT},
+      fair = #{record.fair,jdbcType=BIGINT},
+      normal_color = #{record.normalColor,jdbcType=BIGINT},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.DataCollectDO" >
     update data_collect
     <set >

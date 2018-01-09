@@ -25,11 +25,84 @@
     <result column="scan_imes" property="scanImes" jdbcType="VARCHAR" />
     <result column="proportion" property="proportion" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     size_id, user_id, name, height, weight, waist, hip, bust, shoulder, thigh, neck, 
     upper_arm, lower_arm, feature, created, updated, is_deleted, is_default, mod_count, 
     rephotograph, scan_imes, proportion
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.UserSizeDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from user_size
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -39,6 +112,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from user_size
     where size_id = #{sizeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.UserSizeDOExample" >
+    delete from user_size
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.UserSizeDO" >
     insert into user_size (size_id, user_id, name, 
@@ -197,6 +276,114 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.UserSizeDOExample" resultType="java.lang.Integer" >
+    select count(*) from user_size
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_size
+    <set >
+      <if test="record.sizeId != null" >
+        size_id = #{record.sizeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.height != null" >
+        height = #{record.height,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weight != null" >
+        weight = #{record.weight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waist != null" >
+        waist = #{record.waist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hip != null" >
+        hip = #{record.hip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bust != null" >
+        bust = #{record.bust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoulder != null" >
+        shoulder = #{record.shoulder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thigh != null" >
+        thigh = #{record.thigh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.neck != null" >
+        neck = #{record.neck,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upperArm != null" >
+        upper_arm = #{record.upperArm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lowerArm != null" >
+        lower_arm = #{record.lowerArm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feature != null" >
+        feature = #{record.feature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=BIGINT},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="record.isDefault != null" >
+        is_default = #{record.isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="record.modCount != null" >
+        mod_count = #{record.modCount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rephotograph != null" >
+        rephotograph = #{record.rephotograph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scanImes != null" >
+        scan_imes = #{record.scanImes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proportion != null" >
+        proportion = #{record.proportion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_size
+    set size_id = #{record.sizeId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      height = #{record.height,jdbcType=VARCHAR},
+      weight = #{record.weight,jdbcType=VARCHAR},
+      waist = #{record.waist,jdbcType=VARCHAR},
+      hip = #{record.hip,jdbcType=VARCHAR},
+      bust = #{record.bust,jdbcType=VARCHAR},
+      shoulder = #{record.shoulder,jdbcType=VARCHAR},
+      thigh = #{record.thigh,jdbcType=VARCHAR},
+      neck = #{record.neck,jdbcType=VARCHAR},
+      upper_arm = #{record.upperArm,jdbcType=VARCHAR},
+      lower_arm = #{record.lowerArm,jdbcType=VARCHAR},
+      feature = #{record.feature,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=BIGINT},
+      updated = #{record.updated,jdbcType=BIGINT},
+      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      is_default = #{record.isDefault,jdbcType=TINYINT},
+      mod_count = #{record.modCount,jdbcType=VARCHAR},
+      rephotograph = #{record.rephotograph,jdbcType=VARCHAR},
+      scan_imes = #{record.scanImes,jdbcType=VARCHAR},
+      proportion = #{record.proportion,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.UserSizeDO" >
     update user_size
     <set >

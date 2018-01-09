@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ItemDOMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemDO" >
+    <id column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="name_id" property="nameId" jdbcType="BIGINT" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="sales_price" property="salesPrice" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    <result column="item_code" property="itemCode" jdbcType="VARCHAR" />
+    <result column="salse_volume" property="salseVolume" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="recommend" property="recommend" jdbcType="SMALLINT" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="item_tag" property="itemTag" jdbcType="VARCHAR" />
+    <result column="item_status" property="itemStatus" jdbcType="INTEGER" />
+    <result column="delete_is" property="deleteIs" jdbcType="INTEGER" />
+    <result column="item_model" property="itemModel" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.aishidai.app.model.pojo.ItemDO" extends="BaseResultMap" >
+    <result column="summary" property="summary" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    item_id, name_id, price, sales_price, image, category_id, item_code, salse_volume, 
+    created, updated, recommend, item_name, item_tag, item_status, delete_is, item_model, 
+    shop_id, audit
+  </sql>
+  <sql id="Blob_Column_List" >
+    summary
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.aishidai.app.model.pojo.ItemDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ItemDOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.ItemDOExample" >
+    delete from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemDO" >
+    insert into item (item_id, name_id, price, 
+      sales_price, image, category_id, 
+      item_code, salse_volume, created, 
+      updated, recommend, item_name, 
+      item_tag, item_status, delete_is, 
+      item_model, shop_id, audit, 
+      summary)
+    values (#{itemId,jdbcType=BIGINT}, #{nameId,jdbcType=BIGINT}, #{price,jdbcType=VARCHAR}, 
+      #{salesPrice,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{categoryId,jdbcType=VARCHAR}, 
+      #{itemCode,jdbcType=VARCHAR}, #{salseVolume,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{recommend,jdbcType=SMALLINT}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemTag,jdbcType=VARCHAR}, #{itemStatus,jdbcType=INTEGER}, #{deleteIs,jdbcType=INTEGER}, 
+      #{itemModel,jdbcType=INTEGER}, #{shopId,jdbcType=BIGINT}, #{audit,jdbcType=INTEGER}, 
+      #{summary,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ItemDO" >
+    insert into item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="nameId != null" >
+        name_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="salesPrice != null" >
+        sales_price,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="itemCode != null" >
+        item_code,
+      </if>
+      <if test="salseVolume != null" >
+        salse_volume,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="itemTag != null" >
+        item_tag,
+      </if>
+      <if test="itemStatus != null" >
+        item_status,
+      </if>
+      <if test="deleteIs != null" >
+        delete_is,
+      </if>
+      <if test="itemModel != null" >
+        item_model,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="audit != null" >
+        audit,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="nameId != null" >
+        #{nameId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPrice != null" >
+        #{salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="salseVolume != null" >
+        #{salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=SMALLINT},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemTag != null" >
+        #{itemTag,jdbcType=VARCHAR},
+      </if>
+      <if test="itemStatus != null" >
+        #{itemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteIs != null" >
+        #{deleteIs,jdbcType=INTEGER},
+      </if>
+      <if test="itemModel != null" >
+        #{itemModel,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aishidai.app.model.pojo.ItemDOExample" resultType="java.lang.Integer" >
+    select count(*) from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update item
+    <set >
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nameId != null" >
+        name_id = #{record.nameId,jdbcType=BIGINT},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salesPrice != null" >
+        sales_price = #{record.salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null" >
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryId != null" >
+        category_id = #{record.categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemCode != null" >
+        item_code = #{record.itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salseVolume != null" >
+        salse_volume = #{record.salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recommend != null" >
+        recommend = #{record.recommend,jdbcType=SMALLINT},
+      </if>
+      <if test="record.itemName != null" >
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemTag != null" >
+        item_tag = #{record.itemTag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemStatus != null" >
+        item_status = #{record.itemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleteIs != null" >
+        delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemModel != null" >
+        item_model = #{record.itemModel,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.audit != null" >
+        audit = #{record.audit,jdbcType=INTEGER},
+      </if>
+      <if test="record.summary != null" >
+        summary = #{record.summary,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update item
+    set item_id = #{record.itemId,jdbcType=BIGINT},
+      name_id = #{record.nameId,jdbcType=BIGINT},
+      price = #{record.price,jdbcType=VARCHAR},
+      sales_price = #{record.salesPrice,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=VARCHAR},
+      item_code = #{record.itemCode,jdbcType=VARCHAR},
+      salse_volume = #{record.salseVolume,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      recommend = #{record.recommend,jdbcType=SMALLINT},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_tag = #{record.itemTag,jdbcType=VARCHAR},
+      item_status = #{record.itemStatus,jdbcType=INTEGER},
+      delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      item_model = #{record.itemModel,jdbcType=INTEGER},
+      shop_id = #{record.shopId,jdbcType=BIGINT},
+      audit = #{record.audit,jdbcType=INTEGER},
+      summary = #{record.summary,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update item
+    set item_id = #{record.itemId,jdbcType=BIGINT},
+      name_id = #{record.nameId,jdbcType=BIGINT},
+      price = #{record.price,jdbcType=VARCHAR},
+      sales_price = #{record.salesPrice,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=VARCHAR},
+      item_code = #{record.itemCode,jdbcType=VARCHAR},
+      salse_volume = #{record.salseVolume,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      recommend = #{record.recommend,jdbcType=SMALLINT},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_tag = #{record.itemTag,jdbcType=VARCHAR},
+      item_status = #{record.itemStatus,jdbcType=INTEGER},
+      delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      item_model = #{record.itemModel,jdbcType=INTEGER},
+      shop_id = #{record.shopId,jdbcType=BIGINT},
+      audit = #{record.audit,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.ItemDO" >
+    update item
+    <set >
+      <if test="nameId != null" >
+        name_id = #{nameId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPrice != null" >
+        sales_price = #{salesPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null" >
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="salseVolume != null" >
+        salse_volume = #{salseVolume,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=SMALLINT},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemTag != null" >
+        item_tag = #{itemTag,jdbcType=VARCHAR},
+      </if>
+      <if test="itemStatus != null" >
+        item_status = #{itemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteIs != null" >
+        delete_is = #{deleteIs,jdbcType=INTEGER},
+      </if>
+      <if test="itemModel != null" >
+        item_model = #{itemModel,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="audit != null" >
+        audit = #{audit,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.aishidai.app.model.pojo.ItemDO" >
+    update item
+    set name_id = #{nameId,jdbcType=BIGINT},
+      price = #{price,jdbcType=VARCHAR},
+      sales_price = #{salesPrice,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      salse_volume = #{salseVolume,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      recommend = #{recommend,jdbcType=SMALLINT},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_tag = #{itemTag,jdbcType=VARCHAR},
+      item_status = #{itemStatus,jdbcType=INTEGER},
+      delete_is = #{deleteIs,jdbcType=INTEGER},
+      item_model = #{itemModel,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      audit = #{audit,jdbcType=INTEGER},
+      summary = #{summary,jdbcType=LONGVARCHAR}
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemDO" >
+    update item
+    set name_id = #{nameId,jdbcType=BIGINT},
+      price = #{price,jdbcType=VARCHAR},
+      sales_price = #{salesPrice,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      salse_volume = #{salseVolume,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      recommend = #{recommend,jdbcType=SMALLINT},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_tag = #{itemTag,jdbcType=VARCHAR},
+      item_status = #{itemStatus,jdbcType=INTEGER},
+      delete_is = #{deleteIs,jdbcType=INTEGER},
+      item_model = #{itemModel,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      audit = #{audit,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+</mapper>

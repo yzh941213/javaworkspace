@@ -2,9 +2,7 @@ package com.aishidai.app.controller;
 
 import com.aishidai.app.dao.AttributeDOMapper;
 import com.aishidai.app.dao.ItemDOMapper;
-import com.aishidai.app.model.pojo.AttributeDO;
-import com.aishidai.app.model.pojo.AttributeDOExample;
-import com.aishidai.app.model.pojo.ItemDO;
+import com.aishidai.app.model.pojo.*;
 import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.model.vo.ItemVO;
 import com.aishidai.app.service.ItemService;
@@ -32,6 +30,8 @@ public class ItemController {
 
     @GetMapping(value = "list")
     public JsonResult itemList(QueryItem queryItem){
+
+
         List<ItemVO> result=new ArrayList<ItemVO>();
         List<ItemVO> list= itemService.itemList(queryItem);
         for (ItemVO itemVO:list){
@@ -63,7 +63,7 @@ public class ItemController {
             itemDO.setCreated(new Date());
             itemDO.setUpdated(new Date());
             itemDO.setAudit(0);
-            itemDO.setDeleteIs(0);
+            itemDO.setIsDelete(0);
             return  JsonResult.buildSuccess(itemDOMapper.insert(itemDO));
         }catch (Exception e){
             return JsonResult.buidException(e);

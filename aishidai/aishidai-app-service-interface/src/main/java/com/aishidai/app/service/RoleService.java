@@ -6,7 +6,6 @@ import java.util.List;
 
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.RoleDO;
 
 
 public interface RoleService {

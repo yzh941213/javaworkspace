@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.DataCollectDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.DataCollectDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="body_data" property="bodyData" jdbcType="BIGINT" />
     <result column="angle_switching" property="angleSwitching" jdbcType="BIGINT" />
     <result column="fitting_room" property="fittingRoom" jdbcType="BIGINT" />
@@ -108,15 +108,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from data_collect
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from data_collect
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.DataCollectDOExample" >
     delete from data_collect
@@ -134,7 +134,7 @@
       standard_stature, healthy, natural, 
       ruddy, fair, normal_color, 
       created, updated)
-    values (#{id,jdbcType=INTEGER}, #{bodyData,jdbcType=BIGINT}, #{angleSwitching,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{bodyData,jdbcType=BIGINT}, #{angleSwitching,jdbcType=BIGINT}, 
       #{fittingRoom,jdbcType=BIGINT}, #{face,jdbcType=BIGINT}, #{faceSave,jdbcType=BIGINT}, 
       #{pTimes,jdbcType=BIGINT}, #{shopCart,jdbcType=BIGINT}, #{register,jdbcType=BIGINT}, 
       #{quit,jdbcType=BIGINT}, #{personal,jdbcType=BIGINT}, #{scene,jdbcType=BIGINT}, 
@@ -228,7 +228,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="bodyData != null" >
         #{bodyData,jdbcType=BIGINT},
@@ -317,7 +317,7 @@
     update data_collect
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.bodyData != null" >
         body_data = #{record.bodyData,jdbcType=BIGINT},
@@ -401,7 +401,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update data_collect
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       body_data = #{record.bodyData,jdbcType=BIGINT},
       angle_switching = #{record.angleSwitching,jdbcType=BIGINT},
       fitting_room = #{record.fittingRoom,jdbcType=BIGINT},
@@ -510,7 +510,7 @@
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.DataCollectDO" >
     update data_collect
@@ -539,6 +539,6 @@
       normal_color = #{normalColor,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

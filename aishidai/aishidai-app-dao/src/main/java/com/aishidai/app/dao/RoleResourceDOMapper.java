@@ -27,8 +27,4 @@ public interface RoleResourceDOMapper {
     int updateByPrimaryKeySelective(RoleResourceDO record);
 
     int updateByPrimaryKey(RoleResourceDO record);
-    
-    long insertRoleResourceDO(RoleResourceDO record);
-    
-    
 }

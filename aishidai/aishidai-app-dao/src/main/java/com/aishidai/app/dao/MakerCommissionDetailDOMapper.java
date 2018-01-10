@@ -10,7 +10,7 @@ public interface MakerCommissionDetailDOMapper {
 
     int deleteByExample(MakerCommissionDetailDOExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(MakerCommissionDetailDO record);
 
@@ -18,7 +18,7 @@ public interface MakerCommissionDetailDOMapper {
 
     List<MakerCommissionDetailDO> selectByExample(MakerCommissionDetailDOExample example);
 
-    MakerCommissionDetailDO selectByPrimaryKey(String id);
+    MakerCommissionDetailDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") MakerCommissionDetailDO record, @Param("example") MakerCommissionDetailDOExample example);
 

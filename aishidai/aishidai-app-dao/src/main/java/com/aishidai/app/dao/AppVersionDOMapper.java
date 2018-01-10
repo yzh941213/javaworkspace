@@ -10,7 +10,7 @@ public interface AppVersionDOMapper {
 
     int deleteByExample(AppVersionDOExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(AppVersionDO record);
 
@@ -18,7 +18,7 @@ public interface AppVersionDOMapper {
 
     List<AppVersionDO> selectByExample(AppVersionDOExample example);
 
-    AppVersionDO selectByPrimaryKey(Integer id);
+    AppVersionDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") AppVersionDO record, @Param("example") AppVersionDOExample example);
 

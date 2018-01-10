@@ -51,7 +51,7 @@ public class TradeOrderDO {
 
     private String invoiceNumber;
 
-    private Integer addressId;
+    private Long addressId;
 
     private Integer isDeleted;
 
@@ -261,11 +261,11 @@ public class TradeOrderDO {
         this.invoiceNumber = invoiceNumber == null ? null : invoiceNumber.trim();
     }
 
-    public Integer getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Integer addressId) {
+    public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
 

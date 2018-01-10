@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import com.aishidai.app.dao.ResourceDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.dto.ResourceDTO;
-import com.aishidai.app.model.pojo.ResourceDO;
-import com.aishidai.app.model.pojo.ResourceDOExample;
 import com.aishidai.app.service.ResourceService;
 
 import javax.annotation.Resource;

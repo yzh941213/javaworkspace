@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.TradeOrderItemDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderItemDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
-    <result column="color_id" property="colorId" jdbcType="INTEGER" />
-    <result column="size_id" property="sizeId" jdbcType="INTEGER" />
-    <result column="item_id" property="itemId" jdbcType="INTEGER" />
+    <id column="order_item_id" property="orderItemId" jdbcType="BIGINT" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
+    <result column="color_id" property="colorId" jdbcType="BIGINT" />
+    <result column="size_id" property="sizeId" jdbcType="BIGINT" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
     <result column="number" property="number" jdbcType="INTEGER" />
     <result column="price" property="price" jdbcType="VARCHAR" />
     <result column="image" property="image" jdbcType="VARCHAR" />
@@ -72,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, sku_id, color_id, size_id, item_id, number, price, image, order_id, item_name
+    order_item_id, sku_id, color_id, size_id, item_id, number, price, image, order_id, 
+    item_name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDOExample" >
     select
@@ -89,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from trade_order_item
-    where id = #{id,jdbcType=INTEGER}
+    where order_item_id = #{orderItemId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from trade_order_item
-    where id = #{id,jdbcType=INTEGER}
+    where order_item_id = #{orderItemId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDOExample" >
     delete from trade_order_item
@@ -106,20 +107,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
-    insert into trade_order_item (id, sku_id, color_id, 
+    insert into trade_order_item (order_item_id, sku_id, color_id, 
       size_id, item_id, number, 
       price, image, order_id, 
       item_name)
-    values (#{id,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, #{colorId,jdbcType=INTEGER}, 
-      #{sizeId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+    values (#{orderItemId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{colorId,jdbcType=BIGINT}, 
+      #{sizeId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{number,jdbcType=INTEGER}, 
       #{price,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{orderId,jdbcType=BIGINT}, 
       #{itemName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
     insert into trade_order_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="orderItemId != null" >
+        order_item_id,
       </if>
       <if test="skuId != null" >
         sku_id,
@@ -150,20 +151,20 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="orderItemId != null" >
+        #{orderItemId,jdbcType=BIGINT},
       </if>
       <if test="skuId != null" >
-        #{skuId,jdbcType=INTEGER},
+        #{skuId,jdbcType=BIGINT},
       </if>
       <if test="colorId != null" >
-        #{colorId,jdbcType=INTEGER},
+        #{colorId,jdbcType=BIGINT},
       </if>
       <if test="sizeId != null" >
-        #{sizeId,jdbcType=INTEGER},
+        #{sizeId,jdbcType=BIGINT},
       </if>
       <if test="itemId != null" >
-        #{itemId,jdbcType=INTEGER},
+        #{itemId,jdbcType=BIGINT},
       </if>
       <if test="number != null" >
         #{number,jdbcType=INTEGER},
@@ -191,20 +192,20 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update trade_order_item
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.orderItemId != null" >
+        order_item_id = #{record.orderItemId,jdbcType=BIGINT},
       </if>
       <if test="record.skuId != null" >
-        sku_id = #{record.skuId,jdbcType=INTEGER},
+        sku_id = #{record.skuId,jdbcType=BIGINT},
       </if>
       <if test="record.colorId != null" >
-        color_id = #{record.colorId,jdbcType=INTEGER},
+        color_id = #{record.colorId,jdbcType=BIGINT},
       </if>
       <if test="record.sizeId != null" >
-        size_id = #{record.sizeId,jdbcType=INTEGER},
+        size_id = #{record.sizeId,jdbcType=BIGINT},
       </if>
       <if test="record.itemId != null" >
-        item_id = #{record.itemId,jdbcType=INTEGER},
+        item_id = #{record.itemId,jdbcType=BIGINT},
       </if>
       <if test="record.number != null" >
         number = #{record.number,jdbcType=INTEGER},
@@ -228,11 +229,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update trade_order_item
-    set id = #{record.id,jdbcType=INTEGER},
-      sku_id = #{record.skuId,jdbcType=INTEGER},
-      color_id = #{record.colorId,jdbcType=INTEGER},
-      size_id = #{record.sizeId,jdbcType=INTEGER},
-      item_id = #{record.itemId,jdbcType=INTEGER},
+    set order_item_id = #{record.orderItemId,jdbcType=BIGINT},
+      sku_id = #{record.skuId,jdbcType=BIGINT},
+      color_id = #{record.colorId,jdbcType=BIGINT},
+      size_id = #{record.sizeId,jdbcType=BIGINT},
+      item_id = #{record.itemId,jdbcType=BIGINT},
       number = #{record.number,jdbcType=INTEGER},
       price = #{record.price,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
@@ -246,16 +247,16 @@
     update trade_order_item
     <set >
       <if test="skuId != null" >
-        sku_id = #{skuId,jdbcType=INTEGER},
+        sku_id = #{skuId,jdbcType=BIGINT},
       </if>
       <if test="colorId != null" >
-        color_id = #{colorId,jdbcType=INTEGER},
+        color_id = #{colorId,jdbcType=BIGINT},
       </if>
       <if test="sizeId != null" >
-        size_id = #{sizeId,jdbcType=INTEGER},
+        size_id = #{sizeId,jdbcType=BIGINT},
       </if>
       <if test="itemId != null" >
-        item_id = #{itemId,jdbcType=INTEGER},
+        item_id = #{itemId,jdbcType=BIGINT},
       </if>
       <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
@@ -273,19 +274,19 @@
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where order_item_id = #{orderItemId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderItemDO" >
     update trade_order_item
-    set sku_id = #{skuId,jdbcType=INTEGER},
-      color_id = #{colorId,jdbcType=INTEGER},
-      size_id = #{sizeId,jdbcType=INTEGER},
-      item_id = #{itemId,jdbcType=INTEGER},
+    set sku_id = #{skuId,jdbcType=BIGINT},
+      color_id = #{colorId,jdbcType=BIGINT},
+      size_id = #{sizeId,jdbcType=BIGINT},
+      item_id = #{itemId,jdbcType=BIGINT},
       number = #{number,jdbcType=INTEGER},
       price = #{price,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       order_id = #{orderId,jdbcType=BIGINT},
       item_name = #{itemName,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where order_item_id = #{orderItemId,jdbcType=BIGINT}
   </update>
 </mapper>

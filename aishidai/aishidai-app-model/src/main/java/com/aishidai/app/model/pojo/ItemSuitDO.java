@@ -7,7 +7,7 @@ public class ItemSuitDO {
 
     private Long skuId;
 
-    private String stratification;
+    private Long itemId;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class ItemSuitDO {
         this.skuId = skuId;
     }
 
-    public String getStratification() {
-        return stratification;
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setStratification(String stratification) {
-        this.stratification = stratification == null ? null : stratification.trim();
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 }

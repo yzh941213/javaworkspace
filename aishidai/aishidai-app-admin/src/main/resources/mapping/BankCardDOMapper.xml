@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.BankCardDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.BankCardDO" >
-    <id column="card_id" property="cardId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="card_id" property="cardId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="card_num" property="cardNum" jdbcType="VARCHAR" />
     <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
@@ -91,15 +91,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from bank_card
-    where card_id = #{cardId,jdbcType=INTEGER}
+    where card_id = #{cardId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from bank_card
-    where card_id = #{cardId,jdbcType=INTEGER}
+    where card_id = #{cardId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.BankCardDOExample" >
     delete from bank_card
@@ -112,7 +112,7 @@
       card_num, bank_name, branches, 
       is_default, created, updated, 
       status, mobile)
-    values (#{cardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    values (#{cardId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
       #{cardNum,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{branches,jdbcType=VARCHAR}, 
       #{isDefault,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR})
@@ -156,10 +156,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cardId != null" >
-        #{cardId,jdbcType=INTEGER},
+        #{cardId,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -200,10 +200,10 @@
     update bank_card
     <set >
       <if test="record.cardId != null" >
-        card_id = #{record.cardId,jdbcType=INTEGER},
+        card_id = #{record.cardId,jdbcType=BIGINT},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
@@ -239,8 +239,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bank_card
-    set card_id = #{record.cardId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+    set card_id = #{record.cardId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       card_num = #{record.cardNum,jdbcType=VARCHAR},
       bank_name = #{record.bankName,jdbcType=VARCHAR},
@@ -258,7 +258,7 @@
     update bank_card
     <set >
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -288,11 +288,11 @@
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
     </set>
-    where card_id = #{cardId,jdbcType=INTEGER}
+    where card_id = #{cardId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.BankCardDO" >
     update bank_card
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       card_num = #{cardNum,jdbcType=VARCHAR},
       bank_name = #{bankName,jdbcType=VARCHAR},
@@ -302,6 +302,6 @@
       updated = #{updated,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER},
       mobile = #{mobile,jdbcType=VARCHAR}
-    where card_id = #{cardId,jdbcType=INTEGER}
+    where card_id = #{cardId,jdbcType=BIGINT}
   </update>
 </mapper>

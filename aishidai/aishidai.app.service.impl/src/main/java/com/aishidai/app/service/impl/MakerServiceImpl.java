@@ -5,15 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.MakerDOMapper;
-import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.DeviceMakerDO;
-import com.aishidai.app.model.pojo.MakerDO;
-import com.aishidai.app.model.pojo.MakerDOExample;
-import com.aishidai.app.model.query.DeviceMakerQuery;
-import com.aishidai.app.model.query.MakerQuery;
 import com.aishidai.app.service.MakerService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

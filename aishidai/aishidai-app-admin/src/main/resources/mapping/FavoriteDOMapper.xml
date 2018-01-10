@@ -4,12 +4,12 @@
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.FavoriteDO" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="rel_type" property="relType" jdbcType="SMALLINT" />
+    <result column="rel_type" property="relType" jdbcType="INTEGER" />
     <result column="rel_id" property="relId" jdbcType="BIGINT" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
-    <result column="fav_type" property="favType" jdbcType="SMALLINT" />
+    <result column="fav_type" property="favType" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -107,9 +107,9 @@
     insert into favorite (id, user_id, rel_type, 
       rel_id, status, created, 
       updated, fav_type)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{relType,jdbcType=SMALLINT}, 
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{relType,jdbcType=INTEGER}, 
       #{relId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{favType,jdbcType=SMALLINT})
+      #{updated,jdbcType=TIMESTAMP}, #{favType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.FavoriteDO" >
     insert into favorite
@@ -147,7 +147,7 @@
         #{userId,jdbcType=BIGINT},
       </if>
       <if test="relType != null" >
-        #{relType,jdbcType=SMALLINT},
+        #{relType,jdbcType=INTEGER},
       </if>
       <if test="relId != null" >
         #{relId,jdbcType=BIGINT},
@@ -162,7 +162,7 @@
         #{updated,jdbcType=TIMESTAMP},
       </if>
       <if test="favType != null" >
-        #{favType,jdbcType=SMALLINT},
+        #{favType,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -182,7 +182,7 @@
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.relType != null" >
-        rel_type = #{record.relType,jdbcType=SMALLINT},
+        rel_type = #{record.relType,jdbcType=INTEGER},
       </if>
       <if test="record.relId != null" >
         rel_id = #{record.relId,jdbcType=BIGINT},
@@ -197,7 +197,7 @@
         updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.favType != null" >
-        fav_type = #{record.favType,jdbcType=SMALLINT},
+        fav_type = #{record.favType,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -208,12 +208,12 @@
     update favorite
     set id = #{record.id,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
-      rel_type = #{record.relType,jdbcType=SMALLINT},
+      rel_type = #{record.relType,jdbcType=INTEGER},
       rel_id = #{record.relId,jdbcType=BIGINT},
       status = #{record.status,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
-      fav_type = #{record.favType,jdbcType=SMALLINT}
+      fav_type = #{record.favType,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,7 +225,7 @@
         user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="relType != null" >
-        rel_type = #{relType,jdbcType=SMALLINT},
+        rel_type = #{relType,jdbcType=INTEGER},
       </if>
       <if test="relId != null" >
         rel_id = #{relId,jdbcType=BIGINT},
@@ -240,7 +240,7 @@
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
       <if test="favType != null" >
-        fav_type = #{favType,jdbcType=SMALLINT},
+        fav_type = #{favType,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -248,12 +248,12 @@
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.FavoriteDO" >
     update favorite
     set user_id = #{userId,jdbcType=BIGINT},
-      rel_type = #{relType,jdbcType=SMALLINT},
+      rel_type = #{relType,jdbcType=INTEGER},
       rel_id = #{relId,jdbcType=BIGINT},
       status = #{status,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
-      fav_type = #{favType,jdbcType=SMALLINT}
+      fav_type = #{favType,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

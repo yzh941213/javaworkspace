@@ -10,7 +10,7 @@ public interface MakerDOMapper {
 
     int deleteByExample(MakerDOExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(MakerDO record);
 
@@ -18,7 +18,7 @@ public interface MakerDOMapper {
 
     List<MakerDO> selectByExample(MakerDOExample example);
 
-    MakerDO selectByPrimaryKey(Integer id);
+    MakerDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") MakerDO record, @Param("example") MakerDOExample example);
 

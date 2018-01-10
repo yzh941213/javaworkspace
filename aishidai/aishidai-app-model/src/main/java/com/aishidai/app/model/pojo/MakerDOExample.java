@@ -115,52 +115,52 @@ public class MakerDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -245,52 +245,52 @@ public class MakerDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdEqualTo(Integer value) {
+        public Criteria andDistributorIdEqualTo(Long value) {
             addCriterion("distributor_id =", value, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdNotEqualTo(Integer value) {
+        public Criteria andDistributorIdNotEqualTo(Long value) {
             addCriterion("distributor_id <>", value, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdGreaterThan(Integer value) {
+        public Criteria andDistributorIdGreaterThan(Long value) {
             addCriterion("distributor_id >", value, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andDistributorIdGreaterThanOrEqualTo(Long value) {
             addCriterion("distributor_id >=", value, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdLessThan(Integer value) {
+        public Criteria andDistributorIdLessThan(Long value) {
             addCriterion("distributor_id <", value, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdLessThanOrEqualTo(Integer value) {
+        public Criteria andDistributorIdLessThanOrEqualTo(Long value) {
             addCriterion("distributor_id <=", value, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdIn(List<Integer> values) {
+        public Criteria andDistributorIdIn(List<Long> values) {
             addCriterion("distributor_id in", values, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdNotIn(List<Integer> values) {
+        public Criteria andDistributorIdNotIn(List<Long> values) {
             addCriterion("distributor_id not in", values, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdBetween(Integer value1, Integer value2) {
+        public Criteria andDistributorIdBetween(Long value1, Long value2) {
             addCriterion("distributor_id between", value1, value2, "distributorId");
             return (Criteria) this;
         }
 
-        public Criteria andDistributorIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andDistributorIdNotBetween(Long value1, Long value2) {
             addCriterion("distributor_id not between", value1, value2, "distributorId");
             return (Criteria) this;
         }
@@ -625,52 +625,52 @@ public class MakerDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdEqualTo(Integer value) {
+        public Criteria andSysUserIdEqualTo(Long value) {
             addCriterion("sys_user_id =", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotEqualTo(Integer value) {
+        public Criteria andSysUserIdNotEqualTo(Long value) {
             addCriterion("sys_user_id <>", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdGreaterThan(Integer value) {
+        public Criteria andSysUserIdGreaterThan(Long value) {
             addCriterion("sys_user_id >", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSysUserIdGreaterThanOrEqualTo(Long value) {
             addCriterion("sys_user_id >=", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLessThan(Integer value) {
+        public Criteria andSysUserIdLessThan(Long value) {
             addCriterion("sys_user_id <", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLessThanOrEqualTo(Integer value) {
+        public Criteria andSysUserIdLessThanOrEqualTo(Long value) {
             addCriterion("sys_user_id <=", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdIn(List<Integer> values) {
+        public Criteria andSysUserIdIn(List<Long> values) {
             addCriterion("sys_user_id in", values, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotIn(List<Integer> values) {
+        public Criteria andSysUserIdNotIn(List<Long> values) {
             addCriterion("sys_user_id not in", values, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdBetween(Integer value1, Integer value2) {
+        public Criteria andSysUserIdBetween(Long value1, Long value2) {
             addCriterion("sys_user_id between", value1, value2, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andSysUserIdNotBetween(Long value1, Long value2) {
             addCriterion("sys_user_id not between", value1, value2, "sysUserId");
             return (Criteria) this;
         }

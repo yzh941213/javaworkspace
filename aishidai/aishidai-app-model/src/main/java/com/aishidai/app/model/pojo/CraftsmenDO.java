@@ -3,11 +3,11 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class CraftsmenDO {
-    private Integer id;
+    private Long id;
 
     private Long shopsId;
 
-    private Integer distributorId;
+    private Long distributorId;
 
     private String craftsmanName;
 
@@ -45,11 +45,11 @@ public class CraftsmenDO {
 
     private Integer star;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,11 +61,11 @@ public class CraftsmenDO {
         this.shopsId = shopsId;
     }
 
-    public Integer getDistributorId() {
+    public Long getDistributorId() {
         return distributorId;
     }
 
-    public void setDistributorId(Integer distributorId) {
+    public void setDistributorId(Long distributorId) {
         this.distributorId = distributorId;
     }
 

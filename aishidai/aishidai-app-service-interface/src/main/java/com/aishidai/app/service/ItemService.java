@@ -1,6 +1,5 @@
 package com.aishidai.app.service;
 
-import com.aishidai.app.model.pojo.ItemDO;
 import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.model.vo.ItemVO;
 

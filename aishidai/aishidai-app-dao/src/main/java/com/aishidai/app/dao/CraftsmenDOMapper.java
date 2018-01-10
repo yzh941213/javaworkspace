@@ -10,7 +10,7 @@ public interface CraftsmenDOMapper {
 
     int deleteByExample(CraftsmenDOExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(CraftsmenDO record);
 
@@ -18,7 +18,7 @@ public interface CraftsmenDOMapper {
 
     List<CraftsmenDO> selectByExample(CraftsmenDOExample example);
 
-    CraftsmenDO selectByPrimaryKey(Integer id);
+    CraftsmenDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") CraftsmenDO record, @Param("example") CraftsmenDOExample example);
 

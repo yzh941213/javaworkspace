@@ -4,13 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.CraftsmenDOMapper;
-import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.CraftsmenDO;
 import com.aishidai.app.model.pojo.CraftsmenDOExample;
-import com.aishidai.app.model.query.CraftsmenQuery;
 import com.aishidai.app.service.CraftsmenService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

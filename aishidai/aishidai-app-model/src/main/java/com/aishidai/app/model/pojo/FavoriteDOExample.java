@@ -235,52 +235,52 @@ public class FavoriteDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeEqualTo(Short value) {
+        public Criteria andRelTypeEqualTo(Integer value) {
             addCriterion("rel_type =", value, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeNotEqualTo(Short value) {
+        public Criteria andRelTypeNotEqualTo(Integer value) {
             addCriterion("rel_type <>", value, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeGreaterThan(Short value) {
+        public Criteria andRelTypeGreaterThan(Integer value) {
             addCriterion("rel_type >", value, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeGreaterThanOrEqualTo(Short value) {
+        public Criteria andRelTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("rel_type >=", value, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeLessThan(Short value) {
+        public Criteria andRelTypeLessThan(Integer value) {
             addCriterion("rel_type <", value, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeLessThanOrEqualTo(Short value) {
+        public Criteria andRelTypeLessThanOrEqualTo(Integer value) {
             addCriterion("rel_type <=", value, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeIn(List<Short> values) {
+        public Criteria andRelTypeIn(List<Integer> values) {
             addCriterion("rel_type in", values, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeNotIn(List<Short> values) {
+        public Criteria andRelTypeNotIn(List<Integer> values) {
             addCriterion("rel_type not in", values, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeBetween(Short value1, Short value2) {
+        public Criteria andRelTypeBetween(Integer value1, Integer value2) {
             addCriterion("rel_type between", value1, value2, "relType");
             return (Criteria) this;
         }
 
-        public Criteria andRelTypeNotBetween(Short value1, Short value2) {
+        public Criteria andRelTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("rel_type not between", value1, value2, "relType");
             return (Criteria) this;
         }
@@ -535,52 +535,52 @@ public class FavoriteDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeEqualTo(Short value) {
+        public Criteria andFavTypeEqualTo(Integer value) {
             addCriterion("fav_type =", value, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeNotEqualTo(Short value) {
+        public Criteria andFavTypeNotEqualTo(Integer value) {
             addCriterion("fav_type <>", value, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeGreaterThan(Short value) {
+        public Criteria andFavTypeGreaterThan(Integer value) {
             addCriterion("fav_type >", value, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeGreaterThanOrEqualTo(Short value) {
+        public Criteria andFavTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("fav_type >=", value, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeLessThan(Short value) {
+        public Criteria andFavTypeLessThan(Integer value) {
             addCriterion("fav_type <", value, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeLessThanOrEqualTo(Short value) {
+        public Criteria andFavTypeLessThanOrEqualTo(Integer value) {
             addCriterion("fav_type <=", value, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeIn(List<Short> values) {
+        public Criteria andFavTypeIn(List<Integer> values) {
             addCriterion("fav_type in", values, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeNotIn(List<Short> values) {
+        public Criteria andFavTypeNotIn(List<Integer> values) {
             addCriterion("fav_type not in", values, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeBetween(Short value1, Short value2) {
+        public Criteria andFavTypeBetween(Integer value1, Integer value2) {
             addCriterion("fav_type between", value1, value2, "favType");
             return (Criteria) this;
         }
 
-        public Criteria andFavTypeNotBetween(Short value1, Short value2) {
+        public Criteria andFavTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("fav_type not between", value1, value2, "favType");
             return (Criteria) this;
         }

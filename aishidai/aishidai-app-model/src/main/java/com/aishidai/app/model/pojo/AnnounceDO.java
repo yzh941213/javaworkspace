@@ -3,9 +3,9 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class AnnounceDO {
-    private Integer anid;
+    private Long id;
 
-    private Integer userid;
+    private Long userId;
 
     private String title;
 
@@ -15,7 +15,7 @@ public class AnnounceDO {
 
     private Integer status;
 
-    private Integer isdeleted;
+    private Integer isDeleted;
 
     private Date created;
 
@@ -23,20 +23,20 @@ public class AnnounceDO {
 
     private String summary;
 
-    public Integer getAnid() {
-        return anid;
+    public Long getId() {
+        return id;
     }
 
-    public void setAnid(Integer anid) {
-        this.anid = anid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getTitle() {
@@ -71,12 +71,12 @@ public class AnnounceDO {
         this.status = status;
     }
 
-    public Integer getIsdeleted() {
-        return isdeleted;
+    public Integer getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIsdeleted(Integer isdeleted) {
-        this.isdeleted = isdeleted;
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     public Date getCreated() {

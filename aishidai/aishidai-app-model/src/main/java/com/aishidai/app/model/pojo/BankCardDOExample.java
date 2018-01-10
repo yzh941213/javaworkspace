@@ -115,52 +115,52 @@ public class BankCardDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andCardIdEqualTo(Integer value) {
+        public Criteria andCardIdEqualTo(Long value) {
             addCriterion("card_id =", value, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotEqualTo(Integer value) {
+        public Criteria andCardIdNotEqualTo(Long value) {
             addCriterion("card_id <>", value, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdGreaterThan(Integer value) {
+        public Criteria andCardIdGreaterThan(Long value) {
             addCriterion("card_id >", value, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCardIdGreaterThanOrEqualTo(Long value) {
             addCriterion("card_id >=", value, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdLessThan(Integer value) {
+        public Criteria andCardIdLessThan(Long value) {
             addCriterion("card_id <", value, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdLessThanOrEqualTo(Integer value) {
+        public Criteria andCardIdLessThanOrEqualTo(Long value) {
             addCriterion("card_id <=", value, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdIn(List<Integer> values) {
+        public Criteria andCardIdIn(List<Long> values) {
             addCriterion("card_id in", values, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotIn(List<Integer> values) {
+        public Criteria andCardIdNotIn(List<Long> values) {
             addCriterion("card_id not in", values, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdBetween(Integer value1, Integer value2) {
+        public Criteria andCardIdBetween(Long value1, Long value2) {
             addCriterion("card_id between", value1, value2, "cardId");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andCardIdNotBetween(Long value1, Long value2) {
             addCriterion("card_id not between", value1, value2, "cardId");
             return (Criteria) this;
         }
@@ -175,52 +175,52 @@ public class BankCardDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Integer value) {
+        public Criteria andUserIdEqualTo(Long value) {
             addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Integer value) {
+        public Criteria andUserIdNotEqualTo(Long value) {
             addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Integer value) {
+        public Criteria andUserIdGreaterThan(Long value) {
             addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
             addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Integer value) {
+        public Criteria andUserIdLessThan(Long value) {
             addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+        public Criteria andUserIdLessThanOrEqualTo(Long value) {
             addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Integer> values) {
+        public Criteria andUserIdIn(List<Long> values) {
             addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Integer> values) {
+        public Criteria andUserIdNotIn(List<Long> values) {
             addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+        public Criteria andUserIdBetween(Long value1, Long value2) {
             addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andUserIdNotBetween(Long value1, Long value2) {
             addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }

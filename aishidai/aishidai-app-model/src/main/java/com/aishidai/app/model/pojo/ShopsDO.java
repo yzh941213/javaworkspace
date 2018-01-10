@@ -5,7 +5,7 @@ import java.util.Date;
 public class ShopsDO {
     private Long shopsId;
 
-    private Integer distributorId;
+    private Long distributorId;
 
     private String shopsName;
 
@@ -29,7 +29,7 @@ public class ShopsDO {
 
     private Date updated;
 
-    private Integer sysUserId;
+    private Long sysUserId;
 
     private String shopHoursOpen;
 
@@ -63,11 +63,11 @@ public class ShopsDO {
         this.shopsId = shopsId;
     }
 
-    public Integer getDistributorId() {
+    public Long getDistributorId() {
         return distributorId;
     }
 
-    public void setDistributorId(Integer distributorId) {
+    public void setDistributorId(Long distributorId) {
         this.distributorId = distributorId;
     }
 
@@ -159,11 +159,11 @@ public class ShopsDO {
         this.updated = updated;
     }
 
-    public Integer getSysUserId() {
+    public Long getSysUserId() {
         return sysUserId;
     }
 
-    public void setSysUserId(Integer sysUserId) {
+    public void setSysUserId(Long sysUserId) {
         this.sysUserId = sysUserId;
     }
 

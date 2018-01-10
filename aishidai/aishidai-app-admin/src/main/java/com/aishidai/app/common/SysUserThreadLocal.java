@@ -1,7 +1,5 @@
 package com.aishidai.app.common;
 
-import com.aishidai.app.model.pojo.SysUsersDO;
-
 
 public class SysUserThreadLocal {
 

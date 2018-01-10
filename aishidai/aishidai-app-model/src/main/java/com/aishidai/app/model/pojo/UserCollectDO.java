@@ -3,9 +3,9 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class UserCollectDO {
-    private Integer id;
+    private Long id;
 
-    private Integer userId;
+    private Long userId;
 
     private String mac;
 
@@ -15,19 +15,19 @@ public class UserCollectDO {
 
     private String onlineTime;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

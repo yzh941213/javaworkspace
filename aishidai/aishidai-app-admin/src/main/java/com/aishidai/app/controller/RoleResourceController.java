@@ -1,8 +1,6 @@
 package com.aishidai.app.controller;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.ResourceDO;
-import com.aishidai.app.model.pojo.RoleResourceDO;
 import com.aishidai.app.service.ResourceService;
 import com.aishidai.app.service.RoleResourceService;
 import com.aishidai.app.service.RoleService;

@@ -1,9 +1,5 @@
 package com.aishidai.app.service;
 
-import com.aishidai.app.model.pojo.AttributeDO;
-import com.aishidai.app.model.pojo.ItemDO;
-
-import javax.print.attribute.Attribute;
 import java.util.List;
 
 public interface AttributeService {

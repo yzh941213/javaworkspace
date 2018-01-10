@@ -3,7 +3,7 @@
 <mapper namespace="com.aishidai.app.dao.ItemDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemDO" >
     <id column="item_id" property="itemId" jdbcType="BIGINT" />
-    <result column="name_id" property="nameId" jdbcType="BIGINT" />
+    <result column="name_id" property="nameId" jdbcType="INTEGER" />
     <result column="price" property="price" jdbcType="VARCHAR" />
     <result column="sales_price" property="salesPrice" jdbcType="VARCHAR" />
     <result column="image" property="image" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="item_tag" property="itemTag" jdbcType="VARCHAR" />
     <result column="item_status" property="itemStatus" jdbcType="INTEGER" />
-    <result column="delete_is" property="deleteIs" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
     <result column="item_model" property="itemModel" jdbcType="INTEGER" />
     <result column="shop_id" property="shopId" jdbcType="BIGINT" />
     <result column="audit" property="audit" jdbcType="INTEGER" />
@@ -24,18 +24,6 @@
   <resultMap id="ResultMapWithBLOBs" type="com.aishidai.app.model.pojo.ItemDO" extends="BaseResultMap" >
     <result column="summary" property="summary" jdbcType="LONGVARCHAR" />
   </resultMap>
-
-
-  <resultMap id="ItemVO" type="com.aishidai.app.model.vo.ItemVO" extends="ResultMapWithBLOBs" >
-
-    <result column="maxPrice" property="maxPrice" jdbcType="VARCHAR" />
-    <result column="minPrice" property="minPrice" jdbcType="VARCHAR" />
-    <result column="maxSalesPrice" property="maxSalesPrice" jdbcType="VARCHAR" />
-    <result column="minSalesPrice" property="minSalesPrice" jdbcType="VARCHAR" />
-
-
-  </resultMap>
-
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -96,7 +84,7 @@
   </sql>
   <sql id="Base_Column_List" >
     item_id, name_id, price, sales_price, image, category_id, item_code, salse_volume, 
-    created, updated, recommend, item_name, item_tag, item_status, delete_is, item_model, 
+    created, updated, recommend, item_name, item_tag, item_status, is_delete, item_model, 
     shop_id, audit
   </sql>
   <sql id="Blob_Column_List" >
@@ -157,14 +145,14 @@
       sales_price, image, category_id, 
       item_code, salse_volume, created, 
       updated, recommend, item_name, 
-      item_tag, item_status, delete_is, 
+      item_tag, item_status, is_delete, 
       item_model, shop_id, audit, 
       summary)
-    values (#{itemId,jdbcType=BIGINT}, #{nameId,jdbcType=BIGINT}, #{price,jdbcType=VARCHAR}, 
+    values (#{itemId,jdbcType=BIGINT}, #{nameId,jdbcType=INTEGER}, #{price,jdbcType=VARCHAR}, 
       #{salesPrice,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{categoryId,jdbcType=VARCHAR}, 
       #{itemCode,jdbcType=VARCHAR}, #{salseVolume,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP}, #{recommend,jdbcType=SMALLINT}, #{itemName,jdbcType=VARCHAR}, 
-      #{itemTag,jdbcType=VARCHAR}, #{itemStatus,jdbcType=INTEGER}, #{deleteIs,jdbcType=INTEGER}, 
+      #{itemTag,jdbcType=VARCHAR}, #{itemStatus,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, 
       #{itemModel,jdbcType=INTEGER}, #{shopId,jdbcType=BIGINT}, #{audit,jdbcType=INTEGER}, 
       #{summary,jdbcType=LONGVARCHAR})
   </insert>
@@ -213,8 +201,8 @@
       <if test="itemStatus != null" >
         item_status,
       </if>
-      <if test="deleteIs != null" >
-        delete_is,
+      <if test="isDelete != null" >
+        is_delete,
       </if>
       <if test="itemModel != null" >
         item_model,
@@ -234,7 +222,7 @@
         #{itemId,jdbcType=BIGINT},
       </if>
       <if test="nameId != null" >
-        #{nameId,jdbcType=BIGINT},
+        #{nameId,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
         #{price,jdbcType=VARCHAR},
@@ -272,8 +260,8 @@
       <if test="itemStatus != null" >
         #{itemStatus,jdbcType=INTEGER},
       </if>
-      <if test="deleteIs != null" >
-        #{deleteIs,jdbcType=INTEGER},
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="itemModel != null" >
         #{itemModel,jdbcType=INTEGER},
@@ -302,7 +290,7 @@
         item_id = #{record.itemId,jdbcType=BIGINT},
       </if>
       <if test="record.nameId != null" >
-        name_id = #{record.nameId,jdbcType=BIGINT},
+        name_id = #{record.nameId,jdbcType=INTEGER},
       </if>
       <if test="record.price != null" >
         price = #{record.price,jdbcType=VARCHAR},
@@ -340,8 +328,8 @@
       <if test="record.itemStatus != null" >
         item_status = #{record.itemStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.deleteIs != null" >
-        delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
       </if>
       <if test="record.itemModel != null" >
         item_model = #{record.itemModel,jdbcType=INTEGER},
@@ -363,7 +351,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update item
     set item_id = #{record.itemId,jdbcType=BIGINT},
-      name_id = #{record.nameId,jdbcType=BIGINT},
+      name_id = #{record.nameId,jdbcType=INTEGER},
       price = #{record.price,jdbcType=VARCHAR},
       sales_price = #{record.salesPrice,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
@@ -376,7 +364,7 @@
       item_name = #{record.itemName,jdbcType=VARCHAR},
       item_tag = #{record.itemTag,jdbcType=VARCHAR},
       item_status = #{record.itemStatus,jdbcType=INTEGER},
-      delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
       item_model = #{record.itemModel,jdbcType=INTEGER},
       shop_id = #{record.shopId,jdbcType=BIGINT},
       audit = #{record.audit,jdbcType=INTEGER},
@@ -388,7 +376,7 @@
   <update id="updateByExample" parameterType="map" >
     update item
     set item_id = #{record.itemId,jdbcType=BIGINT},
-      name_id = #{record.nameId,jdbcType=BIGINT},
+      name_id = #{record.nameId,jdbcType=INTEGER},
       price = #{record.price,jdbcType=VARCHAR},
       sales_price = #{record.salesPrice,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
@@ -401,7 +389,7 @@
       item_name = #{record.itemName,jdbcType=VARCHAR},
       item_tag = #{record.itemTag,jdbcType=VARCHAR},
       item_status = #{record.itemStatus,jdbcType=INTEGER},
-      delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
       item_model = #{record.itemModel,jdbcType=INTEGER},
       shop_id = #{record.shopId,jdbcType=BIGINT},
       audit = #{record.audit,jdbcType=INTEGER}
@@ -413,7 +401,7 @@
     update item
     <set >
       <if test="nameId != null" >
-        name_id = #{nameId,jdbcType=BIGINT},
+        name_id = #{nameId,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=VARCHAR},
@@ -451,8 +439,8 @@
       <if test="itemStatus != null" >
         item_status = #{itemStatus,jdbcType=INTEGER},
       </if>
-      <if test="deleteIs != null" >
-        delete_is = #{deleteIs,jdbcType=INTEGER},
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="itemModel != null" >
         item_model = #{itemModel,jdbcType=INTEGER},
@@ -471,7 +459,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.aishidai.app.model.pojo.ItemDO" >
     update item
-    set name_id = #{nameId,jdbcType=BIGINT},
+    set name_id = #{nameId,jdbcType=INTEGER},
       price = #{price,jdbcType=VARCHAR},
       sales_price = #{salesPrice,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
@@ -484,7 +472,7 @@
       item_name = #{itemName,jdbcType=VARCHAR},
       item_tag = #{itemTag,jdbcType=VARCHAR},
       item_status = #{itemStatus,jdbcType=INTEGER},
-      delete_is = #{deleteIs,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
       item_model = #{itemModel,jdbcType=INTEGER},
       shop_id = #{shopId,jdbcType=BIGINT},
       audit = #{audit,jdbcType=INTEGER},
@@ -493,7 +481,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ItemDO" >
     update item
-    set name_id = #{nameId,jdbcType=BIGINT},
+    set name_id = #{nameId,jdbcType=INTEGER},
       price = #{price,jdbcType=VARCHAR},
       sales_price = #{salesPrice,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
@@ -506,23 +494,10 @@
       item_name = #{itemName,jdbcType=VARCHAR},
       item_tag = #{itemTag,jdbcType=VARCHAR},
       item_status = #{itemStatus,jdbcType=INTEGER},
-      delete_is = #{deleteIs,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
       item_model = #{itemModel,jdbcType=INTEGER},
       shop_id = #{shopId,jdbcType=BIGINT},
       audit = #{audit,jdbcType=INTEGER}
     where item_id = #{itemId,jdbcType=BIGINT}
   </update>
-
-  <select id="itemList" resultMap="ItemVO"  parameterType="com.aishidai.app.model.query.QueryItem">
-
-     select * ,
-    (SELECT max(b.price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) maxPrice,
-    (SELECT min(b.price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) minPrice,
-    (SELECT max(b.sales_price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) maxSalesPrice,
-    (SELECT min(b.sales_price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) minSalesPrice
-
-    from item i
- limit #{stratRow},#{pageSize}
-
-  </select>
 </mapper>

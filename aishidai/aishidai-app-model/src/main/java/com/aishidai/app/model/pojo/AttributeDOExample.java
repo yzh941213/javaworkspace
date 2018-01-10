@@ -115,52 +115,52 @@ public class AttributeDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdEqualTo(Integer value) {
+        public Criteria andAttributeIdEqualTo(Long value) {
             addCriterion("attribute_id =", value, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdNotEqualTo(Integer value) {
+        public Criteria andAttributeIdNotEqualTo(Long value) {
             addCriterion("attribute_id <>", value, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdGreaterThan(Integer value) {
+        public Criteria andAttributeIdGreaterThan(Long value) {
             addCriterion("attribute_id >", value, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andAttributeIdGreaterThanOrEqualTo(Long value) {
             addCriterion("attribute_id >=", value, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdLessThan(Integer value) {
+        public Criteria andAttributeIdLessThan(Long value) {
             addCriterion("attribute_id <", value, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdLessThanOrEqualTo(Integer value) {
+        public Criteria andAttributeIdLessThanOrEqualTo(Long value) {
             addCriterion("attribute_id <=", value, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdIn(List<Integer> values) {
+        public Criteria andAttributeIdIn(List<Long> values) {
             addCriterion("attribute_id in", values, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdNotIn(List<Integer> values) {
+        public Criteria andAttributeIdNotIn(List<Long> values) {
             addCriterion("attribute_id not in", values, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdBetween(Integer value1, Integer value2) {
+        public Criteria andAttributeIdBetween(Long value1, Long value2) {
             addCriterion("attribute_id between", value1, value2, "attributeId");
             return (Criteria) this;
         }
 
-        public Criteria andAttributeIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andAttributeIdNotBetween(Long value1, Long value2) {
             addCriterion("attribute_id not between", value1, value2, "attributeId");
             return (Criteria) this;
         }
@@ -792,6 +792,66 @@ public class AttributeDOExample {
 
         public Criteria andCategoryNotBetween(Integer value1, Integer value2) {
             addCriterion("category not between", value1, value2, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopIsNull() {
+            addCriterion("device_shop is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopIsNotNull() {
+            addCriterion("device_shop is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopEqualTo(Integer value) {
+            addCriterion("device_shop =", value, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopNotEqualTo(Integer value) {
+            addCriterion("device_shop <>", value, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopGreaterThan(Integer value) {
+            addCriterion("device_shop >", value, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopGreaterThanOrEqualTo(Integer value) {
+            addCriterion("device_shop >=", value, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopLessThan(Integer value) {
+            addCriterion("device_shop <", value, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopLessThanOrEqualTo(Integer value) {
+            addCriterion("device_shop <=", value, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopIn(List<Integer> values) {
+            addCriterion("device_shop in", values, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopNotIn(List<Integer> values) {
+            addCriterion("device_shop not in", values, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopBetween(Integer value1, Integer value2) {
+            addCriterion("device_shop between", value1, value2, "deviceShop");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceShopNotBetween(Integer value1, Integer value2) {
+            addCriterion("device_shop not between", value1, value2, "deviceShop");
             return (Criteria) this;
         }
     }

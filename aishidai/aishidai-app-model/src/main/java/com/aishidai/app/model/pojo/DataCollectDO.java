@@ -3,7 +3,7 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class DataCollectDO {
-    private Integer id;
+    private Long id;
 
     private Long bodyData;
 
@@ -55,11 +55,11 @@ public class DataCollectDO {
 
     private Date updated;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

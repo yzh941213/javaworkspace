@@ -7,7 +7,7 @@ public class FavoriteDO {
 
     private Long userId;
 
-    private Short relType;
+    private Integer relType;
 
     private Long relId;
 
@@ -17,7 +17,7 @@ public class FavoriteDO {
 
     private Date updated;
 
-    private Short favType;
+    private Integer favType;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class FavoriteDO {
         this.userId = userId;
     }
 
-    public Short getRelType() {
+    public Integer getRelType() {
         return relType;
     }
 
-    public void setRelType(Short relType) {
+    public void setRelType(Integer relType) {
         this.relType = relType;
     }
 
@@ -75,11 +75,11 @@ public class FavoriteDO {
         this.updated = updated;
     }
 
-    public Short getFavType() {
+    public Integer getFavType() {
         return favType;
     }
 
-    public void setFavType(Short favType) {
+    public void setFavType(Integer favType) {
         this.favType = favType;
     }
 }

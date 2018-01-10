@@ -1,6 +1,5 @@
 package com.aishidai.app.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,10 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aishidai.app.dao.UsersDOMapper;
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.dto.SubordinateDTO;
 import com.aishidai.app.model.dto.UsersListDTO;
-import com.aishidai.app.model.pojo.MemberDO;
-import com.aishidai.app.model.pojo.UsersDO;
 import com.aishidai.app.model.query.UsersQuery;
 import com.aishidai.app.service.UsersService;
 

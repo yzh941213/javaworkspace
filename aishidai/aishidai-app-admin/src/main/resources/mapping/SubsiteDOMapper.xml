@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.SubsiteDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.SubsiteDO" >
-    <id column="sub_id" property="subId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="sub_id" property="subId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="sub_number" property="subNumber" jdbcType="VARCHAR" />
     <result column="created" property="created" jdbcType="INTEGER" />
     <result column="updated" property="updated" jdbcType="INTEGER" />
@@ -90,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from subsite
-    where sub_id = #{subId,jdbcType=INTEGER}
+    where sub_id = #{subId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from subsite
-    where sub_id = #{subId,jdbcType=INTEGER}
+    where sub_id = #{subId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.SubsiteDOExample" >
     delete from subsite
@@ -111,7 +111,7 @@
       created, updated, sub_type, 
       status, expiration_start, expiration_end, 
       shops_id)
-    values (#{subId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{subNumber,jdbcType=VARCHAR}, 
+    values (#{subId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{subNumber,jdbcType=VARCHAR}, 
       #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{subType,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{expirationStart,jdbcType=VARCHAR}, #{expirationEnd,jdbcType=VARCHAR}, 
       #{shopsId,jdbcType=BIGINT})
@@ -152,10 +152,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="subId != null" >
-        #{subId,jdbcType=INTEGER},
+        #{subId,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="subNumber != null" >
         #{subNumber,jdbcType=VARCHAR},
@@ -193,10 +193,10 @@
     update subsite
     <set >
       <if test="record.subId != null" >
-        sub_id = #{record.subId,jdbcType=INTEGER},
+        sub_id = #{record.subId,jdbcType=BIGINT},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.subNumber != null" >
         sub_number = #{record.subNumber,jdbcType=VARCHAR},
@@ -229,8 +229,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update subsite
-    set sub_id = #{record.subId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+    set sub_id = #{record.subId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       sub_number = #{record.subNumber,jdbcType=VARCHAR},
       created = #{record.created,jdbcType=INTEGER},
       updated = #{record.updated,jdbcType=INTEGER},
@@ -247,7 +247,7 @@
     update subsite
     <set >
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="subNumber != null" >
         sub_number = #{subNumber,jdbcType=VARCHAR},
@@ -274,11 +274,11 @@
         shops_id = #{shopsId,jdbcType=BIGINT},
       </if>
     </set>
-    where sub_id = #{subId,jdbcType=INTEGER}
+    where sub_id = #{subId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.SubsiteDO" >
     update subsite
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       sub_number = #{subNumber,jdbcType=VARCHAR},
       created = #{created,jdbcType=INTEGER},
       updated = #{updated,jdbcType=INTEGER},
@@ -287,6 +287,6 @@
       expiration_start = #{expirationStart,jdbcType=VARCHAR},
       expiration_end = #{expirationEnd,jdbcType=VARCHAR},
       shops_id = #{shopsId,jdbcType=BIGINT}
-    where sub_id = #{subId,jdbcType=INTEGER}
+    where sub_id = #{subId,jdbcType=BIGINT}
   </update>
 </mapper>

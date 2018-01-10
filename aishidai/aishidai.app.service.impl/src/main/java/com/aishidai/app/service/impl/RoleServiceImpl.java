@@ -8,11 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.RoleDOMapper;
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.RoleDO;
 import com.aishidai.app.model.pojo.RoleDOExample;
 import com.aishidai.app.service.RoleService;
-
-import javax.annotation.Resource;
 
 import java.util.List;
 

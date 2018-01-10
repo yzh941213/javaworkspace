@@ -10,7 +10,7 @@ public interface AttributeDOMapper {
 
     int deleteByExample(AttributeDOExample example);
 
-    int deleteByPrimaryKey(Integer attributeId);
+    int deleteByPrimaryKey(Long attributeId);
 
     int insert(AttributeDO record);
 
@@ -18,7 +18,7 @@ public interface AttributeDOMapper {
 
     List<AttributeDO> selectByExample(AttributeDOExample example);
 
-    AttributeDO selectByPrimaryKey(Integer attributeId);
+    AttributeDO selectByPrimaryKey(Long attributeId);
 
     int updateByExampleSelective(@Param("record") AttributeDO record, @Param("example") AttributeDOExample example);
 
@@ -27,8 +27,4 @@ public interface AttributeDOMapper {
     int updateByPrimaryKeySelective(AttributeDO record);
 
     int updateByPrimaryKey(AttributeDO record);
-
-    List<AttributeDO> getAllSubclassByAttrIdI(Integer attributeId);
-
-     List<AttributeDO> getAll();
 }

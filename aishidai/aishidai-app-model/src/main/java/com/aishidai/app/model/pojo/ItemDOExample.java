@@ -175,52 +175,52 @@ public class ItemDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameIdEqualTo(Long value) {
+        public Criteria andNameIdEqualTo(Integer value) {
             addCriterion("name_id =", value, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdNotEqualTo(Long value) {
+        public Criteria andNameIdNotEqualTo(Integer value) {
             addCriterion("name_id <>", value, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdGreaterThan(Long value) {
+        public Criteria andNameIdGreaterThan(Integer value) {
             addCriterion("name_id >", value, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andNameIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("name_id >=", value, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdLessThan(Long value) {
+        public Criteria andNameIdLessThan(Integer value) {
             addCriterion("name_id <", value, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdLessThanOrEqualTo(Long value) {
+        public Criteria andNameIdLessThanOrEqualTo(Integer value) {
             addCriterion("name_id <=", value, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdIn(List<Long> values) {
+        public Criteria andNameIdIn(List<Integer> values) {
             addCriterion("name_id in", values, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdNotIn(List<Long> values) {
+        public Criteria andNameIdNotIn(List<Integer> values) {
             addCriterion("name_id not in", values, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdBetween(Long value1, Long value2) {
+        public Criteria andNameIdBetween(Integer value1, Integer value2) {
             addCriterion("name_id between", value1, value2, "nameId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIdNotBetween(Long value1, Long value2) {
+        public Criteria andNameIdNotBetween(Integer value1, Integer value2) {
             addCriterion("name_id not between", value1, value2, "nameId");
             return (Criteria) this;
         }
@@ -1015,63 +1015,63 @@ public class ItemDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsIsNull() {
-            addCriterion("delete_is is null");
+        public Criteria andIsDeleteIsNull() {
+            addCriterion("is_delete is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsIsNotNull() {
-            addCriterion("delete_is is not null");
+        public Criteria andIsDeleteIsNotNull() {
+            addCriterion("is_delete is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsEqualTo(Integer value) {
-            addCriterion("delete_is =", value, "deleteIs");
+        public Criteria andIsDeleteEqualTo(Integer value) {
+            addCriterion("is_delete =", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsNotEqualTo(Integer value) {
-            addCriterion("delete_is <>", value, "deleteIs");
+        public Criteria andIsDeleteNotEqualTo(Integer value) {
+            addCriterion("is_delete <>", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsGreaterThan(Integer value) {
-            addCriterion("delete_is >", value, "deleteIs");
+        public Criteria andIsDeleteGreaterThan(Integer value) {
+            addCriterion("is_delete >", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsGreaterThanOrEqualTo(Integer value) {
-            addCriterion("delete_is >=", value, "deleteIs");
+        public Criteria andIsDeleteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_delete >=", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsLessThan(Integer value) {
-            addCriterion("delete_is <", value, "deleteIs");
+        public Criteria andIsDeleteLessThan(Integer value) {
+            addCriterion("is_delete <", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsLessThanOrEqualTo(Integer value) {
-            addCriterion("delete_is <=", value, "deleteIs");
+        public Criteria andIsDeleteLessThanOrEqualTo(Integer value) {
+            addCriterion("is_delete <=", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsIn(List<Integer> values) {
-            addCriterion("delete_is in", values, "deleteIs");
+        public Criteria andIsDeleteIn(List<Integer> values) {
+            addCriterion("is_delete in", values, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsNotIn(List<Integer> values) {
-            addCriterion("delete_is not in", values, "deleteIs");
+        public Criteria andIsDeleteNotIn(List<Integer> values) {
+            addCriterion("is_delete not in", values, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsBetween(Integer value1, Integer value2) {
-            addCriterion("delete_is between", value1, value2, "deleteIs");
+        public Criteria andIsDeleteBetween(Integer value1, Integer value2) {
+            addCriterion("is_delete between", value1, value2, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteIsNotBetween(Integer value1, Integer value2) {
-            addCriterion("delete_is not between", value1, value2, "deleteIs");
+        public Criteria andIsDeleteNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_delete not between", value1, value2, "isDelete");
             return (Criteria) this;
         }
 

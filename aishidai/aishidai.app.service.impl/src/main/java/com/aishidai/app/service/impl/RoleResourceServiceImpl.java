@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aishidai.app.dao.RoleResourceDOMapper;
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.RoleResourceDO;
 import com.aishidai.app.service.RoleResourceService;
 
 

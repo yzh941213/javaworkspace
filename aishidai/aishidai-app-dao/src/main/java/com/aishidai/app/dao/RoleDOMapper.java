@@ -27,8 +27,4 @@ public interface RoleDOMapper {
     int updateByPrimaryKeySelective(RoleDO record);
 
     int updateByPrimaryKey(RoleDO record);
-    
-    
-    long insertRole(RoleDO record);
-    
 }

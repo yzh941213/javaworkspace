@@ -10,7 +10,7 @@ public interface AnnounceDOMapper {
 
     int deleteByExample(AnnounceDOExample example);
 
-    int deleteByPrimaryKey(Integer anid);
+    int deleteByPrimaryKey(Long id);
 
     int insert(AnnounceDO record);
 
@@ -20,7 +20,7 @@ public interface AnnounceDOMapper {
 
     List<AnnounceDO> selectByExample(AnnounceDOExample example);
 
-    AnnounceDO selectByPrimaryKey(Integer anid);
+    AnnounceDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") AnnounceDO record, @Param("example") AnnounceDOExample example);
 

@@ -5,13 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.ShopsDOMapper;
-import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.ShopsDO;
 import com.aishidai.app.model.pojo.ShopsDOExample;
-import com.aishidai.app.model.query.ShopsQuery;
 import com.aishidai.app.service.ShopService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

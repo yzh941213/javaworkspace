@@ -1,7 +1,6 @@
 package com.aishidai.app.model.pojo;
 
 public class SysUsersDO {
-	
     private Long userId;
 
     private Long roleId;

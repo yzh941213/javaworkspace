@@ -1,7 +1,7 @@
 package com.aishidai.app.model.pojo;
 
 public class TradeOrderLogisticsDO {
-    private Integer id;
+    private Long id;
 
     private String shipTime;
 
@@ -9,13 +9,13 @@ public class TradeOrderLogisticsDO {
 
     private Integer trackingNum;
 
-    private Integer addressId;
+    private Long addressId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,11 +43,11 @@ public class TradeOrderLogisticsDO {
         this.trackingNum = trackingNum;
     }
 
-    public Integer getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Integer addressId) {
+    public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
 }

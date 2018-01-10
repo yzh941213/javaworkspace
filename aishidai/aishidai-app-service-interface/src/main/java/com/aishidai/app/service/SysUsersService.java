@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.ResourceDO;
-import com.aishidai.app.model.pojo.SysUsersDO;
 
 @Service
 public interface SysUsersService {

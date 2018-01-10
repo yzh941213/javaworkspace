@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.UsersAddressDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UsersAddressDO" >
-    <id column="address_id" property="addressId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="address_id" property="addressId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="country" property="country" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
@@ -94,15 +94,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from users_address
-    where address_id = #{addressId,jdbcType=INTEGER}
+    where address_id = #{addressId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from users_address
-    where address_id = #{addressId,jdbcType=INTEGER}
+    where address_id = #{addressId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.UsersAddressDOExample" >
     delete from users_address
@@ -116,7 +116,7 @@
       address, zip, mobile, 
       realname, is_default, created, 
       updated, status)
-    values (#{addressId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{country,jdbcType=VARCHAR}, 
+    values (#{addressId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{country,jdbcType=VARCHAR}, 
       #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{realname,jdbcType=VARCHAR}, #{isDefault,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, 
@@ -170,10 +170,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="addressId != null" >
-        #{addressId,jdbcType=INTEGER},
+        #{addressId,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="country != null" >
         #{country,jdbcType=VARCHAR},
@@ -223,10 +223,10 @@
     update users_address
     <set >
       <if test="record.addressId != null" >
-        address_id = #{record.addressId,jdbcType=INTEGER},
+        address_id = #{record.addressId,jdbcType=BIGINT},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.country != null" >
         country = #{record.country,jdbcType=VARCHAR},
@@ -271,8 +271,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update users_address
-    set address_id = #{record.addressId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+    set address_id = #{record.addressId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       country = #{record.country,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
       city = #{record.city,jdbcType=VARCHAR},
@@ -293,7 +293,7 @@
     update users_address
     <set >
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="country != null" >
         country = #{country,jdbcType=VARCHAR},
@@ -332,11 +332,11 @@
         status = #{status,jdbcType=INTEGER},
       </if>
     </set>
-    where address_id = #{addressId,jdbcType=INTEGER}
+    where address_id = #{addressId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UsersAddressDO" >
     update users_address
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       country = #{country,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
@@ -349,6 +349,6 @@
       created = #{created,jdbcType=INTEGER},
       updated = #{updated,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER}
-    where address_id = #{addressId,jdbcType=INTEGER}
+    where address_id = #{addressId,jdbcType=BIGINT}
   </update>
 </mapper>

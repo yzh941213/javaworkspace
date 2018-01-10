@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.ShopCommissionDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopCommissionDO" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="barbershop_commission" property="barbershopCommission" jdbcType="INTEGER" />
     <result column="distributor_id" property="distributorId" jdbcType="BIGINT" />
     <result column="distributor_name" property="distributorName" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
     <result column="create_name" property="createName" jdbcType="VARCHAR" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
-    <result column="delete_is" property="deleteIs" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,7 +78,7 @@
   <sql id="Base_Column_List" >
     id, barbershop_commission, distributor_id, distributor_name, distributor_commission, 
     shop_name, shop_id, type, maker_commission, create_id, create_name, created, updated, 
-    delete_is
+    is_delete
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ShopCommissionDOExample" >
     select
@@ -95,15 +95,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from shop_commission
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from shop_commission
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.ShopCommissionDOExample" >
     delete from shop_commission
@@ -116,13 +116,13 @@
       distributor_name, distributor_commission, 
       shop_name, shop_id, type, 
       maker_commission, create_id, create_name, 
-      created, updated, delete_is
+      created, updated, is_delete
       )
-    values (#{id,jdbcType=VARCHAR}, #{barbershopCommission,jdbcType=INTEGER}, #{distributorId,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{barbershopCommission,jdbcType=INTEGER}, #{distributorId,jdbcType=BIGINT}, 
       #{distributorName,jdbcType=VARCHAR}, #{distributorCommission,jdbcType=INTEGER}, 
       #{shopName,jdbcType=VARCHAR}, #{shopId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
       #{makerCommission,jdbcType=INTEGER}, #{createId,jdbcType=BIGINT}, #{createName,jdbcType=VARCHAR}, 
-      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{deleteIs,jdbcType=INTEGER}
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopCommissionDO" >
@@ -167,13 +167,13 @@
       <if test="updated != null" >
         updated,
       </if>
-      <if test="deleteIs != null" >
-        delete_is,
+      <if test="isDelete != null" >
+        is_delete,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="barbershopCommission != null" >
         #{barbershopCommission,jdbcType=INTEGER},
@@ -211,8 +211,8 @@
       <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteIs != null" >
-        #{deleteIs,jdbcType=INTEGER},
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -226,7 +226,7 @@
     update shop_commission
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=VARCHAR},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.barbershopCommission != null" >
         barbershop_commission = #{record.barbershopCommission,jdbcType=INTEGER},
@@ -264,8 +264,8 @@
       <if test="record.updated != null" >
         updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.deleteIs != null" >
-        delete_is = #{record.deleteIs,jdbcType=INTEGER},
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -274,7 +274,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update shop_commission
-    set id = #{record.id,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=BIGINT},
       barbershop_commission = #{record.barbershopCommission,jdbcType=INTEGER},
       distributor_id = #{record.distributorId,jdbcType=BIGINT},
       distributor_name = #{record.distributorName,jdbcType=VARCHAR},
@@ -287,7 +287,7 @@
       create_name = #{record.createName,jdbcType=VARCHAR},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
-      delete_is = #{record.deleteIs,jdbcType=INTEGER}
+      is_delete = #{record.isDelete,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -331,11 +331,11 @@
       <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteIs != null" >
-        delete_is = #{deleteIs,jdbcType=INTEGER},
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.ShopCommissionDO" >
     update shop_commission
@@ -351,7 +351,7 @@
       create_name = #{createName,jdbcType=VARCHAR},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
-      delete_is = #{deleteIs,jdbcType=INTEGER}
-    where id = #{id,jdbcType=VARCHAR}
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

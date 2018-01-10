@@ -10,7 +10,7 @@ public interface SubsiteDOMapper {
 
     int deleteByExample(SubsiteDOExample example);
 
-    int deleteByPrimaryKey(Integer subId);
+    int deleteByPrimaryKey(Long subId);
 
     int insert(SubsiteDO record);
 
@@ -18,7 +18,7 @@ public interface SubsiteDOMapper {
 
     List<SubsiteDO> selectByExample(SubsiteDOExample example);
 
-    SubsiteDO selectByPrimaryKey(Integer subId);
+    SubsiteDO selectByPrimaryKey(Long subId);
 
     int updateByExampleSelective(@Param("record") SubsiteDO record, @Param("example") SubsiteDOExample example);
 

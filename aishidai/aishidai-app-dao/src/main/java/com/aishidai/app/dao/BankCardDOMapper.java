@@ -10,7 +10,7 @@ public interface BankCardDOMapper {
 
     int deleteByExample(BankCardDOExample example);
 
-    int deleteByPrimaryKey(Integer cardId);
+    int deleteByPrimaryKey(Long cardId);
 
     int insert(BankCardDO record);
 
@@ -18,7 +18,7 @@ public interface BankCardDOMapper {
 
     List<BankCardDO> selectByExample(BankCardDOExample example);
 
-    BankCardDO selectByPrimaryKey(Integer cardId);
+    BankCardDO selectByPrimaryKey(Long cardId);
 
     int updateByExampleSelective(@Param("record") BankCardDO record, @Param("example") BankCardDOExample example);
 

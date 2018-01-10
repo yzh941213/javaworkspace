@@ -5,7 +5,7 @@ import java.util.Date;
 public class ItemDO {
     private Long itemId;
 
-    private Long nameId;
+    private Integer nameId;
 
     private String price;
 
@@ -31,7 +31,7 @@ public class ItemDO {
 
     private Integer itemStatus;
 
-    private Integer deleteIs;
+    private Integer isDelete;
 
     private Integer itemModel;
 
@@ -49,11 +49,11 @@ public class ItemDO {
         this.itemId = itemId;
     }
 
-    public Long getNameId() {
+    public Integer getNameId() {
         return nameId;
     }
 
-    public void setNameId(Long nameId) {
+    public void setNameId(Integer nameId) {
         this.nameId = nameId;
     }
 
@@ -153,12 +153,12 @@ public class ItemDO {
         this.itemStatus = itemStatus;
     }
 
-    public Integer getDeleteIs() {
-        return deleteIs;
+    public Integer getIsDelete() {
+        return isDelete;
     }
 
-    public void setDeleteIs(Integer deleteIs) {
-        this.deleteIs = deleteIs;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
     public Integer getItemModel() {

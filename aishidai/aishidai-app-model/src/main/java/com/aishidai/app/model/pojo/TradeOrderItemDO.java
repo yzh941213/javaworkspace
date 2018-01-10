@@ -1,15 +1,15 @@
 package com.aishidai.app.model.pojo;
 
 public class TradeOrderItemDO {
-    private Integer id;
+    private Long orderItemId;
 
-    private Integer skuId;
+    private Long skuId;
 
-    private Integer colorId;
+    private Long colorId;
 
-    private Integer sizeId;
+    private Long sizeId;
 
-    private Integer itemId;
+    private Long itemId;
 
     private Integer number;
 
@@ -21,43 +21,43 @@ public class TradeOrderItemDO {
 
     private String itemName;
 
-    public Integer getId() {
-        return id;
+    public Long getOrderItemId() {
+        return orderItemId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setOrderItemId(Long orderItemId) {
+        this.orderItemId = orderItemId;
     }
 
-    public Integer getSkuId() {
+    public Long getSkuId() {
         return skuId;
     }
 
-    public void setSkuId(Integer skuId) {
+    public void setSkuId(Long skuId) {
         this.skuId = skuId;
     }
 
-    public Integer getColorId() {
+    public Long getColorId() {
         return colorId;
     }
 
-    public void setColorId(Integer colorId) {
+    public void setColorId(Long colorId) {
         this.colorId = colorId;
     }
 
-    public Integer getSizeId() {
+    public Long getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(Integer sizeId) {
+    public void setSizeId(Long sizeId) {
         this.sizeId = sizeId;
     }
 
-    public Integer getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 

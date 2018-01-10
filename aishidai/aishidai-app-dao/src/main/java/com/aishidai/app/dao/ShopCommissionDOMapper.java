@@ -10,7 +10,7 @@ public interface ShopCommissionDOMapper {
 
     int deleteByExample(ShopCommissionDOExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(ShopCommissionDO record);
 
@@ -18,7 +18,7 @@ public interface ShopCommissionDOMapper {
 
     List<ShopCommissionDO> selectByExample(ShopCommissionDOExample example);
 
-    ShopCommissionDO selectByPrimaryKey(String id);
+    ShopCommissionDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") ShopCommissionDO record, @Param("example") ShopCommissionDOExample example);
 

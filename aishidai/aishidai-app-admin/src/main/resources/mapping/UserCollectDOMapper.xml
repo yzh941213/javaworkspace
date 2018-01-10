@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.UserCollectDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.UserCollectDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="mac" property="mac" jdbcType="VARCHAR" />
     <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
     <result column="out_time" property="outTime" jdbcType="TIMESTAMP" />
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from user_collect
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from user_collect
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.UserCollectDOExample" >
     delete from user_collect
@@ -105,7 +105,7 @@
     insert into user_collect (id, user_id, mac, 
       login_time, out_time, online_time
       )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{mac,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{mac,jdbcType=VARCHAR}, 
       #{loginTime,jdbcType=TIMESTAMP}, #{outTime,jdbcType=TIMESTAMP}, #{onlineTime,jdbcType=VARCHAR}
       )
   </insert>
@@ -133,10 +133,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="mac != null" >
         #{mac,jdbcType=VARCHAR},
@@ -162,10 +162,10 @@
     update user_collect
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.mac != null" >
         mac = #{record.mac,jdbcType=VARCHAR},
@@ -186,8 +186,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update user_collect
-    set id = #{record.id,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       mac = #{record.mac,jdbcType=VARCHAR},
       login_time = #{record.loginTime,jdbcType=TIMESTAMP},
       out_time = #{record.outTime,jdbcType=TIMESTAMP},
@@ -200,7 +200,7 @@
     update user_collect
     <set >
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="mac != null" >
         mac = #{mac,jdbcType=VARCHAR},
@@ -215,15 +215,15 @@
         online_time = #{onlineTime,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.UserCollectDO" >
     update user_collect
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       mac = #{mac,jdbcType=VARCHAR},
       login_time = #{loginTime,jdbcType=TIMESTAMP},
       out_time = #{outTime,jdbcType=TIMESTAMP},
       online_time = #{onlineTime,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

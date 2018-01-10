@@ -3,7 +3,7 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class HqCommissionDO {
-    private String id;
+    private Long id;
 
     private Integer hqCommission;
 
@@ -21,14 +21,14 @@ public class HqCommissionDO {
 
     private Date updated;
 
-    private Integer deleteIs;
+    private Integer isDelete;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getHqCommission() {
@@ -95,11 +95,11 @@ public class HqCommissionDO {
         this.updated = updated;
     }
 
-    public Integer getDeleteIs() {
-        return deleteIs;
+    public Integer getIsDelete() {
+        return isDelete;
     }
 
-    public void setDeleteIs(Integer deleteIs) {
-        this.deleteIs = deleteIs;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

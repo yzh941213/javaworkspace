@@ -114,52 +114,52 @@ public class TradeOrderLogisticsDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -374,52 +374,52 @@ public class TradeOrderLogisticsDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdEqualTo(Integer value) {
+        public Criteria andAddressIdEqualTo(Long value) {
             addCriterion("address_id =", value, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdNotEqualTo(Integer value) {
+        public Criteria andAddressIdNotEqualTo(Long value) {
             addCriterion("address_id <>", value, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdGreaterThan(Integer value) {
+        public Criteria andAddressIdGreaterThan(Long value) {
             addCriterion("address_id >", value, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andAddressIdGreaterThanOrEqualTo(Long value) {
             addCriterion("address_id >=", value, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdLessThan(Integer value) {
+        public Criteria andAddressIdLessThan(Long value) {
             addCriterion("address_id <", value, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdLessThanOrEqualTo(Integer value) {
+        public Criteria andAddressIdLessThanOrEqualTo(Long value) {
             addCriterion("address_id <=", value, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdIn(List<Integer> values) {
+        public Criteria andAddressIdIn(List<Long> values) {
             addCriterion("address_id in", values, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdNotIn(List<Integer> values) {
+        public Criteria andAddressIdNotIn(List<Long> values) {
             addCriterion("address_id not in", values, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdBetween(Integer value1, Integer value2) {
+        public Criteria andAddressIdBetween(Long value1, Long value2) {
             addCriterion("address_id between", value1, value2, "addressId");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andAddressIdNotBetween(Long value1, Long value2) {
             addCriterion("address_id not between", value1, value2, "addressId");
             return (Criteria) this;
         }

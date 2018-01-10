@@ -3,9 +3,9 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class BankCardDO {
-    private Integer cardId;
+    private Long cardId;
 
-    private Integer userId;
+    private Long userId;
 
     private String name;
 
@@ -25,19 +25,19 @@ public class BankCardDO {
 
     private String mobile;
 
-    public Integer getCardId() {
+    public Long getCardId() {
         return cardId;
     }
 
-    public void setCardId(Integer cardId) {
+    public void setCardId(Long cardId) {
         this.cardId = cardId;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface SysUsersDOMapper {
-	
     int countByExample(SysUsersDOExample example);
 
     int deleteByExample(SysUsersDOExample example);
@@ -14,7 +13,7 @@ public interface SysUsersDOMapper {
     int deleteByPrimaryKey(Long userId);
 
     int insert(SysUsersDO record);
-    
+
     int insertSelective(SysUsersDO record);
 
     List<SysUsersDO> selectByExample(SysUsersDOExample example);
@@ -28,8 +27,4 @@ public interface SysUsersDOMapper {
     int updateByPrimaryKeySelective(SysUsersDO record);
 
     int updateByPrimaryKey(SysUsersDO record);
-    
-    
-    int insertSysUserDO(SysUsersDO record);
-    
 }

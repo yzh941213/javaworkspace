@@ -1,9 +1,9 @@
 package com.aishidai.app.model.pojo;
 
 public class UsersAddressDO {
-    private Integer addressId;
+    private Long addressId;
 
-    private Integer userId;
+    private Long userId;
 
     private String country;
 
@@ -29,19 +29,19 @@ public class UsersAddressDO {
 
     private Integer status;
 
-    public Integer getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Integer addressId) {
+    public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

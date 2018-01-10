@@ -1,7 +1,6 @@
 package com.aishidai.app.controller;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.RoleDO;
 import com.aishidai.app.service.RoleService;
 import com.aishidai.app.utils.EnvConfig;
 import com.aishidai.app.utils.JniInterface;

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.ResourceDOMapper" >
-
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ResourceDO" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -352,67 +351,4 @@
       orderNum = #{ordernum,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  
-  
-  
-	<select id="queryFirstMenuByUserId" parameterType="com.aishidai.app.model.query.ResourceQuery" 
-		resultType="com.aishidai.app.model.pojo.ResourceDO">
-			SELECT * from resource where categoryId = 1 and isDeleted != 1 and id in
-			(SELECT DISTINCT resourceId from role_resource where isDeleted != 1
-			      and roleId in (SELECT role_id FROM sysusers_role
-		          WHERE sysusers_id = #{userId} AND is_deleted != 1)) order by orderNum
-	</select>
-	
-	<select id="querySecondMenuByUserId" parameterType="com.aishidai.app.model.query.ResourceQuery" 
-	   		resultType="com.aishidai.app.model.pojo.ResourceDO">
-		SELECT * from resource where categoryId = 2 and isDeleted != 1 and parentId
-		= #{parentId} and id in (SELECT DISTINCT resourceId from role_resource
-		where isDeleted != 1 and roleId in (SELECT role_id FROM sysusers_role
-		WHERE sysusers_id = #{userId} AND is_deleted != 1)) order by orderNum
-	</select>
-	
-	<!--    CDATA[   ]  忽略显示的特殊字符  -->
-
-	<select id="queryAllResource" parameterType="long" resultType="com.aishidai.app.model.pojo.ResourceDO">
-        <![CDATA[
-          SELECT * from resource where isDeleted != 1    ]]>
-	</select>
-	
-	<select id="queryAllResourceByUserId" parameterType="long"
-		resultType="com.aishidai.app.model.pojo.ResourceDO">
-        <![CDATA[ 
-        SELECT * FROM resource WHERE isDeleted != 1 AND id  IN 
-        (SELECT DISTINCT resourceId FROM role_resource 
-                WHERE isDeleted != 1 AND roleId IN 
-                (SELECT role_id FROM sysusers_role 
-                WHERE sysusers_id = #{userId} AND is_deleted != 1))
-          ]]>
-	</select>
-	
-	<!--查询所有的一级菜单，并根据orderNum，界定显示顺序  -->
-	<select id="queryFirstMenu" resultType="com.aishidai.app.model.pojo.ResourceDO">
-		SELECT * from resource where parentId = 0 and isDeleted != 1 
-		order by orderNum
-	</select>
-
-	<!--根据权限的级别，查询相对应级别的权限。并根据orderNum进行排列显示 -->
-	<select id="queryAllMenuByParentId" parameterType="java.lang.Long"
-		resultType="com.aishidai.app.model.pojo.ResourceDO">
-		SELECT * from resource where parentId = #{parentId} and isDeleted != 1 order
-		by orderNum
-	</select>
-
-
-	<select id="queryResourceByRoleId" resultType="com.aishidai.app.model.dto.ResourceDTO"
-		parameterType="long">
-		SELECT r.id,rr.id as role_res_id 
-		from resource r LEFT join 
-		(SELECT id,resourceId 
-		from role_resource where isDeleted != 1 and roleId = #{roleId}) rr 
-		ON r.id = rr.resourceId where r.isDeleted != 1 and r.id
-		in (SELECT DISTINCT resourceId from role_resource where isDeleted != 1
-		and roleId = #{roleId})
-	</select>
-	
-  
 </mapper>

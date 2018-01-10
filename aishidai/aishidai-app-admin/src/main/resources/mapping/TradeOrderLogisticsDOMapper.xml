@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.TradeOrderLogisticsDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="ship_time" property="shipTime" jdbcType="VARCHAR" />
     <result column="express_company" property="expressCompany" jdbcType="VARCHAR" />
     <result column="tracking_num" property="trackingNum" jdbcType="INTEGER" />
-    <result column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="address_id" property="addressId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from trade_order_logistics
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from trade_order_logistics
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDOExample" >
     delete from trade_order_logistics
@@ -103,8 +103,8 @@
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     insert into trade_order_logistics (id, ship_time, express_company, 
       tracking_num, address_id)
-    values (#{id,jdbcType=INTEGER}, #{shipTime,jdbcType=VARCHAR}, #{expressCompany,jdbcType=VARCHAR}, 
-      #{trackingNum,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER})
+    values (#{id,jdbcType=BIGINT}, #{shipTime,jdbcType=VARCHAR}, #{expressCompany,jdbcType=VARCHAR}, 
+      #{trackingNum,jdbcType=INTEGER}, #{addressId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     insert into trade_order_logistics
@@ -127,7 +127,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="shipTime != null" >
         #{shipTime,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
         #{trackingNum,jdbcType=INTEGER},
       </if>
       <if test="addressId != null" >
-        #{addressId,jdbcType=INTEGER},
+        #{addressId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -153,7 +153,7 @@
     update trade_order_logistics
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.shipTime != null" >
         ship_time = #{record.shipTime,jdbcType=VARCHAR},
@@ -165,7 +165,7 @@
         tracking_num = #{record.trackingNum,jdbcType=INTEGER},
       </if>
       <if test="record.addressId != null" >
-        address_id = #{record.addressId,jdbcType=INTEGER},
+        address_id = #{record.addressId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -174,11 +174,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update trade_order_logistics
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       ship_time = #{record.shipTime,jdbcType=VARCHAR},
       express_company = #{record.expressCompany,jdbcType=VARCHAR},
       tracking_num = #{record.trackingNum,jdbcType=INTEGER},
-      address_id = #{record.addressId,jdbcType=INTEGER}
+      address_id = #{record.addressId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -196,17 +196,17 @@
         tracking_num = #{trackingNum,jdbcType=INTEGER},
       </if>
       <if test="addressId != null" >
-        address_id = #{addressId,jdbcType=INTEGER},
+        address_id = #{addressId,jdbcType=BIGINT},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.TradeOrderLogisticsDO" >
     update trade_order_logistics
     set ship_time = #{shipTime,jdbcType=VARCHAR},
       express_company = #{expressCompany,jdbcType=VARCHAR},
       tracking_num = #{trackingNum,jdbcType=INTEGER},
-      address_id = #{addressId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      address_id = #{addressId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

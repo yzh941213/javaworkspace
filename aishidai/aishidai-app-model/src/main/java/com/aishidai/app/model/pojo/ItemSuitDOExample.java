@@ -294,73 +294,63 @@ public class ItemSuitDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andStratificationIsNull() {
-            addCriterion("stratification is null");
+        public Criteria andItemIdIsNull() {
+            addCriterion("item_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationIsNotNull() {
-            addCriterion("stratification is not null");
+        public Criteria andItemIdIsNotNull() {
+            addCriterion("item_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationEqualTo(String value) {
-            addCriterion("stratification =", value, "stratification");
+        public Criteria andItemIdEqualTo(Long value) {
+            addCriterion("item_id =", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationNotEqualTo(String value) {
-            addCriterion("stratification <>", value, "stratification");
+        public Criteria andItemIdNotEqualTo(Long value) {
+            addCriterion("item_id <>", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationGreaterThan(String value) {
-            addCriterion("stratification >", value, "stratification");
+        public Criteria andItemIdGreaterThan(Long value) {
+            addCriterion("item_id >", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationGreaterThanOrEqualTo(String value) {
-            addCriterion("stratification >=", value, "stratification");
+        public Criteria andItemIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("item_id >=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationLessThan(String value) {
-            addCriterion("stratification <", value, "stratification");
+        public Criteria andItemIdLessThan(Long value) {
+            addCriterion("item_id <", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationLessThanOrEqualTo(String value) {
-            addCriterion("stratification <=", value, "stratification");
+        public Criteria andItemIdLessThanOrEqualTo(Long value) {
+            addCriterion("item_id <=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationLike(String value) {
-            addCriterion("stratification like", value, "stratification");
+        public Criteria andItemIdIn(List<Long> values) {
+            addCriterion("item_id in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationNotLike(String value) {
-            addCriterion("stratification not like", value, "stratification");
+        public Criteria andItemIdNotIn(List<Long> values) {
+            addCriterion("item_id not in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationIn(List<String> values) {
-            addCriterion("stratification in", values, "stratification");
+        public Criteria andItemIdBetween(Long value1, Long value2) {
+            addCriterion("item_id between", value1, value2, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andStratificationNotIn(List<String> values) {
-            addCriterion("stratification not in", values, "stratification");
-            return (Criteria) this;
-        }
-
-        public Criteria andStratificationBetween(String value1, String value2) {
-            addCriterion("stratification between", value1, value2, "stratification");
-            return (Criteria) this;
-        }
-
-        public Criteria andStratificationNotBetween(String value1, String value2) {
-            addCriterion("stratification not between", value1, value2, "stratification");
+        public Criteria andItemIdNotBetween(Long value1, Long value2) {
+            addCriterion("item_id not between", value1, value2, "itemId");
             return (Criteria) this;
         }
     }

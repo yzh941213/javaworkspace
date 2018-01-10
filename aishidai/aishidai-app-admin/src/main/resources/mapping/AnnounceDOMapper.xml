@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aishidai.app.dao.AnnounceDOMapper" >
   <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AnnounceDO" >
-    <id column="anId" property="anid" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="isDeleted" property="isdeleted" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -74,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    anId, userId, title, subtitle, image, status, isDeleted, created, updated
+    id, user_id, title, subtitle, image, status, is_deleted, created, updated
   </sql>
   <sql id="Blob_Column_List" >
     summary
@@ -111,17 +111,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from announce
-    where anId = #{anid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from announce
-    where anId = #{anid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.aishidai.app.model.pojo.AnnounceDOExample" >
     delete from announce
@@ -130,23 +130,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.AnnounceDO" >
-    insert into announce (anId, userId, title, 
+    insert into announce (id, user_id, title, 
       subtitle, image, status, 
-      isDeleted, created, updated, 
+      is_deleted, created, updated, 
       summary)
-    values (#{anid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
       #{subtitle,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{isdeleted,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
       #{summary,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.AnnounceDO" >
     insert into announce
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="anid != null" >
-        anId,
+      <if test="id != null" >
+        id,
       </if>
-      <if test="userid != null" >
-        userId,
+      <if test="userId != null" >
+        user_id,
       </if>
       <if test="title != null" >
         title,
@@ -160,8 +160,8 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="isdeleted != null" >
-        isDeleted,
+      <if test="isDeleted != null" >
+        is_deleted,
       </if>
       <if test="created != null" >
         created,
@@ -174,11 +174,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="anid != null" >
-        #{anid,jdbcType=INTEGER},
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -192,8 +192,8 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="isdeleted != null" >
-        #{isdeleted,jdbcType=INTEGER},
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -215,11 +215,11 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update announce
     <set >
-      <if test="record.anid != null" >
-        anId = #{record.anid,jdbcType=INTEGER},
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userid != null" >
-        userId = #{record.userid,jdbcType=INTEGER},
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
@@ -233,8 +233,8 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.isdeleted != null" >
-        isDeleted = #{record.isdeleted,jdbcType=INTEGER},
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       </if>
       <if test="record.created != null" >
         created = #{record.created,jdbcType=TIMESTAMP},
@@ -252,13 +252,13 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update announce
-    set anId = #{record.anid,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       subtitle = #{record.subtitle,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
-      isDeleted = #{record.isdeleted,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
       summary = #{record.summary,jdbcType=LONGVARCHAR}
@@ -268,13 +268,13 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update announce
-    set anId = #{record.anid,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       subtitle = #{record.subtitle,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
-      isDeleted = #{record.isdeleted,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -284,8 +284,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.aishidai.app.model.pojo.AnnounceDO" >
     update announce
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -299,8 +299,8 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="isdeleted != null" >
-        isDeleted = #{isdeleted,jdbcType=INTEGER},
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
@@ -312,31 +312,31 @@
         summary = #{summary,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where anId = #{anid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.aishidai.app.model.pojo.AnnounceDO" >
     update announce
-    set userId = #{userid,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
       subtitle = #{subtitle,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      isDeleted = #{isdeleted,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
       summary = #{summary,jdbcType=LONGVARCHAR}
-    where anId = #{anid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aishidai.app.model.pojo.AnnounceDO" >
     update announce
-    set userId = #{userid,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
       subtitle = #{subtitle,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      isDeleted = #{isdeleted,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}
-    where anId = #{anid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

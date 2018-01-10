@@ -10,7 +10,7 @@ public interface TradeOrderLogisticsDOMapper {
 
     int deleteByExample(TradeOrderLogisticsDOExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TradeOrderLogisticsDO record);
 
@@ -18,7 +18,7 @@ public interface TradeOrderLogisticsDOMapper {
 
     List<TradeOrderLogisticsDO> selectByExample(TradeOrderLogisticsDOExample example);
 
-    TradeOrderLogisticsDO selectByPrimaryKey(Integer id);
+    TradeOrderLogisticsDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") TradeOrderLogisticsDO record, @Param("example") TradeOrderLogisticsDOExample example);
 

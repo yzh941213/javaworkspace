@@ -27,7 +27,7 @@
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
     <result column="invoice_number" property="invoiceNumber" jdbcType="VARCHAR" />
-    <result column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="address_id" property="addressId" jdbcType="BIGINT" />
     <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
     <result column="pay_type" property="payType" jdbcType="INTEGER" />
     <result column="actual_pay" property="actualPay" jdbcType="VARCHAR" />
@@ -149,7 +149,7 @@
       #{expiredTime,jdbcType=INTEGER}, #{cancelReason,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
       #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
       #{isInvoice,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{invoiceTitle,jdbcType=VARCHAR}, 
-      #{invoiceNumber,jdbcType=VARCHAR}, #{addressId,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
+      #{invoiceNumber,jdbcType=VARCHAR}, #{addressId,jdbcType=BIGINT}, #{isDeleted,jdbcType=INTEGER}, 
       #{payType,jdbcType=INTEGER}, #{actualPay,jdbcType=VARCHAR}, #{orderSource,jdbcType=VARCHAR}
       )
   </insert>
@@ -324,7 +324,7 @@
         #{invoiceNumber,jdbcType=VARCHAR},
       </if>
       <if test="addressId != null" >
-        #{addressId,jdbcType=INTEGER},
+        #{addressId,jdbcType=BIGINT},
       </if>
       <if test="isDeleted != null" >
         #{isDeleted,jdbcType=INTEGER},
@@ -425,7 +425,7 @@
         invoice_number = #{record.invoiceNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.addressId != null" >
-        address_id = #{record.addressId,jdbcType=INTEGER},
+        address_id = #{record.addressId,jdbcType=BIGINT},
       </if>
       <if test="record.isDeleted != null" >
         is_deleted = #{record.isDeleted,jdbcType=INTEGER},
@@ -471,7 +471,7 @@
       remarks = #{record.remarks,jdbcType=VARCHAR},
       invoice_title = #{record.invoiceTitle,jdbcType=VARCHAR},
       invoice_number = #{record.invoiceNumber,jdbcType=VARCHAR},
-      address_id = #{record.addressId,jdbcType=INTEGER},
+      address_id = #{record.addressId,jdbcType=BIGINT},
       is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       pay_type = #{record.payType,jdbcType=INTEGER},
       actual_pay = #{record.actualPay,jdbcType=VARCHAR},
@@ -556,7 +556,7 @@
         invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
       </if>
       <if test="addressId != null" >
-        address_id = #{addressId,jdbcType=INTEGER},
+        address_id = #{addressId,jdbcType=BIGINT},
       </if>
       <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=INTEGER},
@@ -599,7 +599,7 @@
       remarks = #{remarks,jdbcType=VARCHAR},
       invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
       invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
-      address_id = #{addressId,jdbcType=INTEGER},
+      address_id = #{addressId,jdbcType=BIGINT},
       is_deleted = #{isDeleted,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       actual_pay = #{actualPay,jdbcType=VARCHAR},

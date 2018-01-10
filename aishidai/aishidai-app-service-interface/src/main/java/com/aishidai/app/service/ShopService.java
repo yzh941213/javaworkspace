@@ -4,10 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.ShopsDO;
-import com.aishidai.app.model.query.ShopsQuery;
-
 
 @Service
 public interface ShopService {

@@ -1,9 +1,9 @@
 package com.aishidai.app.model.pojo;
 
 public class SubsiteDO {
-    private Integer subId;
+    private Long subId;
 
-    private Integer userId;
+    private Long userId;
 
     private String subNumber;
 
@@ -21,19 +21,19 @@ public class SubsiteDO {
 
     private Long shopsId;
 
-    public Integer getSubId() {
+    public Long getSubId() {
         return subId;
     }
 
-    public void setSubId(Integer subId) {
+    public void setSubId(Long subId) {
         this.subId = subId;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

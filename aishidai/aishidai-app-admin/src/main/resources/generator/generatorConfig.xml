@@ -18,7 +18,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.aishidai.app.model.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.aishidai.app.model.pojo" targetProject="/Users/hanfeihu/Desktop/aishidai/aishidai/aishidai-app-model/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -32,7 +32,7 @@
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
 
-        <!--
+
                <table tableName="announce"   domainObjectName="AnnounceDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
                <table tableName="app_version"   domainObjectName="AppVersionDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
                <table tableName="attribute"   domainObjectName="AttributeDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
@@ -84,15 +84,14 @@
                <table tableName="user_size"   domainObjectName="UserSizeDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
                <table tableName="users"   domainObjectName="UsersDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
                <table tableName="users_address"   domainObjectName="UsersAddressDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-       -->
 
-               <table tableName="distributor"   domainObjectName="DistributorDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-               <table tableName="app_version"   domainObjectName="AppVersionDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-              <table tableName="fitting_room"   domainObjectName="FittingRoomDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-
-
-
+        <!--
+                  <table tableName="distributor"   domainObjectName="DistributorDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+                  <table tableName="app_version"   domainObjectName="AppVersionDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+                 <table tableName="fitting_room"   domainObjectName="FittingRoomDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+        -->
 
 
-           </context>
-       </generatorConfiguration>
+
+              </context>
+          </generatorConfiguration>

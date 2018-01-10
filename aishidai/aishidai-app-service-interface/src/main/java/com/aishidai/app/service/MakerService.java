@@ -4,12 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.DeviceMakerDO;
-import com.aishidai.app.model.pojo.MakerDO;
-import com.aishidai.app.model.query.DeviceMakerQuery;
-import com.aishidai.app.model.query.MakerQuery;
-
 
 @Service
 public interface MakerService {

@@ -3,11 +3,11 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class MakerDO {
-    private Integer id;
+    private Long id;
 
     private String name;
 
-    private Integer distributorId;
+    private Long distributorId;
 
     private String mobile;
 
@@ -19,15 +19,15 @@ public class MakerDO {
 
     private Integer status;
 
-    private Integer sysUserId;
+    private Long sysUserId;
 
     private Integer audit;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +39,11 @@ public class MakerDO {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getDistributorId() {
+    public Long getDistributorId() {
         return distributorId;
     }
 
-    public void setDistributorId(Integer distributorId) {
+    public void setDistributorId(Long distributorId) {
         this.distributorId = distributorId;
     }
 
@@ -87,11 +87,11 @@ public class MakerDO {
         this.status = status;
     }
 
-    public Integer getSysUserId() {
+    public Long getSysUserId() {
         return sysUserId;
     }
 
-    public void setSysUserId(Integer sysUserId) {
+    public void setSysUserId(Long sysUserId) {
         this.sysUserId = sysUserId;
     }
 

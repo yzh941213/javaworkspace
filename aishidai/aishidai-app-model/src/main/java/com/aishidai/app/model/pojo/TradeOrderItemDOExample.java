@@ -104,63 +104,63 @@ public class TradeOrderItemDOExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andOrderItemIdIsNull() {
+            addCriterion("order_item_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andOrderItemIdIsNotNull() {
+            addCriterion("order_item_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andOrderItemIdEqualTo(Long value) {
+            addCriterion("order_item_id =", value, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andOrderItemIdNotEqualTo(Long value) {
+            addCriterion("order_item_id <>", value, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andOrderItemIdGreaterThan(Long value) {
+            addCriterion("order_item_id >", value, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andOrderItemIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("order_item_id >=", value, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andOrderItemIdLessThan(Long value) {
+            addCriterion("order_item_id <", value, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andOrderItemIdLessThanOrEqualTo(Long value) {
+            addCriterion("order_item_id <=", value, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andOrderItemIdIn(List<Long> values) {
+            addCriterion("order_item_id in", values, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andOrderItemIdNotIn(List<Long> values) {
+            addCriterion("order_item_id not in", values, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andOrderItemIdBetween(Long value1, Long value2) {
+            addCriterion("order_item_id between", value1, value2, "orderItemId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andOrderItemIdNotBetween(Long value1, Long value2) {
+            addCriterion("order_item_id not between", value1, value2, "orderItemId");
             return (Criteria) this;
         }
 
@@ -174,52 +174,52 @@ public class TradeOrderItemDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdEqualTo(Integer value) {
+        public Criteria andSkuIdEqualTo(Long value) {
             addCriterion("sku_id =", value, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdNotEqualTo(Integer value) {
+        public Criteria andSkuIdNotEqualTo(Long value) {
             addCriterion("sku_id <>", value, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdGreaterThan(Integer value) {
+        public Criteria andSkuIdGreaterThan(Long value) {
             addCriterion("sku_id >", value, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSkuIdGreaterThanOrEqualTo(Long value) {
             addCriterion("sku_id >=", value, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdLessThan(Integer value) {
+        public Criteria andSkuIdLessThan(Long value) {
             addCriterion("sku_id <", value, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdLessThanOrEqualTo(Integer value) {
+        public Criteria andSkuIdLessThanOrEqualTo(Long value) {
             addCriterion("sku_id <=", value, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdIn(List<Integer> values) {
+        public Criteria andSkuIdIn(List<Long> values) {
             addCriterion("sku_id in", values, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdNotIn(List<Integer> values) {
+        public Criteria andSkuIdNotIn(List<Long> values) {
             addCriterion("sku_id not in", values, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdBetween(Integer value1, Integer value2) {
+        public Criteria andSkuIdBetween(Long value1, Long value2) {
             addCriterion("sku_id between", value1, value2, "skuId");
             return (Criteria) this;
         }
 
-        public Criteria andSkuIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andSkuIdNotBetween(Long value1, Long value2) {
             addCriterion("sku_id not between", value1, value2, "skuId");
             return (Criteria) this;
         }
@@ -234,52 +234,52 @@ public class TradeOrderItemDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andColorIdEqualTo(Integer value) {
+        public Criteria andColorIdEqualTo(Long value) {
             addCriterion("color_id =", value, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdNotEqualTo(Integer value) {
+        public Criteria andColorIdNotEqualTo(Long value) {
             addCriterion("color_id <>", value, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdGreaterThan(Integer value) {
+        public Criteria andColorIdGreaterThan(Long value) {
             addCriterion("color_id >", value, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andColorIdGreaterThanOrEqualTo(Long value) {
             addCriterion("color_id >=", value, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdLessThan(Integer value) {
+        public Criteria andColorIdLessThan(Long value) {
             addCriterion("color_id <", value, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdLessThanOrEqualTo(Integer value) {
+        public Criteria andColorIdLessThanOrEqualTo(Long value) {
             addCriterion("color_id <=", value, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdIn(List<Integer> values) {
+        public Criteria andColorIdIn(List<Long> values) {
             addCriterion("color_id in", values, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdNotIn(List<Integer> values) {
+        public Criteria andColorIdNotIn(List<Long> values) {
             addCriterion("color_id not in", values, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdBetween(Integer value1, Integer value2) {
+        public Criteria andColorIdBetween(Long value1, Long value2) {
             addCriterion("color_id between", value1, value2, "colorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andColorIdNotBetween(Long value1, Long value2) {
             addCriterion("color_id not between", value1, value2, "colorId");
             return (Criteria) this;
         }
@@ -294,52 +294,52 @@ public class TradeOrderItemDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdEqualTo(Integer value) {
+        public Criteria andSizeIdEqualTo(Long value) {
             addCriterion("size_id =", value, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdNotEqualTo(Integer value) {
+        public Criteria andSizeIdNotEqualTo(Long value) {
             addCriterion("size_id <>", value, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdGreaterThan(Integer value) {
+        public Criteria andSizeIdGreaterThan(Long value) {
             addCriterion("size_id >", value, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSizeIdGreaterThanOrEqualTo(Long value) {
             addCriterion("size_id >=", value, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdLessThan(Integer value) {
+        public Criteria andSizeIdLessThan(Long value) {
             addCriterion("size_id <", value, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdLessThanOrEqualTo(Integer value) {
+        public Criteria andSizeIdLessThanOrEqualTo(Long value) {
             addCriterion("size_id <=", value, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdIn(List<Integer> values) {
+        public Criteria andSizeIdIn(List<Long> values) {
             addCriterion("size_id in", values, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdNotIn(List<Integer> values) {
+        public Criteria andSizeIdNotIn(List<Long> values) {
             addCriterion("size_id not in", values, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdBetween(Integer value1, Integer value2) {
+        public Criteria andSizeIdBetween(Long value1, Long value2) {
             addCriterion("size_id between", value1, value2, "sizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andSizeIdNotBetween(Long value1, Long value2) {
             addCriterion("size_id not between", value1, value2, "sizeId");
             return (Criteria) this;
         }
@@ -354,52 +354,52 @@ public class TradeOrderItemDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andItemIdEqualTo(Integer value) {
+        public Criteria andItemIdEqualTo(Long value) {
             addCriterion("item_id =", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotEqualTo(Integer value) {
+        public Criteria andItemIdNotEqualTo(Long value) {
             addCriterion("item_id <>", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThan(Integer value) {
+        public Criteria andItemIdGreaterThan(Long value) {
             addCriterion("item_id >", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andItemIdGreaterThanOrEqualTo(Long value) {
             addCriterion("item_id >=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThan(Integer value) {
+        public Criteria andItemIdLessThan(Long value) {
             addCriterion("item_id <", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThanOrEqualTo(Integer value) {
+        public Criteria andItemIdLessThanOrEqualTo(Long value) {
             addCriterion("item_id <=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdIn(List<Integer> values) {
+        public Criteria andItemIdIn(List<Long> values) {
             addCriterion("item_id in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotIn(List<Integer> values) {
+        public Criteria andItemIdNotIn(List<Long> values) {
             addCriterion("item_id not in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdBetween(Integer value1, Integer value2) {
+        public Criteria andItemIdBetween(Long value1, Long value2) {
             addCriterion("item_id between", value1, value2, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andItemIdNotBetween(Long value1, Long value2) {
             addCriterion("item_id not between", value1, value2, "itemId");
             return (Criteria) this;
         }

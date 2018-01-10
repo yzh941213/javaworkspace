@@ -10,7 +10,7 @@ public interface HqCommissionDOMapper {
 
     int deleteByExample(HqCommissionDOExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(HqCommissionDO record);
 
@@ -18,7 +18,7 @@ public interface HqCommissionDOMapper {
 
     List<HqCommissionDO> selectByExample(HqCommissionDOExample example);
 
-    HqCommissionDO selectByPrimaryKey(String id);
+    HqCommissionDO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") HqCommissionDO record, @Param("example") HqCommissionDOExample example);
 

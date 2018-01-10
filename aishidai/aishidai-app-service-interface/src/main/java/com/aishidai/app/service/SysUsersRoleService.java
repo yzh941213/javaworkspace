@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.SysusersRoleDO;
 
 @Service
 public interface SysUsersRoleService {

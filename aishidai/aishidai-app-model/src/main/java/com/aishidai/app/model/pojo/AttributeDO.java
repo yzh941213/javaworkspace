@@ -3,7 +3,7 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class AttributeDO {
-    private Integer attributeId;
+    private Long attributeId;
 
     private String attrName;
 
@@ -25,11 +25,13 @@ public class AttributeDO {
 
     private Integer category;
 
-    public Integer getAttributeId() {
+    private Integer deviceShop;
+
+    public Long getAttributeId() {
         return attributeId;
     }
 
-    public void setAttributeId(Integer attributeId) {
+    public void setAttributeId(Long attributeId) {
         this.attributeId = attributeId;
     }
 
@@ -111,5 +113,13 @@ public class AttributeDO {
 
     public void setCategory(Integer category) {
         this.category = category;
+    }
+
+    public Integer getDeviceShop() {
+        return deviceShop;
+    }
+
+    public void setDeviceShop(Integer deviceShop) {
+        this.deviceShop = deviceShop;
     }
 }

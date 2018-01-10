@@ -3,13 +3,13 @@ package com.aishidai.app.model.pojo;
 import java.util.Date;
 
 public class MakerCommissionDetailDO {
-    private String id;
+    private Long id;
 
     private Integer commission;
 
     private String makerName;
 
-    private String makerId;
+    private Long makerId;
 
     private Integer type;
 
@@ -25,14 +25,14 @@ public class MakerCommissionDetailDO {
 
     private Date updated;
 
-    private Integer deleteIs;
+    private Integer isDelete;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getCommission() {
@@ -51,12 +51,12 @@ public class MakerCommissionDetailDO {
         this.makerName = makerName == null ? null : makerName.trim();
     }
 
-    public String getMakerId() {
+    public Long getMakerId() {
         return makerId;
     }
 
-    public void setMakerId(String makerId) {
-        this.makerId = makerId == null ? null : makerId.trim();
+    public void setMakerId(Long makerId) {
+        this.makerId = makerId;
     }
 
     public Integer getType() {
@@ -115,11 +115,11 @@ public class MakerCommissionDetailDO {
         this.updated = updated;
     }
 
-    public Integer getDeleteIs() {
-        return deleteIs;
+    public Integer getIsDelete() {
+        return isDelete;
     }
 
-    public void setDeleteIs(Integer deleteIs) {
-        this.deleteIs = deleteIs;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

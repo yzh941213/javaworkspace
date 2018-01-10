@@ -9,11 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aishidai.app.dao.RoleDOMapper;
 import com.aishidai.app.dao.SysusersRoleDOMapper;
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.SysusersRoleDO;
-import com.aishidai.app.model.pojo.SysusersRoleDOExample;
 import com.aishidai.app.service.SysUsersRoleService;
-
-import javax.annotation.Resource;
 
 import java.util.List;
 

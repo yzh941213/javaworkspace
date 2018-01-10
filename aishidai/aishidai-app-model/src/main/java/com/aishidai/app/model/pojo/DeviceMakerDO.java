@@ -17,7 +17,7 @@ public class DeviceMakerDO {
 
     private String createName;
 
-    private Integer deleteIs;
+    private Integer isDelete;
 
     public Long getId() {
         return id;
@@ -75,11 +75,11 @@ public class DeviceMakerDO {
         this.createName = createName == null ? null : createName.trim();
     }
 
-    public Integer getDeleteIs() {
-        return deleteIs;
+    public Integer getIsDelete() {
+        return isDelete;
     }
 
-    public void setDeleteIs(Integer deleteIs) {
-        this.deleteIs = deleteIs;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

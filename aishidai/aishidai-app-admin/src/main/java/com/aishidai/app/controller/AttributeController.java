@@ -1,7 +1,6 @@
 package com.aishidai.app.controller;
 
 import com.aishidai.app.model.pojo.AttributeDO;
-import com.aishidai.app.model.pojo.ItemDO;
 import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.service.AttributeService;
 import com.aishidai.common.json.JsonResult;
@@ -31,5 +30,11 @@ public class AttributeController {
     public JsonResult update(AttributeDO attributeDO){
 
         return JsonResult.buildSuccess( attributeService.update(attributeDO));
+    }
+
+    @GetMapping(value = "add")
+    public JsonResult add(AttributeDO attributeDO){
+
+        return JsonResult.buildSuccess( attributeService.add(attributeDO));
     }
 }

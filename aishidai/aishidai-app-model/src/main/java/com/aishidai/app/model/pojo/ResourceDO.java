@@ -1,7 +1,5 @@
 package com.aishidai.app.model.pojo;
 
-import java.util.List;
-
 public class ResourceDO {
     private Long id;
 
@@ -31,18 +29,7 @@ public class ResourceDO {
 
     private Integer ordernum;
 
-    private List<ResourceDO> ResourceDOList;
-    
-    
-    public List<ResourceDO> getResourceDOList() {
-		return ResourceDOList;
-	}
-
-	public void setResourceDOList(List<ResourceDO> resourceDOList) {
-		ResourceDOList = resourceDOList;
-	}
-
-	public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -153,26 +140,4 @@ public class ResourceDO {
     public void setOrdernum(Integer ordernum) {
         this.ordernum = ordernum;
     }
-    
-    private long role_res_id;
-
-    private int isTrue;
-
-
-	public long getRole_res_id() {
-		return role_res_id;
-	}
-
-	public void setRole_res_id(long role_res_id) {
-		this.role_res_id = role_res_id;
-	}
-
-	public int getIsTrue() {
-		return isTrue;
-	}
-
-	public void setIsTrue(int isTrue) {
-		this.isTrue = isTrue;
-	}
-    
 }

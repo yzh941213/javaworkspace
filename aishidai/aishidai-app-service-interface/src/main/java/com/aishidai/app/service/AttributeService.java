@@ -1,6 +1,7 @@
 package com.aishidai.app.service;
 
 import com.aishidai.app.model.pojo.AttributeDO;
+import com.aishidai.app.model.pojo.ItemDO;
 
 import java.util.List;
 
@@ -11,4 +12,9 @@ public interface AttributeService {
      * @return
      */
     List<AttributeDO> getAllSubclassByAttrId(Integer attributeId);
+
+    List<AttributeDO> getAll();
+
+    Boolean add(AttributeDO attributeDO);
+    Boolean update(AttributeDO attributeDO);
 }

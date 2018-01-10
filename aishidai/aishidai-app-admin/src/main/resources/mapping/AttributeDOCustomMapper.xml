@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.AttributeDOCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AttributeDO" >
+    <id column="attribute_id" property="attributeId" jdbcType="BIGINT" />
+    <result column="attr_name" property="attrName" jdbcType="VARCHAR" />
+    <result column="img_path" property="imgPath" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
+    <result column="stratification" property="stratification" jdbcType="INTEGER" />
+    <result column="category" property="category" jdbcType="INTEGER" />
+    <result column="device_shop" property="deviceShop" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getAll" resultMap="BaseResultMap">
+
+    select * from attribute;
+  </select>
+</mapper>

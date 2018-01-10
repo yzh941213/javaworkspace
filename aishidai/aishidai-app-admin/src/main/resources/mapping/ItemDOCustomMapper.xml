@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ItemDOCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ItemDO" >
+    <id column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="name_id" property="nameId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="sales_price" property="salesPrice" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    <result column="item_code" property="itemCode" jdbcType="VARCHAR" />
+    <result column="salse_volume" property="salseVolume" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="recommend" property="recommend" jdbcType="SMALLINT" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="item_tag" property="itemTag" jdbcType="VARCHAR" />
+    <result column="item_status" property="itemStatus" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="item_model" property="itemModel" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="itemList" resultMap="ItemVO"  parameterType="com.aishidai.app.model.query.QueryItem">
+
+
+
+    <if test="cid != null and cid != ''">
+      call attribute_findByParentId(#{cid},#{stratRow},#{pageSize},#{itemName},#{itemCode},#{itemStatus});
+    </if>
+    <if test="cid == null or cid == ''">
+      select *
+      from item i
+      where delete_is=0
+      <if test="itemCode != null and itemCode !=''">
+        AND  item_code=#{itemCode}
+      </if>
+      <if test="itemName != null and itemName !=''">
+        AND  item_name=#{itemName}
+      </if>
+      <if test="itemStatus != null">
+        AND  item_status=#{itemStatus}
+      </if>
+
+      limit #{stratRow},#{pageSize}
+    </if>
+
+
+
+  </select>
+</mapper>

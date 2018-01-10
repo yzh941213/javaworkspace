@@ -2,40 +2,39 @@ package com.aishidai.app.service;
 
 import java.util.List;
 
-import com.aishidai.app.model.pojo.MakerDO;
 import org.springframework.stereotype.Service;
+
+import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.DeviceMakerDO;
+import com.aishidai.app.model.pojo.MakerDO;
+import com.aishidai.app.model.query.DeviceMakerQuery;
+import com.aishidai.app.model.query.MakerQuery;
 
 
 @Service
 public interface MakerService {
 
-	/*public Result<List<MakerDO>> queryMakerDOList(MakerQuery query);
+	 List<MakerDO> queryMakerDOList(MakerQuery query)throws Exception;
 
-	public Result<MakerDO> queryMakerDOById(long makerId);
+	 MakerDO queryMakerDOById(long makerId)throws Exception;
 
-	public Result<Long> editMakerDO(MakerDO makerDO);
+	 Long editMakerDO(MakerDO makerDO)throws Exception;
 
-	public Result<Integer> updateMakerStatus(MakerDO makerDO);
+	 Integer updateMakerStatus(MakerDO makerDO)throws Exception;
 
-	public Result<Long> updateMakerSysUserId(MakerDO makerDO);
+	 Long updateMakerSysUserId(MakerDO makerDO)throws Exception;
 
-	public Result<List<MakerDO>> queryMakerDOByDistributorId(long distributorId);*/
+	 List<MakerDO> queryMakerDOByDistributorId(long distributorId)throws Exception;
 
-	public List<MakerDO> queryMakerDOBySysUserId(Long sysUserId);
+	 List<MakerDO> queryMakerDOBySysUserId(Long sysUserId)throws Exception;
 
-	/*public Result<List<MakerDO>> queryMakerDOAll(MakerQuery query);
-	//审核
-	public Result<Integer> updateMakerAudit(MakerDO makerDO);
+	 List<MakerDO> queryMakerDOAll(MakerQuery query)throws Exception;
+	
+	 Integer updateMakerAudit(MakerDO makerDO)throws Exception;
 
-	*//**
-	 * 根据创客的名称模糊查询
-	 * @param makerDO
-	 * @return
-	 * @throws Exception
-	 *//*
-	public List<MakerDO> queryMakerDOByNameLike(MakerDO makerDO) throws Exception;
+	 List<MakerDO> queryMakerDOByNameLike(MakerDO makerDO) throws Exception;
 
-	public boolean addDeviceMaker(List<DeviceMakerDO> list,long sysUserId,long makerId)  throws Exception;
+	 boolean addDeviceMaker(List<DeviceMakerDO> list,long sysUserId,long makerId)  throws Exception;
 
-	public List<DeviceMakerDO> queryDeviceMaker(DeviceMakerQuery query_maker) throws Exception;*/
+	 List<DeviceMakerDO> queryDeviceMaker(DeviceMakerQuery query_maker) throws Exception;
 }

@@ -4,10 +4,10 @@ package com.aishidai.app.service;
 
 import java.util.List;
 
-import com.aishidai.app.model.pojo.SysusersRoleDO;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.SysusersRoleDO;
 
 @Service
 public interface SysUsersRoleService {

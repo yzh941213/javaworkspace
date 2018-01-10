@@ -1,14 +1,19 @@
 package com.aishidai.app.service.impl;
 
 
-import com.aishidai.app.model.pojo.MakerDO;
-import com.aishidai.app.model.pojo.MakerDOExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.MakerDOMapper;
+import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.DeviceMakerDO;
+import com.aishidai.app.model.pojo.MakerDO;
+import com.aishidai.app.model.pojo.MakerDOExample;
+import com.aishidai.app.model.query.DeviceMakerQuery;
+import com.aishidai.app.model.query.MakerQuery;
 import com.aishidai.app.service.MakerService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,8 +21,8 @@ public class MakerServiceImpl implements MakerService {
 	@Autowired
 	private MakerDOMapper makerDOMapper;
 
-/*	
-	public Result<List<MakerDO>> queryMakerDOList(MakerQuery query) {
+	
+	public List<MakerDO> queryMakerDOList(MakerQuery query) {
 		Result<List<MakerDO>> result = null;
 		try {
 			List<MakerDO> list = makerDOMapper.queryMakerDOList(query);
@@ -37,7 +42,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 
 	
-	public Result<MakerDO> queryMakerDOById(long makerId) {
+	public MakerDO queryMakerDOById(long makerId) {
 		Result<MakerDO> result = null;
 		try {
 			MakerDO makerDO = makerDOMapper.queryMakerDOById(makerId);
@@ -55,7 +60,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 
 	
-	public Result<Long> editMakerDO(MakerDO makerDO) {
+	public Long editMakerDO(MakerDO makerDO) {
 		Result<Long> result = null;
 		try {
 			long row = makerDOMapper.editMakerDO(makerDO);
@@ -76,7 +81,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 
 	
-	public Result<Integer> updateMakerStatus(MakerDO makerDO) {
+	public Integer updateMakerStatus(MakerDO makerDO) {
 		Result<Integer> result = null;
 		try {
 			int row = makerDOMapper.updateMakerDOStatus(makerDO);
@@ -97,7 +102,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 
 	
-	public Result<List<MakerDO>> queryMakerDOByDistributorId(long distributorId) {
+	public List<MakerDO> queryMakerDOByDistributorId(long distributorId) {
 		Result<List<MakerDO>> result = null;
 		try {
 			List<MakerDO> list = makerDOMapper.queryMakerDOByDistributorId(distributorId);
@@ -117,7 +122,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 
 	
-	public Result<Long> updateMakerSysUserId(MakerDO makerDO) {
+	public Long updateMakerSysUserId(MakerDO makerDO) {
 		Result<Long> result = null;
 		try {
 			Long row = makerDOMapper.updateMakerDOSysUserId(makerDO);
@@ -141,7 +146,7 @@ public class MakerServiceImpl implements MakerService {
 	
 
 	
-	public Result<List<MakerDO>> queryMakerDOAll(MakerQuery query) {
+	public List<MakerDO> queryMakerDOAll(MakerQuery query) {
 		Result<List<MakerDO>> result = null;
         try {
             List<MakerDO> list = makerDOMapper.queryMakerDOAll(query);
@@ -161,7 +166,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 //审核
 	
-	public Result<Integer> updateMakerAudit(MakerDO makerDO) {
+	public Integer updateMakerAudit(MakerDO makerDO) {
 		Result<Integer> result = null;
 		try {
 			int row = makerDOMapper.updateMakerDOAudit(makerDO);
@@ -222,14 +227,14 @@ public class MakerServiceImpl implements MakerService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		return makerDOMapper.selectDeviceMaker(query_maker);
-	}*/
+	}
 	
 	
 	public List<MakerDO> queryMakerDOBySysUserId(Long sysUserId) {
 		
 		MakerDOExample example = new MakerDOExample();
 		MakerDOExample.Criteria criteria = example.createCriteria();
-		criteria.andSysUserIdEqualTo(Long.valueOf(sysUserId+""));
+		criteria.andSysUserIdEqualTo(Integer.valueOf(sysUserId+""));
 		List<MakerDO> list = makerDOMapper.selectByExample(example);
 		return list;
 	}

@@ -1,16 +1,19 @@
 package com.aishidai.app.service.impl;
 
 
-import com.aishidai.app.model.pojo.RoleDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aishidai.app.dao.RoleDOCustomMapper;
 import com.aishidai.app.dao.RoleDOMapper;
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.RoleDO;
 import com.aishidai.app.model.pojo.RoleDOExample;
 import com.aishidai.app.service.RoleService;
+
+import javax.annotation.Resource;
 
 import java.util.List;
 
@@ -22,12 +25,14 @@ public class RoleServiceImpl implements RoleService {
 	
     @Autowired
     private RoleDOMapper roleDOMapper;
-
+    @Autowired
+    private RoleDOCustomMapper roleDOCustomMapper;
+    
     private static final Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
 
     
     public long addRoleDO(RoleDO roleDO)  throws Exception {
-	    long row = roleDOMapper.insertRole(roleDO);
+	    long row = roleDOCustomMapper.insertRole(roleDO);
 	    return row;
     }
 

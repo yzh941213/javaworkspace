@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.RoleResourceDOCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.RoleResourceDOCustom" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="roleId" property="roleid" jdbcType="BIGINT" />
+    <result column="resourceId" property="resourceid" jdbcType="BIGINT" />
+    <result column="createrId" property="createrid" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="BIGINT" />
+    <result column="updated" property="updated" jdbcType="BIGINT" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="isDeleted" property="isdeleted" jdbcType="TINYINT" />
+  </resultMap>
+
+	<insert id="insertRoleResourceDO" 
+		parameterType="com.aishidai.app.model.pojo.RoleResourceDOCustom">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into role_resource (roleId, resourceId,
+		createrId, created, updated,
+		feature, isDeleted)
+		values (#{roleid,jdbcType=BIGINT}, #{resourceid,jdbcType=BIGINT},
+		#{createrid,jdbcType=BIGINT}, #{created,jdbcType=BIGINT},
+		#{updated,jdbcType=BIGINT},
+		#{feature,jdbcType=VARCHAR}, #{isdeleted,jdbcType=TINYINT})
+
+	</insert>
+  
+</mapper>

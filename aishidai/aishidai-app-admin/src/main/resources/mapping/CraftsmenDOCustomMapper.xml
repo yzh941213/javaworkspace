@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.CraftsmenDOCustomMapper">
+
+	<resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.CraftsmenDOCustom">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="shops_id" property="shopsId" jdbcType="BIGINT" />
+		<result column="distributor_id" property="distributorId"
+			jdbcType="INTEGER" />
+		<result column="craftsman_name" property="craftsmanName"
+			jdbcType="VARCHAR" />
+		<result column="craftsman_url" property="craftsmanUrl"
+			jdbcType="VARCHAR" />
+		<result column="skill" property="skill" jdbcType="VARCHAR" />
+		<result column="telephone" property="telephone" jdbcType="VARCHAR" />
+		<result column="title_id" property="titleId" jdbcType="VARCHAR" />
+		<result column="area" property="area" jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="updated" property="updated" jdbcType="TIMESTAMP" />
+		<result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+		<result column="sys_user_id" property="sysUserId" jdbcType="INTEGER" />
+		<result column="service_id" property="serviceId" jdbcType="VARCHAR" />
+		<result column="wechat" property="wechat" jdbcType="VARCHAR" />
+		<result column="audit" property="audit" jdbcType="INTEGER" />
+		<result column="star" property="star" jdbcType="INTEGER" />
+	</resultMap>
+
+	<insert id="insertCraftsmenDO" parameterType="com.aishidai.app.model.pojo.CraftsmenDOCustom">
+		<selectKey keyProperty="id" keyColumn="id" order="AFTER"
+			resultType="java.lang.Long">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+
+		insert into craftsmen (shops_id, distributor_id,
+		craftsman_name,
+		craftsman_url, skill,
+		telephone, title_id, area,
+		province, city,
+		address,
+		status, created, updated,
+		is_deleted, sys_user_id, service_id,
+		wechat, audit, star
+		)
+		values (#{shopsId,jdbcType=BIGINT},
+		#{distributorId,jdbcType=INTEGER},
+		#{craftsmanName,jdbcType=VARCHAR},
+		#{craftsmanUrl,jdbcType=VARCHAR},
+		#{skill,jdbcType=VARCHAR},
+		#{telephone,jdbcType=VARCHAR}, #{titleId,jdbcType=VARCHAR},
+		#{area,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR},
+		#{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP},
+		#{updated,jdbcType=TIMESTAMP},
+		#{isDeleted,jdbcType=TINYINT},
+		#{sysUserId,jdbcType=INTEGER},
+		#{serviceId,jdbcType=VARCHAR},
+		#{wechat,jdbcType=VARCHAR}, #{audit,jdbcType=INTEGER},
+		#{star,jdbcType=INTEGER}
+		)
+	</insert>
+
+</mapper>

@@ -1,15 +1,17 @@
 package com.aishidai.app.service.impl;
 
-import com.aishidai.app.model.pojo.RoleResourceDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aishidai.app.dao.RoleResourceDOCustomMapper;
 import com.aishidai.app.dao.RoleResourceDOMapper;
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.RoleResourceDO;
 import com.aishidai.app.service.RoleResourceService;
+
 
 
 import java.util.List;
@@ -19,8 +21,9 @@ import java.util.List;
 public class RoleResourceServiceImpl implements RoleResourceService {
 
     @Autowired
-    private RoleResourceDOMapper RoleResourceMapper;
-
+    private RoleResourceDOMapper roleResourceDOMapper;
+    @Autowired
+    private RoleResourceDOCustomMapper roleResourceDOCustomMapper;
 
     private static final Logger logger = LoggerFactory.getLogger(RoleResourceServiceImpl.class);
 
@@ -31,7 +34,7 @@ public class RoleResourceServiceImpl implements RoleResourceService {
         Result<Long> result = new Result<Long>();
         try {
             for (RoleResourceDO roleResource : roleResourceDOs) {
-                long row2 = RoleResourceMapper.insertRoleResourceDO(roleResource);
+                long row2 = roleResourceDOCustomMapper.insertRoleResourceDO(roleResource);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +53,7 @@ public class RoleResourceServiceImpl implements RoleResourceService {
             for (RoleResourceDO roleResource : roleResourceDOs) {
                 if (null != roleResource.getId() && roleResource.getId() != 0) {
                 	
-                    long row1 = RoleResourceMapper.updateByPrimaryKeySelective(roleResource);
+                    long row1 = roleResourceDOMapper.updateByPrimaryKeySelective(roleResource);
                     if (row1 == 0) {
                         throw new RuntimeException();
                     }

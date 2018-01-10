@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.ShopsDOMapper;
+import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.ShopsDO;
 import com.aishidai.app.model.pojo.ShopsDOExample;
+import com.aishidai.app.model.query.ShopsQuery;
 import com.aishidai.app.service.ShopService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,7 +21,7 @@ public class ShopServiceImpl implements ShopService {
 	private ShopsDOMapper shopsDOMapper;
 
 	
-	/*public Result<ShopsDO> queryShopsDOById(long shopId) throws Exception  {
+	public ShopsDO queryShopsDOById(long shopId) throws Exception  {
 		Result<ShopsDO> result = new Result<ShopsDO>();
 		ShopsDO ShopsDO = shopsDOMapper.queryShopsDOById(shopId);
 		result.setSuccess(true);
@@ -26,7 +30,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	
-	public Result<Long> editShopsDO(ShopsDO ShopsDO) throws Exception {
+	public Long editShopsDO(ShopsDO ShopsDO) throws Exception {
 		Result<Long> result = new Result<Long>();
 		long row = shopsDOMapper.updateOtherShopORShopsDO(ShopsDO);
 		result.setSuccess(true);
@@ -39,7 +43,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	
-	public Result<Integer> editShopStatus(ShopsDO ShopsDO) throws Exception  {
+	public Integer editShopStatus(ShopsDO ShopsDO) throws Exception  {
 		Result<Integer> result = new Result<Integer>();
 		int row = shopsDOMapper.updateShopsDOStatus(ShopsDO);
 		if (row == 0) {
@@ -52,7 +56,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 	//审核
 	
-	public Result<Integer> editShopAudit(ShopsDO ShopsDO)  throws Exception {
+	public Integer editShopAudit(ShopsDO ShopsDO)  throws Exception {
 		Result<Integer> result = new Result<Integer>();
 	
 		int row = shopsDOMapper.updateShopsDOAudit(ShopsDO);
@@ -68,7 +72,7 @@ public class ShopServiceImpl implements ShopService {
 
 
 	
-	public Result<Integer> editShopIsDeleted(ShopsDO ShopsDO)  throws Exception {
+	public Integer editShopIsDeleted(ShopsDO ShopsDO)  throws Exception {
 		Result<Integer> result = null;
 		int row = shopsDOMapper.updateShopsDOIsDeleted(ShopsDO);
 		result = new Result<Integer>();
@@ -83,7 +87,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	
-	public Result<Long> editShopSysUserId(ShopsDO ShopsDO) throws Exception {
+	public Long editShopSysUserId(ShopsDO ShopsDO) throws Exception {
 		Result<Long> result = null;
 		
 		long row = shopsDOMapper.updateShopsDOSysUserId(ShopsDO);
@@ -101,7 +105,7 @@ public class ShopServiceImpl implements ShopService {
 	
 
 	
-	public Result<List<ShopsDO>> queryShopsDOUnemployed(ShopsDO ShopsDO) throws Exception  {
+	public List<ShopsDO> queryShopsDOUnemployed(ShopsDO ShopsDO) throws Exception  {
 		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
 		
 		List<ShopsDO> list = shopsDOMapper.queryShopsDOUnemployed(ShopsDO);
@@ -115,7 +119,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	
-	public Result<List<ShopsDO>> queryShopsDOAll(ShopsQuery query) throws Exception  {
+	public List<ShopsDO> queryShopsDOAll(ShopsQuery query) throws Exception  {
 		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
      
         List<ShopsDO> list = shopsDOMapper.queryShopsDOAll(query);
@@ -128,18 +132,15 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	
-	public Result<List<ShopsDO>> queryShopNameBydistributorId(long distributorId) throws Exception  {
-		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
-		
-		List<ShopsDO> list = shopsDOMapper.queryShopNameBydistributorId(distributorId);
-		if (list.isEmpty() || list == null) {
-			list = new ArrayList<ShopsDO>();
-		}
-		result.setResult(list);
-		result.setSuccess(true);
-		
-		return result;
-		
+	public List<ShopsDO> selectShopBydistributorId(long distributorId)
+			throws Exception {
+
+		ShopsDOExample example = new ShopsDOExample();
+		ShopsDOExample.Criteria criteria = example.createCriteria();
+		criteria.andDistributorIdEqualTo(Integer.valueOf(distributorId + ""));
+		List<ShopsDO> list = shopsDOMapper.selectByExample(example);
+
+		return list;
 	}
 
 	
@@ -150,7 +151,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	
-	public Result<List<ShopsDO>> queryOtherShopsDOByDistributorId(
+	public List<ShopsDO> queryOtherShopsDOByDistributorId(
 			ShopsQuery query) throws Exception {
 		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
 		
@@ -168,7 +169,7 @@ public class ShopServiceImpl implements ShopService {
 	
 	
 	
-	public Result<List<ShopsDO>> queryShopsDOByDistributorId(ShopsQuery query) throws Exception {
+	public List<ShopsDO> queryShopsDOByDistributorId(ShopsQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
 		List<ShopsDO> list = shopsDOMapper.queryShopsDOByDistributorId(query);
@@ -181,7 +182,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	
-	public Result<List<ShopsDO>> queryShopsDOList(ShopsQuery query) throws Exception {
+	public List<ShopsDO> queryShopsDOList(ShopsQuery query) throws Exception {
 		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
 		List<ShopsDO> list = shopsDOMapper.queryShopsDOList(query);
 		if (list.isEmpty() || list == null) {
@@ -192,7 +193,7 @@ public class ShopServiceImpl implements ShopService {
 		return result;
 	}
 	
-	public Result<List<ShopsDO>> queryOtherShopsDOList(ShopsQuery query) throws Exception {
+	public List<ShopsDO> queryOtherShopsDOList(ShopsQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		Result<List<ShopsDO>> result = new Result<List<ShopsDO>>();
 		List<ShopsDO> list = shopsDOMapper.queryOtherShopsDOList(query);
@@ -224,7 +225,6 @@ public class ShopServiceImpl implements ShopService {
 		// TODO Auto-generated method stub
 		return shopsDOMapper.selectByDeviceId(deviceId);
 	}
-*/
 	
 	public List<ShopsDO> queryShopsDOBySysUserId(int sysUserId) throws Exception  {
 		ShopsDOExample example = new ShopsDOExample();

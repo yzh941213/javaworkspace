@@ -1,6 +1,5 @@
 package com.aishidai.app.service.impl;
 
-import com.aishidai.app.model.pojo.SysusersRoleDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aishidai.app.dao.RoleDOMapper;
+import com.aishidai.app.dao.SysusersRoleDOCustomMapper;
 import com.aishidai.app.dao.SysusersRoleDOMapper;
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.SysusersRoleDO;
+import com.aishidai.app.model.pojo.SysusersRoleDOExample;
 import com.aishidai.app.service.SysUsersRoleService;
+
+import javax.annotation.Resource;
 
 import java.util.List;
 
@@ -19,7 +23,9 @@ import java.util.List;
 public class SysUsersRoleServiceImpl implements SysUsersRoleService {
 	
     @Autowired
-    private SysusersRoleDOMapper SysusersRoleDOMapper;
+    private SysusersRoleDOMapper sysusersRoleDOMapper;
+    @Autowired
+    private SysusersRoleDOCustomMapper sysusersRoleDOCustomMapper;
     @Autowired
     private RoleDOMapper roleDOMapper;
 
@@ -32,7 +38,7 @@ public class SysUsersRoleServiceImpl implements SysUsersRoleService {
         Result<Long> result = new Result<Long>();
         try {
             for (SysusersRoleDO sysUsersRole : SysusersRoleDOs) {
-            	long row2 = SysusersRoleDOMapper.insertSysusersRoleDO(sysUsersRole);
+            	long row2 = sysusersRoleDOCustomMapper.insertSysusersRoleDO(sysUsersRole);
                 if (row2 == 0) {
                     throw new RuntimeException();
                 }
@@ -53,7 +59,7 @@ public class SysUsersRoleServiceImpl implements SysUsersRoleService {
         try {
             for (SysusersRoleDO sysUsersRole : SysusersRoleDOs) {
                 if (sysUsersRole.getId() != 0 && sysUsersRole.getId() != null) {
-                    long row1 = SysusersRoleDOMapper.updateByPrimaryKeySelective(sysUsersRole);
+                    long row1 = sysusersRoleDOMapper.updateByPrimaryKeySelective(sysUsersRole);
                     if (row1 != 1) {
                         throw new RuntimeException();
                     }
@@ -79,7 +85,7 @@ public class SysUsersRoleServiceImpl implements SysUsersRoleService {
         	criteria.andSysusersIdEqualTo(userId);
         	
             List<SysusersRoleDO> roleDOList = 
-            		SysusersRoleDOMapper.selectByExample(example);
+            		sysusersRoleDOMapper.selectByExample(example);
             result.setResult(roleDOList);
             result.setSuccess(true);
             result.setSuccessInfo("查询成功");

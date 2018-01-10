@@ -2,34 +2,32 @@ package com.aishidai.app.service;
 
 import java.util.List;
 
-import com.aishidai.app.model.pojo.DistributorDO;
 import org.springframework.stereotype.Service;
+
+import com.aishidai.app.model.pojo.DistributorDO;
+import com.aishidai.app.model.query.DistributorQuery;
 
 
 @Service
 public interface DistributorService {
 
-	/*public Result<List<DistributorDO>> queryDistributorDOList(DistributorQuery query);
+	List<DistributorDO> queryDistributorDOList(DistributorQuery query) throws Exception;
 
-	public Result<DistributorDO> queryDistributorDOById(long distributorId);*/
+	DistributorDO queryDistributorDOById(long distributorId) throws Exception;
 
-	List<DistributorDO> queryDistributorDOBySysUserId(long sysUserId);
+	List<DistributorDO> selectDistributorDOByUserId(long sysUserId) throws Exception;
 	
-	/*public Result<Long> editDistributorDO(DistributorDO distributorDO);
+	Long editDistributorDO(DistributorDO distributorDO) throws Exception;
 
-	public Result<Integer> updateDistributorStatus(DistributorDO distributorDO);
+	Integer updateDistributorStatus(DistributorDO distributorDO) throws Exception;
 	
-	public Result<Long> updateDistributorSysUserId(DistributorDO distributorDO);
+	Long updateDistributorSysUserId(DistributorDO distributorDO) throws Exception;
 
-	public Result<List<DistributorDO>> queryDistributorDOAll(DistributorQuery query);
+	List<DistributorDO> queryDistributorDOAll() throws Exception;
 
-	public Result<DistributorDO> queryDistributorDOByDeviceNo(String deviceNo);
+	DistributorDO queryDistributorDOByDeviceNo(String deviceNo) throws Exception;
 
-	*//**
-	 * 根据经销商名称模糊查询
-	 * @param name
-	 * @return
-	 * @throws Exception
-	 *//*
-	List<DistributorDO> queryDistributorDOByNameLike(String name)throws Exception;*/
+	List<DistributorDO> queryDistributorDOByNameLike(String name)throws Exception;
+
+	Long insertDistributorDO(DistributorDO distributorDO) throws Exception;
 }

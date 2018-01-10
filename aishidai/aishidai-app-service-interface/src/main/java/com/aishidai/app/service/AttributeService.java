@@ -11,12 +11,4 @@ public interface AttributeService {
      * @return
      */
     List<AttributeDO> getAllSubclassByAttrId(Integer attributeId);
-
-
-    List<AttributeDO> getAll();
-
-
-    Boolean update(AttributeDO attributeDO);
-
-    Boolean add(AttributeDO attributeDO);
 }

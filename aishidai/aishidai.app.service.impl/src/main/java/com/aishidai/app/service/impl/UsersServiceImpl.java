@@ -2,7 +2,6 @@ package com.aishidai.app.service.impl;
 
 import java.util.List;
 
-import com.aishidai.app.model.pojo.UsersDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aishidai.app.dao.UsersDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.dto.UsersListDTO;
+import com.aishidai.app.model.pojo.UsersDO;
 import com.aishidai.app.model.query.UsersQuery;
 import com.aishidai.app.service.UsersService;
 
@@ -68,11 +68,11 @@ public class UsersServiceImpl implements UsersService{
     public Result<UsersListDTO> queryUsersDOById(int userId) {
         Result<UsersListDTO> result = new Result<UsersListDTO>();
         try {
-            UsersDO u = usersDOMapper.selectByPrimaryKey(Long.valueOf(userId));
+            UsersDO u = usersDOMapper.selectByPrimaryKey(userId);
             
             if (u != null) {
                 UsersListDTO uDTO = new UsersListDTO();
-                uDTO.setUserId(Integer.valueOf(userId));
+                uDTO.setUserId(u.getUserId());
                 uDTO.setTrueName(u.getTrueName());
                 uDTO.setAvatar(u.getAvatar());
                 uDTO.setUname(u.getUname());

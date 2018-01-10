@@ -10,21 +10,10 @@ import java.util.List;
 
 @Service
 public class AttributeServiceImpl implements AttributeService {
-    public List<AttributeDO> getAll() {
-        return attributeDOMapper.getAll();
-    }
 
     @Autowired
     AttributeDOMapper attributeDOMapper;
     public List<AttributeDO> getAllSubclassByAttrId(Integer attributeId) {
         return attributeDOMapper.getAllSubclassByAttrIdI(attributeId);
-    }
-
-    public Boolean update(AttributeDO attributeDO) {
-        return attributeDOMapper.updateByPrimaryKeySelective(attributeDO)>0;
-    }
-
-    public Boolean add(AttributeDO attributeDO) {
-        return attributeDOMapper.insert(attributeDO)>0;
     }
 }

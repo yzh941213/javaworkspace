@@ -1,7 +1,7 @@
 package com.aishidai.app.service;
 
+import com.aishidai.app.model.dto.QueryItem;
 import com.aishidai.app.model.pojo.ItemDO;
-import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.model.vo.ItemVO;
 
 import java.util.List;
@@ -16,5 +16,5 @@ public interface ItemService {
      */
     Boolean add(ItemDO itemDO);
 
-    List<ItemVO> itemList(QueryItem queryItem);
+    List<ItemVO> itemList(ItemDO itemDO);
 }

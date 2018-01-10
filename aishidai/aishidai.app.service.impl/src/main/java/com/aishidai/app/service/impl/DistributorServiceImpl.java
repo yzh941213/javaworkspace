@@ -1,22 +1,25 @@
 package com.aishidai.app.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.aishidai.app.model.pojo.DistributorDO;
-import com.aishidai.app.model.pojo.DistributorDOExample;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.DistributorDOMapper;
+import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.DistributorDO;
+import com.aishidai.app.model.pojo.DistributorDOExample;
+import com.aishidai.app.model.query.DistributorQuery;
 import com.aishidai.app.service.DistributorService;
 
 @Service
 public class DistributorServiceImpl implements DistributorService {
     @Autowired
     private DistributorDOMapper distributorDOMapper;
-
-  /*  
-    public Result<List<DistributorDO>> queryDistributorDOList(DistributorQuery query) {
+ 
+    public List<DistributorDO> queryDistributorDOList(DistributorQuery query) {
         Result<List<DistributorDO>> result = null;
         try {
             List<DistributorDO> list = distributorDOMapper.queryDistributorDOList(query);
@@ -36,25 +39,15 @@ public class DistributorServiceImpl implements DistributorService {
     }
 
     
-    public Result<DistributorDO> queryDistributorDOById(long distributorId) {
-        Result<DistributorDO> result = null;
-        try {
-            DistributorDO distributorDO = distributorDOMapper.queryDistributorDOById(distributorId);
+    public DistributorDO queryDistributorDOById(long distributorId) {
+       
+        DistributorDO distributorDO = distributorDOMapper.selectByPrimaryKey(distributorId);
 
-            result = new Result<DistributorDO>();
-            result.setSuccess(true);
-            result.setResult(distributorDO);
-        } catch (Exception e) {
-            e.printStackTrace();
-            result.setSuccess(true);
-            result.setErrorInfo(e.getMessage());
-            return result;
-        }
-        return result;
+        return distributorDO;
     }
 
     
-    public Result<Long> editDistributorDO(DistributorDO distributorDO) {
+    public Long editDistributorDO(DistributorDO distributorDO) {
         Result<Long> result = null;
         try {
             long row = distributorDOMapper.editDistributorDO(distributorDO);
@@ -75,7 +68,7 @@ public class DistributorServiceImpl implements DistributorService {
     }
 
     
-    public Result<Integer> updateDistributorStatus(DistributorDO distributorDO) {
+    public Integer updateDistributorStatus(DistributorDO distributorDO) {
         Result<Integer> result = null;
         try {
             int row = distributorDOMapper.updateDistributorDOStatus(distributorDO);
@@ -96,7 +89,7 @@ public class DistributorServiceImpl implements DistributorService {
     }
 
 	
-	public Result<Long> updateDistributorSysUserId(DistributorDO distributorDO) {
+	public Long updateDistributorSysUserId(DistributorDO distributorDO) {
 		Result<Long> result = null;
         try {
             Long row = distributorDOMapper.updateDistributorDOSysUserId(distributorDO);
@@ -120,27 +113,15 @@ public class DistributorServiceImpl implements DistributorService {
 	
 
 	
-	public Result<List<DistributorDO>> queryDistributorDOAll(DistributorQuery query) {
-		Result<List<DistributorDO>> result = null;
-        try {
-            List<DistributorDO> list = distributorDOMapper.queryDistributorDOAll(query);
-            result = new Result<List<DistributorDO>>();
-            if (list.isEmpty() || list == null) {
-                list = new ArrayList<DistributorDO>();
-            }
-            result.setResult(list);
-            result.setSuccess(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            result.setSuccess(false);
-            result.setErrorInfo(e.getMessage());
-            return result;
-        }
-        return result;
+	public List<DistributorDO> queryDistributorDOAll() throws Exception{
+
+		List<DistributorDO> list = distributorDOMapper.selectByExample(null);
+
+		return list;
 	}
 
 	
-	public Result<DistributorDO> queryDistributorDOByDeviceNo(String deviceNo) {
+	public DistributorDO queryDistributorDOByDeviceNo(String deviceNo) {
 		Result<DistributorDO> result = null;
         try {
             DistributorDO distributorDO = distributorDOMapper.queryDistributorDOByDeviceNo(deviceNo);
@@ -157,15 +138,24 @@ public class DistributorServiceImpl implements DistributorService {
 	}
 
 	
-	public List<DistributorDO> queryDistributorDOByNameLike(String name)
+	public List<DistributorDO> queryDistributorDOByNameLike(String distributorName)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return distributorDOMapper.selectDistributorDOByNameLike(name);
+		DistributorDOExample example = new DistributorDOExample();
+		DistributorDOExample.Criteria criteria = example.createCriteria();
+		
+		if (StringUtils.isNotBlank(distributorName)) {
+			distributorName = "%" + distributorName + "%";
+		}
+		if (StringUtils.isNotBlank(distributorName)) {
+			criteria.andNameLike(distributorName);
+		}  
+		return distributorDOMapper.selectByExample(example);
 	}
-*/
+
     
     
-	public List<DistributorDO> queryDistributorDOBySysUserId(long sysUserId) {
+	public List<DistributorDO> selectDistributorDOByUserId(long sysUserId) {
 
 		DistributorDOExample example = new DistributorDOExample();
 		DistributorDOExample.Criteria criteria = example.createCriteria();

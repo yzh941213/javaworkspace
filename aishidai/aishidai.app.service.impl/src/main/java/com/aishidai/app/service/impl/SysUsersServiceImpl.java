@@ -3,17 +3,27 @@ package com.aishidai.app.service.impl;
 import java.util.List;
 
 
-import com.aishidai.app.model.pojo.*;
+
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aishidai.app.dao.ResourceDOCustomMapper;
 import com.aishidai.app.dao.ResourceDOMapper;
+import com.aishidai.app.dao.SysUsersDOCustomMapper;
 import com.aishidai.app.dao.SysUsersDOMapper;
+import com.aishidai.app.dao.SysusersRoleDOCustomMapper;
 import com.aishidai.app.dao.SysusersRoleDOMapper;
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOExample;
+import com.aishidai.app.model.pojo.SysUsersDO;
+import com.aishidai.app.model.pojo.SysUsersDOExample;
+import com.aishidai.app.model.pojo.SysusersRoleDO;
 import com.aishidai.app.model.query.ResourceQuery;
 import com.aishidai.app.service.SysUsersService;
 import com.aishidai.app.utils.PasswordHash;
@@ -25,9 +35,15 @@ public class SysUsersServiceImpl implements SysUsersService {
 	@Autowired
 	private SysUsersDOMapper sysUsersDOMapper;
 	@Autowired
+	private SysUsersDOCustomMapper sysUsersDOCustomMapper;
+	@Autowired
+	private SysusersRoleDOCustomMapper sysusersRoleDOCustomMapper;
+	@Autowired
 	private SysusersRoleDOMapper sysusersRoleDOMapper;
 	@Autowired
 	private ResourceDOMapper resourceDOMapper;
+	@Autowired
+	private ResourceDOCustomMapper resourceDOCustomMapper;
 
 	private static final Logger logger = LoggerFactory.getLogger(SysUsersServiceImpl.class);
 
@@ -59,7 +75,7 @@ public class SysUsersServiceImpl implements SysUsersService {
 	public Result<Long> addSysUsersDOS(SysUsersDO usersDO)throws Exception {
 		Result<Long> result = new Result<Long>();
 
-		long row = sysUsersDOMapper.insertSysUserDO(usersDO);
+		long row = sysUsersDOCustomMapper.insertSysUserDO(usersDO);
 		if (row > 0) {
 			result.setResult(row);
 			return result;
@@ -79,17 +95,17 @@ public class SysUsersServiceImpl implements SysUsersService {
         try {
         	long row = 0;
         	if(usersDO.getUserId()==null||usersDO.getUserId().intValue()==0){
-        		row = sysUsersDOMapper.insertSysUserDO(usersDO);
+        		row = sysUsersDOCustomMapper.insertSysUserDO(usersDO);
         		//分配角色
         		SysusersRoleDO sysUsersRole = new SysusersRoleDO();
         		sysUsersRole.setSysusersId(row);
         		sysUsersRole.setRoleId(roleId);
-        		long row1 = sysusersRoleDOMapper.insertSysusersRoleDO(sysUsersRole);
+        		long row1 = sysusersRoleDOCustomMapper.insertSysusersRoleDO(sysUsersRole);
         		if (row1 == 0) {
                     throw new RuntimeException();
                 }
         	}else{
-        		row = sysUsersDOMapper.insertSysUserDO(usersDO);	
+        		row = sysUsersDOCustomMapper.insertSysUserDO(usersDO);	
         	}
             if (row > 0) {
                 result.setResult(row);
@@ -145,10 +161,10 @@ public class SysUsersServiceImpl implements SysUsersService {
 		try {
 			//代表是超级管理员
 			if (!list.isEmpty() && list.size() > 0 && list.get(0).getUserName().equals("admin")) {
-				List<ResourceDO> adminResource =
-						resourceDOMapper.queryAllResource();
+				List<ResourceDO> adminResource = 
+						resourceDOCustomMapper.queryAllResource();
 				// 查全部权限
-				List<ResourceDO> firstMenus = resourceDOMapper.queryFirstMenu();
+				List<ResourceDO> firstMenus = resourceDOCustomMapper.queryFirstMenu();
 
 				if (firstMenus != null && !firstMenus.isEmpty()) {
 					for (ResourceDO first : firstMenus) {
@@ -166,15 +182,15 @@ public class SysUsersServiceImpl implements SysUsersService {
 				return result;
 				
 			} else {
-				List<ResourceDO> userResource = resourceDOMapper.queryAllResourceByUserId(userId);
+				List<ResourceDO> userResource = resourceDOCustomMapper.queryAllResourceByUserId(userId);
 				// 查部分权限
-				List<ResourceDO> firstMenus = resourceDOMapper.queryFirstMenuByUserId(userId);
+				List<ResourceDO> firstMenus = resourceDOCustomMapper.queryFirstMenuByUserId(userId);
 				if (firstMenus != null && !firstMenus.isEmpty()) {
  					for (ResourceDO first : firstMenus) {
 						ResourceQuery query = new ResourceQuery();
 						query.setParentId(first.getId());
 						query.setUserId(userId);
-						List<ResourceDO> secMenus = resourceDOMapper.querySecondMenuByUserId(query);
+						List<ResourceDO> secMenus = resourceDOCustomMapper.querySecondMenuByUserId(query);
 						first.setResourceDOList(secMenus);
 					}
 				}
@@ -205,7 +221,6 @@ public class SysUsersServiceImpl implements SysUsersService {
 		}else{
 			return list.get(0);
 		}
-		
 	}
 	
 	public List<SysUsersDO> querySysUsersByGroupId(Long groupId) {

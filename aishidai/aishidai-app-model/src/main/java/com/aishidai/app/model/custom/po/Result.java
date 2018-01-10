@@ -3,6 +3,7 @@ package com.aishidai.app.model.custom.po;
 import java.io.Serializable;
 import java.util.List;
 
+import com.aishidai.app.model.pojo.ResourceDO;
 import com.aishidai.app.model.query.Query;
 
 

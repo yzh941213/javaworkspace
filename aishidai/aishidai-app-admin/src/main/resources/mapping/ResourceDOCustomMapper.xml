@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ResourceDOCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ResourceDOCustom" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="resUrl" property="resurl" jdbcType="VARCHAR" />
+    <result column="categoryId" property="categoryid" jdbcType="BIGINT" />
+    <result column="parentId" property="parentid" jdbcType="BIGINT" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="createrId" property="createrid" jdbcType="BIGINT" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="BIGINT" />
+    <result column="updated" property="updated" jdbcType="BIGINT" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="isDeleted" property="isdeleted" jdbcType="TINYINT" />
+    <result column="orderNum" property="ordernum" jdbcType="INTEGER" />
+  </resultMap>
+  
+	<select id="queryFirstMenuByUserId" parameterType="com.aishidai.app.model.query.ResourceQuery" 
+		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+			SELECT * from resource where categoryId = 1 and isDeleted != 1 and id in
+			(SELECT DISTINCT resourceId from role_resource where isDeleted != 1
+			      and roleId in (SELECT role_id FROM sysusers_role
+		          WHERE sysusers_id = #{userId} AND is_deleted != 1)) order by orderNum
+	</select>
+	
+	<select id="querySecondMenuByUserId" parameterType="com.aishidai.app.model.query.ResourceQuery" 
+	   		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		SELECT * from resource where categoryId = 2 and isDeleted != 1 and parentId
+		= #{parentId} and id in (SELECT DISTINCT resourceId from role_resource
+		where isDeleted != 1 and roleId in (SELECT role_id FROM sysusers_role
+		WHERE sysusers_id = #{userId} AND is_deleted != 1)) order by orderNum
+	</select>
+	
+
+	<select id="queryAllResource" parameterType="long" 
+		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+        <![CDATA[
+          SELECT * from resource where isDeleted != 1    ]]>
+	</select>
+	
+	<select id="queryAllResourceByUserId" parameterType="long"
+		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+        <![CDATA[ 
+        SELECT * FROM resource WHERE isDeleted != 1 AND id  IN 
+        (SELECT DISTINCT resourceId FROM role_resource 
+                WHERE isDeleted != 1 AND roleId IN 
+                (SELECT role_id FROM sysusers_role 
+                WHERE sysusers_id = #{userId} AND is_deleted != 1))
+          ]]>
+	</select>
+	
+	<select id="queryFirstMenu" 
+	resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		SELECT * from resource where parentId = 0 and isDeleted != 1 
+		order by orderNum
+	</select>
+
+	<select id="queryAllMenuByParentId" parameterType="java.lang.Long"
+		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		SELECT * from resource where parentId = #{parentId} and isDeleted != 1 order
+		by orderNum
+	</select>
+
+
+	<select id="queryResourceByRoleId" 
+	resultType="com.aishidai.app.model.pojo.ResourceDOCustom"
+		parameterType="long">
+		SELECT r.id,rr.id as role_res_id 
+		from resource r LEFT join 
+		(SELECT id,resourceId 
+		from role_resource where isDeleted != 1 and roleId = #{roleId}) rr 
+		ON r.id = rr.resourceId where r.isDeleted != 1 and r.id
+		in (SELECT DISTINCT resourceId from role_resource where isDeleted != 1
+		and roleId = #{roleId})
+	</select>
+	
+  
+</mapper>

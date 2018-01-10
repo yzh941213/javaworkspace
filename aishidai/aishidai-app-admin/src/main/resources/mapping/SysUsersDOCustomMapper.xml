@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.SysUsersDOCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.SysUsersDOCustom" >
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="role_id" property="roleId" jdbcType="BIGINT" />
+    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+ 
+  <insert id="insertSysUserDO" parameterType="com.aishidai.app.model.pojo.SysUsersDOCustom">
+
+	<selectKey keyProperty="userId" keyColumn="user_id" order="AFTER"
+		resultType="java.lang.Long">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+
+	insert into sys_users (group_id,
+	user_name, nick_name, password,
+	name, sex, mobile,
+	email, created, updated,
+	status, avatar, feature,
+	is_deleted)
+	values (#{groupId,jdbcType=BIGINT},
+	#{userName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+	#{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER},
+	#{mobile,jdbcType=VARCHAR},
+	#{email,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER},
+	#{status,jdbcType=INTEGER}, #{avatar,jdbcType=VARCHAR},
+	#{feature,jdbcType=VARCHAR},
+	#{isDeleted,jdbcType=INTEGER})
+</insert>
+  
+</mapper>

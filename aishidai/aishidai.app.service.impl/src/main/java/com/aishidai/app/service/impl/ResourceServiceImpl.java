@@ -1,14 +1,16 @@
 package com.aishidai.app.service.impl;
 
-import com.aishidai.app.model.pojo.ResourceDO;
-import com.aishidai.app.model.pojo.ResourceDOExample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aishidai.app.dao.ResourceDOCustomMapper;
 import com.aishidai.app.dao.ResourceDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.dto.ResourceDTO;
+import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOExample;
 import com.aishidai.app.service.ResourceService;
 
 import javax.annotation.Resource;
@@ -17,18 +19,20 @@ import java.util.List;
 
 @Service
 public class ResourceServiceImpl implements ResourceService {
-    @Resource
+	
+    @Autowired
     private ResourceDOMapper resourceDOMapper;
-
-
-    Logger logger = LoggerFactory.getLogger(ResourceServiceImpl.class);
+    @Autowired
+    private ResourceDOCustomMapper resourceDOCustomMapper;
+    
+    private static final Logger logger = LoggerFactory.getLogger(ResourceServiceImpl.class);
 
 
     
     public Result<List<ResourceDO>> queryAllResource() {
         Result<List<ResourceDO>> result = new Result<List<ResourceDO>>();
         try {
-            List<ResourceDO> firstMenusAll = resourceDOMapper.queryFirstMenu();
+            List<ResourceDO> firstMenusAll = resourceDOCustomMapper.queryFirstMenu();
             
             for (ResourceDO firstAll: firstMenusAll) {
             	
@@ -66,9 +70,9 @@ public class ResourceServiceImpl implements ResourceService {
 
 		Result<List<ResourceDO>> result = new Result<List<ResourceDO>>();
 
-		List<ResourceDTO> resourceDOList = resourceDOMapper
+		List<ResourceDTO> resourceDOList = resourceDOCustomMapper
 				.queryResourceByRoleId(roleId);
-		List<ResourceDO> firstMenusAll = resourceDOMapper.queryFirstMenu();
+		List<ResourceDO> firstMenusAll = resourceDOCustomMapper.queryFirstMenu();
 
 		for (ResourceDO firstAll : firstMenusAll) {
 			for (ResourceDTO resourceDTO : resourceDOList) {

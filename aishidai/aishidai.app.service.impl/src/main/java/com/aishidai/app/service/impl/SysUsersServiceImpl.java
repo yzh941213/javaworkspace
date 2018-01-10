@@ -3,6 +3,7 @@ package com.aishidai.app.service.impl;
 import java.util.List;
 
 
+import com.aishidai.app.model.pojo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,7 +145,7 @@ public class SysUsersServiceImpl implements SysUsersService {
 		try {
 			//代表是超级管理员
 			if (!list.isEmpty() && list.size() > 0 && list.get(0).getUserName().equals("admin")) {
-				List<ResourceDO> adminResource = 
+				List<ResourceDO> adminResource =
 						resourceDOMapper.queryAllResource();
 				// 查全部权限
 				List<ResourceDO> firstMenus = resourceDOMapper.queryFirstMenu();

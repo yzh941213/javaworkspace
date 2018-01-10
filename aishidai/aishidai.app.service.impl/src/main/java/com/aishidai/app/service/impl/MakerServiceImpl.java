@@ -1,6 +1,8 @@
 package com.aishidai.app.service.impl;
 
 
+import com.aishidai.app.model.pojo.MakerDO;
+import com.aishidai.app.model.pojo.MakerDOExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -227,7 +229,7 @@ public class MakerServiceImpl implements MakerService {
 		
 		MakerDOExample example = new MakerDOExample();
 		MakerDOExample.Criteria criteria = example.createCriteria();
-		criteria.andSysUserIdEqualTo(Integer.valueOf(sysUserId+""));
+		criteria.andSysUserIdEqualTo(Long.valueOf(sysUserId+""));
 		List<MakerDO> list = makerDOMapper.selectByExample(example);
 		return list;
 	}

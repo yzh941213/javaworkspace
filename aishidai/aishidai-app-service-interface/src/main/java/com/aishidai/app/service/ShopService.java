@@ -2,6 +2,7 @@ package com.aishidai.app.service;
 
 import java.util.List;
 
+import com.aishidai.app.model.pojo.ShopsDO;
 import org.springframework.stereotype.Service;
 
 

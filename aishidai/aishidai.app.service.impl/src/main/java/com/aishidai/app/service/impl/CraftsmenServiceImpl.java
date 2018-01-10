@@ -1,5 +1,6 @@
 package com.aishidai.app.service.impl;
 
+import com.aishidai.app.model.pojo.CraftsmenDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

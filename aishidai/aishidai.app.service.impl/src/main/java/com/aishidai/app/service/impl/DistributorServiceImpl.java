@@ -2,6 +2,8 @@ package com.aishidai.app.service.impl;
 
 import java.util.List;
 
+import com.aishidai.app.model.pojo.DistributorDO;
+import com.aishidai.app.model.pojo.DistributorDOExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

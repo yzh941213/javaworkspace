@@ -124,7 +124,7 @@ public class UsersManageController {
 
         
         UsersDO usersDO = new UsersDO();
-        usersDO.setUserId(userId);
+        usersDO.setUserId(Long.valueOf(userId));
         usersDO.setStatus(status);
 
         Result<Integer> result = usersService.operatUsersDO(usersDO);

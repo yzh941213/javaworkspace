@@ -1,6 +1,7 @@
 package com.aishidai.app.service;
 
 
+import com.aishidai.app.model.pojo.UsersDO;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.model.custom.po.Result;

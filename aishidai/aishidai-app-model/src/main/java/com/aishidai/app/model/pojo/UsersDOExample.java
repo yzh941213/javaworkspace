@@ -385,52 +385,52 @@ public class UsersDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSexEqualTo(Boolean value) {
+        public Criteria andSexEqualTo(Integer value) {
             addCriterion("sex =", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotEqualTo(Boolean value) {
+        public Criteria andSexNotEqualTo(Integer value) {
             addCriterion("sex <>", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThan(Boolean value) {
+        public Criteria andSexGreaterThan(Integer value) {
             addCriterion("sex >", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andSexGreaterThanOrEqualTo(Integer value) {
             addCriterion("sex >=", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThan(Boolean value) {
+        public Criteria andSexLessThan(Integer value) {
             addCriterion("sex <", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThanOrEqualTo(Boolean value) {
+        public Criteria andSexLessThanOrEqualTo(Integer value) {
             addCriterion("sex <=", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexIn(List<Boolean> values) {
+        public Criteria andSexIn(List<Integer> values) {
             addCriterion("sex in", values, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotIn(List<Boolean> values) {
+        public Criteria andSexNotIn(List<Integer> values) {
             addCriterion("sex not in", values, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexBetween(Boolean value1, Boolean value2) {
+        public Criteria andSexBetween(Integer value1, Integer value2) {
             addCriterion("sex between", value1, value2, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andSexNotBetween(Integer value1, Integer value2) {
             addCriterion("sex not between", value1, value2, "sex");
             return (Criteria) this;
         }
@@ -905,52 +905,52 @@ public class UsersDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedEqualTo(Boolean value) {
+        public Criteria andIsDeletedEqualTo(Integer value) {
             addCriterion("is_deleted =", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotEqualTo(Boolean value) {
+        public Criteria andIsDeletedNotEqualTo(Integer value) {
             addCriterion("is_deleted <>", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedGreaterThan(Boolean value) {
+        public Criteria andIsDeletedGreaterThan(Integer value) {
             addCriterion("is_deleted >", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsDeletedGreaterThanOrEqualTo(Integer value) {
             addCriterion("is_deleted >=", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedLessThan(Boolean value) {
+        public Criteria andIsDeletedLessThan(Integer value) {
             addCriterion("is_deleted <", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsDeletedLessThanOrEqualTo(Integer value) {
             addCriterion("is_deleted <=", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedIn(List<Boolean> values) {
+        public Criteria andIsDeletedIn(List<Integer> values) {
             addCriterion("is_deleted in", values, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotIn(List<Boolean> values) {
+        public Criteria andIsDeletedNotIn(List<Integer> values) {
             addCriterion("is_deleted not in", values, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsDeletedBetween(Integer value1, Integer value2) {
             addCriterion("is_deleted between", value1, value2, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsDeletedNotBetween(Integer value1, Integer value2) {
             addCriterion("is_deleted not between", value1, value2, "isDeleted");
             return (Criteria) this;
         }
@@ -965,52 +965,52 @@ public class UsersDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginEqualTo(Boolean value) {
+        public Criteria andNoLoginEqualTo(Integer value) {
             addCriterion("no_login =", value, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginNotEqualTo(Boolean value) {
+        public Criteria andNoLoginNotEqualTo(Integer value) {
             addCriterion("no_login <>", value, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginGreaterThan(Boolean value) {
+        public Criteria andNoLoginGreaterThan(Integer value) {
             addCriterion("no_login >", value, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andNoLoginGreaterThanOrEqualTo(Integer value) {
             addCriterion("no_login >=", value, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginLessThan(Boolean value) {
+        public Criteria andNoLoginLessThan(Integer value) {
             addCriterion("no_login <", value, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginLessThanOrEqualTo(Boolean value) {
+        public Criteria andNoLoginLessThanOrEqualTo(Integer value) {
             addCriterion("no_login <=", value, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginIn(List<Boolean> values) {
+        public Criteria andNoLoginIn(List<Integer> values) {
             addCriterion("no_login in", values, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginNotIn(List<Boolean> values) {
+        public Criteria andNoLoginNotIn(List<Integer> values) {
             addCriterion("no_login not in", values, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginBetween(Boolean value1, Boolean value2) {
+        public Criteria andNoLoginBetween(Integer value1, Integer value2) {
             addCriterion("no_login between", value1, value2, "noLogin");
             return (Criteria) this;
         }
 
-        public Criteria andNoLoginNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andNoLoginNotBetween(Integer value1, Integer value2) {
             addCriterion("no_login not between", value1, value2, "noLogin");
             return (Criteria) this;
         }
@@ -1025,52 +1025,52 @@ public class UsersDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Byte value) {
+        public Criteria andStatusEqualTo(Integer value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Byte value) {
+        public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Byte value) {
+        public Criteria andStatusGreaterThan(Integer value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Byte value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Byte value) {
+        public Criteria andStatusLessThan(Integer value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Byte value) {
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Byte> values) {
+        public Criteria andStatusIn(List<Integer> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Byte> values) {
+        public Criteria andStatusNotIn(List<Integer> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Byte value1, Byte value2) {
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Byte value1, Byte value2) {
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }

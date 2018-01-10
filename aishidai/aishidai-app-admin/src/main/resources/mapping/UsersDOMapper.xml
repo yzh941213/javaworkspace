@@ -6,7 +6,7 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="uname" property="uname" jdbcType="VARCHAR" />
     <result column="unick" property="unick" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="register_type" property="registerType" jdbcType="INTEGER" />
@@ -14,9 +14,9 @@
     <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
     <result column="last_login_ip" property="lastLoginIp" jdbcType="CHAR" />
     <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
-    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
-    <result column="no_login" property="noLogin" jdbcType="BIT" />
-    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="no_login" property="noLogin" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="cmessage" property="cmessage" jdbcType="INTEGER" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
     <result column="ID" property="id" jdbcType="VARCHAR" />
@@ -121,21 +121,21 @@
   </delete>
   <insert id="insert" parameterType="com.aishidai.app.model.pojo.UsersDO" >
     insert into users (user_id, email, uname, 
-      unick, sex, password, avatar, 
-      register_type, register_ip, register_time, 
-      last_login_ip, last_login_time, is_deleted, 
-      no_login, status, cmessage, 
-      updated, ID, true_name, 
-      open_id, phone, member
-      )
+      unick, sex, password, 
+      avatar, register_type, register_ip, 
+      register_time, last_login_ip, last_login_time, 
+      is_deleted, no_login, status, 
+      cmessage, updated, ID, 
+      true_name, open_id, phone, 
+      member)
     values (#{userId,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, 
-      #{unick,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{registerType,jdbcType=INTEGER}, #{registerIp,jdbcType=CHAR}, #{registerTime,jdbcType=TIMESTAMP}, 
-      #{lastLoginIp,jdbcType=CHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, 
-      #{noLogin,jdbcType=BIT}, #{status,jdbcType=TINYINT}, #{cmessage,jdbcType=INTEGER}, 
-      #{updated,jdbcType=TIMESTAMP}, #{id,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, 
-      #{openId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{member,jdbcType=INTEGER}
-      )
+      #{unick,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{registerType,jdbcType=INTEGER}, #{registerIp,jdbcType=CHAR}, 
+      #{registerTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=CHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=INTEGER}, #{noLogin,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{cmessage,jdbcType=INTEGER}, #{updated,jdbcType=TIMESTAMP}, #{id,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{member,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.UsersDO" >
     insert into users
@@ -221,7 +221,7 @@
         #{unick,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        #{sex,jdbcType=BIT},
+        #{sex,jdbcType=INTEGER},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -245,13 +245,13 @@
         #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isDeleted != null" >
-        #{isDeleted,jdbcType=BIT},
+        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="noLogin != null" >
-        #{noLogin,jdbcType=BIT},
+        #{noLogin,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=TINYINT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="cmessage != null" >
         #{cmessage,jdbcType=INTEGER},
@@ -298,7 +298,7 @@
         unick = #{record.unick,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=BIT},
+        sex = #{record.sex,jdbcType=INTEGER},
       </if>
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
@@ -322,13 +322,13 @@
         last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isDeleted != null" >
-        is_deleted = #{record.isDeleted,jdbcType=BIT},
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       </if>
       <if test="record.noLogin != null" >
-        no_login = #{record.noLogin,jdbcType=BIT},
+        no_login = #{record.noLogin,jdbcType=INTEGER},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=TINYINT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.cmessage != null" >
         cmessage = #{record.cmessage,jdbcType=INTEGER},
@@ -362,7 +362,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       uname = #{record.uname,jdbcType=VARCHAR},
       unick = #{record.unick,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=BIT},
+      sex = #{record.sex,jdbcType=INTEGER},
       password = #{record.password,jdbcType=VARCHAR},
       avatar = #{record.avatar,jdbcType=VARCHAR},
       register_type = #{record.registerType,jdbcType=INTEGER},
@@ -370,9 +370,9 @@
       register_time = #{record.registerTime,jdbcType=TIMESTAMP},
       last_login_ip = #{record.lastLoginIp,jdbcType=CHAR},
       last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
-      is_deleted = #{record.isDeleted,jdbcType=BIT},
-      no_login = #{record.noLogin,jdbcType=BIT},
-      status = #{record.status,jdbcType=TINYINT},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      no_login = #{record.noLogin,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
       cmessage = #{record.cmessage,jdbcType=INTEGER},
       updated = #{record.updated,jdbcType=TIMESTAMP},
       ID = #{record.id,jdbcType=VARCHAR},
@@ -397,7 +397,7 @@
         unick = #{unick,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        sex = #{sex,jdbcType=BIT},
+        sex = #{sex,jdbcType=INTEGER},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
@@ -421,13 +421,13 @@
         last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isDeleted != null" >
-        is_deleted = #{isDeleted,jdbcType=BIT},
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="noLogin != null" >
-        no_login = #{noLogin,jdbcType=BIT},
+        no_login = #{noLogin,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="cmessage != null" >
         cmessage = #{cmessage,jdbcType=INTEGER},
@@ -458,7 +458,7 @@
     set email = #{email,jdbcType=VARCHAR},
       uname = #{uname,jdbcType=VARCHAR},
       unick = #{unick,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=BIT},
+      sex = #{sex,jdbcType=INTEGER},
       password = #{password,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       register_type = #{registerType,jdbcType=INTEGER},
@@ -466,9 +466,9 @@
       register_time = #{registerTime,jdbcType=TIMESTAMP},
       last_login_ip = #{lastLoginIp,jdbcType=CHAR},
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      is_deleted = #{isDeleted,jdbcType=BIT},
-      no_login = #{noLogin,jdbcType=BIT},
-      status = #{status,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      no_login = #{noLogin,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       cmessage = #{cmessage,jdbcType=INTEGER},
       updated = #{updated,jdbcType=TIMESTAMP},
       ID = #{id,jdbcType=VARCHAR},

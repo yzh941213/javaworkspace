@@ -27,4 +27,9 @@ public interface SysusersRoleDOMapper {
     int updateByPrimaryKeySelective(SysusersRoleDO record);
 
     int updateByPrimaryKey(SysusersRoleDO record);
+    
+    long isSuperAdmin(String userId);
+    
+    long insertSysusersRoleDO(SysusersRoleDO record);
+    
 }

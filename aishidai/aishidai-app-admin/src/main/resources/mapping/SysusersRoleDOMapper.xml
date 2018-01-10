@@ -256,4 +256,21 @@
       is_deleted = #{isDeleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
+  
+  <insert id="insertSysusersRoleDO" parameterType="com.aishidai.app.model.pojo.SysusersRoleDO" >
+    
+    <selectKey keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID()
+	</selectKey>
+    
+    insert into sysusers_role (sysusers_id, role_id, 
+      creater_id, created, updated, 
+      feature, is_deleted)
+    values (#{sysusersId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, 
+      #{createrId,jdbcType=BIGINT}, #{created,jdbcType=BIGINT}, #{updated,jdbcType=BIGINT}, 
+      #{feature,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  
 </mapper>

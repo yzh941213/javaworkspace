@@ -11,7 +11,7 @@ public class UsersDO {
 
     private String unick;
 
-    private Boolean sex;
+    private Integer sex;
 
     private String password;
 
@@ -27,11 +27,11 @@ public class UsersDO {
 
     private Date lastLoginTime;
 
-    private Boolean isDeleted;
+    private Integer isDeleted;
 
-    private Boolean noLogin;
+    private Integer noLogin;
 
-    private Byte status;
+    private Integer status;
 
     private Integer cmessage;
 
@@ -79,11 +79,11 @@ public class UsersDO {
         this.unick = unick == null ? null : unick.trim();
     }
 
-    public Boolean getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -143,27 +143,27 @@ public class UsersDO {
         this.lastLoginTime = lastLoginTime;
     }
 
-    public Boolean getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Boolean isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 
-    public Boolean getNoLogin() {
+    public Integer getNoLogin() {
         return noLogin;
     }
 
-    public void setNoLogin(Boolean noLogin) {
+    public void setNoLogin(Integer noLogin) {
         this.noLogin = noLogin;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

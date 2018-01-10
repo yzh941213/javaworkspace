@@ -4,6 +4,7 @@ import com.aishidai.app.model.pojo.ItemDO;
 import com.aishidai.app.model.pojo.ItemDOExample;
 import java.util.List;
 
+import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.model.vo.ItemVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -36,7 +37,7 @@ public interface ItemDOMapper {
 
     int updateByPrimaryKey(ItemDO record);
 
-    List<ItemVO> itemList(ItemDO record);
+    List<ItemVO> itemList(QueryItem queryItem);
 
 
 }

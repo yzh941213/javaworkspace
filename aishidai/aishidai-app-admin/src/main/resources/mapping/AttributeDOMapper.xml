@@ -309,4 +309,8 @@
   <select id="getAllSubclassByAttrIdI" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     call attribute_findByParentId(#{attributeId});
   </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT * FROM  attribute
+  </select>
 </mapper>

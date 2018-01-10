@@ -1,22 +1,17 @@
 package com.aishidai.app.controller;
 
-import com.aishidai.app.dao.AttributeDOMapper;
-import com.aishidai.app.dao.ItemDOMapper;
-import com.aishidai.app.model.dto.QueryItem;
+import com.aishidai.app.model.pojo.AttributeDO;
 import com.aishidai.app.model.pojo.ItemDO;
-import com.aishidai.app.model.pojo.ItemDOExample;
+import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.service.AttributeService;
 import com.aishidai.common.json.JsonResult;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("attribute")
+@RequestMapping("manage/attribute")
 public class AttributeController {
     @Autowired
     AttributeService attributeService;
@@ -26,5 +21,15 @@ public class AttributeController {
 
 
         return  JsonResult.buildSuccess(attributeService.getAllSubclassByAttrId(1));
+    }
+    @GetMapping(value = "all")
+    public JsonResult getAll(){
+       return JsonResult.buildSuccess(attributeService.getAll());
+    }
+
+    @GetMapping(value = "update")
+    public JsonResult update(AttributeDO attributeDO){
+
+        return JsonResult.buildSuccess( attributeService.update(attributeDO));
     }
 }

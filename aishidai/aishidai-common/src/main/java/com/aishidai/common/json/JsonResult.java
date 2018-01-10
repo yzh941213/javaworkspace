@@ -14,11 +14,39 @@ public class JsonResult{
     public String    sEcho;
     public String message;
     public Boolean success;
+    public static JsonResult buildSuccess(){
+        JsonResult jsonResult=new JsonResult();
+        jsonResult.message="操作成功！";
+        jsonResult.success=true;
+        return jsonResult;
+    }
 
+    public static JsonResult buildSuccess(Boolean flag){
+        JsonResult jsonResult=new JsonResult();
+
+        if(flag){
+            jsonResult.message="操作成功！";
+        }else{
+            jsonResult.message="操作失败！";
+        }
+        jsonResult.success=flag;
+        return jsonResult;
+    }
     public static JsonResult buildSuccess(Object aaData){
         JsonResult jsonResult=new JsonResult();
         jsonResult.aaData=aaData;
-
+        jsonResult.sEcho="2";
+        jsonResult.iTotalDisplayRecords=116l;
+        jsonResult.iTotalRecords=116l;
+        jsonResult.success=true;
+        return jsonResult;
+    }
+    public  static JsonResult buildPaging(List list, String sEcho,Long totalRecord){
+        JsonResult jsonResult=new JsonResult();
+        jsonResult.aaData=list;
+        jsonResult.sEcho=sEcho;
+        jsonResult.iTotalDisplayRecords=totalRecord;
+        jsonResult.iTotalRecords=totalRecord;
         jsonResult.success=true;
         return jsonResult;
     }

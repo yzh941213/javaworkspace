@@ -575,52 +575,52 @@ public class AppVersionDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateEqualTo(Byte value) {
+        public Criteria andUpdateEqualTo(Integer value) {
             addCriterion("update =", value, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateNotEqualTo(Byte value) {
+        public Criteria andUpdateNotEqualTo(Integer value) {
             addCriterion("update <>", value, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateGreaterThan(Byte value) {
+        public Criteria andUpdateGreaterThan(Integer value) {
             addCriterion("update >", value, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateGreaterThanOrEqualTo(Byte value) {
+        public Criteria andUpdateGreaterThanOrEqualTo(Integer value) {
             addCriterion("update >=", value, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateLessThan(Byte value) {
+        public Criteria andUpdateLessThan(Integer value) {
             addCriterion("update <", value, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateLessThanOrEqualTo(Byte value) {
+        public Criteria andUpdateLessThanOrEqualTo(Integer value) {
             addCriterion("update <=", value, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateIn(List<Byte> values) {
+        public Criteria andUpdateIn(List<Integer> values) {
             addCriterion("update in", values, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateNotIn(List<Byte> values) {
+        public Criteria andUpdateNotIn(List<Integer> values) {
             addCriterion("update not in", values, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateBetween(Byte value1, Byte value2) {
+        public Criteria andUpdateBetween(Integer value1, Integer value2) {
             addCriterion("update between", value1, value2, "update");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateNotBetween(Byte value1, Byte value2) {
+        public Criteria andUpdateNotBetween(Integer value1, Integer value2) {
             addCriterion("update not between", value1, value2, "update");
             return (Criteria) this;
         }
@@ -635,52 +635,52 @@ public class AppVersionDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateEqualTo(Byte value) {
+        public Criteria andForceUpdateEqualTo(Integer value) {
             addCriterion("force_update =", value, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateNotEqualTo(Byte value) {
+        public Criteria andForceUpdateNotEqualTo(Integer value) {
             addCriterion("force_update <>", value, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateGreaterThan(Byte value) {
+        public Criteria andForceUpdateGreaterThan(Integer value) {
             addCriterion("force_update >", value, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateGreaterThanOrEqualTo(Byte value) {
+        public Criteria andForceUpdateGreaterThanOrEqualTo(Integer value) {
             addCriterion("force_update >=", value, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateLessThan(Byte value) {
+        public Criteria andForceUpdateLessThan(Integer value) {
             addCriterion("force_update <", value, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateLessThanOrEqualTo(Byte value) {
+        public Criteria andForceUpdateLessThanOrEqualTo(Integer value) {
             addCriterion("force_update <=", value, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateIn(List<Byte> values) {
+        public Criteria andForceUpdateIn(List<Integer> values) {
             addCriterion("force_update in", values, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateNotIn(List<Byte> values) {
+        public Criteria andForceUpdateNotIn(List<Integer> values) {
             addCriterion("force_update not in", values, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateBetween(Byte value1, Byte value2) {
+        public Criteria andForceUpdateBetween(Integer value1, Integer value2) {
             addCriterion("force_update between", value1, value2, "forceUpdate");
             return (Criteria) this;
         }
 
-        public Criteria andForceUpdateNotBetween(Byte value1, Byte value2) {
+        public Criteria andForceUpdateNotBetween(Integer value1, Integer value2) {
             addCriterion("force_update not between", value1, value2, "forceUpdate");
             return (Criteria) this;
         }

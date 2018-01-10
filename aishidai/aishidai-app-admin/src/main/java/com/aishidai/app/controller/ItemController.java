@@ -2,29 +2,25 @@ package com.aishidai.app.controller;
 
 import com.aishidai.app.dao.AttributeDOMapper;
 import com.aishidai.app.dao.ItemDOMapper;
-import com.aishidai.app.model.dto.QueryItem;
 import com.aishidai.app.model.pojo.AttributeDO;
 import com.aishidai.app.model.pojo.AttributeDOExample;
 import com.aishidai.app.model.pojo.ItemDO;
-import com.aishidai.app.model.pojo.ItemDOExample;
+import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.model.vo.ItemVO;
 import com.aishidai.app.service.ItemService;
 import com.aishidai.common.json.JsonResult;
 import com.aishidai.common.tool.SeparatorTool;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.xml.ws.Action;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("item")
+@RequestMapping("manage/item")
 public class ItemController {
 
 
@@ -35,9 +31,9 @@ public class ItemController {
     AttributeDOMapper attributeDOMapper;
 
     @GetMapping(value = "list")
-    public JsonResult itemList(ItemDO itemDO){
+    public JsonResult itemList(QueryItem queryItem){
         List<ItemVO> result=new ArrayList<ItemVO>();
-        List<ItemVO> list= itemService.itemList(itemDO);
+        List<ItemVO> list= itemService.itemList(queryItem);
         for (ItemVO itemVO:list){
             AttributeDOExample attributeDOExample=new AttributeDOExample();
             attributeDOExample.createCriteria().andAttributeIdIn(SeparatorTool.idMinusSplit(itemVO.getCategoryId()));
@@ -55,7 +51,7 @@ public class ItemController {
 
 
 
-        return  JsonResult.buildSuccess(result );
+        return  JsonResult.buildPaging(result ,queryItem.getsEcho(),116l);
     }
 
     @Autowired

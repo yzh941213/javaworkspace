@@ -360,7 +360,7 @@ public class SysUsersController {
 		return jsonObject.toString();
 	}
 
-	@RequestMapping("/queryResource.do")
+	@RequestMapping(value = "/queryResource.do", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public String querySysUsersResource(
 			@RequestParam(value = "userId") long userId) {

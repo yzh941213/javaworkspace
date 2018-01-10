@@ -513,7 +513,7 @@
     where item_id = #{itemId,jdbcType=BIGINT}
   </update>
 
-  <select id="itemList" resultMap="ItemVO"  parameterType="com.aishidai.app.model.pojo.ItemDO">
+  <select id="itemList" resultMap="ItemVO"  parameterType="com.aishidai.app.model.query.QueryItem">
 
      select * ,
     (SELECT max(b.price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) maxPrice,
@@ -522,7 +522,7 @@
     (SELECT min(b.sales_price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) minSalesPrice
 
     from item i
-    where i.item_id=1804 limit 0,100
+ limit #{stratRow},#{pageSize}
 
   </select>
 </mapper>

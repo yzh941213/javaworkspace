@@ -17,9 +17,9 @@ public class AppVersionDO {
 
     private Date updated;
 
-    private Byte update;
+    private Integer update;
 
-    private Byte forceUpdate;
+    private Integer forceUpdate;
 
     public Integer getId() {
         return id;
@@ -77,19 +77,19 @@ public class AppVersionDO {
         this.updated = updated;
     }
 
-    public Byte getUpdate() {
+    public Integer getUpdate() {
         return update;
     }
 
-    public void setUpdate(Byte update) {
+    public void setUpdate(Integer update) {
         this.update = update;
     }
 
-    public Byte getForceUpdate() {
+    public Integer getForceUpdate() {
         return forceUpdate;
     }
 
-    public void setForceUpdate(Byte forceUpdate) {
+    public void setForceUpdate(Integer forceUpdate) {
         this.forceUpdate = forceUpdate;
     }
 }

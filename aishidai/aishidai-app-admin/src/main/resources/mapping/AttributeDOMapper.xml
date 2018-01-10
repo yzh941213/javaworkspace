@@ -304,4 +304,9 @@
       category = #{category,jdbcType=INTEGER}
     where attribute_id = #{attributeId,jdbcType=INTEGER}
   </update>
+
+
+  <select id="getAllSubclassByAttrIdI" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    call attribute_findByParentId(#{attributeId});
+  </select>
 </mapper>

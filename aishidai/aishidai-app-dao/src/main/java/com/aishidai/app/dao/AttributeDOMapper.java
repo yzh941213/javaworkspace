@@ -27,4 +27,6 @@ public interface AttributeDOMapper {
     int updateByPrimaryKeySelective(AttributeDO record);
 
     int updateByPrimaryKey(AttributeDO record);
+
+    List<AttributeDO> getAllSubclassByAttrIdI(Integer attributeId);
 }

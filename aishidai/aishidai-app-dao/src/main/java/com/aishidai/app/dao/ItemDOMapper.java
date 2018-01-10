@@ -3,6 +3,8 @@ package com.aishidai.app.dao;
 import com.aishidai.app.model.pojo.ItemDO;
 import com.aishidai.app.model.pojo.ItemDOExample;
 import java.util.List;
+
+import com.aishidai.app.model.vo.ItemVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface ItemDOMapper {
@@ -33,4 +35,8 @@ public interface ItemDOMapper {
     int updateByPrimaryKeyWithBLOBs(ItemDO record);
 
     int updateByPrimaryKey(ItemDO record);
+
+    List<ItemVO> itemList(ItemDO record);
+
+
 }

@@ -38,3 +38,6 @@ logging:
     org.springframework.web: DEBUG
     com.aishidai.app.dao: DEBUG
 alishidai: testHolleWrod
+ribbon:
+  eager-load:
+    enabled: false

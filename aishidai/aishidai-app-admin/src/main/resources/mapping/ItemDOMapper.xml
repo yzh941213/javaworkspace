@@ -24,6 +24,18 @@
   <resultMap id="ResultMapWithBLOBs" type="com.aishidai.app.model.pojo.ItemDO" extends="BaseResultMap" >
     <result column="summary" property="summary" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+
+  <resultMap id="ItemVO" type="com.aishidai.app.model.vo.ItemVO" extends="ResultMapWithBLOBs" >
+
+    <result column="maxPrice" property="maxPrice" jdbcType="VARCHAR" />
+    <result column="minPrice" property="minPrice" jdbcType="VARCHAR" />
+    <result column="maxSalesPrice" property="maxSalesPrice" jdbcType="VARCHAR" />
+    <result column="minSalesPrice" property="minSalesPrice" jdbcType="VARCHAR" />
+
+
+  </resultMap>
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -500,4 +512,17 @@
       audit = #{audit,jdbcType=INTEGER}
     where item_id = #{itemId,jdbcType=BIGINT}
   </update>
+
+  <select id="itemList" resultMap="ItemVO"  parameterType="com.aishidai.app.model.pojo.ItemDO">
+
+     select * ,
+    (SELECT max(b.price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) maxPrice,
+    (SELECT min(b.price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) minPrice,
+    (SELECT max(b.sales_price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) maxSalesPrice,
+    (SELECT min(b.sales_price)   from item_suit  a  LEFT JOIN item_sku b ON a.sku_id=b.sku_id WHERE a.item_id=i.item_id ) minSalesPrice
+
+    from item i
+    where i.item_id=1804 limit 0,100
+
+  </select>
 </mapper>

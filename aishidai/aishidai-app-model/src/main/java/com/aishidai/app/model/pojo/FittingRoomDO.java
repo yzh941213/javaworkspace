@@ -19,7 +19,7 @@ public class FittingRoomDO {
 
     private Integer updated;
 
-    private Byte isDeleted;
+    private Integer isDeleted;
 
     public Long getId() {
         return id;
@@ -93,11 +93,11 @@ public class FittingRoomDO {
         this.updated = updated;
     }
 
-    public Byte getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.aishidai.app.model.pojo.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aishidai.app.common.LoginConstant;
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.CraftsmenDO;
-import com.aishidai.app.model.pojo.DistributorDO;
-import com.aishidai.app.model.pojo.MakerDO;
-import com.aishidai.app.model.pojo.ResourceDO;
-import com.aishidai.app.model.pojo.ShopsDO;
-import com.aishidai.app.model.pojo.SysUsersDO;
 import com.aishidai.app.service.CraftsmenService;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.MakerService;

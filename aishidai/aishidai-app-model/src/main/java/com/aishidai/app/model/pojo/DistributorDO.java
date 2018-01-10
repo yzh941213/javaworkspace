@@ -29,7 +29,7 @@ public class DistributorDO {
 
     private Date updated;
 
-    private Boolean status;
+    private Integer status;
 
     public Long getId() {
         return id;
@@ -135,11 +135,11 @@ public class DistributorDO {
         this.updated = updated;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

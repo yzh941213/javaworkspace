@@ -1,16 +1,13 @@
 package com.aishidai.app.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.aishidai.app.model.pojo.DistributorDO;
+import com.aishidai.app.model.pojo.DistributorDOExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.DistributorDOMapper;
-import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.DistributorDO;
-import com.aishidai.app.model.pojo.DistributorDOExample;
-import com.aishidai.app.model.query.DistributorQuery;
 import com.aishidai.app.service.DistributorService;
 
 @Service

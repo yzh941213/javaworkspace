@@ -10,6 +10,7 @@ import com.aishidai.app.dao.ResourceDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.dto.ResourceDTO;
 import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOCustom;
 import com.aishidai.app.model.pojo.ResourceDOExample;
 import com.aishidai.app.service.ResourceService;
 
@@ -38,7 +39,10 @@ public class ResourceServiceImpl implements ResourceService {
             	
             	ResourceDOExample example = new ResourceDOExample();
                 ResourceDOExample.Criteria criteria = example.createCriteria();
-                criteria.andParentidEqualTo(firstAll.getId());
+                
+                ResourceDOCustom firstAll_ = ((ResourceDOCustom)firstAll);
+                
+                criteria.andParentidEqualTo(firstAll_.getId());
                 
                 List<ResourceDO> secMenusAll = resourceDOMapper.selectByExample(example);
                 for (ResourceDO secAll: secMenusAll) {
@@ -47,11 +51,11 @@ public class ResourceServiceImpl implements ResourceService {
                     for (ResourceDO thirdAll:thirdMenusAll) {
                     	criteria.andParentidEqualTo(thirdAll.getId());
                         List<ResourceDO> fourthMenusAll = resourceDOMapper.selectByExample(example);
-                        thirdAll.setResourceDOList(fourthMenusAll);
+                        firstAll_.setResourceDOList(fourthMenusAll);
                     }
-                    secAll.setResourceDOList(thirdMenusAll);
+                    firstAll_.setResourceDOList(thirdMenusAll);
                 }
-                firstAll.setResourceDOList(secMenusAll);
+                firstAll_.setResourceDOList(secMenusAll);
             }
             result.setResult(firstMenusAll);
             result.setSuccess(true);
@@ -75,10 +79,12 @@ public class ResourceServiceImpl implements ResourceService {
 		List<ResourceDO> firstMenusAll = resourceDOCustomMapper.queryFirstMenu();
 
 		for (ResourceDO firstAll : firstMenusAll) {
+			ResourceDOCustom firstAll_ = ((ResourceDOCustom)firstAll);
+			
 			for (ResourceDTO resourceDTO : resourceDOList) {
-				if (firstAll.getId().equals(resourceDTO.getId())) {
-					firstAll.setIsTrue(1);
-					firstAll.setRole_res_id(resourceDTO.getRole_res_id());
+				if (firstAll_.getId().equals(resourceDTO.getId())) {
+					firstAll_.setIsTrue(1);
+					firstAll_.setRole_res_id(resourceDTO.getRole_res_id());
 				}
 			}
 			ResourceDOExample example = new ResourceDOExample();
@@ -88,11 +94,11 @@ public class ResourceServiceImpl implements ResourceService {
 			List<ResourceDO> secMenusAll = resourceDOMapper
 					.selectByExample(example);
 			for (ResourceDO secAll : secMenusAll) {
-
+				ResourceDOCustom secAll_ = ((ResourceDOCustom)secAll);
 				for (ResourceDTO resourceDTO : resourceDOList) {
-					if (secAll.getId().equals(resourceDTO.getId())) {
-						secAll.setIsTrue(1);
-						secAll.setRole_res_id(resourceDTO.getRole_res_id());
+					if (secAll_.getId().equals(resourceDTO.getId())) {
+						secAll_.setIsTrue(1);
+						secAll_.setRole_res_id(resourceDTO.getRole_res_id());
 					}
 				}
 				criteria.andParentidEqualTo(secAll.getId());
@@ -100,10 +106,11 @@ public class ResourceServiceImpl implements ResourceService {
 						.selectByExample(example);
 
 				for (ResourceDO thirdAll : thirdMenusAll) {
+					ResourceDOCustom thirdAll_ = ((ResourceDOCustom)thirdAll);
 					for (ResourceDTO resourceDTO : resourceDOList) {
-						if (thirdAll.getId().equals(resourceDTO.getId())) {
-							thirdAll.setIsTrue(1);
-							thirdAll.setRole_res_id(resourceDTO
+						if (thirdAll_.getId().equals(resourceDTO.getId())) {
+							thirdAll_.setIsTrue(1);
+							thirdAll_.setRole_res_id(resourceDTO
 									.getRole_res_id());
 						}
 					}
@@ -111,19 +118,20 @@ public class ResourceServiceImpl implements ResourceService {
 					List<ResourceDO> fourthMenusAll = resourceDOMapper
 							.selectByExample(example);
 					for (ResourceDO fourthAll : fourthMenusAll) {
+						ResourceDOCustom fourthAll_ = ((ResourceDOCustom)fourthAll);
 						for (ResourceDTO resourceDTO : resourceDOList) {
-							if (fourthAll.getId().equals(resourceDTO.getId())) {
-								fourthAll.setIsTrue(1);
-								fourthAll.setRole_res_id(resourceDTO
+							if (fourthAll_.getId().equals(resourceDTO.getId())) {
+								fourthAll_.setIsTrue(1);
+								fourthAll_.setRole_res_id(resourceDTO
 										.getRole_res_id());
 							}
 						}
 					}
-					thirdAll.setResourceDOList(fourthMenusAll);
+					thirdAll_.setResourceDOList(fourthMenusAll);
 				}
-				secAll.setResourceDOList(thirdMenusAll);
+				secAll_.setResourceDOList(thirdMenusAll);
 			}
-			firstAll.setResourceDOList(secMenusAll);
+			firstAll_.setResourceDOList(secMenusAll);
 		}
 		result.setResult(firstMenusAll);
 		result.setSuccess(true);

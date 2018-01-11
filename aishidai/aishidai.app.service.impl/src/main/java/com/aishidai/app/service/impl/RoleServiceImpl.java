@@ -13,13 +13,9 @@ import com.aishidai.app.model.pojo.RoleDO;
 import com.aishidai.app.model.pojo.RoleDOExample;
 import com.aishidai.app.service.RoleService;
 
-import javax.annotation.Resource;
 
 import java.util.List;
 
-/**
- * Created by Shaka on 15/6/10.
- */
 @Service
 public class RoleServiceImpl implements RoleService {
 	
@@ -55,7 +51,11 @@ public class RoleServiceImpl implements RoleService {
 
     
     public List<RoleDO> queryAllRole() throws Exception  {
-        List<RoleDO> list  = roleDOMapper.selectByExample(null);
+    	RoleDOExample example = new RoleDOExample();
+    	
+    	RoleDOExample.Criteria criteria = example.createCriteria();
+    	criteria.andIsdeletedEqualTo((byte)0);
+        List<RoleDO> list  = roleDOMapper.selectByExample(example);
         return list;
     }
 

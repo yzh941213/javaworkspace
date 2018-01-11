@@ -1,4 +1,4 @@
-package com.zhezhuo.web.home.module.screen.manager;
+/*package com.aishidai.app.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,46 +12,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aishidai.app.model.pojo.DeviceDO;
+import com.aishidai.app.model.pojo.DeviceMakerDO;
+import com.aishidai.app.model.pojo.MakerDO;
+import com.aishidai.app.model.query.DeviceMakerQuery;
+import com.aishidai.app.service.DistributorService;
+import com.aishidai.app.service.MakerService;
+import com.aishidai.app.service.SysUsersService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.zhezhuo.biz.manager.DeviceManager;
-import com.zhezhuo.biz.manager.DistributorManager;
-import com.zhezhuo.biz.manager.MakerManager;
-import com.zhezhuo.biz.manager.SysUsersManager;
-import com.zhezhuo.biz.util.PasswordHash;
-import com.zhezhuo.model.Result;
-import com.zhezhuo.model.entity.DeviceDO;
-import com.zhezhuo.model.entity.DeviceMakerDO;
-import com.zhezhuo.model.entity.DistributorDO;
-import com.zhezhuo.model.entity.MakerDO;
-import com.zhezhuo.model.entity.OtherDeviceDO;
-import com.zhezhuo.model.entity.ShopDO;
-import com.zhezhuo.model.entity.SysUsersDO;
-import com.zhezhuo.model.entity.SysUsersRoleDO;
-import com.zhezhuo.model.query.DeviceMakerQuery;
-import com.zhezhuo.model.query.MakerQuery;
-import com.zhezhuo.web.home.common.LoginConstant;
 
-/**
- * Created by 蝈蝈 on 2016/8/17.
- */
+
 @Controller
-@RequestMapping("/manager/maker")
+@RequestMapping("/manage/maker")
 public class MakerController {
 
 	@Autowired
-	MakerManager makerManager;
+	private MakerService makerService;
 	@Autowired
-	SysUsersManager sysUsersManager;
+	private SysUsersService sysUsersService;
 	@Autowired
-	DistributorManager distributorManager;
+	private DistributorService distributorService;
 	@Autowired
-	DeviceManager deviceManager;
-	/**
-	 * 
-	 * @param aoData
-	 * @return
-	 */
+	private DeviceService deviceService;
+	
 	@RequestMapping("/list.do")
 	@ResponseBody
 	public String queryMakers(@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData,HttpServletRequest request) {
@@ -105,26 +89,27 @@ public class MakerController {
 		return returnString(result, jsonObject, query);
 	}
 
-	/**
-	 * 
-	 * @param makerId
-	 * @return
-	 */
-	@RequestMapping("/detail.do")
+	
+	@RequestMapping("/queryDetail.do")
 	@ResponseBody
-	public String queryMakers(@RequestParam(value = "makerId") long makerId) {
+	public String queryDetail(
+			@RequestParam(value = "makerId") long makerId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		Result<MakerDO> result = null;
+		
 		try {
-			result = makerManager.queryMakerDOById(makerId);
+			
+			MakerDO makerDO = makerService.queryMakerDOById(makerId);
+			
 			DeviceMakerQuery query_maker = new DeviceMakerQuery();
-			if (result.getResult() != null) {
+			
+			if (makerDO != null) {
 				query_maker.setMakerId(makerId);
-				List<OtherDeviceDO> list = new ArrayList<OtherDeviceDO>();
-				List<DeviceMakerDO> list_dm = makerManager.queryDeviceMaker(query_maker);
+				List<DeviceDO> list = new ArrayList<DeviceDO>();
+				
+				List<DeviceMakerDO> list_dm = makerService.queryDeviceMaker(query_maker);
 				for (int i = 0; i < list_dm.size(); i++) {
-					Result<DeviceDO> result_device = deviceManager.queryDeviceDOById(list_dm.get(i).getDeviceId());
+					DeviceDO result_device = deviceService.queryDeviceDOById(list_dm.get(i).getDeviceId());
 					if (result_device.getResult() != null) {
 						OtherDeviceDO deviceDO = new OtherDeviceDO();
 						deviceDO.setId(result_device.getResult().getId());
@@ -148,11 +133,11 @@ public class MakerController {
 		jsonObject.put("data", JSONObject.toJSON(result.getResult()));
 		return jsonObject.toString();
 	}
-	/**
+	*//**
 	 * 根据创客名称模糊查询
 	 * @param makerId
 	 * @return
-	 */
+	 *//*
 	@RequestMapping("/queryMakerByNameLike.do")
 	@ResponseBody
 	public String queryMakers(@RequestParam(value = "makerName") String makerName,
@@ -183,9 +168,9 @@ public class MakerController {
 		return jsonObject.toString();
 	}
 
-	/**
+	*//**
 	 * 插入或更新接口
-	 */
+	 *//*
 	@RequestMapping(value = { "/edit.do" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String editMakerDO(@RequestParam(value = "makerId",required=false,defaultValue="0") Long makerId,
@@ -268,7 +253,7 @@ public class MakerController {
 	}
 	
 
-	/**
+	*//**
 	 * 更新记录状态(删除)
 	 * 
 	 * @param makerId
@@ -276,7 +261,7 @@ public class MakerController {
 	 * @param status
 	 *            状态
 	 * @return success/fail
-	 */
+	 *//*
 	@RequestMapping(value = { "/status.do","/del.do" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String updateMakerDOStatus(@RequestParam("makerId") Long makerId, @RequestParam("status") Integer status) {
@@ -444,3 +429,4 @@ public class MakerController {
 	}
 
 }
+*/

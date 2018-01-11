@@ -1,6 +1,5 @@
 package com.aishidai.app.controller;
 
-import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.dto.UsersListDTO;
 import com.aishidai.app.model.pojo.UsersDO;
 import com.aishidai.app.service.UsersService;
@@ -98,45 +97,37 @@ public class UsersManageController {
     
     @RequestMapping("/queryDetail.do")
     @ResponseBody
-    public String queryUsersDO(@RequestParam(value = "userId") int userId) {
+    public String queryUsersDO(@RequestParam(value = "userId") long userId) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("success", false);
 
-        Result<UsersListDTO> result = usersService.queryUsersDOById(userId);
-        if (result != null && result.isSuccess()) {
+        UsersListDTO dto = usersService.queryUsersDOById(userId);
+        if (dto != null ) {
             jsonObject.put("success", true);
-            jsonObject.put("data", result.getResult());
-            jsonObject.put("message", "query success");
+            jsonObject.put("data", dto);
+            jsonObject.put("message", "查询成功");
             return jsonObject.toString();
         }
-        jsonObject.put("message", "query failed");
+        jsonObject.put("message", "查询失败");
         return jsonObject.toString();
     }
 
 
-    @RequestMapping("/edit.do")
-    @ResponseBody
-    public String updateUsersDO(
-    		@RequestParam(value = "userId") int userId,
-            @RequestParam(value = "status", defaultValue = "0", required = false) int status) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("success", false);
+	@RequestMapping("/edit.do")
+	@ResponseBody
+	public String updateUsersDO(UsersDO usersDO) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
 
-        
-        UsersDO usersDO = new UsersDO();
-        usersDO.setUserId(Long.valueOf(userId));
-        usersDO.setStatus(status);
-
-        Result<Integer> result = usersService.operatUsersDO(usersDO);
-        if (result != null && result.isSuccess()) {
-            jsonObject.put("success", true);
-            jsonObject.put("data", result.getResult());
-            jsonObject.put("message", "update success");
-            return jsonObject.toString();
-        }
-        jsonObject.put("message", "update failed");
-        return jsonObject.toString();
-    }
+		boolean result = usersService.operatUsersDO(usersDO);
+		if (result == true) {
+			jsonObject.put("success", true);
+			jsonObject.put("message", "更新成功");
+			return jsonObject.toString();
+		}
+		jsonObject.put("message", "更新失败");
+		return jsonObject.toString();
+	}
 
     /*@RequestMapping(value = "/add.do", method = RequestMethod.POST)
     @ResponseBody

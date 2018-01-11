@@ -61,7 +61,7 @@ public class SysUsersController {
 				request.getSession().setAttribute(LoginConstant.USER_SESSION_KEY, user);
 				
 				if (user.getGroupId() == 1) {
-					List<DistributorDO> list  = distributorService.queryDistributorDOBySysUserId(user.getUserId());
+					List<DistributorDO> list  = distributorService.selectDistributorDOByUserId(user.getUserId());
 					if (!list.isEmpty() && list.size() >= 0) {
 						request.getSession().setAttribute(
 								LoginConstant.USER_DISTRIBUTOR_SESSION_KEY, list.get(0));

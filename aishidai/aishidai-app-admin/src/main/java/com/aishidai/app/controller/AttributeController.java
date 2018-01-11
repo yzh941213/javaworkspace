@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("manage/attribute")
 public class AttributeController {
+	
     @Autowired
     AttributeService attributeService;
 
     @GetMapping(value = "list")
     public JsonResult list(QueryItem queryItem){
-
 
         return  JsonResult.buildSuccess(attributeService.getAllSubclassByAttrId(1));
     }

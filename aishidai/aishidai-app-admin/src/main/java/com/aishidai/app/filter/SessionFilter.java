@@ -11,7 +11,6 @@ public class SessionFilter implements Filter {
         System.out.println("过滤器销毁");
     }
 
-
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
         System.out.println("执行过滤操作");

@@ -1,8 +1,8 @@
 package com.aishidai.app.controller;
 
+import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aishidai.app.common.LoginConstant;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.CraftsmenDO;
+import com.aishidai.app.model.pojo.CraftsmenDOCustom;
 import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.ShopsDO;
 import com.aishidai.app.model.pojo.SysUsersDO;
@@ -44,14 +44,10 @@ public class CraftsmenController {
 	private DistributorService distributorService;
 	@Autowired
 	private ShopService shopService;
-	@Autowired
+	
+	/*@Autowired
 	private PropertyService propertyService;
-	/**
-	 * 
-	 * @param aoData
-	 * @return
-	 * @throws Exception
-	 */
+	
 	@RequestMapping("/list.do")
 	@ResponseBody
 	public String queryCraftsmens(
@@ -170,38 +166,39 @@ public class CraftsmenController {
 		}
 		return returnString(result, jsonObject, query);
 	}
-	
+	*/
 	
 	
 	public String returnString(List<CraftsmenDO> list,
 			JSONObject jsonObject, CraftsmenQuery query) {
 		if (list.isEmpty() && list.size() >= 0) {
 			JSONArray itemList = new JSONArray();
-			for (CraftsmenDO craftsmenDO : list) {
+			for (int i = 0; i < list.size(); i++) {
+				CraftsmenDOCustom 	cdos = (CraftsmenDOCustom) list.get(i);
 				JSONObject item = new JSONObject();
-				item.put("id", craftsmenDO.getId());
-				item.put("shopsId", craftsmenDO.getShopsId());
-				item.put("shopsIdName", craftsmenDO.getShopName());
-				item.put("craftsmanName", craftsmenDO.getCraftsmanName());
-				item.put("distributorId", craftsmenDO.getDistributorId());
-				item.put("distributorIdName",craftsmenDO.getDistributorName());
-				item.put("craftsmanUrl", craftsmenDO.getCraftsmanUrl());
-				item.put("skill", craftsmenDO.getSkill());
-				item.put("telephone", craftsmenDO.getTelephone());
-				item.put("titleId", craftsmenDO.getTitleId());
-				item.put("titleIdName", craftsmenDO.getTitleName());
-				item.put("province", craftsmenDO.getProvince());
-				item.put("city", craftsmenDO.getCity());
-				item.put("address", craftsmenDO.getAddress());
-				item.put("isDeleted", craftsmenDO.getIsDeleted());
-				item.put("sysUserId", craftsmenDO.getSysUserId());
-				item.put("serviceId", craftsmenDO.getServiceId());
-				item.put("serviceIdName", craftsmenDO.getServiceName());
-				item.put("created", craftsmenDO.getCreated());
-				item.put("updated", craftsmenDO.getUpdated());
-				item.put("status", craftsmenDO.getStatus());
-				item.put("wechat", craftsmenDO.getWechat());
-				item.put("audit", craftsmenDO.getAudit());
+				item.put("id", cdos.getId());
+				item.put("shopsId", cdos.getShopsId());
+				item.put("shopsIdName", cdos.getShopName());
+				item.put("craftsmanName", cdos.getCraftsmanName());
+				item.put("distributorId", cdos.getDistributorId());
+				item.put("distributorIdName",cdos.getDistributorName());
+				item.put("craftsmanUrl", cdos.getCraftsmanUrl());
+				item.put("skill", cdos.getSkill());
+				item.put("telephone", cdos.getTelephone());
+				item.put("titleId", cdos.getTitleId());
+				item.put("titleIdName", cdos.getTitleName());
+				item.put("province", cdos.getProvince());
+				item.put("city", cdos.getCity());
+				item.put("address", cdos.getAddress());
+				item.put("isDeleted", cdos.getIsDeleted());
+				item.put("sysUserId", cdos.getSysUserId());
+				item.put("serviceId", cdos.getServiceId());
+				item.put("serviceIdName", cdos.getServiceName());
+				item.put("created", cdos.getCreated());
+				item.put("updated", cdos.getUpdated());
+				item.put("status", cdos.getStatus());
+				item.put("wechat", cdos.getWechat());
+				item.put("audit", cdos.getAudit());
 				itemList.add(item);
 			}
 			jsonObject.put("iTotalRecords", query.getTotalItem()); 
@@ -215,6 +212,7 @@ public class CraftsmenController {
 	}
 	
 	
+	
 	/**
 	 * 查询详细信息
 	 */
@@ -225,110 +223,79 @@ public class CraftsmenController {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		CraftsmenDO craftsmenDO = craftsmenService
-				.queryByPrimaryKey(craftsmenId);
-		if (craftsmenDO == null) {
-			jsonObject.put("message", "信息不存在，请核对后重试");
-			return jsonObject.toString();
-		}
-		Long shopId = craftsmenDO.getShopsId();
 		try {
-			if (shopId != null) {
-				ShopsDO shop = shopService.queryShopsDOById(shopId);
-				String shopName = shop.getShopsName();
-				craftsmenDO.setShopName(shopName);
-				jsonObject.put("message", "查询成功");
-				jsonObject.put("type", "shops");
-
-			} else {
-				jsonObject.put("message", "商铺名称不存在");
-				craftsmenDO.setShopName("无");
-				jsonObject.put("type", "");
+			CraftsmenDOCustom cc = (CraftsmenDOCustom) craftsmenService
+					.queryByPrimaryKey(craftsmenId);
+			if (cc == null) {
+				jsonObject.put("message", "信息不存在，请核对后重试");
+				return jsonObject.toString();
 			}
+			if (cc.getShopsId() != null && cc.getShopsId().longValue() != 0) {
+				cc.setShopName(shopService.queryShopsDOById(cc.getShopsId()) != null ? shopService
+						.queryShopsDOById(cc.getShopsId()).getShopsName() : "无");
+				jsonObject.put("type", "shops");
+			}
+
+			jsonObject.put("message", "查询成功");
 			jsonObject.put("success", true);
+			jsonObject.put("data", JSONObject.toJSON(cc));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jsonObject.put("data", JSONObject.toJSON(craftsmenDO));
+
 		return jsonObject.toString();
 	}
 	
 	@RequestMapping(value = { "/save.do" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String addCraftsmenDO(
-			@RequestParam(value = "shopsId", defaultValue = "", required = false) Long shopsId,
-			@RequestParam(value = "craftsmanName",required = true) String craftsmanName,
-			@RequestParam(value = "distributorId", required = true) Long distributorId,
-			@RequestParam(value = "craftsmanUrl", defaultValue = "", required = false) String craftsmanUrl,
-			@RequestParam(value = "skill", defaultValue = "0", required = false) String skill,
-			@RequestParam(value = "telephone",required = true) String telephone,
-			@RequestParam(value = "titleId", required = false) String titleId,
-			@RequestParam(value = "province", required = false) String province,
-			@RequestParam(value = "city", required = false) String city,
-			@RequestParam(value = "area", required = false) String area,
-			@RequestParam(value = "address", required = false) String address,
-			@RequestParam(value = "reserveNumber", required = false) Integer reserveNumber,
-			@RequestParam(value = "serviceId", required = false) String serviceId,
-			@RequestParam(value = "wechat", required = false) String wechat,
-			@RequestParam(value = "status", required = true) Integer status,
-			HttpServletRequest request) {
+	public String addCraftsmenDO(CraftsmenDO craftsmenDO) {
 
-		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		
-		List<CraftsmenDO> list = craftsmenService.queryCraftsmenExist(craftsmanName,telephone);
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getTelephone().endsWith(telephone)
-				&& list.get(i).getCraftsmanName().equals(craftsmanName)) {
-				jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
-	            return jsonObject.toString();
+		try {
+			if (craftsmenDO == null || craftsmenDO.getCraftsmanName() == null
+					&& craftsmenDO.getTelephone() == null) {
+				jsonObject.put("message", "参数不正确，请核对后重试");
+				return jsonObject.toString();
 			}
-		}
-		
-		
-		CraftsmenDO craftsmenDO = new CraftsmenDO();
-		craftsmenDO.setAddress(address);
-		craftsmenDO.setCity(city);
-		craftsmenDO.setArea(area);
-		craftsmenDO.setCraftsmanName(craftsmanName);
-		
-		if (craftsmanUrl != null && !"".equals(craftsmanUrl)) {
-			craftsmanUrl = PhotoUtil.addPhoto(craftsmanUrl);
-		}
-		
-		craftsmenDO.setCraftsmanUrl(craftsmanUrl);
-		
-		craftsmenDO.setDistributorId(Integer.valueOf(distributorId+""));
-		craftsmenDO.setIsDeleted((byte)0);
-		
-		craftsmenDO.setProvince(province);
-		
-		if (StringUtils.isNotBlank(serviceId)) {
-			serviceId = "-" + serviceId + "-";
-		}
-		craftsmenDO.setServiceId(serviceId);
-		
-		craftsmenDO.setShopsId(shopsId);
 
-		
-		craftsmenDO.setSkill(skill);
-		craftsmenDO.setStatus(status);
-		
-		craftsmenDO.setTelephone(telephone);
-		craftsmenDO.setWechat(wechat);
-		
-		if (StringUtils.isNotBlank(titleId)) {
-			titleId = "-" + titleId + "-";
-		}
-		craftsmenDO.setTitleId(titleId);
+			List<CraftsmenDO> list = craftsmenService.queryCraftsmenExist(
+					craftsmenDO.getCraftsmanName(), craftsmenDO.getTelephone());
 
-		Long result = craftsmenService.insertCraftsmenDO(craftsmenDO);
-		
-		if (result.longValue() <= 0) {
-			jsonObject.put("message", "数据插入失败");
-			return jsonObject.toString();
+			if (!list.isEmpty() && list.size() >= 0) {
+				jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
+				return jsonObject.toString();
+			}
+
+			if (craftsmenDO.getCraftsmanUrl() != null
+					&& "".equals(craftsmenDO.getCraftsmanUrl())) {
+				String craftsmanUrl = PhotoUtil.addPhoto(craftsmenDO
+						.getCraftsmanUrl());
+				craftsmenDO.setCraftsmanUrl(craftsmanUrl);
+			}
+
+			craftsmenDO.setIsDeleted((byte) 0);
+
+			if (StringUtils.isNotBlank(craftsmenDO.getServiceId())) {
+				String serviceId = "-" + craftsmenDO.getServiceId() + "-";
+				craftsmenDO.setServiceId(serviceId);
+			}
+
+			if (StringUtils.isNotBlank(craftsmenDO.getTitleId())) {
+				String titleId = "-" + craftsmenDO.getTitleId() + "-";
+				craftsmenDO.setTitleId(titleId);
+			}
+			craftsmenDO.setCreated(new Date());
+			craftsmenDO.setUpdated(new Date());
+
+			if (!craftsmenService.insertCraftsmenDO(craftsmenDO)) {
+				jsonObject.put("message", "数据插入失败");
+				return jsonObject.toString();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
 		jsonObject.put("message", "数据插入成功");
@@ -338,84 +305,61 @@ public class CraftsmenController {
 	
 	@RequestMapping(value = { "/edit.do" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String editCraftsmenDO(
-			@RequestParam(value = "craftsmenId", required = true) Long craftsmenId,
-			@RequestParam(value = "shopsId", defaultValue = "", required = false) Long shopsId,
-			@RequestParam(value = "craftsmanName",required = true) String craftsmanName,
-			@RequestParam(value = "distributorId", defaultValue = "0", required = false) Long distributorId,
-			@RequestParam(value = "craftsmanUrl", defaultValue = "", required = false) String craftsmanUrl,
-			@RequestParam(value = "skill", defaultValue = "0", required = false) String skill,
-			@RequestParam(value = "telephone",required = true) String telephone,
-			@RequestParam(value = "titleId", required = false) String titleId,
-			@RequestParam(value = "province", required = false) String province,
-			@RequestParam(value = "city", required = false) String city,
-			@RequestParam(value = "area", required = false) String area,
-			@RequestParam(value = "address", required = false) String address,
-			@RequestParam(value = "serviceId", required = false) String serviceId,
-			@RequestParam(value = "wechat", required = false) String wechat,
-			@RequestParam(value = "status", required = false) Integer status,
-			HttpServletRequest request) {
+	public String editCraftsmenDO(CraftsmenDO craftsmenDO) {
 
-		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		
-		CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(craftsmenId);
-		if (craftsmenDO != null) {
-			if (craftsmenDO.getTelephone().equals(telephone) 
-					&& craftsmenDO.getCraftsmanName().equals(craftsmanName)) {
-				
-			}else{
-				List<CraftsmenDO> list = craftsmenService.queryCraftsmenExist(craftsmanName,telephone);
-				for (int i = 0; i < list.size(); i++) {
-					if (list.get(i).getTelephone().endsWith(telephone)
-						&& list.get(i).getCraftsmanName().equals(craftsmanName)) {
-						jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
-			            return jsonObject.toString();
-					}
+		try {
+			if (craftsmenDO == null || craftsmenDO.getCraftsmanName() == null
+					|| craftsmenDO.getTelephone() == null
+					|| craftsmenDO.getId() == null) {
+				jsonObject.put("message", "参数不正确，请核对后重试");
+				return jsonObject.toString();
+			}
+
+			CraftsmenDO CDO = craftsmenService.queryByPrimaryKey(craftsmenDO
+					.getId());
+
+			if (CDO != null) {
+				List<CraftsmenDO> list = craftsmenService.queryCraftsmenExist(
+						craftsmenDO.getCraftsmanName(),
+						craftsmenDO.getTelephone());
+				if (!list.isEmpty() && list.size() >= 0) {
+					jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
+					return jsonObject.toString();
 				}
 			}
-		}
-		
-		craftsmenDO.setAddress(address);
-		craftsmenDO.setCity(city);
-		craftsmenDO.setArea(area);
-		craftsmenDO.setCraftsmanName(craftsmanName);
-		
-		if (craftsmanUrl != null && !"".equals(craftsmanUrl)) {
-			craftsmanUrl = PhotoUtil.addPhoto(craftsmanUrl);
-		}
-		craftsmenDO.setCraftsmanUrl(craftsmanUrl);
-		craftsmenDO.setDistributorId(Integer.valueOf(distributorId+""));
-		craftsmenDO.setProvince(province);
-		
-		if (StringUtils.isNotBlank(serviceId)) {
-			serviceId = "-" + serviceId + "-";
-		}
-		craftsmenDO.setServiceId(serviceId);
-		
-		craftsmenDO.setShopsId(shopsId);
 
-		craftsmenDO.setSkill(skill);
-		craftsmenDO.setStatus(status);
-		
-		craftsmenDO.setTelephone(telephone);
-		craftsmenDO.setWechat(wechat);
-		if (StringUtils.isNotBlank(titleId)) {
-			titleId = "-" + titleId + "-";
-		}
-		craftsmenDO.setTitleId(titleId);
+			if (craftsmenDO.getCraftsmanUrl() != null
+					&& "".equals(craftsmenDO.getCraftsmanUrl())) {
+				String craftsmanUrl = PhotoUtil.addPhoto(craftsmenDO
+						.getCraftsmanUrl());
+				craftsmenDO.setCraftsmanUrl(craftsmanUrl);
+			}
 
-		Long result = craftsmenService.editCraftsmenDO(craftsmenDO);
-		if (result.longValue() <= 0) {
-			jsonObject.put("message", "操作失败");
-			return jsonObject.toString();
+			if (StringUtils.isNotBlank(craftsmenDO.getServiceId())) {
+				String serviceId = "-" + craftsmenDO.getServiceId() + "-";
+				craftsmenDO.setServiceId(serviceId);
+			}
+
+			if (StringUtils.isNotBlank(craftsmenDO.getTitleId())) {
+				String titleId = "-" + craftsmenDO.getTitleId() + "-";
+				craftsmenDO.setTitleId(titleId);
+			}
+			craftsmenDO.setUpdated(new Date());
+
+			if (!craftsmenService.editCraftsmenDO(craftsmenDO)) {
+				jsonObject.put("message", "操作失败");
+				return jsonObject.toString();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
 		jsonObject.put("message", "操作成功");
 		return jsonObject.toString();
 	}
-	
 	
 	@RequestMapping(value = { "/editStatus.do" }, method = RequestMethod.POST)
 	@ResponseBody
@@ -424,14 +368,19 @@ public class CraftsmenController {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(id);
-		if (craftsmenDO != null) {
-			craftsmenDO.setStatus(status);
-			long result = craftsmenService.editCraftsmenDO(craftsmenDO);
-			if (result <= 0 ) {
-				jsonObject.put("message", "操作失败");
-				return jsonObject.toString();
+		try {
+			CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(id);
+
+			if (craftsmenDO != null) {
+				craftsmenDO.setStatus(status);
+				if (!craftsmenService.editCraftsmenDO(craftsmenDO)) {
+					jsonObject.put("message", "操作失败");
+					return jsonObject.toString();
+				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
 		jsonObject.put("message", "操作成功");
@@ -445,15 +394,20 @@ public class CraftsmenController {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
+		try {
 
-		CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(id);
-		if (craftsmenDO != null) {
-			craftsmenDO.setAudit(audit);
-			long result = craftsmenService.editCraftsmenDO(craftsmenDO);
-			if (result <= 0 ) {
-				jsonObject.put("message", "操作失败");
-				return jsonObject.toString();
+			CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(id);
+
+			if (craftsmenDO != null) {
+				craftsmenDO.setAudit(audit);
+				if (!craftsmenService.editCraftsmenDO(craftsmenDO)) {
+					jsonObject.put("message", "操作失败");
+					return jsonObject.toString();
+				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
 		jsonObject.put("message", "操作成功");
@@ -468,18 +422,23 @@ public class CraftsmenController {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
+		try {
+			CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(id);
+			if (craftsmenDO != null) {
+				craftsmenDO.setIsDeleted(isDeleted);
 
-		CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(id);
-		if (craftsmenDO != null) {
-			craftsmenDO.setIsDeleted(isDeleted);
-			long result = craftsmenService.editCraftsmenDO(craftsmenDO);
-			if (result <= 0 ) {
-				jsonObject.put("message", "操作失败");
+				if (!craftsmenService.editCraftsmenDO(craftsmenDO)) {
+					jsonObject.put("message", "操作失败");
+					return jsonObject.toString();
+				}
+
+			} else {
+				jsonObject.put("message", "数据不存在，请核实后重试");
 				return jsonObject.toString();
 			}
-		}else{
-			jsonObject.put("message", "数据不存在，请核实后重试");
-			return jsonObject.toString();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
 		jsonObject.put("message", "删除成功");
@@ -492,12 +451,17 @@ public class CraftsmenController {
 			@RequestParam(value = "distributorId") long distributorId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		
-		List<CraftsmenDO> list = craftsmenService
-				.queryCraftsmenDOByDistributorId(distributorId);
-		jsonObject.put("success", true);
-		jsonObject.put("message", "成功");
-		jsonObject.put("data", JSONArray.toJSON(list));
+		try {
+			List<CraftsmenDO> list = craftsmenService
+					.queryCraftsmenDOByDistributorId(distributorId);
+			jsonObject.put("success", true);
+			jsonObject.put("message", "成功");
+			jsonObject.put("data", JSONArray.toJSON(list));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		return jsonObject.toString();
 
 	}
@@ -509,24 +473,30 @@ public class CraftsmenController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 
-		List<DistributorDO> list = distributorService
-				.selectDistributorDOByUserId(userId);
-		if (list.isEmpty() || list.size() <= 0) {
-			jsonObject.put("data", "");
-			jsonObject.put("message", "账号不正确，请核对后重试");
-		} else {
-			Long distributorId = list.get(0).getId();
+		try {
+			List<DistributorDO> list = distributorService
+					.selectDistributorDOByUserId(userId);
 
-			List<ShopsDO> list_shops = shopService
-					.selectShopBydistributorId(distributorId);
-			JSONArray result_list = new JSONArray();
-			for (ShopsDO shopDO : list_shops) {
-				JSONObject shop = new JSONObject();
-				shop.put("shopId", shopDO.getShopsId());
-				shop.put("shopsName", shopDO.getShopsName());
-				result_list.add(shop);
+			if (list.isEmpty() || list.size() <= 0) {
+				jsonObject.put("data", "");
+				jsonObject.put("message", "账号不正确，请核对后重试");
+			} else {
+				Long distributorId = list.get(0).getId();
+
+				List<ShopsDO> list_shops = shopService
+						.selectShopBydistributorId(distributorId);
+				JSONArray result_list = new JSONArray();
+				for (ShopsDO shopDO : list_shops) {
+					JSONObject shop = new JSONObject();
+					shop.put("shopId", shopDO.getShopsId());
+					shop.put("shopsName", shopDO.getShopsName());
+					result_list.add(shop);
+				}
+				jsonObject.put("data", result_list);
 			}
-			jsonObject.put("data", result_list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
 		jsonObject.put("message", "查询成功");
@@ -549,7 +519,7 @@ public class CraftsmenController {
 		try {
 			SysUsersDO sysUsersDO = sysUsersService.querySysUsersByUserName(userName);
 					
-			if (sysUsersDO != null) {
+			if (sysUsersDO == null) {
 				jsonObject.put("message", "该用户名已存在,请核对后重试");
 				return jsonObject.toString();
 			}

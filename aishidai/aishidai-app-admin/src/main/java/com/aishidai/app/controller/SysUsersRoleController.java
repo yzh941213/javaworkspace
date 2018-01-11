@@ -107,16 +107,9 @@ public class SysUsersRoleController {
     public String addRoleDO(@RequestParam(value = "userId") long userId) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("success", false);
-        Result<List<SysusersRoleDO>> result = sysUsersRoleService.querySysUsersRole(userId);
-        if (result != null && result.isSuccess()) {
-            jsonObject.put("success", true);
-            jsonObject.put("data", result.getResult());
-            jsonObject.put("message", result.getSuccessInfo());
-            return jsonObject.toString();
-        }
-
-        jsonObject.put("data", "");
-        jsonObject.put("message", "添加失败");
+        List<SysusersRoleDO> result = sysUsersRoleService.querySysUsersRole(userId);
+        jsonObject.put("data", result);
+        jsonObject.put("message", "查询成功");
         return jsonObject.toString();
     }
 

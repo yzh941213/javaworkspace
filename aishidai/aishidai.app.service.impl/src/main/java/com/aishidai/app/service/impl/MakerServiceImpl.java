@@ -1,12 +1,15 @@
 package com.aishidai.app.service.impl;
 
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aishidai.app.dao.MakerDOCustomMapper;
 import com.aishidai.app.dao.MakerDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.DeviceMakerDO;
+import com.aishidai.app.model.pojo.DistributorDOExample;
 import com.aishidai.app.model.pojo.MakerDO;
 import com.aishidai.app.model.pojo.MakerDOExample;
 import com.aishidai.app.model.query.DeviceMakerQuery;
@@ -20,180 +23,55 @@ import java.util.List;
 public class MakerServiceImpl implements MakerService {
 	@Autowired
 	private MakerDOMapper makerDOMapper;
-
+	@Autowired
+	private MakerDOCustomMapper makerDOCustomMapper;
 	
 	public List<MakerDO> queryMakerDOList(MakerQuery query) {
-		Result<List<MakerDO>> result = null;
-		try {
-			List<MakerDO> list = makerDOMapper.queryMakerDOList(query);
-			result = new Result<List<MakerDO>>();
-			if (list.isEmpty() || list == null) {
-				list = new ArrayList<MakerDO>();
-			}
-			result.setResult(list);
-			result.setSuccess(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
+//		return makerDOMapper.queryMakerDOList(query);
+		return null;
 	}
 
 	
-	public MakerDO queryMakerDOById(long makerId) {
-		Result<MakerDO> result = null;
-		try {
-			MakerDO makerDO = makerDOMapper.queryMakerDOById(makerId);
-
-			result = new Result<MakerDO>();
-			result.setSuccess(true);
-			result.setResult(makerDO);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(true);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
+	public MakerDO queryMakerDOById(long id) {
+		return makerDOMapper.selectByPrimaryKey(id);
 	}
 
 	
-	public Long editMakerDO(MakerDO makerDO) {
-		Result<Long> result = null;
-		try {
-			long row = makerDOMapper.editMakerDO(makerDO);
-			result = new Result<Long>();
-			result.setSuccess(true);
-			result.setResult(row);
-			if (row == 0) {
-				result.setSuccess(false);
-				result.setErrorInfo("数据操作失败");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
+	public boolean editMakerDO(MakerDO makerDO) {
+		return makerDOMapper.updateByPrimaryKeySelective(makerDO) > 0;
 	}
-
-	
-	public Integer updateMakerStatus(MakerDO makerDO) {
-		Result<Integer> result = null;
-		try {
-			int row = makerDOMapper.updateMakerDOStatus(makerDO);
-			result = new Result<Integer>();
-			if (row == 0) {
-				result.setSuccess(false);
-				return result;
-			}
-			result.setSuccess(true);
-			result.setResult(row);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
-	}
-
 	
 	public List<MakerDO> queryMakerDOByDistributorId(long distributorId) {
-		Result<List<MakerDO>> result = null;
-		try {
-			List<MakerDO> list = makerDOMapper.queryMakerDOByDistributorId(distributorId);
-			result = new Result<List<MakerDO>>();
-			if (list.isEmpty() || list == null) {
-				list = new ArrayList<MakerDO>();
-			}
-			result.setResult(list);
-			result.setSuccess(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(true);
-			result.setErrorInfo(e.getMessage());
-			return result;
+		
+		MakerDOExample example = new MakerDOExample();
+		MakerDOExample.Criteria criteria = example.createCriteria();
+		criteria.andDistributorIdEqualTo(distributorId);
+		criteria.andStatusEqualTo(0);
+		return makerDOMapper.selectByExample(example);
+	}
+
+	public List<MakerDO> queryMakerDOAll() {
+		MakerDOExample example = new MakerDOExample();
+		MakerDOExample.Criteria criteria = example.createCriteria();
+		criteria.andStatusEqualTo(0);
+        return makerDOMapper.selectByExample(null);
+	}
+	
+	public List<MakerDO> queryMakerDOByNameLike(String name) throws Exception {
+		MakerDOExample example = new MakerDOExample();
+		MakerDOExample.Criteria criteria = example.createCriteria();
+		criteria.andStatusEqualTo(0);
+		if (StringUtils.isNotBlank(name)) {
+			name = "%" + name + "%";
 		}
-		return result;
-	}
-
-	
-	public Long updateMakerSysUserId(MakerDO makerDO) {
-		Result<Long> result = null;
-		try {
-			Long row = makerDOMapper.updateMakerDOSysUserId(makerDO);
-			result = new Result<Long>();
-			if (row == 0) {
-				result.setSuccess(false);
-				return result;
-			}
-			result.setSuccess(true);
-			result.setResult(row);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
+		if (StringUtils.isNotBlank(name)) {
+			criteria.andNameLike(name);
 		}
-		return result;
-	}
 
-	
-	
-
-	
-	public List<MakerDO> queryMakerDOAll(MakerQuery query) {
-		Result<List<MakerDO>> result = null;
-        try {
-            List<MakerDO> list = makerDOMapper.queryMakerDOAll(query);
-            result = new Result<List<MakerDO>>();
-            if (list.isEmpty() || list == null) {
-                list = new ArrayList<MakerDO>();
-            }
-            result.setResult(list);
-            result.setSuccess(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            result.setSuccess(false);
-            result.setErrorInfo(e.getMessage());
-            return result;
-        }
-        return result;
+		return makerDOMapper.selectByExample(example);
 	}
-//审核
 	
-	public Integer updateMakerAudit(MakerDO makerDO) {
-		Result<Integer> result = null;
-		try {
-			int row = makerDOMapper.updateMakerDOAudit(makerDO);
-			result = new Result<Integer>();
-			if (row == 0) {
-				result.setSuccess(false);
-				return result;
-			}
-			result.setSuccess(true);
-			result.setResult(row);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
-	}
-
-	
-	public List<MakerDO> queryMakerDOByNameLike(MakerDO makerDO) throws Exception {
-		// TODO Auto-generated method stub
-		return makerDOMapper.selectMakerDOByNameLike(makerDO);
-	}
-
-	
-	public boolean addDeviceMaker(List<DeviceMakerDO> list,long sysUserId,long makerId) throws Exception {
+	/*public boolean addDeviceMaker(List<DeviceMakerDO> list,long sysUserId,long makerId) throws Exception {
 		// TODO Auto-generated method stub
 		DeviceMakerDO deviceMakerDO = new DeviceMakerDO();
 		long result_row = 0;
@@ -225,18 +103,24 @@ public class MakerServiceImpl implements MakerService {
 	
 	public List<DeviceMakerDO> queryDeviceMaker(DeviceMakerQuery query_maker)
 			throws Exception {
-		// TODO Auto-generated method stub
+		
 		return makerDOMapper.selectDeviceMaker(query_maker);
 	}
+	*/
 	
-	
-	public List<MakerDO> queryMakerDOBySysUserId(Long sysUserId) {
-		
+	public List<MakerDO> queryMakerDOBySysUserId(long userId) {
 		MakerDOExample example = new MakerDOExample();
 		MakerDOExample.Criteria criteria = example.createCriteria();
-		criteria.andSysUserIdEqualTo(Integer.valueOf(sysUserId+""));
-		List<MakerDO> list = makerDOMapper.selectByExample(example);
-		return list;
+		criteria.andSysUserIdEqualTo(userId);
+		criteria.andStatusEqualTo(0);
+		return makerDOMapper.selectByExample(example);
 	}
-	
+
+
+	public List<DeviceMakerDO> queryDeviceMaker(DeviceMakerQuery query_maker)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

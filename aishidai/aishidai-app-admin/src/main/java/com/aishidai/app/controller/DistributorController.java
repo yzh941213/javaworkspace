@@ -1,6 +1,5 @@
 package com.aishidai.app.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.CraftsmenDO;
 import com.aishidai.app.model.pojo.DistributorDO;
+import com.aishidai.app.model.pojo.SysUsersDO;
 import com.aishidai.app.model.pojo.SysusersRoleDO;
+import com.aishidai.app.model.query.DistributorQuery;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.SysUsersRoleService;
 import com.aishidai.app.service.SysUsersService;
+import com.aishidai.app.utils.PasswordHash;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -31,12 +34,10 @@ public class DistributorController {
 	private SysUsersService sysUsersService;
 	@Autowired
 	private SysUsersRoleService sysUsersRoleService;
-	/**
-	 * 
-	 * @param aoData
-	 * @return
-	 */
-	@RequestMapping("/list.do")
+	
+	
+	
+	/*@RequestMapping("/list.do")
 	@ResponseBody
 	public String queryDistributors(
 			@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData) {
@@ -72,11 +73,11 @@ public class DistributorController {
 
 		Result<List<DistributorDO>> result = distributorManager.queryDistributorDOList(query);
 		return returnString(result, jsonObject, query);
-	}
+	}*/
 
 	@RequestMapping("/queryAll.do")
 	@ResponseBody
-	public String queryDistributorsAll() {
+	public String queryDistributorAll() {
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -155,6 +156,7 @@ public class DistributorController {
 		return jsonObject.toString();
 	}*/
 
+	
 	@RequestMapping("/queryDetail.do")
 	@ResponseBody
 	public String queryDistributors(
@@ -181,114 +183,87 @@ public class DistributorController {
 
 	@RequestMapping(value = { "/edit.do" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String editDistributorDO(
-			@RequestParam(value = "distributorId",required=false) Long distributorId,
-			@RequestParam(value = "name", defaultValue = "", required = false) String name,
-			@RequestParam(value = "tel", defaultValue = "", required = false) String tel,
-			@RequestParam(value = "contactPerson", defaultValue = "", required = false) String contactPerson,
-			@RequestParam(value = "contactPhone", defaultValue = "", required = false) String contactPhone,
-//			@RequestParam(value = "province", defaultValue = "", required = false) String province,
-//			@RequestParam(value = "city", defaultValue = "0", required = false) String city,
-			@RequestParam(value = "address", defaultValue = "", required = false) String address,
-//			@RequestParam(value = "status", defaultValue = "0", required = false) Integer status,
-			@RequestParam(value = "orderPercentage",required=false) Integer orderPercentage,
-			@RequestParam(value = "servicePercentage",required=false) Integer servicePercentage,
-			@RequestParam(value = "remark") String remark
-//			@RequestParam(value = "sysUserId", defaultValue = "", required = false) Long sysUserId 
-			){
+	public String editDistributorDO(DistributorDO distributorDO){
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-
-		DistributorDO distributorDO = new DistributorDO();
-		distributorDO.setId(distributorId);
-		distributorDO.setAddress(address);
-		//distributorDO.setCity(city);
-		distributorDO.setContactPerson(contactPerson);
-		distributorDO.setContactPhone(contactPhone);
-		// distributorDO.setCreated();
-		distributorDO.setName(name);
-		//distributorDO.setProvince(province);
-		distributorDO.setRemark(remark);
-		distributorDO.setStatus(0);
-		//distributorDO.setSysUserId(sysUserId);
-		distributorDO.setTel(tel);
-		distributorDO.setOrderPercentage(orderPercentage);
-		distributorDO.setServicePercentage(servicePercentage);
-		// distributorDO.setUpdated();
-		Result<Long> result = distributorManager.editDistributorDO(distributorDO);
-		if (result == null || !result.isSuccess()) {
-			jsonObject.put("message", "数据操作失败");
-			return jsonObject.toString();
+		try {
+			if (distributorDO == null) {
+				jsonObject.put("message", "操作失败");
+				return jsonObject.toString();
+			} else {
+				if (distributorService.editDistributorDO(distributorDO)) {
+					jsonObject.put("success", true);
+					jsonObject.put("message", "操作成功");
+				}else{
+					jsonObject.put("message", "操作失败");
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "数据更新成功");
 		return jsonObject.toString();
 	}
 
 	@RequestMapping(value = { "/add.do" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String addDistributorDO(
-			@RequestParam(value = "name", required = true) String name,
-			@RequestParam(value = "tel", required = true) String tel,
-			@RequestParam(value = "contactPerson", defaultValue = "", required = false) String contactPerson,
-			@RequestParam(value = "contactPhone", defaultValue = "", required = false) String contactPhone,
-			@RequestParam(value = "province", defaultValue = "", required = false) String province,
-			@RequestParam(value = "city", defaultValue = "0", required = false) String city,
-			@RequestParam(value = "area", defaultValue = "0", required = false) String area,
-			@RequestParam(value = "address", defaultValue = "", required = false) String address,
-			@RequestParam(value = "remark" ,defaultValue = "", required = false) String remark
-			){
+	public String addDistributorDO(DistributorDO distributorDO){
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		
-		DistributorDO distributorDO = new DistributorDO();
-		distributorDO.setAddress(address);
-		distributorDO.setCity(city);
-		distributorDO.setContactPerson(contactPerson);
-		distributorDO.setContactPhone(contactPhone);
-		 distributorDO.setCreated(new Date());
-		distributorDO.setName(name);
-		distributorDO.setProvince(province);
-		distributorDO.setRemark(remark);
-		distributorDO.setStatus(false);
-		distributorDO.setTel(tel);
-		 distributorDO.setUpdated(new Date());
-		 
-		Long result = distributorService.insertDistributorDO(distributorDO);
-		if (result.longValue() <= 0) {
-			jsonObject.put("message", "操作失败");
-			return jsonObject.toString();
+		try {
+			if (distributorDO != null && distributorDO.getName() != null
+					&& distributorDO.getTel() != null) {
+
+				distributorDO.setStatus(0);
+				distributorDO.setCreated(new Date());
+				distributorDO.setUpdated(new Date());
+
+				if (distributorService.insertDistributorDO(distributorDO)) {
+					jsonObject.put("success", true);
+					jsonObject.put("message", "操作成功");
+					return jsonObject.toString();
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "操作成功");
+		jsonObject.put("message", "操作失败");
 		return jsonObject.toString();
 	}
 	
 	
 	
-	@RequestMapping(value = { "/status.do", "/del.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/remove.do" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String updateDistributorDOStatus(@RequestParam("distributorId") Long distributorId,
-			@RequestParam("status") Integer status) {
+	public String editDistributorDOStatus(
+			@RequestParam("distributorId") long distributorId,
+			@RequestParam("status") int status) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-
-		DistributorDO distributorDO = new DistributorDO();
-		distributorDO.setId(distributorId);
-		distributorDO.setStatus(status);
-		Result<Integer> result = distributorManager.updateDistributorStatus(distributorDO);
-		if (result == null || !result.isSuccess()) {
-			jsonObject.put("message", "操作失败");
-			return jsonObject.toString();
+		try {
+			DistributorDO distributorDO = distributorService
+					.queryDistributorDOById(distributorId);
+			if (distributorDO != null) {
+				distributorDO.setStatus(status);
+				if (distributorService.editDistributorDO(distributorDO)) {
+					jsonObject.put("success", true);
+					jsonObject.put("message", "操作成功");
+					return jsonObject.toString();
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "操作成功");
+		jsonObject.put("message", "操作失败");
 		return jsonObject.toString();
 	}
-
+	
+	
 	public String returnString(Result<List<DistributorDO>> result, JSONObject jsonObject, DistributorQuery query) {
 		if (result != null && result.isSuccess()) {
 			List<DistributorDO> itemDOList = result.getResult();
@@ -308,8 +283,6 @@ public class DistributorController {
 				item.put("remark", distributorDO.getRemark());
 				item.put("status", distributorDO.getStatus());
 				item.put("sysUserId", distributorDO.getSysUserId());
-				item.put("orderPercentage", distributorDO.getOrderPercentage());
-				item.put("servicePercentage", distributorDO.getServicePercentage());
 				itemList.add(item);
 			}
 			jsonObject.put("iTotalRecords", query.getTotalItem()); // 实际的行数
@@ -322,53 +295,58 @@ public class DistributorController {
 		return jsonObject.toString();
 	}
 
-	@RequestMapping(value = { "/editSysUser.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/editUser.do" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String editSysUserDO(@RequestParam(value = "entityId",required=false) Long entityId,
-			@RequestParam(value = "userId",required=false) Long userId,
-			@RequestParam(value = "sysUserName") String sysUserName,
-			@RequestParam(value = "sysMobile") String sysMobile,
-			@RequestParam(value = "sysPassword") String sysPassword) {
+	public String editUser(
+			@RequestParam(value = "id",required =true) long id,
+			@RequestParam(value = "userId",required =true) long userId,
+			@RequestParam(value = "userName",required =true) String userName,
+			@RequestParam(value = "mobile",required =true) String mobile,
+			@RequestParam(value = "name",required =false) String name,
+			@RequestParam(value = "password",required =true) String password) {
+		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
-			SysUsersDO query = sysUsersManager.querySysUsersByUserName(sysMobile);
-			if (query != null) {
-				jsonObject.put("message", "该用户名已存在");
+			SysUsersDO sysUsersDO = sysUsersService.querySysUsersByUserName(userName);
+					
+			if (sysUsersDO == null) {
+				jsonObject.put("message", "该用户名已存在,请核对后重试");
 				return jsonObject.toString();
+			}
+
+			sysUsersDO.setUserName(userName);
+			sysUsersDO.setPassword(PasswordHash.createHash(password));
+			sysUsersDO.setName(name);
+			sysUsersDO.setMobile(mobile);
+			sysUsersDO.setGroupId(new Long(4));//默认创建的用户的分组是手艺人
+			sysUsersDO.setCreated(Integer.valueOf((System.currentTimeMillis() / 1000)+""));
+			sysUsersDO.setUpdated(Integer.valueOf((System.currentTimeMillis() / 1000)+""));
+			
+			Result<Long> result = sysUsersService.addSysUsersDOAndRole(
+					sysUsersDO, new Long(17));
+			
+			if (result == null || !result.isSuccess()) {
+				jsonObject.put("message", "数据操作失败");
+				return jsonObject.toString();
+			} else {
+				DistributorDO distributorDO = distributorService.queryDistributorDOById(id);
+				if (distributorDO != null) {
+					distributorDO.setSysUserId(result.getResult());
+				}
+				if (!distributorService.editDistributorDO(distributorDO)) {
+					jsonObject.put("message", "添加失败");
+					return jsonObject.toString();
+				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		SysUsersDO sysUsersDO = new SysUsersDO();
-		sysUsersDO.setUserId(userId);
-		sysUsersDO.setUserName(sysMobile);
-		sysUsersDO.setPassword(PasswordHash.createHash(sysPassword));
-		sysUsersDO.setName(sysUserName);
-		sysUsersDO.setMobile(sysMobile);
-		sysUsersDO.setGroupId(new Long(1));// 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
-		sysUsersDO.setCreated(String.valueOf(System.currentTimeMillis() / 1000));
-		sysUsersDO.setUpdated(String.valueOf(System.currentTimeMillis() / 1000));
-		//Result<Long> result = sysUsersManager.addSysUsersDOS(sysUsersDO);
-		Result<Long> result = sysUsersManager.addSysUsersDOAndRole(sysUsersDO,new Long(14));
-		if (result == null || !result.isSuccess()) {
-			jsonObject.put("message", "数据操作失败");
-			return jsonObject.toString();
-		} else {
-			DistributorDO distributorDO = new DistributorDO();
-			distributorDO.setId(entityId);
-			distributorDO.setSysUserId(result.getResult());
-			result = distributorManager.updateDistributorSysUserId(distributorDO);
-			if (result == null || !result.isSuccess()) {
-				jsonObject.put("message", "数据操作失败");
-				return jsonObject.toString();
-			}
-			jsonObject.put("success", true);
-			jsonObject.put("message", "数据更新成功");
-			// TODO 授权
-
-		}
+		jsonObject.put("success", true);
+		jsonObject.put("message", "添加成功");
 		return jsonObject.toString();
+		
 	}
 
 }

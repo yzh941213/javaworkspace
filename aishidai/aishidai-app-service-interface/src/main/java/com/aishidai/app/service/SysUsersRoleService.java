@@ -14,7 +14,7 @@ public interface SysUsersRoleService {
 
     Result<Long> addSysUsersRole(List<SysusersRoleDO> sysUsersRoleDOs);
 
-    Result<List<SysusersRoleDO>> querySysUsersRole(long userId);
+    List<SysusersRoleDO> querySysUsersRole(long userId);
 
 	Result<Long> editSysUsersRole(List<SysusersRoleDO> list);
 

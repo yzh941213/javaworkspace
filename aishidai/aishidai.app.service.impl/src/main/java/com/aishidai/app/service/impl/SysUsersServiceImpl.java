@@ -6,6 +6,7 @@ import java.util.List;
 
 
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import com.aishidai.app.dao.SysusersRoleDOCustomMapper;
 import com.aishidai.app.dao.SysusersRoleDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOCustom;
 import com.aishidai.app.model.pojo.ResourceDOExample;
 import com.aishidai.app.model.pojo.SysUsersDO;
 import com.aishidai.app.model.pojo.SysUsersDOExample;
@@ -168,11 +170,13 @@ public class SysUsersServiceImpl implements SysUsersService {
 
 				if (firstMenus != null && !firstMenus.isEmpty()) {
 					for (ResourceDO first : firstMenus) {
+						ResourceDOCustom first_ = (ResourceDOCustom)first;
+						
 						ResourceDOExample doexample = new ResourceDOExample();
 						ResourceDOExample.Criteria docriteria = doexample.createCriteria();
 						docriteria.andParentidEqualTo(first.getId());
 						List<ResourceDO> secMenus = resourceDOMapper.selectByExample(doexample);
-						first.setResourceDOList(secMenus);
+						first_.setResourceDOList(secMenus);
 					}
 				}
 				result.setResult(firstMenus);
@@ -187,11 +191,12 @@ public class SysUsersServiceImpl implements SysUsersService {
 				List<ResourceDO> firstMenus = resourceDOCustomMapper.queryFirstMenuByUserId(userId);
 				if (firstMenus != null && !firstMenus.isEmpty()) {
  					for (ResourceDO first : firstMenus) {
+ 						ResourceDOCustom first_ = (ResourceDOCustom)first;
 						ResourceQuery query = new ResourceQuery();
 						query.setParentId(first.getId());
 						query.setUserId(userId);
 						List<ResourceDO> secMenus = resourceDOCustomMapper.querySecondMenuByUserId(query);
-						first.setResourceDOList(secMenus);
+						first_.setResourceDOList(secMenus);
 					}
 				}
 				result.setResult(firstMenus);

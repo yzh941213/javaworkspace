@@ -3,14 +3,13 @@ package com.aishidai.app.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aishidai.app.dao.CraftsmenDOCustomMapper;
 import com.aishidai.app.dao.CraftsmenDOMapper;
-import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.CraftsmenDO;
 import com.aishidai.app.model.pojo.CraftsmenDOExample;
 import com.aishidai.app.model.query.CraftsmenQuery;
 import com.aishidai.app.service.CraftsmenService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,152 +17,55 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 	
 	@Autowired
 	private CraftsmenDOMapper craftsmenDOMapper;
-
+	@Autowired
+	private CraftsmenDOCustomMapper craftsmenDOCustomMapper;
 	
 	public List<CraftsmenDO> queryCraftsmenDOList(CraftsmenQuery query) {
-		List<CraftsmenDO>> result = null;
-		try {
-			List<CraftsmenDO> list = craftsmenDOMapper.queryCraftsmenDOList(query);
-			result = new List<CraftsmenDO>>();
-			if (list.isEmpty() || list == null) {
-				list = new ArrayList<CraftsmenDO>();
-			}
-			result.setResult(list);
-			result.setSuccess(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
+	
+		/*return craftsmenDOMapper.queryCraftsmenDOList(query);*/
+		return null;
 	}
 
-	
 	public CraftsmenDO queryByPrimaryKey(long craftsmenId) {
 
-		CraftsmenDO craftsmenDO = craftsmenDOMapper.selectByPrimaryKey(Integer
-				.valueOf(craftsmenId + ""));
-
-		return craftsmenDO;
-	}
-
-	
-	public Long editCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception{
-		long row = craftsmenDOMapper.updateByPrimaryKeySelective(craftsmenDO);
-		return row;
-	}
-
-	
-	public Integer updateCraftsmenStatus(CraftsmenDO craftsmenDO) {
-		Integer> result = null;
-		try {
-			int row = craftsmenDOMapper.updateCraftsmenDOStatus(craftsmenDO);
-			result = new Integer>();
-			if (row == 0) {
-				result.setSuccess(false);
-				return result;
-			}
-			result.setSuccess(true);
-			result.setResult(row);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
-	}
-
-	
-	public Integer updateCraftsmenIsDeleted(CraftsmenDO craftsmenDO) {
-		Integer> result = null;
-		try {
-			int row = craftsmenDOMapper.updateCraftsmenIsDeleted(craftsmenDO);
-			result = new Integer>();
-			if (row == 0) {
-				result.setSuccess(false);
-				return result;
-			}
-			result.setSuccess(true);
-			result.setResult(row);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
+		return craftsmenDOMapper.selectByPrimaryKey(craftsmenId);
 	}
 	
-	
+	public boolean editCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception{
+		
+		return craftsmenDOMapper.updateByPrimaryKeySelective(craftsmenDO)>0;
+	}
+
 	public List<CraftsmenDO> queryCraftsmenDOByDistributorId(long distributorId) {
 		
 		CraftsmenDOExample example = new CraftsmenDOExample();
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
-		criteria.andDistributorIdEqualTo(Integer.valueOf(distributorId + ""));
+		criteria.andDistributorIdEqualTo(distributorId);
+		criteria.andIsDeletedEqualTo((byte)0);
 		List<CraftsmenDO> list = craftsmenDOMapper.selectByExample(example);
 		return list;
 	}
-
 	
 	public List<CraftsmenDO> queryCraftsmenDOByShopId(long shopId) {
-		List<CraftsmenDO>> result = null;
-		try {
-			List<CraftsmenDO> list = craftsmenDOMapper.queryCraftsmenDOByShopId(shopId);
-			result = new List<CraftsmenDO>>();
-			if (list.isEmpty() || list == null) {
-				list = new ArrayList<CraftsmenDO>();
-			}
-			result.setResult(list);
-			result.setSuccess(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(true);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
+		
+		CraftsmenDOExample example = new CraftsmenDOExample();
+		CraftsmenDOExample.Criteria criteria = example.createCriteria();
+		criteria.andShopsIdEqualTo(shopId);
+		criteria.andIsDeletedEqualTo((byte)0);
+		return craftsmenDOMapper.selectByExample(example);
 	}
-
 	
-	public Long addCraftsmenSysUser(CraftsmenDO craftsmenDO) {
-
-		long result = craftsmenDOMapper
-				.updateByPrimaryKeySelective(craftsmenDO);
-		return result;
+	public long addCraftsmenSysUser(CraftsmenDO craftsmenDO) {
+		return craftsmenDOMapper.updateByPrimaryKeySelective(craftsmenDO);
 	}
-
-	
 	
 
-	
-	public Integer updateCraftsmenAudit(CraftsmenDO craftsmenDO) {
-		Integer> result = null;
-		try {
-			int row = craftsmenDOMapper.updateCraftsmenAudit(craftsmenDO);
-			result = new Integer>();
-			if (row == 0) {
-				result.setSuccess(false);
-				return result;
-			}
-			result.setSuccess(true);
-			result.setResult(row);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrorInfo(e.getMessage());
-			return result;
-		}
-		return result;
-	}
-
-	public List<CraftsmenDO> queryCraftsmenDOBySysUserId(Long sysUserId) {
+	public List<CraftsmenDO> queryCraftsmenDOBySysUserId(long sysUserId) {
 		CraftsmenDOExample example = new CraftsmenDOExample();
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
 		criteria.andSysUserIdEqualTo(Integer.valueOf(sysUserId+""));
-		List<CraftsmenDO> list= craftsmenDOMapper.selectByExample(example);
-		return list;
+		criteria.andIsDeletedEqualTo((byte)0);
+		return craftsmenDOMapper.selectByExample(example);
 	}
 
 
@@ -174,16 +76,13 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
 		criteria.andCraftsmanNameEqualTo(craftsmanName);
 		criteria.andTelephoneEqualTo(telephone);
-		List<CraftsmenDO> list = craftsmenDOMapper.selectByExample(example);
-
-		return list;
+		criteria.andIsDeletedEqualTo((byte)0);
+		return craftsmenDOMapper.selectByExample(example);
 	}
 
-
-	public Long insertCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception {
+	public boolean insertCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception {
 		// TODO Auto-generated method stub
-		Long result = craftsmenDOMapper.insertCraftsmenDO(craftsmenDO);
-		return result;
+		return craftsmenDOCustomMapper.insertCraftsmenDO(craftsmenDO) > 0;
 	}
 	
 }

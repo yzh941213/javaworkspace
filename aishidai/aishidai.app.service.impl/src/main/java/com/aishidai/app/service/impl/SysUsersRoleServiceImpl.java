@@ -16,6 +16,7 @@ import com.aishidai.app.service.SysUsersRoleService;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -76,27 +77,16 @@ public class SysUsersRoleServiceImpl implements SysUsersRoleService {
         return result;
     }
     
-    public Result<List<SysusersRoleDO>> querySysUsersRole(long userId) {
-        Result<List<SysusersRoleDO>> result = new Result<List<SysusersRoleDO>>();
-        try {
-        	SysusersRoleDOExample example = new SysusersRoleDOExample();
-        	SysusersRoleDOExample.Criteria criteria = example.createCriteria();
-        	
-        	criteria.andSysusersIdEqualTo(userId);
-        	
-            List<SysusersRoleDO> roleDOList = 
-            		sysusersRoleDOMapper.selectByExample(example);
-            result.setResult(roleDOList);
-            result.setSuccess(true);
-            result.setSuccessInfo("查询成功");
-            return result;
-        } catch (Exception e) {
-            result.setResult(null);
-            result.setSuccess(false);
-            result.setErrorInfo("查询失败");
-            return result;
-        }
-    }
+	public List<SysusersRoleDO> querySysUsersRole(long userId) {
 
+		SysusersRoleDOExample example = new SysusersRoleDOExample();
+		SysusersRoleDOExample.Criteria criteria = example.createCriteria();
+
+		criteria.andSysusersIdEqualTo(userId);
+
+		List<SysusersRoleDO> roleDOList = sysusersRoleDOMapper
+				.selectByExample(example);
+		return roleDOList;
+	}
 
 }

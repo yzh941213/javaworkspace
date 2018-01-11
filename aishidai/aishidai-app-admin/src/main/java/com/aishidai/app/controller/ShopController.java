@@ -1,4 +1,4 @@
-package com.zhezhuo.web.home.module.screen.manager;
+/*package com.zhezhuo.web.home.module.screen.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +33,11 @@ import com.zhezhuo.model.query.ShopQuery;
 import com.zhezhuo.web.home.common.LoginConstant;
 import com.zhezhuo.web.util.PhotoUtil;
 
-/**
+*//**
  * 
  * @author 51147
  *
- */
+ *//*
 @Controller
 @RequestMapping("/manager/shop")
 public class ShopController {
@@ -55,10 +55,10 @@ public class ShopController {
 	@Autowired
 	private DeviceManager deviceManager;
 	
-	/**
+	*//**
 	 * 查询店铺列表
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value = "/shopList.do",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
 	public String queryShops(@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData,
@@ -171,10 +171,10 @@ public class ShopController {
 		return returnString(result, jsonObject, query);
 	}
 	
-	/**
+	*//**
 	 * 查询异业列表
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value = "/otherShopList.do",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
 	public String queryOtherShops(@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData,
@@ -274,9 +274,9 @@ public class ShopController {
 	}
 	
 	
-	/**
+	*//**
 	 * 查询店铺详情.
-	 */
+	 *//*
 	@RequestMapping(value = "/detail.do",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
 	public String queryShops(@RequestParam(value = "shopsId") long shopsId) {
@@ -310,9 +310,9 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 * 用户根据店铺，名称模糊查询，这是总部使用的
-	 */
+	 *//*
 	@RequestMapping("/queryByNameshopLike.do")
 	@ResponseBody
 	public String queryByNameshopLike(@RequestParam(value = "shopName") String shopsName){
@@ -332,9 +332,9 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 * 用户根据店铺，名称模糊查询，这是经销商使用的
-	 */
+	 *//*
 	@RequestMapping("/queryByNameShopLike.do")
 	@ResponseBody
 	public String queryByNameShopLike(@RequestParam(value = "shopName") String shopsName,
@@ -367,9 +367,9 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 * 用户根据异业店铺，名称模糊查询，这是经销商使用的
-	 */
+	 *//*
 	@RequestMapping("/queryByNameOtherShopLike.do")
 	@ResponseBody
 	public String queryByNameOthershopLike(
@@ -403,9 +403,9 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 *根据商铺对应的用户ID,查询商铺信息
-	 */
+	 *//*
 	@RequestMapping("/queryShopBySysUserId.do")
 	@ResponseBody
 	public String queryShopDOBySysUserId(@RequestParam(value = "sysUserId") long sysUserId){
@@ -429,9 +429,9 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 * 插入或更新店铺信息(end)
-	 */
+	 *//*
 	@RequestMapping(value = {"/edit.do" ,"/save.do"}, method = RequestMethod.POST)
 	@ResponseBody
 	public String editShopDO(@RequestParam(value = "shopsId", required = false ,defaultValue="0") Long shopsId,
@@ -602,9 +602,9 @@ public class ShopController {
 
 	
 	
-	/**
+	*//**
 	 * 修改店铺的状态，是否为可预约(end)
-	 */
+	 *//*
 	@RequestMapping(value = { "/status.do"}, method = RequestMethod.POST)
 	@ResponseBody
 	public String updateShopDOStatus(@RequestParam("shopsId") Long shopsId, 
@@ -631,12 +631,12 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 * 审核
 	 * @param shopsId，店铺id(end)
 	 * @param audit，审核状态（0正在审核中，1审核已通过，默认为0）
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value = { "/audit.do"}, method = RequestMethod.POST)
 	@ResponseBody
 	public String updateShopDOAudit(@RequestParam("shopsId") Long shopsId, 
@@ -666,12 +666,12 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 	
-	/**
+	*//**
 	 * 删除和恢复店铺(end)
 	 * @param shopsId
 	 * @param isDeleted
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value = { "/del.do" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String updateShopDODeleted(@RequestParam("shopsId") Long shopsId,
@@ -702,11 +702,11 @@ public class ShopController {
 	}
 
 	
-	/**
+	*//**
 	 * 不知道什么用
 	 * @param request
 	 * @return
-	 */
+	 *//*
 	@RequestMapping("/unemployed.do")
 	@ResponseBody
 	public String queryShopDOUnemployed(HttpServletRequest request) {
@@ -743,13 +743,13 @@ public class ShopController {
 		}
 		return jsonObject.toString();
 	}
-	/**
+	*//**
 	 * 返回量化过的列表
 	 * @param result
 	 * @param jsonObject
 	 * @param query
 	 * @return
-	 */
+	 *//*
 	public String returnString(Result<List<ShopDO>> result, JSONObject jsonObject, ShopQuery query) {
 		if (result != null && result.isSuccess()) {
 			List<ShopDO> itemDOList = result.getResult();
@@ -795,9 +795,9 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 		
-	/**
+	*//**
 	 * 插入或更新接口(创建系统用户账号)
-	 */
+	 *//*
 	@RequestMapping(value = { "/editSysUser.do" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String editSysUserDO(@RequestParam(value = "entityId") Long entityId,
@@ -848,3 +848,4 @@ public class ShopController {
 		return jsonObject.toString();
 	}
 }
+*/

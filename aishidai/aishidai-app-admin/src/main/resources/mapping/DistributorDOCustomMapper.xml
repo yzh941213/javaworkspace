@@ -17,4 +17,24 @@
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="BIT" />
   </resultMap>
+  
+  <insert id="insertDistributorDO" parameterType="com.aishidai.app.model.pojo.DistributorDOCustom" >
+  
+  	<selectKey keyProperty="id" order="AFTER" resultType="long">
+			SELECT
+			LAST_INSERT_ID()
+	</selectKey>
+	
+    insert into distributor ( name, tel, 
+      contact_person, contact_phone, area, 
+      province, city, address, 
+      remark, sys_user_id, created, 
+      updated, status)
+    values (#{name,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{contactPerson,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{sysUserId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  
 </mapper>

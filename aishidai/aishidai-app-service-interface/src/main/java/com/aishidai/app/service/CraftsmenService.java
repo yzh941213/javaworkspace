@@ -15,24 +15,19 @@ public interface CraftsmenService {
 
 	 CraftsmenDO queryByPrimaryKey(long craftsmenId) throws Exception;
 
-	 Long editCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception;
+	 boolean editCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception;
 
-	 Integer updateCraftsmenStatus(CraftsmenDO craftsmenDO) throws Exception;
-
-	 Long addCraftsmenSysUser(CraftsmenDO craftsmenDO) throws Exception;
+	 long addCraftsmenSysUser(CraftsmenDO craftsmenDO) throws Exception;
 
 	 List<CraftsmenDO> queryCraftsmenDOByDistributorId(long distributorId) throws Exception;
 
 	 List<CraftsmenDO> queryCraftsmenDOByShopId(long shopId) throws Exception;
 
-	 List<CraftsmenDO> queryCraftsmenDOBySysUserId(Long sysUserId) throws Exception;
+	 List<CraftsmenDO> queryCraftsmenDOBySysUserId(long sysUserId) throws Exception;
 
-	 Integer updateCraftsmenIsDeleted(CraftsmenDO craftsmenDO) throws Exception;
-	 
-	 Integer updateCraftsmenAudit(CraftsmenDO craftsmenDO) throws Exception;
 
 	 List<CraftsmenDO> queryCraftsmenExist(String craftsmanName, String telephone) throws Exception;
 
-	 Long insertCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception;
+	 boolean insertCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception;
 
 }

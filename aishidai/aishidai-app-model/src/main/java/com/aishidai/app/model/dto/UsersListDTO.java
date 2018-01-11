@@ -3,14 +3,10 @@ package com.aishidai.app.model.dto;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by 蝈蝈 on 2016/9/19.
- */
 public class UsersListDTO implements Serializable{
 
-
     private static final long serialVersionUID = -8183369325122025437L;
-    private int userId;
+    private Long userId;
     private String uname;
     private String unick;
     private int sex;
@@ -24,15 +20,16 @@ public class UsersListDTO implements Serializable{
     private String parentName;
     private int subordCount;
 
-    public int getUserId() {
-        return userId;
-    }
+    
+    public Long getUserId() {
+		return userId;
+	}
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public String getUname() {
+	public String getUname() {
         return uname;
     }
 

@@ -65,49 +65,28 @@ public class UsersServiceImpl implements UsersService{
     }
 
     
-    public Result<UsersListDTO> queryUsersDOById(int userId) {
-        Result<UsersListDTO> result = new Result<UsersListDTO>();
-        try {
-            UsersDO u = usersDOMapper.selectByPrimaryKey(userId);
-            
-            if (u != null) {
-                UsersListDTO uDTO = new UsersListDTO();
-                uDTO.setUserId(u.getUserId());
-                uDTO.setTrueName(u.getTrueName());
-                uDTO.setAvatar(u.getAvatar());
-                uDTO.setUname(u.getUname());
-                uDTO.setSex(u.getSex());
-                uDTO.setStatus(u.getStatus());
-                uDTO.setUnick(u.getUnick());
-                result.setResult(uDTO);
-            }
-            result.setSuccess(true);
-            return result;
-        } catch (Exception e) {
-            result.setSuccess(false);
-            return result;
-        }
+    public UsersListDTO queryUsersDOById(long userId) {
+
+		UsersDO usersDO = usersDOMapper.selectByPrimaryKey(userId);
+		UsersListDTO DTO = null;
+		if (usersDO != null) {
+			DTO = new UsersListDTO();
+			DTO.setUserId(usersDO.getUserId());
+			DTO.setTrueName(usersDO.getTrueName());
+			DTO.setAvatar(usersDO.getAvatar());
+			DTO.setUname(usersDO.getUname());
+			DTO.setSex(usersDO.getSex());
+			DTO.setStatus(usersDO.getStatus());
+			DTO.setUnick(usersDO.getUnick());
+		}
+		return DTO;
+
     }
 
     
-    public Result<Integer> operatUsersDO(UsersDO usersDO) {
-        Result<Integer> result = new Result<Integer>();
-        try {
-            int row = usersDOMapper.updateByPrimaryKeySelective(usersDO);
-            if (row >= 0) {
-                result.setResult(row);
-                result.setSuccess(true);
-                return result;
-            }
-            result.setResult(-1);
-            result.setSuccess(false);
-            return result;
-        } catch (Exception e) {
-            logger.info("", e);
-            result.setSuccess(false);
-            return result;
-        }
-    }
+	public boolean operatUsersDO(UsersDO usersDO) {
+		return usersDOMapper.updateByPrimaryKeySelective(usersDO)>0;
+	}
 
    
    

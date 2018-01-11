@@ -35,7 +35,7 @@ public class ShopsDO {
 
     private String shopHoursClose;
 
-    private Byte isDeleted;
+    private Integer isDeleted;
 
     private String services;
 
@@ -49,7 +49,7 @@ public class ShopsDO {
 
     private Integer audit;
 
-    private Byte star;
+    private Integer star;
 
     private String lat;
 
@@ -183,11 +183,11 @@ public class ShopsDO {
         this.shopHoursClose = shopHoursClose == null ? null : shopHoursClose.trim();
     }
 
-    public Byte getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 
@@ -239,11 +239,11 @@ public class ShopsDO {
         this.audit = audit;
     }
 
-    public Byte getStar() {
+    public Integer getStar() {
         return star;
     }
 
-    public void setStar(Byte star) {
+    public void setStar(Integer star) {
         this.star = star;
     }
 

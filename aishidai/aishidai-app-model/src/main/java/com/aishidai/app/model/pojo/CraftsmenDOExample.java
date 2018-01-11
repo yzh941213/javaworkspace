@@ -1105,52 +1105,52 @@ public class CraftsmenDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedEqualTo(Byte value) {
+        public Criteria andIsDeletedEqualTo(Integer value) {
             addCriterion("is_deleted =", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotEqualTo(Byte value) {
+        public Criteria andIsDeletedNotEqualTo(Integer value) {
             addCriterion("is_deleted <>", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedGreaterThan(Byte value) {
+        public Criteria andIsDeletedGreaterThan(Integer value) {
             addCriterion("is_deleted >", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedGreaterThanOrEqualTo(Byte value) {
+        public Criteria andIsDeletedGreaterThanOrEqualTo(Integer value) {
             addCriterion("is_deleted >=", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedLessThan(Byte value) {
+        public Criteria andIsDeletedLessThan(Integer value) {
             addCriterion("is_deleted <", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedLessThanOrEqualTo(Byte value) {
+        public Criteria andIsDeletedLessThanOrEqualTo(Integer value) {
             addCriterion("is_deleted <=", value, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedIn(List<Byte> values) {
+        public Criteria andIsDeletedIn(List<Integer> values) {
             addCriterion("is_deleted in", values, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotIn(List<Byte> values) {
+        public Criteria andIsDeletedNotIn(List<Integer> values) {
             addCriterion("is_deleted not in", values, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedBetween(Byte value1, Byte value2) {
+        public Criteria andIsDeletedBetween(Integer value1, Integer value2) {
             addCriterion("is_deleted between", value1, value2, "isDeleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotBetween(Byte value1, Byte value2) {
+        public Criteria andIsDeletedNotBetween(Integer value1, Integer value2) {
             addCriterion("is_deleted not between", value1, value2, "isDeleted");
             return (Criteria) this;
         }
@@ -1165,52 +1165,52 @@ public class CraftsmenDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdEqualTo(Integer value) {
+        public Criteria andSysUserIdEqualTo(Long value) {
             addCriterion("sys_user_id =", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotEqualTo(Integer value) {
+        public Criteria andSysUserIdNotEqualTo(Long value) {
             addCriterion("sys_user_id <>", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdGreaterThan(Integer value) {
+        public Criteria andSysUserIdGreaterThan(Long value) {
             addCriterion("sys_user_id >", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSysUserIdGreaterThanOrEqualTo(Long value) {
             addCriterion("sys_user_id >=", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLessThan(Integer value) {
+        public Criteria andSysUserIdLessThan(Long value) {
             addCriterion("sys_user_id <", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLessThanOrEqualTo(Integer value) {
+        public Criteria andSysUserIdLessThanOrEqualTo(Long value) {
             addCriterion("sys_user_id <=", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdIn(List<Integer> values) {
+        public Criteria andSysUserIdIn(List<Long> values) {
             addCriterion("sys_user_id in", values, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotIn(List<Integer> values) {
+        public Criteria andSysUserIdNotIn(List<Long> values) {
             addCriterion("sys_user_id not in", values, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdBetween(Integer value1, Integer value2) {
+        public Criteria andSysUserIdBetween(Long value1, Long value2) {
             addCriterion("sys_user_id between", value1, value2, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andSysUserIdNotBetween(Long value1, Long value2) {
             addCriterion("sys_user_id not between", value1, value2, "sysUserId");
             return (Criteria) this;
         }

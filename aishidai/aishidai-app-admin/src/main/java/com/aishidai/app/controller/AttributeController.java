@@ -1,6 +1,7 @@
 package com.aishidai.app.controller;
 
 import com.aishidai.app.model.pojo.AttributeDO;
+import com.aishidai.app.model.query.QueryAttrbute;
 import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.service.AttributeService;
 import com.aishidai.common.json.JsonResult;
@@ -17,9 +18,9 @@ public class AttributeController {
     AttributeService attributeService;
 
     @GetMapping(value = "list")
-    public JsonResult list(QueryItem queryItem){
+    public JsonResult list(QueryAttrbute queryAttrbute){
 
-        return  JsonResult.buildSuccess(attributeService.getAllSubclassByAttrId(1));
+        return  JsonResult.buildSuccess(attributeService.queryList(queryAttrbute));
     }
     @GetMapping(value = "all")
     public JsonResult getAll(){

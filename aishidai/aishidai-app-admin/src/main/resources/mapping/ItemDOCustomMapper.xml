@@ -22,7 +22,7 @@
     <result column="audit" property="audit" jdbcType="INTEGER" />
   </resultMap>
 
-  <select id="itemList" resultMap="ItemVO"  parameterType="com.aishidai.app.model.query.QueryItem">
+  <select id="itemList" resultType="com.aishidai.app.model.vo.ItemVO"  parameterType="com.aishidai.app.model.query.QueryItem">
 
 
 
@@ -32,7 +32,7 @@
     <if test="cid == null or cid == ''">
       select *
       from item i
-      where delete_is=0
+      where is_delete=0
       <if test="itemCode != null and itemCode !=''">
         AND  item_code=#{itemCode}
       </if>

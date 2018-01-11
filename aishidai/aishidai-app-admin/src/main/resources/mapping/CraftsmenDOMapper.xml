@@ -17,8 +17,8 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
-    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
-    <result column="sys_user_id" property="sysUserId" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="sys_user_id" property="sysUserId" jdbcType="BIGINT" />
     <result column="service_id" property="serviceId" jdbcType="VARCHAR" />
     <result column="wechat" property="wechat" jdbcType="VARCHAR" />
     <result column="audit" property="audit" jdbcType="INTEGER" />
@@ -132,7 +132,7 @@
       #{telephone,jdbcType=VARCHAR}, #{titleId,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
       #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
-      #{isDeleted,jdbcType=TINYINT}, #{sysUserId,jdbcType=INTEGER}, #{serviceId,jdbcType=VARCHAR}, 
+      #{isDeleted,jdbcType=INTEGER}, #{sysUserId,jdbcType=BIGINT}, #{serviceId,jdbcType=VARCHAR}, 
       #{wechat,jdbcType=VARCHAR}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=INTEGER}
       )
   </insert>
@@ -250,10 +250,10 @@
         #{updated,jdbcType=TIMESTAMP},
       </if>
       <if test="isDeleted != null" >
-        #{isDeleted,jdbcType=TINYINT},
+        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="sysUserId != null" >
-        #{sysUserId,jdbcType=INTEGER},
+        #{sysUserId,jdbcType=BIGINT},
       </if>
       <if test="serviceId != null" >
         #{serviceId,jdbcType=VARCHAR},
@@ -324,10 +324,10 @@
         updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isDeleted != null" >
-        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       </if>
       <if test="record.sysUserId != null" >
-        sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
+        sys_user_id = #{record.sysUserId,jdbcType=BIGINT},
       </if>
       <if test="record.serviceId != null" >
         service_id = #{record.serviceId,jdbcType=VARCHAR},
@@ -363,8 +363,8 @@
       status = #{record.status,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
-      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
-      sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      sys_user_id = #{record.sysUserId,jdbcType=BIGINT},
       service_id = #{record.serviceId,jdbcType=VARCHAR},
       wechat = #{record.wechat,jdbcType=VARCHAR},
       audit = #{record.audit,jdbcType=INTEGER},
@@ -419,10 +419,10 @@
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
       <if test="isDeleted != null" >
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="sysUserId != null" >
-        sys_user_id = #{sysUserId,jdbcType=INTEGER},
+        sys_user_id = #{sysUserId,jdbcType=BIGINT},
       </if>
       <if test="serviceId != null" >
         service_id = #{serviceId,jdbcType=VARCHAR},
@@ -455,8 +455,8 @@
       status = #{status,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      sys_user_id = #{sysUserId,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      sys_user_id = #{sysUserId,jdbcType=BIGINT},
       service_id = #{serviceId,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
       audit = #{audit,jdbcType=INTEGER},

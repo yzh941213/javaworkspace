@@ -275,7 +275,7 @@ public class CraftsmenController {
 				craftsmenDO.setCraftsmanUrl(craftsmanUrl);
 			}
 
-			craftsmenDO.setIsDeleted((byte) 0);
+			craftsmenDO.setIsDeleted( 0);
 
 			if (StringUtils.isNotBlank(craftsmenDO.getServiceId())) {
 				String serviceId = "-" + craftsmenDO.getServiceId() + "-";
@@ -418,7 +418,7 @@ public class CraftsmenController {
 	@RequestMapping(value = { "/remove.do" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String updateCraftsmenDOIsDeleted(@RequestParam("id") Long id,
-			@RequestParam("isDeleted") byte isDeleted) {
+			@RequestParam("isDeleted") Integer isDeleted) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -541,7 +541,7 @@ public class CraftsmenController {
 			} else {
 				CraftsmenDO craftsmenDO = craftsmenService.queryByPrimaryKey(craftsmenId);
 				if (craftsmenDO != null) {
-					craftsmenDO.setSysUserId(Integer.valueOf(result.getResult()+""));
+					craftsmenDO.setSysUserId(Long.valueOf(result.getResult()+""));
 				}
 				long result_ = craftsmenService.addCraftsmenSysUser(craftsmenDO);
 				if (result_ <= 0) {

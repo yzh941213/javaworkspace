@@ -18,14 +18,14 @@
     <result column="sys_user_id" property="sysUserId" jdbcType="BIGINT" />
     <result column="shop_hours_open" property="shopHoursOpen" jdbcType="VARCHAR" />
     <result column="shop_hours_close" property="shopHoursClose" jdbcType="VARCHAR" />
-    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
     <result column="services" property="services" jdbcType="VARCHAR" />
     <result column="hot" property="hot" jdbcType="INTEGER" />
     <result column="services_type" property="servicesType" jdbcType="VARCHAR" />
     <result column="device_id" property="deviceId" jdbcType="BIGINT" />
     <result column="device_is" property="deviceIs" jdbcType="INTEGER" />
     <result column="audit" property="audit" jdbcType="INTEGER" />
-    <result column="star" property="star" jdbcType="TINYINT" />
+    <result column="star" property="star" jdbcType="INTEGER" />
     <result column="lat" property="lat" jdbcType="VARCHAR" />
     <result column="lnt" property="lnt" jdbcType="VARCHAR" />
   </resultMap>
@@ -139,9 +139,9 @@
       #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
       #{city,jdbcType=VARCHAR}, #{activity,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP}, #{sysUserId,jdbcType=BIGINT}, #{shopHoursOpen,jdbcType=VARCHAR}, 
-      #{shopHoursClose,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{services,jdbcType=VARCHAR}, 
+      #{shopHoursClose,jdbcType=VARCHAR}, #{isDeleted,jdbcType=INTEGER}, #{services,jdbcType=VARCHAR}, 
       #{hot,jdbcType=INTEGER}, #{servicesType,jdbcType=VARCHAR}, #{deviceId,jdbcType=BIGINT}, 
-      #{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=TINYINT}, 
+      #{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=INTEGER}, 
       #{lat,jdbcType=VARCHAR}, #{lnt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
@@ -276,7 +276,7 @@
         #{shopHoursClose,jdbcType=VARCHAR},
       </if>
       <if test="isDeleted != null" >
-        #{isDeleted,jdbcType=TINYINT},
+        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="services != null" >
         #{services,jdbcType=VARCHAR},
@@ -297,7 +297,7 @@
         #{audit,jdbcType=INTEGER},
       </if>
       <if test="star != null" >
-        #{star,jdbcType=TINYINT},
+        #{star,jdbcType=INTEGER},
       </if>
       <if test="lat != null" >
         #{lat,jdbcType=VARCHAR},
@@ -365,7 +365,7 @@
         shop_hours_close = #{record.shopHoursClose,jdbcType=VARCHAR},
       </if>
       <if test="record.isDeleted != null" >
-        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       </if>
       <if test="record.services != null" >
         services = #{record.services,jdbcType=VARCHAR},
@@ -386,7 +386,7 @@
         audit = #{record.audit,jdbcType=INTEGER},
       </if>
       <if test="record.star != null" >
-        star = #{record.star,jdbcType=TINYINT},
+        star = #{record.star,jdbcType=INTEGER},
       </if>
       <if test="record.lat != null" >
         lat = #{record.lat,jdbcType=VARCHAR},
@@ -417,14 +417,14 @@
       sys_user_id = #{record.sysUserId,jdbcType=BIGINT},
       shop_hours_open = #{record.shopHoursOpen,jdbcType=VARCHAR},
       shop_hours_close = #{record.shopHoursClose,jdbcType=VARCHAR},
-      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       services = #{record.services,jdbcType=VARCHAR},
       hot = #{record.hot,jdbcType=INTEGER},
       services_type = #{record.servicesType,jdbcType=VARCHAR},
       device_id = #{record.deviceId,jdbcType=BIGINT},
       device_is = #{record.deviceIs,jdbcType=INTEGER},
       audit = #{record.audit,jdbcType=INTEGER},
-      star = #{record.star,jdbcType=TINYINT},
+      star = #{record.star,jdbcType=INTEGER},
       lat = #{record.lat,jdbcType=VARCHAR},
       lnt = #{record.lnt,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -480,7 +480,7 @@
         shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
       </if>
       <if test="isDeleted != null" >
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="services != null" >
         services = #{services,jdbcType=VARCHAR},
@@ -501,7 +501,7 @@
         audit = #{audit,jdbcType=INTEGER},
       </if>
       <if test="star != null" >
-        star = #{star,jdbcType=TINYINT},
+        star = #{star,jdbcType=INTEGER},
       </if>
       <if test="lat != null" >
         lat = #{lat,jdbcType=VARCHAR},
@@ -529,14 +529,14 @@
       sys_user_id = #{sysUserId,jdbcType=BIGINT},
       shop_hours_open = #{shopHoursOpen,jdbcType=VARCHAR},
       shop_hours_close = #{shopHoursClose,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
       services = #{services,jdbcType=VARCHAR},
       hot = #{hot,jdbcType=INTEGER},
       services_type = #{servicesType,jdbcType=VARCHAR},
       device_id = #{deviceId,jdbcType=BIGINT},
       device_is = #{deviceIs,jdbcType=INTEGER},
       audit = #{audit,jdbcType=INTEGER},
-      star = #{star,jdbcType=TINYINT},
+      star = #{star,jdbcType=INTEGER},
       lat = #{lat,jdbcType=VARCHAR},
       lnt = #{lnt,jdbcType=VARCHAR}
     where shops_id = #{shopsId,jdbcType=BIGINT}

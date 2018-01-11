@@ -41,7 +41,7 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 		CraftsmenDOExample example = new CraftsmenDOExample();
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
 		criteria.andDistributorIdEqualTo(distributorId);
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		List<CraftsmenDO> list = craftsmenDOMapper.selectByExample(example);
 		return list;
 	}
@@ -51,7 +51,7 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 		CraftsmenDOExample example = new CraftsmenDOExample();
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
 		criteria.andShopsIdEqualTo(shopId);
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		return craftsmenDOMapper.selectByExample(example);
 	}
 	
@@ -63,8 +63,8 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 	public List<CraftsmenDO> queryCraftsmenDOBySysUserId(long sysUserId) {
 		CraftsmenDOExample example = new CraftsmenDOExample();
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
-		criteria.andSysUserIdEqualTo(Integer.valueOf(sysUserId+""));
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andSysUserIdEqualTo(sysUserId);
+		criteria.andIsDeletedEqualTo(0);
 		return craftsmenDOMapper.selectByExample(example);
 	}
 
@@ -76,7 +76,7 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 		CraftsmenDOExample.Criteria criteria = example.createCriteria();
 		criteria.andCraftsmanNameEqualTo(craftsmanName);
 		criteria.andTelephoneEqualTo(telephone);
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		return craftsmenDOMapper.selectByExample(example);
 	}
 

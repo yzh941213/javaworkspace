@@ -35,15 +35,20 @@ public class ItemController {
         List<ItemVO> result=new ArrayList<ItemVO>();
         List<ItemVO> list= itemService.itemList(queryItem);
         for (ItemVO itemVO:list){
-            AttributeDOExample attributeDOExample=new AttributeDOExample();
-            attributeDOExample.createCriteria().andAttributeIdIn(SeparatorTool.idMinusSplit(itemVO.getCategoryId()));
-           List<AttributeDO> attrbuteList= attributeDOMapper.selectByExample(attributeDOExample);
-           String categoryId="";
-           for (AttributeDO attributeDO:attrbuteList){
-               categoryId+=attributeDO.getAttrName()+",";
+            String categoryId="";
+            List list1=  SeparatorTool.idMinusSplit(itemVO.getCategoryId());
+            if(list1.size()!=0) {
+                AttributeDOExample attributeDOExample = new AttributeDOExample();
+                attributeDOExample.createCriteria().andAttributeIdIn(list1);
+                List<AttributeDO> attrbuteList = attributeDOMapper.selectByExample(attributeDOExample);
 
-           }
-            categoryId = categoryId.substring(0,categoryId.length() - 1);
+                for (AttributeDO attributeDO : attrbuteList) {
+                    categoryId += attributeDO.getAttrName() + ",";
+
+                }
+                categoryId = categoryId.substring(0,categoryId.length() - 1);
+            }
+
             itemVO.setCategoryId(categoryId);
             result.add(itemVO);
         }

@@ -64,7 +64,7 @@ public class ShopServiceImpl implements ShopService {
 	public List<ShopsDO> queryOtherShopsDOByDistributorId(long DistributorId) throws Exception {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		criteria.andDistributorIdEqualTo(DistributorId);
 		criteria.andDeviceIsEqualTo(1);
 		return shopsDOMapper.selectByExample(example);
@@ -73,7 +73,7 @@ public class ShopServiceImpl implements ShopService {
 	public List<ShopsDO> queryShopsDOByDistributorId(long DistributorId) throws Exception {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		criteria.andDistributorIdEqualTo(DistributorId);
 		criteria.andDeviceIsEqualTo(0);
 		return shopsDOMapper.selectByExample(example);
@@ -83,7 +83,7 @@ public class ShopServiceImpl implements ShopService {
 	public List<ShopsDO> queryShopsDOList() throws Exception {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		criteria.andDeviceIsEqualTo(0);
 		return shopsDOMapper.selectByExample(example);
 	}
@@ -91,7 +91,7 @@ public class ShopServiceImpl implements ShopService {
 	public List<ShopsDO> queryOtherShopsDOList(ShopsQuery query) throws Exception {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
-		criteria.andIsDeletedEqualTo((byte)0);
+		criteria.andIsDeletedEqualTo(0);
 		criteria.andDeviceIsEqualTo(1);
 		return shopsDOMapper.selectByExample(example);
 	}

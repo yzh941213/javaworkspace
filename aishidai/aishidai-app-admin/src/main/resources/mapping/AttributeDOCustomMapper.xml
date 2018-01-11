@@ -19,4 +19,27 @@
 
     select * from attribute;
   </select>
+
+  <select id="queryList" resultMap="BaseResultMap"  parameterType="com.aishidai.app.model.query.QueryAttrbute">
+
+      select * from attribute
+      where status=0
+      <if test="attrName != null and attrName !=''">
+        AND  attr_name=#{attrName}
+      </if>
+      <if test="parentId != null">
+        AND  parent_id=#{parentId}
+      </if>
+      <if test="category != null">
+        AND  category=#{category}
+      </if>
+      <if test="aoData != null and aoData !=''">
+        limit #{stratRow},#{pageSize}
+      </if>
+
+
+
+
+
+  </select>
 </mapper>

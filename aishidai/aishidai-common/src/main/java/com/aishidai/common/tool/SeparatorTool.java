@@ -8,6 +8,10 @@ import java.util.List;
 public class SeparatorTool {
 
     public static List idMinusSplit(String ids) {
+
+        if(StringUtils.isEmpty(ids)){
+            return new ArrayList();
+        }
         String[] arry= ids.split("-");
         List list=new ArrayList();
         for (String str:arry){

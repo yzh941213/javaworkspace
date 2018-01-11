@@ -33,9 +33,9 @@ public class CraftsmenDO {
 
     private Date updated;
 
-    private Byte isDeleted;
+    private Integer isDeleted;
 
-    private Integer sysUserId;
+    private Long sysUserId;
 
     private String serviceId;
 
@@ -165,19 +165,19 @@ public class CraftsmenDO {
         this.updated = updated;
     }
 
-    public Byte getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 
-    public Integer getSysUserId() {
+    public Long getSysUserId() {
         return sysUserId;
     }
 
-    public void setSysUserId(Integer sysUserId) {
+    public void setSysUserId(Long sysUserId) {
         this.sysUserId = sysUserId;
     }
 

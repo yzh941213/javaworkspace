@@ -2,6 +2,7 @@ package com.aishidai.app.controller;
 
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOCustom;
 import com.aishidai.app.model.pojo.RoleResourceDO;
 import com.aishidai.app.service.ResourceService;
 import com.aishidai.app.service.RoleResourceService;
@@ -30,7 +31,7 @@ public class RoleResourceController {
     private RoleService roleService;
     
 
-    @RequestMapping(value = {"/add.do"})
+    @RequestMapping(value = {"/add"})
     @ResponseBody
     public String addRoleResource(
     		@RequestParam(value = "data", defaultValue = "")String data) {
@@ -71,7 +72,7 @@ public class RoleResourceController {
         return jsonObject.toString();
     }
     
-    @RequestMapping(value = {"/edit.do"})
+    @RequestMapping(value = {"/edit"})
     @ResponseBody
     public String EditRoleResource(@RequestParam(value = "data", defaultValue = "")String data) {
     	System.out.println(data);
@@ -112,7 +113,7 @@ public class RoleResourceController {
     }
     
     
-    @RequestMapping("/resource/queryList.do")
+    @RequestMapping("/resource/queryList")
     @ResponseBody
     public String queryResourceDO(
     		@RequestParam(value = "roleId", required = true)long roleId) {
@@ -120,7 +121,7 @@ public class RoleResourceController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("success", false);
 
-        Result<List<ResourceDO>> result  = resourceService.queryAllResourceByRoleId(roleId);
+        Result<List<ResourceDOCustom>> result  = resourceService.queryAllResourceByRoleId(roleId);
 
         if (result != null && result.isSuccess()) {
             jsonObject.put("success", true);

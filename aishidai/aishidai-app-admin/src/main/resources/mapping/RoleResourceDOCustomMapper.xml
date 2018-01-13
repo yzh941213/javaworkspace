@@ -13,8 +13,7 @@
     <result column="isDeleted" property="isdeleted" jdbcType="TINYINT" />
   </resultMap>
 
-	<insert id="insertRoleResourceDO" 
-		parameterType="com.aishidai.app.model.pojo.RoleResourceDOCustom">
+	<insert id="insertRoleResourceDO" parameterType="com.aishidai.app.model.pojo.RoleResourceDO">
 		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
 			SELECT
 			LAST_INSERT_ID()

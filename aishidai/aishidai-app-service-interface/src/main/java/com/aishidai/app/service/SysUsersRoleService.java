@@ -18,6 +18,4 @@ public interface SysUsersRoleService {
 
 	Result<Long> editSysUsersRole(List<SysusersRoleDO> list);
 
-
-
 }

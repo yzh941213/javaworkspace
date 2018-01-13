@@ -40,7 +40,7 @@ public class UsersManageController {
 
     private static final Logger logger = LoggerFactory.getLogger(UsersManageController.class);
 
-   /* @RequestMapping("/queryList.do")
+   /* @RequestMapping("/queryList")
     @ResponseBody
     public String queryUsersDOList( @RequestParam(value = "aoData") String aoData,
                                     @RequestParam(value = "keywords", defaultValue = "") String keywords,
@@ -95,7 +95,7 @@ public class UsersManageController {
 
 
     
-    @RequestMapping("/queryDetail.do")
+    @RequestMapping("/queryDetail")
     @ResponseBody
     public String queryUsersDO(@RequestParam(value = "userId") long userId) {
         JSONObject jsonObject = new JSONObject();
@@ -113,7 +113,7 @@ public class UsersManageController {
     }
 
 
-	@RequestMapping("/edit.do")
+	@RequestMapping("/edit")
 	@ResponseBody
 	public String updateUsersDO(UsersDO usersDO) {
 		JSONObject jsonObject = new JSONObject();
@@ -129,7 +129,7 @@ public class UsersManageController {
 		return jsonObject.toString();
 	}
 
-    /*@RequestMapping(value = "/add.do", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String addUsersDOS(@RequestParam("file") MultipartFile file,
                               HttpServletRequest request ) {

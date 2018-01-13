@@ -14,5 +14,27 @@
     <result column="sys_user_id" property="sysUserId" jdbcType="INTEGER" />
     <result column="audit" property="audit" jdbcType="INTEGER" />
   </resultMap>
-  
+	<insert id="insertMaker" parameterType="com.aishidai.app.model.pojo.MakerDO">
+		
+		<selectKey keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		
+		insert into maker (name, distributor_id,
+		mobile, remark, created,
+		updated, status, sys_user_id,
+		audit)
+		values (#{name,jdbcType=VARCHAR},
+		#{distributorId,jdbcType=BIGINT},
+		#{mobile,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP},
+		#{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER},
+		#{sysUserId,jdbcType=BIGINT},
+		#{audit,jdbcType=INTEGER})
+
+	</insert>
+	
+	<select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+		select * from maker where id = #{id}
+	</select>
+	
 </mapper>

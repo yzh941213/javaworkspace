@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.OtherShopCommissionDOCustomMapper" >
+  
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.OtherShopCommissionDOCustom" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="other_shop_commission" property="otherShopCommission" jdbcType="INTEGER" />
+    <result column="distributor_id" property="distributorId" jdbcType="BIGINT" />
+    <result column="distributor_name" property="distributorName" jdbcType="VARCHAR" />
+    <result column="distributor_commission" property="distributorCommission" jdbcType="INTEGER" />
+    <result column="barbershop_commission" property="barbershopCommission" jdbcType="INTEGER" />
+    <result column="other_shop_name" property="otherShopName" jdbcType="VARCHAR" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="other_shop_id" property="otherShopId" jdbcType="BIGINT" />
+    <result column="maker_commission" property="makerCommission" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="create_id" property="createId" jdbcType="BIGINT" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <insert id="insertOtherShopCommissionDO" parameterType="com.aishidai.app.model.pojo.OtherShopCommissionDO" >
+   
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+    insert into other_shop_commission (other_shop_commission, distributor_id, 
+      distributor_name, distributor_commission, 
+      barbershop_commission, other_shop_name, shop_name, 
+      shop_id, other_shop_id, maker_commission, 
+      type, create_id, create_name, 
+      created, updated, is_delete
+      )
+    values (#{otherShopCommission,jdbcType=INTEGER}, #{distributorId,jdbcType=BIGINT}, 
+      #{distributorName,jdbcType=VARCHAR}, #{distributorCommission,jdbcType=INTEGER}, 
+      #{barbershopCommission,jdbcType=INTEGER}, #{otherShopName,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=BIGINT}, #{otherShopId,jdbcType=BIGINT}, #{makerCommission,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{createId,jdbcType=BIGINT}, #{createName,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}
+      )
+  </insert>
+  
+</mapper>

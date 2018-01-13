@@ -14,7 +14,7 @@
     <result column="nick" property="nick" jdbcType="VARCHAR" />
   </resultMap>
   
-  <insert id="insertRole" parameterType="com.aishidai.app.model.pojo.RoleDOCustom">
+  <insert id="insertRole" parameterType="com.aishidai.app.model.pojo.RoleDO">
 
 	<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
 		SELECT LAST_INSERT_ID()

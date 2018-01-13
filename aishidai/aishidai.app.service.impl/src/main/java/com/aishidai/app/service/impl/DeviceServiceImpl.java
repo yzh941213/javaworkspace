@@ -3,6 +3,7 @@ package com.aishidai.app.service.impl;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.DeviceDOMapper;
 import com.aishidai.app.model.pojo.DeviceDO;
@@ -11,8 +12,9 @@ import com.aishidai.app.model.query.DeviceQuery;
 import com.aishidai.app.service.DeviceService;
 
 
-import java.util.List;
 
+import java.util.List;
+@Service
 public class DeviceServiceImpl implements DeviceService {
 	
 	@Autowired

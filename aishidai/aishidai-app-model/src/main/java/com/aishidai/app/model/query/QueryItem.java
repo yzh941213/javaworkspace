@@ -4,6 +4,7 @@ package com.aishidai.app.model.query;
  * hanfeihu 项目列表查询
  */
 public class QueryItem extends QueryPage {
+	
     private String cid ;
     private String recommend="0";
     private String categoryId;

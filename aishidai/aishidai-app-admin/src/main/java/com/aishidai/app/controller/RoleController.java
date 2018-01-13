@@ -40,7 +40,7 @@ public class RoleController {
     }
     
 
-    @RequestMapping(value = "/add.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String addRoleDO(@RequestParam(value = "name", required = true)String name,
                             @RequestParam(value = "description", defaultValue = "")String description,
@@ -80,7 +80,7 @@ public class RoleController {
     
     
     
-    @RequestMapping(value = {"/update.do"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/update"}, method = RequestMethod.POST)
     @ResponseBody
     public String updateRoleDO( @RequestParam(value = "id",required = true)long id,
                                 @RequestParam(value = "name")String name,
@@ -120,7 +120,7 @@ public class RoleController {
         return jsonObject.toString();
     }
     
-    @RequestMapping(value = {"/remove.do"})
+    @RequestMapping(value = {"/remove"})
     @ResponseBody
     public String remove(@RequestParam(value = "id",required = true)long id){
 		
@@ -147,7 +147,7 @@ public class RoleController {
     	
     }
     
-    @RequestMapping(value = "/queryList.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryList", method = RequestMethod.GET)
     @ResponseBody
     public String queryRoleDO() {
         JSONObject jsonObject = new JSONObject();

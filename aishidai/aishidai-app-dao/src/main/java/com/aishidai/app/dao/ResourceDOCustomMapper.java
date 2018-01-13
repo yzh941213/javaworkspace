@@ -1,7 +1,7 @@
 package com.aishidai.app.dao;
 
 import com.aishidai.app.model.dto.ResourceDTO;
-import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOCustom;
 import com.aishidai.app.model.query.ResourceQuery;
 
 import java.util.List;
@@ -9,16 +9,18 @@ import java.util.List;
 
 public interface ResourceDOCustomMapper {
     
-    List<ResourceDO> queryAllResourceByUserId(long userId);
+    List<ResourceDOCustom> queryAllResourceByUserId(long userId);
     
-    List<ResourceDO>  queryFirstMenu();
+    List<ResourceDOCustom>  queryFirstMenu();
     
-    List<ResourceDO>  queryAllResource();
+    List<ResourceDOCustom>  queryAllResource();
     
-    List<ResourceDO> queryFirstMenuByUserId(long userId);
+    List<ResourceDOCustom> queryFirstMenuByUserId(long userId);
     
-    List<ResourceDO> querySecondMenuByUserId(ResourceQuery query);
+    List<ResourceDOCustom> querySecondMenuByUserId(ResourceQuery query);
     
 	List<ResourceDTO> queryResourceByRoleId(long roleId);
+	
+	List<ResourceDOCustom> queryAllMenuByParentId(long prantenId);
     
 }

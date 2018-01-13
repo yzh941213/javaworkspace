@@ -5,17 +5,17 @@ import java.util.List;
 
 public class ResourceDOCustom extends ResourceDO{
     
-	private List<ResourceDO> resourceDOList;
+	private List<ResourceDOCustom> resourceDOList;
 
 	private long role_res_id;
 
 	private int isTrue;
 	    
-	public List<ResourceDO> getResourceDOList() {
+	public List<ResourceDOCustom> getResourceDOList() {
 		return resourceDOList;
 	}
 
-	public void setResourceDOList(List<ResourceDO> resourceDOList) {
+	public void setResourceDOList(List<ResourceDOCustom> resourceDOList) {
 		this.resourceDOList = resourceDOList;
 	}
 

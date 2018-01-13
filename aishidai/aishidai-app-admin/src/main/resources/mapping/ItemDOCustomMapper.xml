@@ -29,6 +29,7 @@
     <if test="cid != null and cid != ''">
       call attribute_findByParentId(#{cid},#{stratRow},#{pageSize},#{itemName},#{itemCode},#{itemStatus});
     </if>
+    
     <if test="cid == null or cid == ''">
       select *
       from item i
@@ -45,8 +46,6 @@
 
       limit #{stratRow},#{pageSize}
     </if>
-
-
 
   </select>
 </mapper>

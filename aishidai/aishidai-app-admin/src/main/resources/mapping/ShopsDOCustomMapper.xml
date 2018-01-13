@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.ShopsDOCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.ShopsDOCustom" >
+    <id column="shops_id" property="shopsId" jdbcType="BIGINT" />
+    <result column="distributor_id" property="distributorId" jdbcType="BIGINT" />
+    <result column="shops_name" property="shopsName" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="shops_url" property="shopsUrl" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="activity" property="activity" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="sys_user_id" property="sysUserId" jdbcType="BIGINT" />
+    <result column="shop_hours_open" property="shopHoursOpen" jdbcType="VARCHAR" />
+    <result column="shop_hours_close" property="shopHoursClose" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="services" property="services" jdbcType="VARCHAR" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
+    <result column="services_type" property="servicesType" jdbcType="VARCHAR" />
+    <result column="device_id" property="deviceId" jdbcType="BIGINT" />
+    <result column="device_is" property="deviceIs" jdbcType="INTEGER" />
+    <result column="audit" property="audit" jdbcType="INTEGER" />
+    <result column="star" property="star" jdbcType="INTEGER" />
+    <result column="lat" property="lat" jdbcType="VARCHAR" />
+    <result column="lnt" property="lnt" jdbcType="VARCHAR" />
+    <result column="is_suppliers" property="isSuppliers" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <insert id="insertShops" parameterType="com.aishidai.app.model.pojo.ShopsDO">
+
+	<selectKey keyProperty="shopsId" keyColumn="shops_id" order="AFTER" resultType="long">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+
+		insert into shops (distributor_id, shops_name,
+		introduce, shops_url, telephone,
+		area, address, province,
+		city, activity, created,
+		updated, sys_user_id, shop_hours_open,
+		shop_hours_close, is_deleted, services,
+		hot, services_type, device_id,
+		device_is, audit, star,
+		lat, lnt)
+		values (#{distributorId,jdbcType=BIGINT}, #{shopsName,jdbcType=VARCHAR},
+		#{introduce,jdbcType=VARCHAR}, #{shopsUrl,jdbcType=VARCHAR},
+		#{telephone,jdbcType=VARCHAR},
+		#{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR}, #{activity,jdbcType=VARCHAR},
+		#{created,jdbcType=TIMESTAMP},
+		#{updated,jdbcType=TIMESTAMP}, #{sysUserId,jdbcType=BIGINT}, #{shopHoursOpen,jdbcType=VARCHAR},
+		#{shopHoursClose,jdbcType=VARCHAR}, #{isDeleted,jdbcType=INTEGER},
+		#{services,jdbcType=VARCHAR},
+		#{hot,jdbcType=INTEGER}, #{servicesType,jdbcType=VARCHAR}, #{deviceId,jdbcType=BIGINT},
+		#{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER},
+		#{star,jdbcType=INTEGER},
+		#{lat,jdbcType=VARCHAR}, #{lnt,jdbcType=VARCHAR})
+	</insert>
+	
+	
+   <select id="shopList" parameterType="com.aishidai.app.model.query.QueryShop" resultMap="BaseResultMap">
+    SELECT  * FROM  shops
+
+    where is_deleted=0
+
+    <if test="isSuppliers != null">
+      AND  is_suppliers=#{isSuppliers}
+    </if>
+    <if test="aoData != null and aoData !=''">
+      limit #{stratRow},#{pageSize}
+    </if>
+
+  </select>
+  <select id="shopListCont" parameterType="com.aishidai.app.model.query.QueryShop" resultMap="BaseResultMap">
+    SELECT  * FROM  shops
+
+    where is_deleted=0
+
+    <if test="isSuppliers != null">
+      AND  is_suppliers=#{isSuppliers}
+    </if>
+    <if test="aoData != null and aoData !=''">
+      limit #{stratRow},#{pageSize}
+    </if>
+  </select>
+</mapper>

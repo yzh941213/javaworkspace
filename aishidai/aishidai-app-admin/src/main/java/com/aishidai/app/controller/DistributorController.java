@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.CraftsmenDO;
 import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.SysUsersDO;
-import com.aishidai.app.model.pojo.SysusersRoleDO;
-import com.aishidai.app.model.query.DistributorQuery;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.SysUsersRoleService;
 import com.aishidai.app.service.SysUsersService;
@@ -35,47 +32,7 @@ public class DistributorController {
 	@Autowired
 	private SysUsersRoleService sysUsersRoleService;
 	
-	
-	
-	/*@RequestMapping("/list.do")
-	@ResponseBody
-	public String queryDistributors(
-			@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData) {
-
-		int iDisplayStart = 0; // 起始索引
-		int iDisplayLength = 0; // 每页显示的行数
-		String sEcho = "";
-		if (!aoData.equals("")) {
-			JSONArray jsonarray = JSONArray.parseArray(aoData);
-			for (int i = 0; i < jsonarray.size(); i++) {
-				JSONObject obj = (JSONObject) jsonarray.get(i);
-				if (obj.get("name").equals("sEcho")) {
-					sEcho = obj.get("value").toString();
-				}
-				if (obj.get("name").equals("iDisplayStart")) {
-					iDisplayStart = obj.getIntValue("value");
-				}
-				if (obj.get("name").equals("iDisplayLength")) {
-					iDisplayLength = obj.getIntValue("value");
-				}
-			}
-		}
-
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("pageSize", iDisplayLength);
-		jsonObject.put("sEcho", sEcho);
-		jsonObject.put("success", false);
-
-		DistributorQuery query = new DistributorQuery();
-		// query.setFlag(flag);
-		query.setStartRow(iDisplayStart);
-		query.setPageSize(iDisplayLength);
-
-		Result<List<DistributorDO>> result = distributorManager.queryDistributorDOList(query);
-		return returnString(result, jsonObject, query);
-	}*/
-
-	@RequestMapping("/queryAll.do")
+	@RequestMapping("/queryAll")
 	@ResponseBody
 	public String queryDistributorAll() {
 		
@@ -93,7 +50,7 @@ public class DistributorController {
 	}
 	
 	
-	@RequestMapping("/queryByDistributorNameLike.do")
+	@RequestMapping("/queryByDistributorNameLike")
 	@ResponseBody
 	public String queryDistributorByNameLike(
 			@RequestParam(value = "distributorName") String distributorName) {
@@ -157,7 +114,7 @@ public class DistributorController {
 	}*/
 
 	
-	@RequestMapping("/queryDetail.do")
+	@RequestMapping("/queryDetail")
 	@ResponseBody
 	public String queryDistributors(
 			@RequestParam(value = "distributorId") long distributorId) {
@@ -171,17 +128,15 @@ public class DistributorController {
 				return jsonObject.toString();
 			}
 			jsonObject.put("success", true);
-			jsonObject.put("message", "成功");
+			jsonObject.put("message", "查询成功");
 			jsonObject.put("data", JSONObject.toJSON(distributorDO));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return jsonObject.toString();
 	}
 
-	@RequestMapping(value = { "/edit.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String editDistributorDO(DistributorDO distributorDO){
 
@@ -192,6 +147,7 @@ public class DistributorController {
 				jsonObject.put("message", "操作失败");
 				return jsonObject.toString();
 			} else {
+				distributorDO.setUpdated(new Date());
 				if (distributorService.editDistributorDO(distributorDO)) {
 					jsonObject.put("success", true);
 					jsonObject.put("message", "操作成功");
@@ -200,13 +156,12 @@ public class DistributorController {
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jsonObject.toString();
 	}
 
-	@RequestMapping(value = { "/add.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String addDistributorDO(DistributorDO distributorDO){
 
@@ -227,7 +182,6 @@ public class DistributorController {
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("message", "操作失败");
@@ -236,7 +190,7 @@ public class DistributorController {
 	
 	
 	
-	@RequestMapping(value = { "/remove.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/remove" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String editDistributorDOStatus(
 			@RequestParam("distributorId") long distributorId,
@@ -264,42 +218,10 @@ public class DistributorController {
 	}
 	
 	
-	public String returnString(Result<List<DistributorDO>> result, JSONObject jsonObject, DistributorQuery query) {
-		if (result != null && result.isSuccess()) {
-			List<DistributorDO> itemDOList = result.getResult();
-			JSONArray itemList = new JSONArray();
-			for (DistributorDO distributorDO : itemDOList) {
-				JSONObject item = new JSONObject();
-				item.put("id", distributorDO.getId());
-				item.put("name", distributorDO.getName());
-				item.put("tel", distributorDO.getTel());
-				item.put("address", distributorDO.getAddress());
-				item.put("city", distributorDO.getCity());
-				item.put("province", distributorDO.getProvince());
-				item.put("contactPerson", distributorDO.getContactPerson());
-				item.put("contactPhone", distributorDO.getContactPhone());
-				item.put("created", distributorDO.getCreated());
-				item.put("updated", distributorDO.getUpdated());
-				item.put("remark", distributorDO.getRemark());
-				item.put("status", distributorDO.getStatus());
-				item.put("sysUserId", distributorDO.getSysUserId());
-				itemList.add(item);
-			}
-			jsonObject.put("iTotalRecords", query.getTotalItem()); // 实际的行数
-			jsonObject.put("iTotalDisplayRecords", query.getTotalItem()); // 显示的行数,这个要和上面
-			jsonObject.put("aaData", itemList);
-			jsonObject.put("success", true);
-		} else {
-			jsonObject.put("message", "找不到宝贝");
-		}
-		return jsonObject.toString();
-	}
-
-	@RequestMapping(value = { "/editUser.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/addUser" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String editUser(
+	public String addUser(
 			@RequestParam(value = "id",required =true) long id,
-			@RequestParam(value = "userId",required =true) long userId,
 			@RequestParam(value = "userName",required =true) String userName,
 			@RequestParam(value = "mobile",required =true) String mobile,
 			@RequestParam(value = "name",required =false) String name,
@@ -308,18 +230,20 @@ public class DistributorController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
-			SysUsersDO sysUsersDO = sysUsersService.querySysUsersByUserName(userName);
+			SysUsersDO SUDO = sysUsersService.querySysUsersByUserName(userName);
 					
-			if (sysUsersDO == null) {
+			if (SUDO != null) {
 				jsonObject.put("message", "该用户名已存在,请核对后重试");
 				return jsonObject.toString();
 			}
-
+			SysUsersDO sysUsersDO = new SysUsersDO();
 			sysUsersDO.setUserName(userName);
 			sysUsersDO.setPassword(PasswordHash.createHash(password));
+			sysUsersDO.setStatus(0);
 			sysUsersDO.setName(name);
+			sysUsersDO.setIsDeleted(0);
 			sysUsersDO.setMobile(mobile);
-			sysUsersDO.setGroupId(new Long(4));//默认创建的用户的分组是手艺人
+			sysUsersDO.setGroupId(new Long(1));//
 			sysUsersDO.setCreated(Integer.valueOf((System.currentTimeMillis() / 1000)+""));
 			sysUsersDO.setUpdated(Integer.valueOf((System.currentTimeMillis() / 1000)+""));
 			
@@ -338,7 +262,6 @@ public class DistributorController {
 					jsonObject.put("message", "添加失败");
 					return jsonObject.toString();
 				}
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -346,7 +269,5 @@ public class DistributorController {
 		jsonObject.put("success", true);
 		jsonObject.put("message", "添加成功");
 		return jsonObject.toString();
-		
 	}
-
 }

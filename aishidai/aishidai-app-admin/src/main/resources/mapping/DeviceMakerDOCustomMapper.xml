@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.DeviceMakerDOCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.DeviceMakerDOCustom" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="device_id" property="deviceId" jdbcType="BIGINT" />
+    <result column="maker_id" property="makerId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_id" property="createId" jdbcType="BIGINT" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <insert id="insetDeviceMaker" parameterType="com.aishidai.app.model.pojo.DeviceMakerDO">
+
+	<selectKey keyProperty="id" order="AFTER" resultType="long">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+
+	insert into device_maker (device_id, maker_id,
+	create_time, update_time, create_id,
+	create_name, is_delete)
+	values (#{deviceId,jdbcType=BIGINT}, #{makerId,jdbcType=BIGINT},
+	#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+	#{createId,jdbcType=BIGINT},
+	#{createName,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER})
+</insert>
+  
+  
+  
+</mapper>

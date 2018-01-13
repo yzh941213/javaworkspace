@@ -2,7 +2,6 @@ package com.aishidai.common.json;
 
 import com.github.pagehelper.PageInfo;
 
-import java.security.PublicKey;
 import java.util.List;
 
 public class JsonResult{

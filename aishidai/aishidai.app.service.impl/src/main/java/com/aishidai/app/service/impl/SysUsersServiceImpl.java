@@ -110,7 +110,7 @@ public class SysUsersServiceImpl implements SysUsersService {
         		row = sysUsersDOCustomMapper.insertSysUserDO(usersDO);	
         	}
             if (row > 0) {
-                result.setResult(row);
+                result.setResult(usersDO.getUserId());
                 result.setSuccess(true);
                 return result;
             }
@@ -152,8 +152,8 @@ public class SysUsersServiceImpl implements SysUsersService {
 
 	
 
-	public Result<List<ResourceDO>> queryResourceDO(long userId) {
-		Result<List<ResourceDO>> result = new Result<List<ResourceDO>>();
+	public Result<List<ResourceDOCustom>> queryResourceDO(long userId) {
+		Result<List<ResourceDOCustom>> result = new Result<List<ResourceDOCustom>>();
 		
 		SysUsersDOExample example = new SysUsersDOExample();
 		SysUsersDOExample.Criteria criteria = example.createCriteria();
@@ -161,22 +161,18 @@ public class SysUsersServiceImpl implements SysUsersService {
 		List<SysUsersDO> list = sysUsersDOMapper.selectByExample(example);
 		
 		try {
-			//代表是超级管理员
+			
 			if (!list.isEmpty() && list.size() > 0 && list.get(0).getUserName().equals("admin")) {
-				List<ResourceDO> adminResource = 
+				List<ResourceDOCustom> adminResource = 
 						resourceDOCustomMapper.queryAllResource();
-				// 查全部权限
-				List<ResourceDO> firstMenus = resourceDOCustomMapper.queryFirstMenu();
+				
+				List<ResourceDOCustom> firstMenus = resourceDOCustomMapper.queryFirstMenu();
 
 				if (firstMenus != null && !firstMenus.isEmpty()) {
-					for (ResourceDO first : firstMenus) {
-						ResourceDOCustom first_ = (ResourceDOCustom)first;
-						
+					for (ResourceDOCustom first : firstMenus) {
 						ResourceDOExample doexample = new ResourceDOExample();
-						ResourceDOExample.Criteria docriteria = doexample.createCriteria();
-						docriteria.andParentidEqualTo(first.getId());
-						List<ResourceDO> secMenus = resourceDOMapper.selectByExample(doexample);
-						first_.setResourceDOList(secMenus);
+						List<ResourceDOCustom> secMenus = resourceDOCustomMapper.queryAllMenuByParentId(first.getId());
+						first.setResourceDOList(secMenus);
 					}
 				}
 				result.setResult(firstMenus);
@@ -186,17 +182,16 @@ public class SysUsersServiceImpl implements SysUsersService {
 				return result;
 				
 			} else {
-				List<ResourceDO> userResource = resourceDOCustomMapper.queryAllResourceByUserId(userId);
+				List<ResourceDOCustom> userResource = resourceDOCustomMapper.queryAllResourceByUserId(userId);
 				// 查部分权限
-				List<ResourceDO> firstMenus = resourceDOCustomMapper.queryFirstMenuByUserId(userId);
+				List<ResourceDOCustom> firstMenus = resourceDOCustomMapper.queryFirstMenuByUserId(userId);
 				if (firstMenus != null && !firstMenus.isEmpty()) {
- 					for (ResourceDO first : firstMenus) {
- 						ResourceDOCustom first_ = (ResourceDOCustom)first;
+ 					for (ResourceDOCustom first : firstMenus) {
 						ResourceQuery query = new ResourceQuery();
 						query.setParentId(first.getId());
 						query.setUserId(userId);
-						List<ResourceDO> secMenus = resourceDOCustomMapper.querySecondMenuByUserId(query);
-						first_.setResourceDOList(secMenus);
+						List<ResourceDOCustom> secMenus = resourceDOCustomMapper.querySecondMenuByUserId(query);
+						first.setResourceDOList(secMenus);
 					}
 				}
 				result.setResult(firstMenus);

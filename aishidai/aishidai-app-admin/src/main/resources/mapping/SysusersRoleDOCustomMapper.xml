@@ -13,9 +13,7 @@
     <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
   </resultMap>
 
-	<insert id="insertSysusersRoleDO" 
-			parameterType="com.aishidai.app.model.pojo.SysusersRoleDOCustom">
-
+	<insert id="insertSysusersRoleDO" useGeneratedKeys="true" keyProperty="id" parameterType="com.aishidai.app.model.pojo.SysusersRoleDO">
 		<selectKey keyProperty="id" order="AFTER" resultType="long">
 			SELECT
 			LAST_INSERT_ID()

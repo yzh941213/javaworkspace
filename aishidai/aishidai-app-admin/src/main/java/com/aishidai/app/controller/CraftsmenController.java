@@ -1,7 +1,13 @@
 package com.aishidai.app.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+
+
+
+
 
 
 import org.apache.commons.lang.StringUtils;
@@ -27,6 +33,7 @@ import com.aishidai.app.service.ShopService;
 import com.aishidai.app.service.SysUsersService;
 import com.aishidai.app.util.PhotoUtil;
 import com.aishidai.app.utils.PasswordHash;
+import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -45,178 +52,10 @@ public class CraftsmenController {
 	@Autowired
 	private ShopService shopService;
 	
-	/*@Autowired
-	private PropertyService propertyService;
-	
-	@RequestMapping("/list.do")
-	@ResponseBody
-	public String queryCraftsmens(
-			@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData,
-			HttpServletRequest request) {
-
-		int iDisplayStart = 0; // 起始索引
-		int iDisplayLength = 0; // 每页显示的行数
-		String sEcho = "";
-		
-		if (!aoData.equals("")) {
-			JSONArray jsonarray = JSONArray.parseArray(aoData);
-			for (int i = 0; i < jsonarray.size(); i++) {
-				JSONObject obj = (JSONObject) jsonarray.get(i);
-				if (obj.get("name").equals("sEcho")) {
-					sEcho = obj.get("value").toString();
-				}
-				if (obj.get("name").equals("iDisplayStart")) {
-					iDisplayStart = obj.getIntValue("value");
-				}
-				if (obj.get("name").equals("iDisplayLength")) {
-					iDisplayLength = obj.getIntValue("value");
-				}
-			}
-		}
-
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("pageSize", iDisplayLength);
-		jsonObject.put("sEcho", sEcho);
-		jsonObject.put("success", false);
-
-		CraftsmenQuery query = new CraftsmenQuery();
-		query.setStartRow(iDisplayStart);
-		query.setPageSize(iDisplayLength);
-		query.setSortField("id");
-		query.setOrder("desc");
-		SysUsersDO sysUsersDO = (SysUsersDO) request.getSession().getAttribute(
-				LoginConstant.USER_SESSION_KEY);
-		
-		if (sysUsersDO.getGroupId() == 1) {
-			DistributorDO distributorDO = (DistributorDO) request.getSession().getAttribute(LoginConstant.USER_DISTRIBUTOR_SESSION_KEY);
-			if (distributorDO != null) {
-				query.setDistributorId(distributorDO.getId());
-			}
-		} else if (sysUsersDO.getGroupId() == 2) {
-			ShopsDO shopDO = (ShopsDO) request.getSession().getAttribute(
-					LoginConstant.USER_SHOP_SESSION_KEY);
-			if (shopDO != null) {
-				query.setShopsId(shopDO.getShopsId());
-			} else {
-				throw new Exception("服务器开小差了");
-			}
-		}
-
-		Result<List<CraftsmenDO>> result = craftsmenService.queryCraftsmenDOList(query);
-		
-		List<CraftsmenDO> list = result.getResult();
-		for (int k = 0; k < list.size(); k++) {
-			
-			CraftsmenDO craftsmenDO = list.get(k);
-			
-			if (craftsmenDO.getDistributorId() != null) {
-				Result<DistributorDO> result1 = distributorService
-						.queryDistributorDOById(craftsmenDO.getDistributorId());
-				if (result1.getResult() != null) {
-					craftsmenDO.setDistributorIdName(result1.getResult()
-							.getName());
-				}
-			}
-			
-			
-			if (craftsmenDO.getShopsId() != null) {
-				Result<ShopDO> result2 = shopManager
-						.queryShopDOById(craftsmenDO.getShopsId());
-				if (result2.getResult() != null) {
-					craftsmenDO.setShopsIdName(result2.getResult()
-							.getShopsName());
-				}
-			}else{
-				
-				craftsmenDO.setShopsIdName("无");
-			}
-			
-			String services = craftsmenDO.getServiceId();
-			if (services != null) {
-				String[] arr = services.split("-");
-				String names = "";
-				for (int i = 1; i < arr.length; i++) {
-					Result<PropertyDO> r = propertyManager
-							.queryPropertyDOById(new Long(arr[i]));
-					if (r.getResult() != null) {
-						names = names + "," + r.getResult().getProName();
-					}
-				}
-				if (names.length() > 1) {
-					craftsmenDO.setServiceIdName(names.substring(1,
-							names.length()));
-				}
-			}
-			String titleId = craftsmenDO.getTitleId();
-			if (titleId != null) {
-				String[] arr = titleId.split("-");
-				String names = "";
-				for (int i = 1; i < arr.length; i++) {
-					Result<PropertyDO> r = propertyManager
-							.queryPropertyDOById(new Long(arr[i]));
-					if (r.getResult() != null) {
-						names = names + "," + r.getResult().getProName();
-					}
-				}
-				if (names.length() > 1) {
-					craftsmenDO.setTitleIdName(names.substring(1,
-							names.length()));
-				}
-			}
-		}
-		return returnString(result, jsonObject, query);
-	}
-	*/
-	
-	
-	public String returnString(List<CraftsmenDO> list,
-			JSONObject jsonObject, CraftsmenQuery query) {
-		if (list.isEmpty() && list.size() >= 0) {
-			JSONArray itemList = new JSONArray();
-			for (int i = 0; i < list.size(); i++) {
-				CraftsmenDOCustom 	cdos = (CraftsmenDOCustom) list.get(i);
-				JSONObject item = new JSONObject();
-				item.put("id", cdos.getId());
-				item.put("shopsId", cdos.getShopsId());
-				item.put("shopsIdName", cdos.getShopName());
-				item.put("craftsmanName", cdos.getCraftsmanName());
-				item.put("distributorId", cdos.getDistributorId());
-				item.put("distributorIdName",cdos.getDistributorName());
-				item.put("craftsmanUrl", cdos.getCraftsmanUrl());
-				item.put("skill", cdos.getSkill());
-				item.put("telephone", cdos.getTelephone());
-				item.put("titleId", cdos.getTitleId());
-				item.put("titleIdName", cdos.getTitleName());
-				item.put("province", cdos.getProvince());
-				item.put("city", cdos.getCity());
-				item.put("address", cdos.getAddress());
-				item.put("isDeleted", cdos.getIsDeleted());
-				item.put("sysUserId", cdos.getSysUserId());
-				item.put("serviceId", cdos.getServiceId());
-				item.put("serviceIdName", cdos.getServiceName());
-				item.put("created", cdos.getCreated());
-				item.put("updated", cdos.getUpdated());
-				item.put("status", cdos.getStatus());
-				item.put("wechat", cdos.getWechat());
-				item.put("audit", cdos.getAudit());
-				itemList.add(item);
-			}
-			jsonObject.put("iTotalRecords", query.getTotalItem()); 
-			jsonObject.put("iTotalDisplayRecords", query.getTotalItem()); 
-			jsonObject.put("aaData", itemList);
-			jsonObject.put("success", true);
-		} else {
-			jsonObject.put("message", "未搜索到数据，请稍后重试");
-		}
-		return jsonObject.toString();
-	}
-	
-	
-	
 	/**
 	 * 查询详细信息
 	 */
-	@RequestMapping("/queryDetail.do")
+	@RequestMapping("/queryDetail")
 	@ResponseBody
 	public String queryCraftsmens(
 			@RequestParam(value = "craftsmenId") long craftsmenId) {
@@ -224,8 +63,7 @@ public class CraftsmenController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
-			CraftsmenDOCustom cc = (CraftsmenDOCustom) craftsmenService
-					.queryByPrimaryKey(craftsmenId);
+			CraftsmenDOCustom cc = craftsmenService.queryByPrimaryKeyCustom(craftsmenId);
 			if (cc == null) {
 				jsonObject.put("message", "信息不存在，请核对后重试");
 				return jsonObject.toString();
@@ -240,16 +78,16 @@ public class CraftsmenController {
 			jsonObject.put("success", true);
 			jsonObject.put("data", JSONObject.toJSON(cc));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping(value = { "/save.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String addCraftsmenDO(CraftsmenDO craftsmenDO) {
+	public String addCraftsmenDO(CraftsmenDO craftsmenDO,
+			@RequestParam(value = "userId") long userId) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -267,34 +105,40 @@ public class CraftsmenController {
 				jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
 				return jsonObject.toString();
 			}
-
-			if (craftsmenDO.getCraftsmanUrl() != null
-					&& "".equals(craftsmenDO.getCraftsmanUrl())) {
-				String craftsmanUrl = PhotoUtil.addPhoto(craftsmenDO
-						.getCraftsmanUrl());
-				craftsmenDO.setCraftsmanUrl(craftsmanUrl);
+			
+			//判断是经销商和店铺以及总部的身份
+			
+			
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部添加
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				if (craftsmenDO.getDistributorId().longValue() == 0 
+						&& craftsmenDO.getShopsId().longValue() == 0) {
+					jsonObject.put("message", "请至少输入一位其上级");
+					return jsonObject.toString();
+				}
+				this.insertCraftsmenUtil(craftsmenDO);
+				
+			//经销商添加
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				craftsmenDO.setDistributorId(userId);
+				this.insertCraftsmenUtil(craftsmenDO);
+			//店铺添加
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 2){
+				//查出来店铺的经销商
+				craftsmenDO.setDistributorId(shopService.queryShopsDOByUserId(userId).get(0).getDistributorId());
+				craftsmenDO.setShopsId(userId);
+				this.insertCraftsmenUtil(craftsmenDO);
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				return jsonObject.toString();
 			}
-
-			craftsmenDO.setIsDeleted( 0);
-
-			if (StringUtils.isNotBlank(craftsmenDO.getServiceId())) {
-				String serviceId = "-" + craftsmenDO.getServiceId() + "-";
-				craftsmenDO.setServiceId(serviceId);
-			}
-
-			if (StringUtils.isNotBlank(craftsmenDO.getTitleId())) {
-				String titleId = "-" + craftsmenDO.getTitleId() + "-";
-				craftsmenDO.setTitleId(titleId);
-			}
-			craftsmenDO.setCreated(new Date());
-			craftsmenDO.setUpdated(new Date());
 
 			if (!craftsmenService.insertCraftsmenDO(craftsmenDO)) {
 				jsonObject.put("message", "数据插入失败");
 				return jsonObject.toString();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
@@ -303,7 +147,32 @@ public class CraftsmenController {
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping(value = { "/edit.do" }, method = RequestMethod.POST)
+	public void insertCraftsmenUtil(CraftsmenDO craftsmenDO){
+		if (craftsmenDO.getCraftsmanUrl() != null
+				&& !"".equals(craftsmenDO.getCraftsmanUrl())) {
+			String craftsmanUrl = PhotoUtil.addPhoto(craftsmenDO
+					.getCraftsmanUrl());
+			craftsmenDO.setCraftsmanUrl(craftsmanUrl);
+		}
+
+		craftsmenDO.setIsDeleted(0);
+		craftsmenDO.setAudit(0);
+		craftsmenDO.setStar(3);
+		if (StringUtils.isNotBlank(craftsmenDO.getServiceId())) {
+			String serviceId = "-" + craftsmenDO.getServiceId() + "-";
+			craftsmenDO.setServiceId(serviceId);
+		}
+
+		if (StringUtils.isNotBlank(craftsmenDO.getTitleId())) {
+			String titleId = "-" + craftsmenDO.getTitleId() + "-";
+			craftsmenDO.setTitleId(titleId);
+		}
+		craftsmenDO.setCreated(new Date());
+		craftsmenDO.setUpdated(new Date());
+	}
+	
+	
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String editCraftsmenDO(CraftsmenDO craftsmenDO) {
 
@@ -320,18 +189,19 @@ public class CraftsmenController {
 			CraftsmenDO CDO = craftsmenService.queryByPrimaryKey(craftsmenDO
 					.getId());
 
-			if (CDO != null) {
-				List<CraftsmenDO> list = craftsmenService.queryCraftsmenExist(
-						craftsmenDO.getCraftsmanName(),
-						craftsmenDO.getTelephone());
-				if (!list.isEmpty() && list.size() >= 0) {
-					jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
-					return jsonObject.toString();
-				}
+			
+			List<CraftsmenDO> list = craftsmenService.queryCraftsmenExist(
+					craftsmenDO.getCraftsmanName(),
+					craftsmenDO.getTelephone());
+			if (!list.isEmpty() && list.size() >= 0 
+					&& CDO.getId().longValue() != list.get(0).getId().longValue()) {
+				jsonObject.put("message", "该手艺人信息已存在，请核对后重试！");
+				return jsonObject.toString();
 			}
+			
 
 			if (craftsmenDO.getCraftsmanUrl() != null
-					&& "".equals(craftsmenDO.getCraftsmanUrl())) {
+					&& !"".equals(craftsmenDO.getCraftsmanUrl())) {
 				String craftsmanUrl = PhotoUtil.addPhoto(craftsmenDO
 						.getCraftsmanUrl());
 				craftsmenDO.setCraftsmanUrl(craftsmanUrl);
@@ -353,7 +223,6 @@ public class CraftsmenController {
 				return jsonObject.toString();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
@@ -361,7 +230,7 @@ public class CraftsmenController {
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping(value = { "/editStatus.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/editStatus" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String editStatus(@RequestParam("id") Long id,
 			@RequestParam("status") Integer status) {
@@ -379,7 +248,6 @@ public class CraftsmenController {
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
@@ -387,10 +255,10 @@ public class CraftsmenController {
 		return jsonObject.toString();
 	}
 
-	@RequestMapping(value = { "/editAudit.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/editAudit" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String editAudit(@RequestParam("id") Long id,
-			@RequestParam("audit") Integer audit) {
+	public String editAudit(@RequestParam("id") long id,
+			@RequestParam("audit") int audit) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -406,7 +274,6 @@ public class CraftsmenController {
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
@@ -415,10 +282,10 @@ public class CraftsmenController {
 	}
 
 	
-	@RequestMapping(value = { "/remove.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/remove" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String updateCraftsmenDOIsDeleted(@RequestParam("id") Long id,
-			@RequestParam("isDeleted") Integer isDeleted) {
+	public String updateCraftsmenDOIsDeleted(@RequestParam("id") long id,
+			@RequestParam("isDeleted") int isDeleted) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -437,7 +304,6 @@ public class CraftsmenController {
 				return jsonObject.toString();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
@@ -445,28 +311,71 @@ public class CraftsmenController {
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping("/queryCraftsmenDOByDistributorId.do")
+	//根据登录人不同，查询其下面的手艺人
+	
+	@RequestMapping("/queryCraftsmenDOByRank")
 	@ResponseBody
-	public String queryCraftsmenDOByDistributorId(
-			@RequestParam(value = "distributorId") long distributorId) {
+	public String queryCraftsmenDOByDistributorId(CraftsmenQuery craftsmenQuery) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
+		long userId = craftsmenQuery.getUserId();
 		try {
-			List<CraftsmenDO> list = craftsmenService
-					.queryCraftsmenDOByDistributorId(distributorId);
-			jsonObject.put("success", true);
-			jsonObject.put("message", "成功");
-			jsonObject.put("data", JSONArray.toJSON(list));
+			List<CraftsmenDOCustom> list = new ArrayList<CraftsmenDOCustom>();
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				CraftsmenQuery query = new CraftsmenQuery();
+				list = craftsmenService.queryCraftsmenDOList(query);
+				this.addNameDS(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
+						(long)craftsmenService.selectCraftsmenDOListCount(query)));
+			//经销商查询自己下面的
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				CraftsmenQuery query = new CraftsmenQuery();
+				query.setDistributorId(
+						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
+				list = craftsmenService.queryCraftsmenDOList(query);
+				this.addnameS(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
+						(long)craftsmenService.selectCraftsmenDOListCount(query)));
+			//店铺查询属于自己的
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 2){
+				CraftsmenQuery query = new CraftsmenQuery();
+				query.setShopsId(
+						shopService.queryShopsDOByUserId(userId).get(0).getShopsId());
+				list = craftsmenService.queryCraftsmenDOList(query);
+				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
+						(long)craftsmenService.selectCraftsmenDOListCount(query)));
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				return jsonObject.toString();
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		jsonObject.put("success", true);
+		jsonObject.put("message", "查询成功");
 		return jsonObject.toString();
-
 	}
 	
-	@RequestMapping(value = { "/queryShopsAndOtherShopsList.do" })
+	private void addnameS(List<CraftsmenDOCustom> list) throws Exception {
+		for (CraftsmenDOCustom cdoc : list) {
+			cdoc.setDistributorName(shopService.queryShopsDOById(cdoc.getShopsId()) 
+					== null?"无":shopService.queryShopsDOById(cdoc.getShopsId()).getShopsName());
+		}
+	}
+
+	public void addNameDS(List<CraftsmenDOCustom> list) throws Exception {
+		for (CraftsmenDOCustom cdoc : list) {
+			cdoc.setDistributorName(distributorService.queryDistributorDOById(cdoc.getDistributorId()) 
+					== null?"无":distributorService.queryDistributorDOById(cdoc.getDistributorId()).getName());
+		
+			cdoc.setDistributorName(shopService.queryShopsDOById(cdoc.getShopsId()) 
+					== null?"无":shopService.queryShopsDOById(cdoc.getShopsId()).getShopsName());
+		}
+	}
+
+	@RequestMapping(value = { "/queryShopsAndOtherShopsList" })
 	@ResponseBody
 	public String queryShopName(@RequestParam(value = "userId") Long userId) {
 
@@ -495,7 +404,6 @@ public class CraftsmenController {
 				jsonObject.put("data", result_list);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);
@@ -505,7 +413,7 @@ public class CraftsmenController {
 	}
 	
 
-	@RequestMapping(value = { "/addUserInfo.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/addUserInfo" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String addUserInfo(@RequestParam(value = "craftsmenId") Long craftsmenId,
 			@RequestParam(value = "userName") String userName,
@@ -517,16 +425,18 @@ public class CraftsmenController {
 		jsonObject.put("success", false);
 		
 		try {
-			SysUsersDO sysUsersDO = sysUsersService.querySysUsersByUserName(userName);
+			SysUsersDO SUDO = sysUsersService.querySysUsersByUserName(userName);
 					
-			if (sysUsersDO == null) {
+			if (SUDO != null) {
 				jsonObject.put("message", "该用户名已存在,请核对后重试");
 				return jsonObject.toString();
 			}
-
+			SysUsersDO sysUsersDO = new SysUsersDO();
 			sysUsersDO.setUserName(userName);
 			sysUsersDO.setPassword(PasswordHash.createHash(password));
 			sysUsersDO.setName(name);
+			sysUsersDO.setIsDeleted(0);
+			sysUsersDO.setStatus(0);
 			sysUsersDO.setMobile(mobile);
 			sysUsersDO.setGroupId(new Long(4));//默认创建的用户的分组是手艺人
 			sysUsersDO.setCreated(Integer.valueOf((System.currentTimeMillis() / 1000)+""));

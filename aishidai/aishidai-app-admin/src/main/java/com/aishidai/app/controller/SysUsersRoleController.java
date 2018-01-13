@@ -23,7 +23,7 @@ public class SysUsersRoleController {
     private SysUsersRoleService sysUsersRoleService;
 
 
-    @RequestMapping("/add.do")
+    @RequestMapping("/add")
     @ResponseBody
     public String addUserRoleDO(
     		@RequestParam(value = "data", defaultValue = "") String data) {
@@ -63,7 +63,7 @@ public class SysUsersRoleController {
         return jsonObject.toString();
     }
     
-    @RequestMapping("/edit.do")
+    @RequestMapping("/edit")
     @ResponseBody
     public String editUserRoleDO(@RequestParam(value = "data", defaultValue = "") String data) {
         JSONObject jsonObject = new JSONObject();
@@ -102,7 +102,7 @@ public class SysUsersRoleController {
         return jsonObject.toString();
     }
     
-    @RequestMapping("/queryList.do")
+    @RequestMapping("/queryList")
     @ResponseBody
     public String addRoleDO(@RequestParam(value = "userId") long userId) {
         JSONObject jsonObject = new JSONObject();

@@ -18,7 +18,7 @@
     <result column="status" property="status" jdbcType="BIT" />
   </resultMap>
   
-  <insert id="insertDistributorDO" parameterType="com.aishidai.app.model.pojo.DistributorDOCustom" >
+  <insert id="insertDistributorDO" parameterType="com.aishidai.app.model.pojo.DistributorDO" >
   
   	<selectKey keyProperty="id" order="AFTER" resultType="long">
 			SELECT

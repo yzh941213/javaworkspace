@@ -2,7 +2,9 @@ package com.aishidai.app.dao;
 
 import com.aishidai.app.model.pojo.DeviceMakerDO;
 import com.aishidai.app.model.pojo.DeviceMakerDOExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface DeviceMakerDOMapper {
@@ -27,4 +29,5 @@ public interface DeviceMakerDOMapper {
     int updateByPrimaryKeySelective(DeviceMakerDO record);
 
     int updateByPrimaryKey(DeviceMakerDO record);
+
 }

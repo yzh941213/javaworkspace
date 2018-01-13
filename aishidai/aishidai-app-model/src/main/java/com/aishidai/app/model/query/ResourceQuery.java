@@ -1,9 +1,6 @@
 package com.aishidai.app.model.query;
 
 
-/**
- * Created by 蝈蝈 on 2016/11/22.
- */
 public class ResourceQuery extends Query {
 
     private long parentId;

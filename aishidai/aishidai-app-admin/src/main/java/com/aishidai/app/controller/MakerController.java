@@ -1,9 +1,9 @@
-/*package com.aishidai.app.controller;
+package com.aishidai.app.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.DeviceDO;
+import com.aishidai.app.model.pojo.DeviceDOCustom;
 import com.aishidai.app.model.pojo.DeviceMakerDO;
+import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.MakerDO;
-import com.aishidai.app.model.query.DeviceMakerQuery;
+import com.aishidai.app.model.pojo.MakerDOCustom;
+import com.aishidai.app.model.pojo.SysUsersDO;
+import com.aishidai.app.service.DeviceMakerServiec;
+import com.aishidai.app.service.DeviceService;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.MakerService;
 import com.aishidai.app.service.SysUsersService;
+import com.aishidai.app.utils.PasswordHash;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -35,167 +42,112 @@ public class MakerController {
 	private DistributorService distributorService;
 	@Autowired
 	private DeviceService deviceService;
+	@Autowired
+	private DeviceMakerServiec deviceMakerDOServiec;
 	
-	@RequestMapping("/list.do")
+	@RequestMapping("/queryDetail")
 	@ResponseBody
-	public String queryMakers(@RequestParam(value = "aoData", defaultValue = "", required = false) String aoData,HttpServletRequest request) {
-
-		int iDisplayStart = 0; // 起始索引
-		int iDisplayLength = 0; // 每页显示的行数
-		String sEcho = "";
-		
-		if (!aoData.equals("")) {
-			JSONArray jsonarray = JSONArray.parseArray(aoData);
-			for (int i = 0; i < jsonarray.size(); i++) {
-				JSONObject obj = (JSONObject) jsonarray.get(i);
-				if (obj.get("name").equals("sEcho")) {
-					sEcho = obj.get("value").toString();
-				}
-				if (obj.get("name").equals("iDisplayStart")) {
-					iDisplayStart = obj.getIntValue("value");
-				}
-				if (obj.get("name").equals("iDisplayLength")) {
-					iDisplayLength = obj.getIntValue("value");
-				}
-			}
-		}
-
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("pageSize", iDisplayLength);
-		jsonObject.put("sEcho", sEcho);
-		jsonObject.put("success", false);
-
-		MakerQuery query = new MakerQuery();
-		query.setStartRow(iDisplayStart);
-		query.setPageSize(iDisplayLength);
-		
-		SysUsersDO sysUsersDO = (SysUsersDO) request.getSession().getAttribute(LoginConstant.USER_SESSION_KEY);
-		
-		if(sysUsersDO.getGroupId()==1){
-			DistributorDO distributorDO = (DistributorDO) request.getSession()
-					.getAttribute(LoginConstant.USER_DISTRIBUTOR_SESSION_KEY);
-			query.setDistributorId(distributorDO.getId());
-		}
-		Result<List<MakerDO>> result = makerManager.queryMakerDOList(query);
-		for (int k = 0; k < result.getResult().size(); k++) {
-			MakerDO makerDO = result.getResult().get(k);
-			if (makerDO.getDistributorId() != null) {
-				Result<DistributorDO> r = distributorManager.queryDistributorDOById(makerDO.getDistributorId());
-				if (r.getResult() != null) {
-					makerDO.setDistributorIdName(r.getResult().getName());
-				}
-			}
-		}
-		return returnString(result, jsonObject, query);
-	}
-
-	
-	@RequestMapping("/queryDetail.do")
-	@ResponseBody
-	public String queryDetail(
-			@RequestParam(value = "makerId") long makerId) {
+	public String queryDetail(@RequestParam(value = "makerId") long makerId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		
 		try {
-			
-			MakerDO makerDO = makerService.queryMakerDOById(makerId);
-			
-			DeviceMakerQuery query_maker = new DeviceMakerQuery();
-			
-			if (makerDO != null) {
-				query_maker.setMakerId(makerId);
-				List<DeviceDO> list = new ArrayList<DeviceDO>();
-				
-				List<DeviceMakerDO> list_dm = makerService.queryDeviceMaker(query_maker);
-				for (int i = 0; i < list_dm.size(); i++) {
-					DeviceDO result_device = deviceService.queryDeviceDOById(list_dm.get(i).getDeviceId());
-					if (result_device.getResult() != null) {
-						OtherDeviceDO deviceDO = new OtherDeviceDO();
-						deviceDO.setId(result_device.getResult().getId());
-						deviceDO.setName(result_device.getResult().getProductNo());
-						list.add(deviceDO);
+			MakerDOCustom makerDOCustom = makerService.queryMakerDOById(makerId);
+			if (makerDOCustom != null) {
+				List<DeviceMakerDO> list = deviceMakerDOServiec
+						.selectByMakerId(makerDOCustom.getId());
+				for (int i = 0; i < list.size(); i++) {
+					DeviceDO device = deviceService.queryDeviceDOById(list.get(i).getDeviceId());
+					List<DeviceDOCustom> list_set = new ArrayList<DeviceDOCustom>();
+					if (device != null) {
+						DeviceDOCustom deviceDO = new DeviceDOCustom();
+						deviceDO.setId(device.getId());
+						deviceDO.setProductNo(device.getProductNo());
+						list_set.add(deviceDO);
 					}
 				}
-				result.getResult().setDeviceList(list);
+				makerDOCustom.setDeviceList(list);
 			}
-
-			if (result == null || !result.isSuccess()) {
-				jsonObject.put("message", "查询失败");
-				return jsonObject.toString();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "成功");
-		jsonObject.put("data", JSONObject.toJSON(result.getResult()));
-		return jsonObject.toString();
-	}
-	*//**
-	 * 根据创客名称模糊查询
-	 * @param makerId
-	 * @return
-	 *//*
-	@RequestMapping("/queryMakerByNameLike.do")
-	@ResponseBody
-	public String queryMakers(@RequestParam(value = "makerName") String makerName,
-			@RequestParam(value="sysUserId") Long sysUserId) {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("success", false);
-		
-		Result<DistributorDO> distributorDO = distributorManager.queryDistributorDOBySysUserId(sysUserId);
-		if (distributorDO == null) {
-			jsonObject.put("success", true);
-			jsonObject.put("message", "查询失败");
-			return jsonObject.toString();
-		}
-		
-		try {
-			MakerDO makerDO = new MakerDO();
-			makerDO.setDistributorId(distributorDO.getResult().getId());
-			makerDO.setName(makerName);
-			List<MakerDO> result = makerManager.queryMakerDOByNameLike(makerDO);
 			jsonObject.put("success", true);
 			jsonObject.put("message", "成功");
-			jsonObject.put("data", JSONObject.toJSON(result));
+			jsonObject.put("data", JSONObject.toJSON(makerDOCustom));
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return jsonObject.toString();
 	}
-
-	*//**
-	 * 插入或更新接口
-	 *//*
-	@RequestMapping(value = { "/edit.do" }, method = RequestMethod.POST)
+	
+	
+	
+	@RequestMapping("/queryMakerByNameLike")
 	@ResponseBody
-	public String editMakerDO(@RequestParam(value = "makerId",required=false,defaultValue="0") Long makerId,
-			@RequestParam(value = "name") String name,
-			@RequestParam(value = "distributorId", defaultValue = "", required = false) Long distributorId,
-			@RequestParam(value = "mobile", defaultValue = "", required = false) String mobile,
-			@RequestParam(value = "remark", defaultValue = "", required = false) String remark,
+	public String queryMakerByNameLike(
+			@RequestParam(value = "makerName") String makerName,
+			@RequestParam(value="userId") long userId) {
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		try {
+			//登录的人为系统账号,查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() != null 
+					&& sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				List<MakerDO> list_maker = makerService.queryMakerDOAll();
+				jsonObject.put("success", true);
+				jsonObject.put("message", "查询成功");
+				jsonObject.put("data", JSONObject.toJSON(list_maker));
+				
+				//登录账号为经销商
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() != null 
+					&& sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				
+				List<DistributorDO> list = distributorService.selectDistributorDOByUserId(userId);
+				
+				if (list.isEmpty() && list.size() <= 0) {
+					jsonObject.put("message", "查询失败");
+					jsonObject.put("data", null);
+					return jsonObject.toString();
+				}
+				MakerDO makerDO = new MakerDO();
+				makerDO.setDistributorId(list.get(0).getId());
+				makerDO.setName(makerName);
+				List<MakerDO> list_maker = makerService.queryMakerDOByNameLike(makerDO);
+				jsonObject.put("success", true);
+				jsonObject.put("message", "查询成功");
+				jsonObject.put("data", JSONObject.toJSON(list_maker));
+			}else{
+				jsonObject.put("success", false);
+				jsonObject.put("message", "查询失败,身份不对，请核对身份后重试");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
+	
+	
+	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
+	@ResponseBody
+	public String saveMakerDO(MakerDO maker,
 			@RequestParam(value = "data", defaultValue = "") String data,
-			@RequestParam(value = "sysUserId", defaultValue = "",required = true) long sysUserId,
-			HttpServletRequest request) {
+			@RequestParam(value = "userId", required =true) long userId) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		//禁止信息一样的创客创建
-		if (makerId == 0) {
-			MakerQuery query = new MakerQuery();
-			
-			Result<List<MakerDO>> queryMakerDOAll = makerManager.queryMakerDOAll(query);
-			for (int i = 0; i < queryMakerDOAll.getResult().size(); i++) {
-				if (queryMakerDOAll.getResult().get(i).getMobile().equals(mobile) 
-						&& queryMakerDOAll.getResult().get(i).getName().equals(name)) {
-					    jsonObject.put("message", "该创客信息已存在，请核对后重试！");
+		try {
+			List<MakerDO> list_maker_all = makerService.queryMakerDOAll();
+			for (int i = 0; i < list_maker_all.size(); i++) {
+				if (maker != null 
+						&&list_maker_all.get(i).getMobile().equals(maker.getMobile()) 
+						&& list_maker_all.get(i).getName().equals(maker.getName())) {
+					
+					    jsonObject.put("message", "信息已存在，请核对后重试！");
 			            return jsonObject.toString();
 				}
 			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		//先将传过来的数据格式化成需要的数据
@@ -213,220 +165,248 @@ public class MakerController {
             jsonObject.put("data", -1);
             return jsonObject.toString();
         }
-        Result<MakerDO> result_maker = makerManager.queryMakerDOById(makerId);
-        
-        MakerDO makerDO = null;
-        if (result_maker.getResult() != null) {
-        	makerDO = result_maker.getResult();
-		}else{
-			makerDO = new MakerDO();
-			makerDO.setId(makerId);
-		}
-		
-		if (distributorId == null) {
-			DistributorDO distributorDO = (DistributorDO) request.getSession()
-					.getAttribute(LoginConstant.USER_DISTRIBUTOR_SESSION_KEY);
-			distributorId = distributorDO.getId();
-		}
-		makerDO.setDistributorId(distributorId);
-		makerDO.setMobile(mobile);
-		makerDO.setName(name);
-		makerDO.setRemark(remark);
-		makerDO.setStatus(0);
-		Result<Long> result = makerManager.editMakerDO(makerDO);
-		
-		//上面的数据插入成功之后，再将其他数据插入进去
 		try {
-			boolean bool = makerManager.addDeviceMaker(list,sysUserId,makerDO.getId());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if (result == null || !result.isSuccess()) {
-			jsonObject.put("message", "操作失败");
-			return jsonObject.toString();
-		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "操作成功");
-		return jsonObject.toString();
-	}
-	
-
-	*//**
-	 * 更新记录状态(删除)
-	 * 
-	 * @param makerId
-	 *            id
-	 * @param status
-	 *            状态
-	 * @return success/fail
-	 *//*
-	@RequestMapping(value = { "/status.do","/del.do" }, method = RequestMethod.POST)
-	@ResponseBody
-	public String updateMakerDOStatus(@RequestParam("makerId") Long makerId, @RequestParam("status") Integer status) {
-
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("success", false);
-
-		MakerDO makerDO = new MakerDO();
-		makerDO.setId(makerId);
-		makerDO.setStatus(status);
-
-		Result<Integer> result = makerManager.updateMakerStatus(makerDO);
-		if (result == null || !result.isSuccess()) {
-			jsonObject.put("message", "操作失败");
-			return jsonObject.toString();
-		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "操作成功");
-		return jsonObject.toString();
-	}
-
-	
-	@RequestMapping(value = { "/audit.do"}, method = RequestMethod.POST)
-	@ResponseBody
-	public String updateShopDOAudit(@RequestParam("makerId") Long makerId, 
-									@RequestParam("audit") Integer audit) {
-
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("success", false);
-
-		MakerDO makerDO = new MakerDO();
-		makerDO.setId(makerId);
-		makerDO.setAudit(audit);
-
-		Result<Integer> result = null;
-		try {
-			result = makerManager.updateMakerAudit(makerDO);
-			if (result == null || !result.isSuccess()) {
-				jsonObject.put("message", "操作失败");
-				return jsonObject.toString();
+			// 先判断是否是经销商添加的
+			if (maker.getDistributorId() == 0) {
+				if (sysUsersService.queryByPrimaryKey(userId) != null
+						&& sysUsersService.queryByPrimaryKey(userId)
+								.getGroupId() != 0) {
+					// 创建者必须是经销商或者总部账号
+					jsonObject.put("message", "对不起，您没有相关权限，请联系管理员处理");
+					return jsonObject.toString();
+				}else{
+					maker.setCreated(new Date());
+					maker.setUpdated(new Date());
+					maker.setStatus(0);
+					long result = makerService.insertMaker(maker);
+					if (result > 0) {
+						if (makerService.addDeviceMaker(list, userId,result)) {
+							jsonObject.put("success", true);
+							jsonObject.put("message", "操作成功");
+						}else{
+							jsonObject.put("message", "操作失败");
+						}
+					}
+				}
+			} else {
+				maker.setCreated(new Date());
+				maker.setUpdated(new Date());
+				maker.setStatus(0);
+				maker.setDistributorId(userId);
+				long result = makerService.insertMaker(maker);
+				if (result > 0) {
+					if (makerService.addDeviceMaker(list, userId,result)) {
+						jsonObject.put("success", true);
+						jsonObject.put("message", "操作成功");
+					}else{
+						jsonObject.put("message", "操作失败");
+					}
+				}
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		jsonObject.put("success", true);
-		jsonObject.put("message", "操作成功");
 		return jsonObject.toString();
 	}
-	@RequestMapping("/child.do")
+	
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String queryMakerDOByParentId(@RequestParam(value = "parentId") long distributorId) {
+	public String editMaker(MakerDO maker,
+			@RequestParam(value = "data", defaultValue = "") String data,
+			@RequestParam(value = "userId", required = true) long userId) {
+
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		Result<List<MakerDO>> result = makerManager.queryMakerDOByDistributorId(distributorId);
-		if (result == null || !result.isSuccess()) {
-			jsonObject.put("message", "查询失败");
-			return jsonObject.toString();
-		}
-		jsonObject.put("success", true);
-		jsonObject.put("message", "成功");
-		jsonObject.put("data", JSONArray.toJSON(result.getResult()));
-		return jsonObject.toString();
-
-	}
-
-	public String returnString(Result<List<MakerDO>> result, JSONObject jsonObject, MakerQuery query) {
-		if (result != null && result.isSuccess()) {
-			List<MakerDO> itemDOList = result.getResult();
-			JSONArray itemList = new JSONArray();
-			for (MakerDO makerDO : itemDOList) {
-				JSONObject item = new JSONObject();
-				item.put("id", makerDO.getId());
-				item.put("distributorId", makerDO.getDistributorId());
-				item.put("distributorIdName", makerDO.getDistributorIdName());
-				item.put("name", makerDO.getName());
-				item.put("created", makerDO.getCreated());
-				item.put("updated", makerDO.getUpdated());
-				item.put("mobile", makerDO.getMobile());
-				item.put("remark", makerDO.getRemark());
-				item.put("sysUserId", makerDO.getSysUserId());
-				item.put("orderPercentage", makerDO.getOrderPercentage());
-				item.put("servicePercentage", makerDO.getServicePercentage());
-				itemList.add(item);
+		//禁止信息一样的创客创建
+		try {
+			List<MakerDO> list_maker_all = makerService.queryMakerDOAll();
+			for (int i = 0; i < list_maker_all.size(); i++) {
+				if (maker != null 
+						&& list_maker_all.get(i).getId().longValue() != maker.getId().longValue()
+						&& list_maker_all.get(i).getMobile().equals(maker.getMobile()) 
+						&& list_maker_all.get(i).getName().equals(maker.getName())) {
+					
+					    jsonObject.put("message", "信息已存在，请核对后重试！");
+			            return jsonObject.toString();
+				}
 			}
-			jsonObject.put("iTotalRecords", query.getTotalItem()); // 实际的行数
-			jsonObject.put("iTotalDisplayRecords", query.getTotalItem()); // 显示的行数,这个要和上面
-			jsonObject.put("aaData", itemList);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		//先将传过来的数据格式化成需要的数据
+		List<DeviceMakerDO> list = null;
+        try {
+            list = JSONArray.parseArray(data, DeviceMakerDO.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonObject.put("message", "参数错误");
+            jsonObject.put("data", -1);
+            return jsonObject.toString();
+        }
+        if (list == null || list.isEmpty()) {
+            jsonObject.put("message", "参数错误");
+            jsonObject.put("data", -1);
+            return jsonObject.toString();
+        }
+		try {
+			
+			maker.setUpdated(new Date());
+			maker.setStatus(0);
+			if (makerService.editMakerDO(maker)) {
+				if (makerService.editDeviceMaker(list, userId,maker.getId())) {
+					jsonObject.put("success", true);
+					jsonObject.put("message", "操作成功");
+				}else{
+					jsonObject.put("message", "操作失败");
+				}
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
+	
+	@RequestMapping(value = {"/remove" }, method = RequestMethod.POST)
+	@ResponseBody
+	public String updateMakerDOStatus(@RequestParam("makerId") long makerId, 
+			@RequestParam("status") int status) {
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		try {
+			MakerDO makerDO = makerService.queryMakerDOById(makerId);
+			if ( makerDO != null) {
+				makerDO.setStatus(status);
+				if (makerService.editMakerDO(makerDO)) {
+					jsonObject.put("success", true);
+					jsonObject.put("message", "操作成功");
+				}else{
+					jsonObject.put("message", "操作失败");
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
+	
+	
+	@RequestMapping(value = { "/audit"}, method = RequestMethod.POST)
+	@ResponseBody
+	public String updateShopDOAudit(@RequestParam("makerId") long makerId, 
+									@RequestParam("audit") int audit) {
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		try {
+			MakerDO makerDO = makerService.queryMakerDOById(makerId);
+			if ( makerDO != null) {
+				makerDO.setAudit(audit);
+				if (makerService.editMakerDO(makerDO)) {
+					jsonObject.put("success", true);
+					jsonObject.put("message", "操作成功");
+				}else{
+					jsonObject.put("message", "操作失败");
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
+	
+	
+	@RequestMapping("/queryByDistributorId")
+	@ResponseBody
+	public String queryByDistributorId(
+			@RequestParam(value = "distributorId") long distributorId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		try {
+			List<MakerDO> list = makerService
+					.queryMakerDOByDistributorId(distributorId);
+
 			jsonObject.put("success", true);
-		} else {
-			jsonObject.put("message", "找不到宝贝");
+			jsonObject.put("message", "查询成功");
+			jsonObject.put("data", JSONArray.toJSON(list));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return jsonObject.toString();
 	}
 
-	@RequestMapping(value = { "/editSysUser.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/addUser" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String editSysUserDO(@RequestParam(value = "entityId") Long entityId,
-			@RequestParam(value = "sysUserName") String sysUserName,
-			@RequestParam(value = "sysMobile") String sysMobile,
-			@RequestParam(value = "sysPassword") String sysPassword) {
+	public String addUser(
+			@RequestParam(value = "makerId") long makerId,
+			@RequestParam(value = "userName") String userName,
+			@RequestParam(value = "mobile") String mobile,
+			@RequestParam(value = "name") String name,
+			@RequestParam(value = "password") String password) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
-			SysUsersDO query = sysUsersManager.querySysUsersByUserName(sysMobile);
-			if (query != null) {
-				jsonObject.put("message", "该用户名已存在");
+			SysUsersDO sudo = sysUsersService.querySysUsersByUserName(userName);
+			if (sudo != null) {
+				jsonObject.put("message", "该用户名已存在，请核对后重试");
 				return jsonObject.toString();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		SysUsersDO sysUsersDO = new SysUsersDO();
-		sysUsersDO.setUserName(sysMobile);
-		sysUsersDO.setPassword(PasswordHash.createHash(sysPassword));
-		sysUsersDO.setName(sysUserName);
-		sysUsersDO.setMobile(sysMobile);
-		sysUsersDO.setGroupId(new Long(3));// 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
-		sysUsersDO.setCreated(String.valueOf(System.currentTimeMillis() / 1000));
-		sysUsersDO.setUpdated(String.valueOf(System.currentTimeMillis() / 1000));
-		// Result<Long> result = sysUsersManager.addSysUsersDOS(sysUsersDO);
-		Result<Long> result = sysUsersManager.addSysUsersDOAndRole(sysUsersDO, new Long(15));
+		sysUsersDO.setUserName(userName);
+		sysUsersDO.setPassword(PasswordHash.createHash(password));
+		sysUsersDO.setName(name);
+		sysUsersDO.setIsDeleted(0);
+		sysUsersDO.setStatus(0);
+		sysUsersDO.setMobile(mobile);
+		sysUsersDO.setGroupId(new Long(3));
+		sysUsersDO.setCreated(Integer.valueOf(System.currentTimeMillis()/1000+""));
+		sysUsersDO.setUpdated(Integer.valueOf(System.currentTimeMillis()/1000+""));
+		
+		Result<Long> result = sysUsersService.addSysUsersDOAndRole(sysUsersDO, new Long(15));
 		if (result == null || !result.isSuccess()) {
 			jsonObject.put("message", "数据操作失败");
 			return jsonObject.toString();
 		} else {
 			MakerDO makerDO = new MakerDO();
-			makerDO.setId(entityId);
+			makerDO.setId(makerId);
 			makerDO.setSysUserId(result.getResult());
-			result = makerManager.updateMakerSysUserId(makerDO);
-			if (result == null || !result.isSuccess()) {
-				jsonObject.put("message", "数据操作失败");
-				return jsonObject.toString();
+			if (makerService.editMakerDO(makerDO)) {
+				jsonObject.put("success", true);
+				jsonObject.put("message", "操作成功");
+			}else{
+				jsonObject.put("message", "操作失败");	
 			}
-			jsonObject.put("success", true);
-			jsonObject.put("message", "数据更新成功");
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return jsonObject.toString();
+		
 	}
 
 	
-	@RequestMapping("/all.do")
+	@RequestMapping("/queryAll")
 	@ResponseBody
-	public String queryMakersAll(@RequestParam(value = "distributorId", required = false) Long distributorId,
-			HttpServletRequest request) {
+	public String queryMakersAll() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-
-		SysUsersDO sysUsersDO = (SysUsersDO) request.getSession().getAttribute(LoginConstant.USER_SESSION_KEY);
-		if (distributorId == null) {
-			if (sysUsersDO.getGroupId() == 1) {
-				DistributorDO distributorDO = (DistributorDO) request.getSession()
-						.getAttribute(LoginConstant.USER_DISTRIBUTOR_SESSION_KEY);
-				distributorId = distributorDO.getId();
-			}
+		try {
+			List<MakerDO> list = makerService.queryMakerDOAll();
+			jsonObject.put("success", true);
+			jsonObject.put("data", JSONArray.toJSON(list));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		MakerQuery query = new MakerQuery();
-		query.setDistributorId(distributorId);
-		Result<List<MakerDO>> result = makerManager.queryMakerDOAll(query);
-		jsonObject.put("success", true);
-		jsonObject.put("data", JSONArray.toJSON(result.getResult()));
 		return jsonObject.toString();
 	}
 
 }
-*/

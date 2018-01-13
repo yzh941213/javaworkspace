@@ -21,7 +21,7 @@
     <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
   </resultMap>
  
-  <insert id="insertSysUserDO" parameterType="com.aishidai.app.model.pojo.SysUsersDOCustom">
+  <insert id="insertSysUserDO" useGeneratedKeys="true" keyProperty="userId" parameterType="com.aishidai.app.model.pojo.SysUsersDO">
 
 	<selectKey keyProperty="userId" keyColumn="user_id" order="AFTER"
 		resultType="java.lang.Long">

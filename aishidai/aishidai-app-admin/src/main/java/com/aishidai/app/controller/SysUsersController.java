@@ -42,7 +42,7 @@ public class SysUsersController {
 
 	
 	
-	@RequestMapping("/login.do")
+	@RequestMapping("/login")
 	@ResponseBody
 	public String login(@RequestParam("userName") String userName, 
 						@RequestParam("password") String password,
@@ -67,7 +67,7 @@ public class SysUsersController {
 								LoginConstant.USER_DISTRIBUTOR_SESSION_KEY, list.get(0));
 					}
 				} else if (user.getGroupId() == 2) {
-					List<ShopsDO> list = shopService.queryShopsDOBySysUserId(Integer.valueOf(user.getUserId()+""));
+					List<ShopsDO> list = shopService.queryShopsDOByUserId(Integer.valueOf(user.getUserId()+""));
 					if (!list.isEmpty() && list.size() >= 0) {
 						request.getSession().setAttribute(LoginConstant.USER_SHOP_SESSION_KEY, list.get(0));
 					}
@@ -110,7 +110,7 @@ public class SysUsersController {
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout")
 	@ResponseBody
 	public String logout(@RequestParam("userId") long userId,
 			HttpSession session) {
@@ -148,7 +148,7 @@ public class SysUsersController {
 	}
 	
 	
-	@RequestMapping("/queryList.do")
+	@RequestMapping("/queryList")
 	@ResponseBody
 	public String querySysUsers() {
 		JSONObject jsonObject = new JSONObject();
@@ -175,7 +175,7 @@ public class SysUsersController {
 
 	
 	
-	@RequestMapping(value = "/add.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public String addSysUser(
 			@RequestParam(value = "userName",required = true) String userName, 
@@ -226,7 +226,7 @@ public class SysUsersController {
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping(value = { "/edit.do"}, method = RequestMethod.POST)
+	@RequestMapping(value = { "/edit"}, method = RequestMethod.POST)
 	@ResponseBody
 	public String editSysUserInfo(
 			@RequestParam(value = "userId", required = true) long userId,
@@ -288,7 +288,7 @@ public class SysUsersController {
 		return jsonObject.toString();
 	}
 	
-	@RequestMapping(value = { "/remove.do"}, method = RequestMethod.POST)
+	@RequestMapping(value = { "/remove"}, method = RequestMethod.POST)
 	@ResponseBody
 	public String remove(@RequestParam(value = "userId", required = true) long userId){
 		
@@ -319,7 +319,7 @@ public class SysUsersController {
 
 	
 
-	@RequestMapping("/queryDetail.do")
+	@RequestMapping("/queryDetail")
 	@ResponseBody
 	public String querySysUsersInfoById(
 			@RequestParam(value = "userId",required = true) long userId) {
@@ -355,13 +355,13 @@ public class SysUsersController {
 		return jsonObject.toString();
 	}
 
-	@RequestMapping(value = "/queryResource.do", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/queryResource", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public String querySysUsersResource(
 			@RequestParam(value = "userId") long userId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
-		Result<List<ResourceDO>> result = null;
+		Result<List<ResourceDOCustom>> result = null;
 		try {
 			result = sysUsersService.queryResourceDO(userId);
 			
@@ -383,7 +383,7 @@ public class SysUsersController {
 	
 	
 	
-	@RequestMapping("/queryByGroupId.do")
+	@RequestMapping("/queryByGroupId")
 	@ResponseBody
 	public String querySysUsersByGroupId(
 			@RequestParam(value="groupId") Long groupId){

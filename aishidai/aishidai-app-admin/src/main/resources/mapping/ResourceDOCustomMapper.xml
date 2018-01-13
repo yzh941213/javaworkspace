@@ -20,7 +20,7 @@
   </resultMap>
   
 	<select id="queryFirstMenuByUserId" parameterType="com.aishidai.app.model.query.ResourceQuery" 
-		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		resultMap="BaseResultMap">
 			SELECT * from resource where categoryId = 1 and isDeleted != 1 and id in
 			(SELECT DISTINCT resourceId from role_resource where isDeleted != 1
 			      and roleId in (SELECT role_id FROM sysusers_role
@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="querySecondMenuByUserId" parameterType="com.aishidai.app.model.query.ResourceQuery" 
-	   		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+	   		resultMap="BaseResultMap">
 		SELECT * from resource where categoryId = 2 and isDeleted != 1 and parentId
 		= #{parentId} and id in (SELECT DISTINCT resourceId from role_resource
 		where isDeleted != 1 and roleId in (SELECT role_id FROM sysusers_role
@@ -37,13 +37,13 @@
 	
 
 	<select id="queryAllResource" parameterType="long" 
-		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		resultMap="BaseResultMap">
         <![CDATA[
           SELECT * from resource where isDeleted != 1    ]]>
 	</select>
 	
 	<select id="queryAllResourceByUserId" parameterType="long"
-		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		resultMap="BaseResultMap">
         <![CDATA[ 
         SELECT * FROM resource WHERE isDeleted != 1 AND id  IN 
         (SELECT DISTINCT resourceId FROM role_resource 
@@ -54,20 +54,18 @@
 	</select>
 	
 	<select id="queryFirstMenu" 
-	resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+			resultMap="BaseResultMap">
 		SELECT * from resource where parentId = 0 and isDeleted != 1 
 		order by orderNum
 	</select>
 
 	<select id="queryAllMenuByParentId" parameterType="java.lang.Long"
-		resultType="com.aishidai.app.model.pojo.ResourceDOCustom">
+		resultMap="BaseResultMap">
 		SELECT * from resource where parentId = #{parentId} and isDeleted != 1 order
 		by orderNum
 	</select>
 
-
-	<select id="queryResourceByRoleId" 
-	resultType="com.aishidai.app.model.pojo.ResourceDOCustom"
+	<select id="queryResourceByRoleId" resultType="com.aishidai.app.model.dto.ResourceDTO"
 		parameterType="long">
 		SELECT r.id,rr.id as role_res_id 
 		from resource r LEFT join 
@@ -77,6 +75,5 @@
 		in (SELECT DISTINCT resourceId from role_resource where isDeleted != 1
 		and roleId = #{roleId})
 	</select>
-	
   
 </mapper>

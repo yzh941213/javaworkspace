@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.model.pojo.ShopsDO;
+import com.aishidai.app.model.query.QueryShop;
 import com.aishidai.app.model.query.ShopsQuery;
 
 
@@ -13,16 +14,24 @@ public interface ShopService {
 
 	
 	
-	ShopsDO queryShopsDOById(long shopId) throws Exception ;
+	ShopsDO queryShopsDOById(long shopsId) throws Exception ;
 	
 	boolean editShopsDO(ShopsDO ShopsDO) throws Exception ;
 	
-	List<ShopsDO> queryShopsDOBySysUserId(long sysUserId) throws Exception ;
+	List<ShopsDO> queryShopsDOByUserId(long userId) throws Exception ;
 	
 	List<ShopsDO> queryShopsDOAll(ShopsQuery query) throws Exception ;
 	
-	List<ShopsDO> queryByNameshopLike(String shopName) throws Exception;
-
+	
+	List<ShopsDO> queryByNameHqOSNLike(String name) throws Exception;
+	
+	List<ShopsDO> queryByNameHqSNLike(String name) throws Exception;
+	
+	List<ShopsDO> queryByNameOSNLike(ShopsDO shopsDO) throws Exception;
+	
+	List<ShopsDO> queryByNameSNLike(ShopsDO shopsDO) throws Exception;
+	
+	
 	List<ShopsDO> queryOtherShopsDOByDistributorId(ShopsQuery query) throws Exception;
 
 	List<ShopsDO> queryShopsDOByDistributorId(ShopsQuery query) throws Exception ;
@@ -36,9 +45,15 @@ public interface ShopService {
 	
 	/*List<ShopsDO> queryByNameOthershopLike(ShopsQuery query)throws Exception;*/
 
-	List<ShopsDO> queryByNameShopLike(ShopsQuery query) throws Exception;
+	
 
-	ShopsDO queryShopsDOByShopsName(String shopsName) throws Exception;
+	ShopsDO queryShopsDOByShopsName(String name) throws Exception;
+
+	List<ShopsDO> queryShopsDOByDeviceId(long deviceId);
+
+	boolean insertShops(ShopsDO shopsDO);
+
+	List<ShopsDO> shopList(QueryShop queryShop);
 	
 	/*ShopsDO queryByDeviceId(long deviceId) throws Exception;*/
 

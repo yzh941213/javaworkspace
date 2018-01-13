@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.MakerCommissionDetailDOCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.MakerCommissionDetailDOCustom" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="commission" property="commission" jdbcType="INTEGER" />
+    <result column="maker_name" property="makerName" jdbcType="VARCHAR" />
+    <result column="maker_id" property="makerId" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="other_shop_id" property="otherShopId" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+ 
+  <insert id="insertMakerCommissionDetailDO" parameterType="com.aishidai.app.model.pojo.MakerCommissionDetailDO" >
+   	
+   	<selectKey keyProperty="id" order="BEFORE" resultType="long">
+   		SELECT LAST_INSERT_ID()
+   	</selectKey>
+    insert into maker_commission_detail (commission, maker_name, 
+      maker_id, type, other_shop_id, 
+      shop_id, create_name, create_id, 
+      created, updated, is_delete
+      )
+    values (#{commission,jdbcType=INTEGER}, #{makerName,jdbcType=VARCHAR}, 
+      #{makerId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{otherShopId,jdbcType=BIGINT}, 
+      #{shopId,jdbcType=BIGINT}, #{createName,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}
+      )
+  </insert>
+</mapper>

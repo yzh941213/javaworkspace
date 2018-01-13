@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.aishidai.app.dao.CraftsmenDOCustomMapper;
 import com.aishidai.app.dao.CraftsmenDOMapper;
 import com.aishidai.app.model.pojo.CraftsmenDO;
+import com.aishidai.app.model.pojo.CraftsmenDOCustom;
 import com.aishidai.app.model.pojo.CraftsmenDOExample;
 import com.aishidai.app.model.query.CraftsmenQuery;
 import com.aishidai.app.service.CraftsmenService;
@@ -20,11 +21,7 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 	@Autowired
 	private CraftsmenDOCustomMapper craftsmenDOCustomMapper;
 	
-	public List<CraftsmenDO> queryCraftsmenDOList(CraftsmenQuery query) {
 	
-		/*return craftsmenDOMapper.queryCraftsmenDOList(query);*/
-		return null;
-	}
 
 	public CraftsmenDO queryByPrimaryKey(long craftsmenId) {
 
@@ -36,23 +33,9 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 		return craftsmenDOMapper.updateByPrimaryKeySelective(craftsmenDO)>0;
 	}
 
-	public List<CraftsmenDO> queryCraftsmenDOByDistributorId(long distributorId) {
+	public List<CraftsmenDOCustom> queryCraftsmenDOList(CraftsmenQuery query) {
 		
-		CraftsmenDOExample example = new CraftsmenDOExample();
-		CraftsmenDOExample.Criteria criteria = example.createCriteria();
-		criteria.andDistributorIdEqualTo(distributorId);
-		criteria.andIsDeletedEqualTo(0);
-		List<CraftsmenDO> list = craftsmenDOMapper.selectByExample(example);
-		return list;
-	}
-	
-	public List<CraftsmenDO> queryCraftsmenDOByShopId(long shopId) {
-		
-		CraftsmenDOExample example = new CraftsmenDOExample();
-		CraftsmenDOExample.Criteria criteria = example.createCriteria();
-		criteria.andShopsIdEqualTo(shopId);
-		criteria.andIsDeletedEqualTo(0);
-		return craftsmenDOMapper.selectByExample(example);
+		return craftsmenDOCustomMapper.selectCraftsmenDOList(query);
 	}
 	
 	public long addCraftsmenSysUser(CraftsmenDO craftsmenDO) {
@@ -83,6 +66,16 @@ public class CraftsmenServiceImpl implements CraftsmenService {
 	public boolean insertCraftsmenDO(CraftsmenDO craftsmenDO) throws Exception {
 		// TODO Auto-generated method stub
 		return craftsmenDOCustomMapper.insertCraftsmenDO(craftsmenDO) > 0;
+	}
+
+	public CraftsmenDOCustom queryByPrimaryKeyCustom(long craftsmenId) {
+		// TODO Auto-generated method stub
+		return craftsmenDOCustomMapper.selectByPrimaryKeyCustom(craftsmenId);
+	}
+
+	public int selectCraftsmenDOListCount(CraftsmenQuery query) {
+		// TODO Auto-generated method stub
+		return craftsmenDOCustomMapper.selectCraftsmenDOListCount(query);
 	}
 	
 }

@@ -5,14 +5,14 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aishidai.app.dao.ShopsDOCustomMapper;
 import com.aishidai.app.dao.ShopsDOMapper;
-import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.ShopsDO;
 import com.aishidai.app.model.pojo.ShopsDOExample;
+import com.aishidai.app.model.query.QueryShop;
 import com.aishidai.app.model.query.ShopsQuery;
 import com.aishidai.app.service.ShopService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,7 +20,8 @@ public class ShopServiceImpl implements ShopService {
 	
 	@Autowired
 	private ShopsDOMapper shopsDOMapper;
-
+	@Autowired
+	private ShopsDOCustomMapper shopsDOCustomMapper;
 	
 	public ShopsDO queryShopsDOById(long id) throws Exception  {
 		return shopsDOMapper.selectByPrimaryKey(id);
@@ -48,18 +49,53 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	
-	public List<ShopsDO> queryByNameshopLike(String shopsName) throws Exception{
+	public List<ShopsDO> queryByNameHqOSNLike(String name) throws Exception{
+		
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
-		if (StringUtils.isNotBlank(shopsName)) {
-			shopsName = "%" + shopsName + "%";
-		}
-		if (StringUtils.isNotBlank(shopsName)) {
-			criteria.andShopsNameLike(shopsName);
+		if (StringUtils.isNotBlank(name)) {
+			criteria.andShopsNameLike("%" + name + "%");
 		} 
+		criteria.andDeviceIsEqualTo(1);
+		criteria.andIsDeletedEqualTo(0);
 		return shopsDOMapper.selectByExample(example);
 	}
-
+	
+	public List<ShopsDO> queryByNameHqSNLike(String name) throws Exception{
+		
+		ShopsDOExample example = new ShopsDOExample();
+		ShopsDOExample.Criteria criteria = example.createCriteria();
+		if (StringUtils.isNotBlank(name)) {
+			criteria.andShopsNameLike("%" + name + "%");
+		} 
+		criteria.andDeviceIsEqualTo(0);
+		criteria.andIsDeletedEqualTo(0);
+		return shopsDOMapper.selectByExample(example);
+	}
+	
+	public List<ShopsDO> queryByNameOSNLike(ShopsDO shopsDO) throws Exception {
+		ShopsDOExample example = new ShopsDOExample();
+		ShopsDOExample.Criteria criteria = example.createCriteria();
+		if (StringUtils.isNotBlank(shopsDO.getShopsName())) {
+			criteria.andShopsNameLike("%" + shopsDO.getShopsName() + "%");
+		} 
+		criteria.andDeviceIsEqualTo(0);
+		criteria.andDistributorIdEqualTo(shopsDO.getDistributorId());
+		criteria.andIsDeletedEqualTo(0);
+		return shopsDOMapper.selectByExample(example);
+	}
+	
+	public List<ShopsDO> queryByNameSNLike(ShopsDO shopsDO) throws Exception {
+		ShopsDOExample example = new ShopsDOExample();
+		ShopsDOExample.Criteria criteria = example.createCriteria();
+		if (StringUtils.isNotBlank(shopsDO.getShopsName())) {
+			criteria.andShopsNameLike("%" + shopsDO.getShopsName() + "%");
+		} 
+		criteria.andDeviceIsEqualTo(1);
+		criteria.andDistributorIdEqualTo(shopsDO.getDistributorId());
+		criteria.andIsDeletedEqualTo(0);
+		return shopsDOMapper.selectByExample(example);
+	}
 	
 	public List<ShopsDO> queryOtherShopsDOByDistributorId(long DistributorId) throws Exception {
 		ShopsDOExample example = new ShopsDOExample();
@@ -96,32 +132,12 @@ public class ShopServiceImpl implements ShopService {
 		return shopsDOMapper.selectByExample(example);
 	}
 
-	
-	public List<ShopsDO> queryByNameOthershopLike(String name)
-			throws Exception {
-		
-		return null;
-	}
-
-	
-	/*public List<ShopsDO> queryByNameShopLike(ShopsQuery query) throws Exception {
-		// TODO Auto-generated method stub
-		List<ShopsDO> list = shopsDOMapper.selectByNameShopLike(query);
-		return list;
-	}*/
-
-	
-	/*public ShopsDO queryByDeviceId(long deviceId)throws Exception  {
-		// TODO Auto-generated method stub
-		return shopsDOMapper.selectByDeviceId(deviceId);
-	}*/
-	
-	public List<ShopsDO> queryShopsDOBySysUserId(long sysUserId) throws Exception  {
+	public List<ShopsDO> queryShopsDOByUserId(long userId) throws Exception  {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
-		criteria.andSysUserIdEqualTo(sysUserId);
-		List<ShopsDO> list= shopsDOMapper.selectByExample(example);
-		return list;
+		criteria.andSysUserIdEqualTo(userId);
+		
+		return shopsDOMapper.selectByExample(example);
 	}
 
 
@@ -145,15 +161,28 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 
-	public List<ShopsDO> queryByNameShopLike(ShopsQuery query) throws Exception {
+	public ShopsDO queryShopsDOByShopsName(String name) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	public ShopsDO queryShopsDOByShopsName(String shopsName) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ShopsDO> queryShopsDOByDeviceId(long deviceId) {
+		ShopsDOExample example = new ShopsDOExample();
+		ShopsDOExample.Criteria criteria = example.createCriteria();
+		criteria.andDeviceIdEqualTo(deviceId);
+		criteria.andIsDeletedEqualTo(0);
+		return shopsDOMapper.selectByExample(example);
 	}
-	
+
+
+	public boolean insertShops(ShopsDO shopsDO) {
+		return shopsDOCustomMapper.insertShops(shopsDO) >0 ;
+	}
+
+
+	public List<ShopsDO> shopList(QueryShop queryShop) {
+		return shopsDOCustomMapper.shopList(queryShop);
+	}
+
 }

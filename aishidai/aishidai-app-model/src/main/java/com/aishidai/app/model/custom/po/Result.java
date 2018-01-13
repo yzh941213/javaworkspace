@@ -3,13 +3,10 @@ package com.aishidai.app.model.custom.po;
 import java.io.Serializable;
 import java.util.List;
 
-import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOCustom;
 import com.aishidai.app.model.query.Query;
 
 
-/**
- * Created by Shaka on 15/4/5.
- */
 public class Result<T> implements Serializable {
 	
     private static final long serialVersionUID = -8226191985294697912L;
@@ -20,13 +17,13 @@ public class Result<T> implements Serializable {
     private String successInfo;//返回的描述
     
     
-    private List<ResourceDO> obj;
+    private List<ResourceDOCustom> obj;
     
-	public List<ResourceDO> getObj() {
+	public List<ResourceDOCustom> getObj() {
 		return obj;
 	}
 
-	public void setObj(List<ResourceDO> obj) {
+	public void setObj(List<ResourceDOCustom> obj) {
 		this.obj = obj;
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.ResourceDO;
+import com.aishidai.app.model.pojo.ResourceDOCustom;
 import com.aishidai.app.model.pojo.SysUsersDO;
 
 @Service
@@ -23,7 +23,7 @@ public interface SysUsersService {
     Result<SysUsersDO> loginUser(String uesrName,String password) throws Exception;
 
 
-    Result<List<ResourceDO>> queryResourceDO(long userId) throws Exception;
+    Result<List<ResourceDOCustom>> queryResourceDO(long userId) throws Exception;
 
 	SysUsersDO querySysUsersByUserName(String sysUserName) throws Exception;
 	

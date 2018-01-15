@@ -1814,6 +1814,66 @@ public class ShopsDOExample {
             addCriterion("lnt not between", value1, value2, "lnt");
             return (Criteria) this;
         }
+
+        public Criteria andIsSuppliersIsNull() {
+            addCriterion("is_suppliers is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersIsNotNull() {
+            addCriterion("is_suppliers is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersEqualTo(Integer value) {
+            addCriterion("is_suppliers =", value, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersNotEqualTo(Integer value) {
+            addCriterion("is_suppliers <>", value, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersGreaterThan(Integer value) {
+            addCriterion("is_suppliers >", value, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_suppliers >=", value, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersLessThan(Integer value) {
+            addCriterion("is_suppliers <", value, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersLessThanOrEqualTo(Integer value) {
+            addCriterion("is_suppliers <=", value, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersIn(List<Integer> values) {
+            addCriterion("is_suppliers in", values, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersNotIn(List<Integer> values) {
+            addCriterion("is_suppliers not in", values, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersBetween(Integer value1, Integer value2) {
+            addCriterion("is_suppliers between", value1, value2, "isSuppliers");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSuppliersNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_suppliers not between", value1, value2, "isSuppliers");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

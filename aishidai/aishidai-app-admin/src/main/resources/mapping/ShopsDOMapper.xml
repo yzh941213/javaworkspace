@@ -28,6 +28,7 @@
     <result column="star" property="star" jdbcType="INTEGER" />
     <result column="lat" property="lat" jdbcType="VARCHAR" />
     <result column="lnt" property="lnt" jdbcType="VARCHAR" />
+    <result column="is_suppliers" property="isSuppliers" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -91,7 +92,7 @@
     shops_id, distributor_id, shops_name, introduce, shops_url, telephone, area, address, 
     province, city, activity, created, updated, sys_user_id, shop_hours_open, shop_hours_close, 
     is_deleted, services, hot, services_type, device_id, device_is, audit, star, lat, 
-    lnt
+    lnt, is_suppliers
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.ShopsDOExample" >
     select
@@ -133,7 +134,8 @@
       shop_hours_close, is_deleted, services, 
       hot, services_type, device_id, 
       device_is, audit, star, 
-      lat, lnt)
+      lat, lnt, is_suppliers
+      )
     values (#{shopsId,jdbcType=BIGINT}, #{distributorId,jdbcType=BIGINT}, #{shopsName,jdbcType=VARCHAR}, 
       #{introduce,jdbcType=VARCHAR}, #{shopsUrl,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
       #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
@@ -142,7 +144,8 @@
       #{shopHoursClose,jdbcType=VARCHAR}, #{isDeleted,jdbcType=INTEGER}, #{services,jdbcType=VARCHAR}, 
       #{hot,jdbcType=INTEGER}, #{servicesType,jdbcType=VARCHAR}, #{deviceId,jdbcType=BIGINT}, 
       #{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{star,jdbcType=INTEGER}, 
-      #{lat,jdbcType=VARCHAR}, #{lnt,jdbcType=VARCHAR})
+      #{lat,jdbcType=VARCHAR}, #{lnt,jdbcType=VARCHAR}, #{isSuppliers,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.aishidai.app.model.pojo.ShopsDO" >
     insert into shops
@@ -225,6 +228,9 @@
       <if test="lnt != null" >
         lnt,
       </if>
+      <if test="isSuppliers != null" >
+        is_suppliers,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="shopsId != null" >
@@ -304,6 +310,9 @@
       </if>
       <if test="lnt != null" >
         #{lnt,jdbcType=VARCHAR},
+      </if>
+      <if test="isSuppliers != null" >
+        #{isSuppliers,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -394,6 +403,9 @@
       <if test="record.lnt != null" >
         lnt = #{record.lnt,jdbcType=VARCHAR},
       </if>
+      <if test="record.isSuppliers != null" >
+        is_suppliers = #{record.isSuppliers,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -426,7 +438,8 @@
       audit = #{record.audit,jdbcType=INTEGER},
       star = #{record.star,jdbcType=INTEGER},
       lat = #{record.lat,jdbcType=VARCHAR},
-      lnt = #{record.lnt,jdbcType=VARCHAR}
+      lnt = #{record.lnt,jdbcType=VARCHAR},
+      is_suppliers = #{record.isSuppliers,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -509,6 +522,9 @@
       <if test="lnt != null" >
         lnt = #{lnt,jdbcType=VARCHAR},
       </if>
+      <if test="isSuppliers != null" >
+        is_suppliers = #{isSuppliers,jdbcType=INTEGER},
+      </if>
     </set>
     where shops_id = #{shopsId,jdbcType=BIGINT}
   </update>
@@ -538,7 +554,8 @@
       audit = #{audit,jdbcType=INTEGER},
       star = #{star,jdbcType=INTEGER},
       lat = #{lat,jdbcType=VARCHAR},
-      lnt = #{lnt,jdbcType=VARCHAR}
+      lnt = #{lnt,jdbcType=VARCHAR},
+      is_suppliers = #{isSuppliers,jdbcType=INTEGER}
     where shops_id = #{shopsId,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -12,9 +12,9 @@ public interface ItemDOMapper {
 
     int deleteByPrimaryKey(Long itemId);
 
-    int insert(ItemDO record);
+    Long insert(ItemDO record);
 
-    int insertSelective(ItemDO record);
+    Long insertSelective(ItemDO record);
 
     List<ItemDO> selectByExampleWithBLOBs(ItemDOExample example);
 

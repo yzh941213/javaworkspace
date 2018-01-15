@@ -6,6 +6,7 @@ import com.aishidai.app.model.pojo.*;
 import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.model.vo.ItemVO;
 import com.aishidai.app.service.ItemService;
+import com.aishidai.app.service.ItemSkuService;
 import com.aishidai.common.json.JsonResult;
 import com.aishidai.common.tool.SeparatorTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class ItemController {
 
     @Autowired
     AttributeDOMapper attributeDOMapper;
+    @Autowired
+    ItemSkuService itemSkuService;
 
     @GetMapping(value = "list")
     public JsonResult itemList(QueryItem queryItem){
@@ -47,7 +50,13 @@ public class ItemController {
 
                 }
                 categoryId = categoryId.substring(0,categoryId.length() - 1);
+
             }
+            ItemVO itemVO1= itemSkuService.getMaxMinPricByItemId(itemVO.getItemId());
+            itemVO.setMaxPrice(itemVO1.getMaxPrice());
+            itemVO.setMinPrice(itemVO1.getMinPrice());
+            itemVO.setMaxSalesPrice(itemVO1.getMaxSalesPrice());
+            itemVO.setMinSalesPrice(itemVO1.getMinSalesPrice());
 
             itemVO.setCategoryId(categoryId);
             result.add(itemVO);
@@ -70,6 +79,29 @@ public class ItemController {
             itemDO.setAudit(0);
             itemDO.setIsDelete(0);
             return  JsonResult.buildSuccess(itemDOMapper.insert(itemDO));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
+
+    }
+
+    @GetMapping(value = "update")
+    public JsonResult update(ItemDO itemDO){
+        try {
+            itemDO.setUpdated(new Date());
+            return  JsonResult.buildSuccess(itemDOMapper.updateByPrimaryKey(itemDO));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
+
+    }
+
+
+    @GetMapping(value = "getById")
+    public JsonResult getById(Long itemId){
+        try {
+
+            return  JsonResult.buildSuccess(itemService.getById(itemId));
         }catch (Exception e){
             return JsonResult.buidException(e);
         }

@@ -2,7 +2,7 @@ package com.aishidai.app.model.pojo;
 
 import java.util.Date;
 
-public class ItemSkuDO {
+public class ItemSkuDO extends ItemSuitDO {
     private Long skuId;
 
     private String price;

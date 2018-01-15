@@ -733,6 +733,126 @@ public class TradeOrderItemDOExample {
             addCriterion("item_name not between", value1, value2, "itemName");
             return (Criteria) this;
         }
+
+        public Criteria andBuyersIdIsNull() {
+            addCriterion("buyers_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdIsNotNull() {
+            addCriterion("buyers_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdEqualTo(Long value) {
+            addCriterion("buyers_id =", value, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdNotEqualTo(Long value) {
+            addCriterion("buyers_id <>", value, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdGreaterThan(Long value) {
+            addCriterion("buyers_id >", value, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("buyers_id >=", value, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdLessThan(Long value) {
+            addCriterion("buyers_id <", value, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdLessThanOrEqualTo(Long value) {
+            addCriterion("buyers_id <=", value, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdIn(List<Long> values) {
+            addCriterion("buyers_id in", values, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdNotIn(List<Long> values) {
+            addCriterion("buyers_id not in", values, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdBetween(Long value1, Long value2) {
+            addCriterion("buyers_id between", value1, value2, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyersIdNotBetween(Long value1, Long value2) {
+            addCriterion("buyers_id not between", value1, value2, "buyersId");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteIsNull() {
+            addCriterion("is_delete is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteIsNotNull() {
+            addCriterion("is_delete is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteEqualTo(Integer value) {
+            addCriterion("is_delete =", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteNotEqualTo(Integer value) {
+            addCriterion("is_delete <>", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteGreaterThan(Integer value) {
+            addCriterion("is_delete >", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_delete >=", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteLessThan(Integer value) {
+            addCriterion("is_delete <", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteLessThanOrEqualTo(Integer value) {
+            addCriterion("is_delete <=", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteIn(List<Integer> values) {
+            addCriterion("is_delete in", values, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteNotIn(List<Integer> values) {
+            addCriterion("is_delete not in", values, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteBetween(Integer value1, Integer value2) {
+            addCriterion("is_delete between", value1, value2, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_delete not between", value1, value2, "isDelete");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

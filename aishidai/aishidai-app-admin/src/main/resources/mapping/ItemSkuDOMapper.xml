@@ -110,7 +110,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.aishidai.app.model.pojo.ItemSkuDO" >
+  <insert id="insert"     useGeneratedKeys = "true" keyProperty = "skuId" parameterType="com.aishidai.app.model.pojo.ItemSkuDO" >
     insert into item_sku (sku_id, price, sales_price, 
       color_id, size_id, image, 
       description, feature, stock, 

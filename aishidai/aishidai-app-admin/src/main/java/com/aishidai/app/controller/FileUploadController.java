@@ -28,7 +28,7 @@ import java.util.Map;
  * Created by 蝈蝈 on 2016/8/30.
  */
 @Controller
-@RequestMapping("/manage-server/manager")
+@RequestMapping("/manage/manager")
 public class FileUploadController {
 
     @Resource

@@ -19,11 +19,15 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     ItemDOCustomMapper itemDOCustomMapper;
-    public Boolean add(ItemDO itemDO) {
-        return itemDOMapper.insert(itemDO)>0;
+    public Long add(ItemDO itemDO) {
+        return itemDOMapper.insert(itemDO);
     }
 
     public List<ItemVO> itemList(QueryItem queryItem) {
         return itemDOCustomMapper.itemList(queryItem);
+    }
+
+    public ItemDO getById(Long itemId) {
+        return itemDOMapper.selectByPrimaryKey(itemId);
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("manage/attribute")
 public class AttributeController {
@@ -20,7 +22,13 @@ public class AttributeController {
     @GetMapping(value = "list")
     public JsonResult list(QueryAttrbute queryAttrbute){
 
-        return  JsonResult.buildSuccess(attributeService.queryList(queryAttrbute));
+        return  JsonResult.buildPaging(attributeService.queryList(queryAttrbute),queryAttrbute.getsEcho(),attributeService.queryListCount(queryAttrbute));
+    }
+
+    @GetMapping(value = "queryByAttr")
+    public JsonResult queryByAttr(QueryAttrbute queryAttrbute){
+
+        return  JsonResult.buildSuccess(attributeService.queryByObj(queryAttrbute));
     }
     @GetMapping(value = "all")
     public JsonResult getAll(){
@@ -29,13 +37,42 @@ public class AttributeController {
 
     @GetMapping(value = "update")
     public JsonResult update(AttributeDO attributeDO){
+        try {
+            attributeDO.setUpdated(new Date());
+            return JsonResult.buildSuccess( attributeService.update(attributeDO));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
 
-        return JsonResult.buildSuccess( attributeService.update(attributeDO));
+    }
+
+    @GetMapping(value = "detailsById")
+    public JsonResult update(Long attributeId){
+        try {
+            return JsonResult.buildSuccess( attributeService.getDetailsById(attributeId));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
+
+    }
+
+    @GetMapping(value = "del")
+    public JsonResult del(Long attributeId){
+        try {
+            return JsonResult.buildSuccess( attributeService.del(attributeId));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
+
     }
 
     @GetMapping(value = "add")
     public JsonResult add(AttributeDO attributeDO){
+        try {
+            return JsonResult.buildSuccess(attributeService.add(attributeDO));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
 
-        return JsonResult.buildSuccess( attributeService.add(attributeDO));
     }
 }

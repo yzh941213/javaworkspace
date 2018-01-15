@@ -15,7 +15,9 @@ public interface ItemService {
      * @param itemDO
      * @return
      */
-    Boolean add(ItemDO itemDO);
+    Long add(ItemDO itemDO);
 
     List<ItemVO> itemList(QueryItem  queryItem);
+
+    ItemDO getById(Long itemId);
 }

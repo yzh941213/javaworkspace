@@ -21,6 +21,10 @@ public class TradeOrderItemDO {
 
     private String itemName;
 
+    private Long buyersId;
+
+    private Integer isDelete;
+
     public Long getOrderItemId() {
         return orderItemId;
     }
@@ -99,5 +103,21 @@ public class TradeOrderItemDO {
 
     public void setItemName(String itemName) {
         this.itemName = itemName == null ? null : itemName.trim();
+    }
+
+    public Long getBuyersId() {
+        return buyersId;
+    }
+
+    public void setBuyersId(Long buyersId) {
+        this.buyersId = buyersId;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

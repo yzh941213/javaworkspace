@@ -22,24 +22,41 @@
 
   <select id="queryList" resultMap="BaseResultMap"  parameterType="com.aishidai.app.model.query.QueryAttrbute">
 
-      select * from attribute
-      where status=0
-      <if test="attrName != null and attrName !=''">
-        AND  attr_name=#{attrName}
-      </if>
-      <if test="parentId != null">
-        AND  parent_id=#{parentId}
-      </if>
-      <if test="category != null">
-        AND  category=#{category}
-      </if>
-      <if test="aoData != null and aoData !=''">
-        limit #{stratRow},#{pageSize}
-      </if>
-
-
-
+      call attribute_findByParentId1(#{parentId},#{stratRow},#{pageSize});
 
 
   </select>
+
+    <select id="queryByObj" resultMap="BaseResultMap"  parameterType="com.aishidai.app.model.query.QueryAttrbute">
+
+        select * from attribute
+        where status=0
+        <if test="attrName != null and attrName !=''">
+            AND  attr_name=#{attrName}
+        </if>
+        <if test="parentId != null">
+            AND  parent_id=#{parentId}
+        </if>
+        <if test="category != null">
+            AND  category=#{category}
+        </if>
+
+
+    </select>
+
+    <select id="queryListCount" resultType="java.lang.Long"  parameterType="com.aishidai.app.model.query.QueryAttrbute">
+
+        call attribute_findByParentId2(#{parentId});
+
+
+
+
+
+
+    </select>
+
+
+    <select id="getAllSubclassByAttrId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        call attribute_findByParentId_no_page(#{attributeId});
+    </select>
 </mapper>

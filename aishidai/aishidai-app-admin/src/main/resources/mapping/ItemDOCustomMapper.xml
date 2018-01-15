@@ -21,15 +21,23 @@
     <result column="shop_id" property="shopId" jdbcType="BIGINT" />
     <result column="audit" property="audit" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="ItemVOMap" type="com.aishidai.app.model.vo.ItemVO" extends="BaseResultMap">
 
-  <select id="itemList" resultType="com.aishidai.app.model.vo.ItemVO"  parameterType="com.aishidai.app.model.query.QueryItem">
+
+    <result column="maxPrice" property="maxPrice" jdbcType="VARCHAR" />
+    <result column="minPrice" property="minPrice" jdbcType="VARCHAR" />
+    <result column="maxSalesPrice" property="maxSalesPrice" jdbcType="VARCHAR" />
+    <result column="minSalesPrice" property="minSalesPrice" jdbcType="VARCHAR" />
+
+
+  </resultMap>
+  <select id="itemList" resultMap="ItemVOMap"  parameterType="com.aishidai.app.model.query.QueryItem">
 
 
 
     <if test="cid != null and cid != ''">
       call attribute_findByParentId(#{cid},#{stratRow},#{pageSize},#{itemName},#{itemCode},#{itemStatus});
     </if>
-    
     <if test="cid == null or cid == ''">
       select *
       from item i
@@ -46,6 +54,8 @@
 
       limit #{stratRow},#{pageSize}
     </if>
+
+
 
   </select>
 </mapper>

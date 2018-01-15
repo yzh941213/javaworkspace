@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aishidai.app.dao.TradeOrderDOCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.TradeOrderDO" >
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="buyer_user_id" property="buyerUserId" jdbcType="BIGINT" />
+    <result column="seller_user_id" property="sellerUserId" jdbcType="BIGINT" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="VARCHAR" />
+    <result column="promotion" property="promotion" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reverse_status" property="reverseStatus" jdbcType="INTEGER" />
+    <result column="pay_time" property="payTime" jdbcType="INTEGER" />
+    <result column="pay_id" property="payId" jdbcType="VARCHAR" />
+    <result column="receive_time" property="receiveTime" jdbcType="INTEGER" />
+    <result column="receive_type" property="receiveType" jdbcType="TINYINT" />
+    <result column="rate_from_buyer_visible" property="rateFromBuyerVisible" jdbcType="TINYINT" />
+    <result column="cancel_time" property="cancelTime" jdbcType="INTEGER" />
+    <result column="settlement_time" property="settlementTime" jdbcType="INTEGER" />
+    <result column="expired_time" property="expiredTime" jdbcType="INTEGER" />
+    <result column="cancel_reason" property="cancelReason" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="is_invoice" property="isInvoice" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="invoice_number" property="invoiceNumber" jdbcType="VARCHAR" />
+    <result column="address_id" property="addressId" jdbcType="BIGINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="actual_pay" property="actualPay" jdbcType="VARCHAR" />
+    <result column="order_source" property="orderSource" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="orderList" resultMap="BaseResultMap" parameterType="com.aishidai.app.model.pojo.TradeOrderDO">
+    
+    select * from trade_order
+    WHERE  is_deleted=0
+
+    <if test="status != null">
+      AND  status=#{status}
+    </if>
+
+
+
+
+  </select>
+  <!--&#45;&#45;    limit #{stratRow},#{pageSize}-->
+</mapper>

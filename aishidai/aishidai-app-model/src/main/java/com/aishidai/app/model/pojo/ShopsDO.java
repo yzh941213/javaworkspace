@@ -55,6 +55,8 @@ public class ShopsDO {
 
     private String lnt;
 
+    private Integer isSuppliers;
+
     public Long getShopsId() {
         return shopsId;
     }
@@ -261,5 +263,13 @@ public class ShopsDO {
 
     public void setLnt(String lnt) {
         this.lnt = lnt == null ? null : lnt.trim();
+    }
+
+    public Integer getIsSuppliers() {
+        return isSuppliers;
+    }
+
+    public void setIsSuppliers(Integer isSuppliers) {
+        this.isSuppliers = isSuppliers;
     }
 }

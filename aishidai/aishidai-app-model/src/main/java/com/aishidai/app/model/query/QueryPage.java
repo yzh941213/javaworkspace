@@ -68,11 +68,11 @@ public class QueryPage {
 		this.status = status;
 	}
 
-	public Integer getIsDeleted() {
-		return isDeleted;
-	}
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
 
-	public void setIsDeleted(Integer isDeleted) {
-		this.isDeleted = isDeleted;
-	}
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 }

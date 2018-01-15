@@ -86,7 +86,9 @@
                      <table tableName="users_address"   domainObjectName="UsersAddressDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 
              -->
-            <table tableName="comment"   domainObjectName="CommentDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+            <table tableName="app_panel"   domainObjectName="AppPanelDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+            <table tableName="app_panel_content"   domainObjectName="AppPanelContentDO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
 
 
 

@@ -69,7 +69,7 @@
 	</select>
 
 	<sql id="sql_craftsmenDOList">
-		<if test="isDelete != null">
+		<if test="isDeleted != null">
 			AND is_deleted=#{isDeleted}
 		</if>
 		<if test="distributorId != null">

@@ -3,22 +3,14 @@ package com.aishidai.app.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-
-
-
-
-
-
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.CraftsmenDO;
@@ -38,7 +30,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 
-@Controller
+@RestController
 @RequestMapping("/manage/craftsmen")
 public class CraftsmenController {
 
@@ -56,7 +48,6 @@ public class CraftsmenController {
 	 * 查询详细信息
 	 */
 	@RequestMapping("/queryDetail")
-	@ResponseBody
 	public String queryCraftsmens(
 			@RequestParam(value = "craftsmenId") long craftsmenId) {
 
@@ -73,7 +64,6 @@ public class CraftsmenController {
 						.queryShopsDOById(cc.getShopsId()).getShopsName() : "无");
 				jsonObject.put("type", "shops");
 			}
-
 			jsonObject.put("message", "查询成功");
 			jsonObject.put("success", true);
 			jsonObject.put("data", JSONObject.toJSON(cc));
@@ -85,7 +75,6 @@ public class CraftsmenController {
 	}
 	
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String addCraftsmenDO(CraftsmenDO craftsmenDO,
 			@RequestParam(value = "userId") long userId) {
 
@@ -173,7 +162,6 @@ public class CraftsmenController {
 	
 	
 	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String editCraftsmenDO(CraftsmenDO craftsmenDO) {
 
 		JSONObject jsonObject = new JSONObject();
@@ -231,7 +219,6 @@ public class CraftsmenController {
 	}
 	
 	@RequestMapping(value = { "/editStatus" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String editStatus(@RequestParam("id") Long id,
 			@RequestParam("status") Integer status) {
 
@@ -256,7 +243,6 @@ public class CraftsmenController {
 	}
 
 	@RequestMapping(value = { "/editAudit" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String editAudit(@RequestParam("id") long id,
 			@RequestParam("audit") int audit) {
 
@@ -283,7 +269,6 @@ public class CraftsmenController {
 
 	
 	@RequestMapping(value = { "/remove" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String updateCraftsmenDOIsDeleted(@RequestParam("id") long id,
 			@RequestParam("isDeleted") int isDeleted) {
 
@@ -314,7 +299,6 @@ public class CraftsmenController {
 	//根据登录人不同，查询其下面的手艺人
 	
 	@RequestMapping("/queryCraftsmenDOByRank")
-	@ResponseBody
 	public String queryCraftsmenDOByDistributorId(CraftsmenQuery craftsmenQuery) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -324,28 +308,25 @@ public class CraftsmenController {
 			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
 			//总部查询全部的
 			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
-				CraftsmenQuery query = new CraftsmenQuery();
-				list = craftsmenService.queryCraftsmenDOList(query);
+				list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
 				this.addNameDS(list);
 				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
-						(long)craftsmenService.selectCraftsmenDOListCount(query)));
+						(long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery)));
 			//经销商查询自己下面的
 			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
-				CraftsmenQuery query = new CraftsmenQuery();
-				query.setDistributorId(
+				craftsmenQuery.setDistributorId(
 						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
-				list = craftsmenService.queryCraftsmenDOList(query);
+				list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
 				this.addnameS(list);
 				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
-						(long)craftsmenService.selectCraftsmenDOListCount(query)));
+						(long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery)));
 			//店铺查询属于自己的
 			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 2){
-				CraftsmenQuery query = new CraftsmenQuery();
-				query.setShopsId(
+				craftsmenQuery.setShopsId(
 						shopService.queryShopsDOByUserId(userId).get(0).getShopsId());
-				list = craftsmenService.queryCraftsmenDOList(query);
+				list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
 				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
-						(long)craftsmenService.selectCraftsmenDOListCount(query)));
+						(long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery)));
 			}else{
 				jsonObject.put("message", "您的身份不正确，请核对后重试！");
 				return jsonObject.toString();
@@ -376,7 +357,6 @@ public class CraftsmenController {
 	}
 
 	@RequestMapping(value = { "/queryShopsAndOtherShopsList" })
-	@ResponseBody
 	public String queryShopName(@RequestParam(value = "userId") Long userId) {
 
 		JSONObject jsonObject = new JSONObject();
@@ -414,7 +394,6 @@ public class CraftsmenController {
 	
 
 	@RequestMapping(value = { "/addUserInfo" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String addUserInfo(@RequestParam(value = "craftsmenId") Long craftsmenId,
 			@RequestParam(value = "userName") String userName,
 			@RequestParam(value = "mobile") String mobile,

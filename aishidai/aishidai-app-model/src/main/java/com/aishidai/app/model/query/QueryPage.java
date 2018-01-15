@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 public class QueryPage {
+	
     private String aoData;
 
     public String getAoData() {

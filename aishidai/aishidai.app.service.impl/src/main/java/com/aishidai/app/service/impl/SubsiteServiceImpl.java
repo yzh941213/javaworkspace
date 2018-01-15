@@ -1,7 +1,9 @@
 package com.aishidai.app.service.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.SubsiteDOCustomMapper;
 import com.aishidai.app.dao.SubsiteDOMapper;
@@ -11,7 +13,7 @@ import com.aishidai.app.model.query.SubsiteQuery;
 import com.aishidai.app.service.SubsiteService;
 
 
-
+@Service
 public class SubsiteServiceImpl implements SubsiteService {
 
 	@Autowired

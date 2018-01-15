@@ -24,10 +24,12 @@ public class DistributorServiceImpl implements DistributorService {
     
     public List<DistributorDO> queryDistributorDOList(DistributorQuery query) {
       
-//	    return distributorDOMapper.queryDistributorDOList(query);
-    	return null;
+    	return distributorDOCustomMapper.selectDistributorDOList(query);
     }
-
+    
+    public long queryDistributorDOListCount(DistributorQuery query) {
+		return distributorDOCustomMapper.selectDistributorDOListCount(query);
+	}
     
     public DistributorDO queryDistributorDOById(long id) {
         return distributorDOMapper.selectByPrimaryKey(id);
@@ -35,7 +37,6 @@ public class DistributorServiceImpl implements DistributorService {
 
     
     public boolean editDistributorDO(DistributorDO distributorDO) {
-    	
         return distributorDOMapper.updateByPrimaryKeySelective(distributorDO) > 0;
     }
 
@@ -87,6 +88,4 @@ public class DistributorServiceImpl implements DistributorService {
 			throws Exception {
 		return distributorDOCustomMapper.insertDistributorDO(distributorDO) >0;
 	}
-	
-	
 }

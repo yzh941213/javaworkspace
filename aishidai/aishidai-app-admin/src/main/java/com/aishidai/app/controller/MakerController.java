@@ -5,12 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.DeviceDO;
@@ -30,8 +30,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 
-@Controller
 @RequestMapping("/manage/maker")
+@RestController
 public class MakerController {
 
 	@Autowired
@@ -46,7 +46,6 @@ public class MakerController {
 	private DeviceMakerServiec deviceMakerDOServiec;
 	
 	@RequestMapping("/queryDetail")
-	@ResponseBody
 	public String queryDetail(@RequestParam(value = "makerId") long makerId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -80,7 +79,6 @@ public class MakerController {
 	
 	
 	@RequestMapping("/queryMakerByNameLike")
-	@ResponseBody
 	public String queryMakerByNameLike(
 			@RequestParam(value = "makerName") String makerName,
 			@RequestParam(value="userId") long userId) {
@@ -126,7 +124,6 @@ public class MakerController {
 	
 	
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String saveMakerDO(MakerDO maker,
 			@RequestParam(value = "data", defaultValue = "") String data,
 			@RequestParam(value = "userId", required =true) long userId) {
@@ -211,7 +208,6 @@ public class MakerController {
 	}
 	
 	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String editMaker(MakerDO maker,
 			@RequestParam(value = "data", defaultValue = "") String data,
 			@RequestParam(value = "userId", required = true) long userId) {
@@ -271,7 +267,6 @@ public class MakerController {
 	}
 	
 	@RequestMapping(value = {"/remove" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String updateMakerDOStatus(@RequestParam("makerId") long makerId, 
 			@RequestParam("status") int status) {
 
@@ -297,7 +292,6 @@ public class MakerController {
 	
 	
 	@RequestMapping(value = { "/audit"}, method = RequestMethod.POST)
-	@ResponseBody
 	public String updateShopDOAudit(@RequestParam("makerId") long makerId, 
 									@RequestParam("audit") int audit) {
 
@@ -323,7 +317,6 @@ public class MakerController {
 	
 	
 	@RequestMapping("/queryByDistributorId")
-	@ResponseBody
 	public String queryByDistributorId(
 			@RequestParam(value = "distributorId") long distributorId) {
 		JSONObject jsonObject = new JSONObject();
@@ -343,7 +336,6 @@ public class MakerController {
 	}
 
 	@RequestMapping(value = { "/addUser" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String addUser(
 			@RequestParam(value = "makerId") long makerId,
 			@RequestParam(value = "userName") String userName,
@@ -394,7 +386,6 @@ public class MakerController {
 
 	
 	@RequestMapping("/queryAll")
-	@ResponseBody
 	public String queryMakersAll() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);

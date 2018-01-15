@@ -4,6 +4,7 @@ package com.aishidai.app.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aishidai.app.dao.HqCommissionDOCustomMapper;
 import com.aishidai.app.dao.HqCommissionDOMapper;
@@ -22,13 +23,9 @@ import com.aishidai.app.model.pojo.OtherShopCommissionDO;
 import com.aishidai.app.model.pojo.OtherShopCommissionDOExample;
 import com.aishidai.app.model.pojo.ShopCommissionDO;
 import com.aishidai.app.model.pojo.ShopCommissionDOExample;
-import com.aishidai.app.model.query.HqCommissionQuery;
-import com.aishidai.app.model.query.OtherShopCommissionQuery;
-import com.aishidai.app.model.query.ShopCommissionQuery;
 import com.aishidai.app.service.CommissionService;
-import com.aishidai.app.service.ShopService;
 
-
+@Service
 public class CommissionServiceImpl implements CommissionService {
 
 	@Autowired

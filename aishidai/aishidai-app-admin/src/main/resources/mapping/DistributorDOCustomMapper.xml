@@ -37,4 +37,21 @@
       #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
   </insert>
   
+  <sql id="sql_DistributorDOList">
+	<if test="name != null and name != ''">
+		AND name=#{name}
+	</if>
+	<if test="tel != null and tel != ''">
+		AND tel=#{tel}
+	</if>
+	<if test="city != null and city != ''">
+		AND city=#{city}
+	</if>
+</sql>
+  <select id="selectDistributorDOList">
+  	
+  
+  </select>
+  <select id="selectDistributorDOListCount"></select>
+  
 </mapper>

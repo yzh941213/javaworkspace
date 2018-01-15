@@ -1,27 +1,32 @@
 package com.aishidai.app.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.CraftsmenDOCustom;
 import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.SysUsersDO;
+import com.aishidai.app.model.query.CraftsmenQuery;
+import com.aishidai.app.model.query.DistributorQuery;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.SysUsersRoleService;
 import com.aishidai.app.service.SysUsersService;
 import com.aishidai.app.utils.PasswordHash;
+import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 
-@Controller
+@RestController
 @RequestMapping("/manage/distributor")
 public class DistributorController {
 
@@ -33,7 +38,6 @@ public class DistributorController {
 	private SysUsersRoleService sysUsersRoleService;
 	
 	@RequestMapping("/queryAll")
-	@ResponseBody
 	public String queryDistributorAll() {
 		
 		JSONObject jsonObject = new JSONObject();
@@ -49,19 +53,43 @@ public class DistributorController {
 		return jsonObject.toString();
 	}
 	
+	@GetMapping("/queryAllPage")
+	public String queryDistributorAllPage(DistributorQuery distributorQuery){
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		long userId = distributorQuery.getUserId();
+		try {
+			List<DistributorDO> list = new ArrayList<DistributorDO>();
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				list = distributorService.queryDistributorDOList(distributorQuery);
+				jsonObject.put("data", JsonResult.buildPaging(list, distributorQuery.getsEcho(),
+						(long)distributorService.queryDistributorDOListCount(distributorQuery)));
+				jsonObject.put("success", true);
+				jsonObject.put("message", "查询成功");
+				//经销商查询自己下面的
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				jsonObject.put("message", "查询失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
 	
 	@RequestMapping("/queryByDistributorNameLike")
-	@ResponseBody
 	public String queryDistributorByNameLike(
 			@RequestParam(value = "distributorName") String distributorName) {
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
-			List<DistributorDO> result = distributorService.queryDistributorDOByNameLike(distributorName);
+			List<DistributorDO> list = distributorService.queryDistributorDOByNameLike(distributorName);
 			jsonObject.put("success", true);
 			jsonObject.put("message", "查询成功");
-			jsonObject.put("data", JSONObject.toJSON(result));
+			jsonObject.put("data", JSONObject.toJSON(list));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,7 +99,7 @@ public class DistributorController {
 	
 	
 	/*@RequestMapping("/queryDistributorByNameLikeAndUserId.do")
-	@ResponseBody
+	
 	public String queryDistributorByNameLikeAndUserId(
 			@RequestParam(value = "distributorName") String name,
 			@RequestParam(value = "userId") long userId) {
@@ -115,7 +143,6 @@ public class DistributorController {
 
 	
 	@RequestMapping("/queryDetail")
-	@ResponseBody
 	public String queryDistributors(
 			@RequestParam(value = "distributorId") long distributorId) {
 		JSONObject jsonObject = new JSONObject();
@@ -137,7 +164,6 @@ public class DistributorController {
 	}
 
 	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String editDistributorDO(DistributorDO distributorDO){
 
 		JSONObject jsonObject = new JSONObject();
@@ -162,7 +188,6 @@ public class DistributorController {
 	}
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String addDistributorDO(DistributorDO distributorDO){
 
 		JSONObject jsonObject = new JSONObject();
@@ -191,7 +216,6 @@ public class DistributorController {
 	
 	
 	@RequestMapping(value = { "/remove" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String editDistributorDOStatus(
 			@RequestParam("distributorId") long distributorId,
 			@RequestParam("status") int status) {
@@ -219,7 +243,6 @@ public class DistributorController {
 	
 	
 	@RequestMapping(value = { "/addUser" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String addUser(
 			@RequestParam(value = "id",required =true) long id,
 			@RequestParam(value = "userName",required =true) String userName,

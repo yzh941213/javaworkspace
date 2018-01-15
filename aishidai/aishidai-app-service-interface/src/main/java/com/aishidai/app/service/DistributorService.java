@@ -26,4 +26,6 @@ public interface DistributorService {
 	List<DistributorDO> queryDistributorDOByNameLike(String name)throws Exception;
 
 	boolean insertDistributorDO(DistributorDO distributorDO) throws Exception;
+
+	long queryDistributorDOListCount(DistributorQuery distributorQuery);
 }

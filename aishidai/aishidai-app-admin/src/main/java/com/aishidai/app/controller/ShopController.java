@@ -56,11 +56,12 @@ public class ShopController {
 		SysUsersDO sysUsersDO=(SysUsersDO)httpSession.getAttribute(LoginConstant.USER_SESSION_KEY);
 		if(sysUsersDO!=null){
 			//0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人 5为供应商
-			List<ShopsDO> list = shopService.shopList(queryShop);
 			//如果是总部账号
 			if(sysUsersDO.getGroupId()!=0){
 				queryShop.setSysUserId(sysUsersDO.getUserId());
 			}
+			List<ShopsDO> list = shopService.shopList(queryShop);
+
 			return JsonResult.buildPaging(list, queryShop.getsEcho(), 116l);
 		}else{
 			return JsonResult.buildError(ResultMessage.LOGIN_NO);

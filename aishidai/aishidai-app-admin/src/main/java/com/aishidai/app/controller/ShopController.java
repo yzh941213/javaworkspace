@@ -446,7 +446,6 @@ public class ShopController {
 				return jsonObject.toString();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -470,7 +469,6 @@ public class ShopController {
 				return jsonObject.toString();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		jsonObject.put("success", true);

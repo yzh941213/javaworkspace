@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,50 +39,56 @@ public class ItemSkuContrllor {
         return JsonResult.buildSuccess( itemSkuService.update(itemSkuDO));
     }
 
+    @Transactional
     @PostMapping(value = "add")
     public JsonResult add(String data){
-        SkuData skuData1 =new SkuData();
-        boolean isDel=false;
-        boolean suitIsDel=false;
-        List<JSONObject>  list= (List<JSONObject>) JSONArray.parse(data);
-      //  List<SkuDetailDTO> list=skuData.getSkuDetailList();
-        for (int i=0; i<list.size();i++){
-            JSONObject jsonObject=(JSONObject)JSONObject.parse(list.get(i).toJSONString());
-            List<JSONObject> list1=(List<JSONObject>) JSONArray.parse(jsonObject.get("sizeList").toString());
-            Long itemId=  Long.valueOf(jsonObject.get("itemId")+"");
-            // 删除改颜色 对应的试穿图
-            if(!suitIsDel){
-                suitIsDel=true;
-                itemSuitService.delByItemId(itemId);
-            }
-            // 先进行删除
-            if(!isDel){
-                itemSkuService.delByItemId(itemId);
-                isDel=true;
-            }
-            for (int j=0; j<list1.size();j++){
-                JSONObject jsonObject1=(JSONObject)JSONObject.parse(list1.get(i).toJSONString());
-                ItemSkuDO itemSkuDO=new ItemSkuVO();
-                itemSkuDO.setSizeId(Long.valueOf(jsonObject1.get("sizeId")+""));
-                itemSkuDO.setColorId(Long.valueOf(jsonObject.get("colorId").toString()));
-                itemSkuDO.setPrice(jsonObject.get("price")+"");
-                itemSkuDO.setSalesPrice(jsonObject.get("salesPrice")+"");
-                itemSkuDO.setItemId(itemId);
-                itemSkuDO.setImage(jsonObject.get("image")+"");
-                itemSkuDO.setDescription(jsonObject.get("description")+"");
-                itemSkuDO.setStock(Integer.valueOf(jsonObject1.get("stock")+""));
-                itemSkuDO.setSalseVolume(Integer.valueOf(jsonObject1.get("salseVolume")+""));
-                itemSkuDO.setCreated(new Date());
-                itemSkuDO.setUpdated(new Date());
-                itemSkuService.add(itemSkuDO);
-                String suitImage=jsonObject.get("suit_image")+"";
+        try {
+            SkuData skuData1 =new SkuData();
+            boolean isDel=false;
+            boolean suitIsDel=false;
+            List<JSONObject>  list= (List<JSONObject>) JSONArray.parse(data);
+            //  List<SkuDetailDTO> list=skuData.getSkuDetailList();
+            for (int i=0; i<list.size();i++){
+                JSONObject jsonObject=(JSONObject)JSONObject.parse(list.get(i).toJSONString());
+                List<JSONObject> list1=(List<JSONObject>) JSONArray.parse(jsonObject.get("sizeList").toString());
+                Long itemId=  Long.valueOf(jsonObject.get("itemId")+"");
+                // 删除改颜色 对应的试穿图
+                if(!suitIsDel){
+                    suitIsDel=true;
+                    itemSuitService.delByItemId(itemId);
+                }
+                // 先进行删除
+                if(!isDel){
+                    itemSkuService.delByItemId(itemId);
+                    isDel=true;
+                }
+                for (int j=0; j<list1.size();j++){
+                    JSONObject jsonObject1=(JSONObject)JSONObject.parse(list1.get(i).toJSONString());
+                    ItemSkuDO itemSkuDO=new ItemSkuVO();
+                    itemSkuDO.setSizeId(Long.valueOf(jsonObject1.get("sizeId")+""));
+                    itemSkuDO.setColorId(Long.valueOf(jsonObject.get("colorId").toString()));
+                    itemSkuDO.setPrice(jsonObject.get("price")+"");
+                    itemSkuDO.setSalesPrice(jsonObject.get("salesPrice")+"");
+                    itemSkuDO.setItemId(itemId);
+                    itemSkuDO.setImage(jsonObject.get("image")+"");
+                    itemSkuDO.setDescription(jsonObject.get("description")+"");
+                    itemSkuDO.setStock(Integer.valueOf(jsonObject1.get("stock")+""));
+                    itemSkuDO.setSalseVolume(Integer.valueOf(jsonObject1.get("salseVolume")+""));
+                    itemSkuDO.setCreated(new Date());
+                    itemSkuDO.setUpdated(new Date());
+                    itemSkuDO.setSuitImage(jsonObject.get("suit_image")+"");
+                    itemSkuService.add(itemSkuDO);
+
+                }
+
 
             }
 
-
+            return JsonResult.buildSuccess( true);
+        }catch (Exception e){
+            return JsonResult.buidException(e);
         }
 
-        return JsonResult.buildSuccess( true);
     }
 
     @Autowired

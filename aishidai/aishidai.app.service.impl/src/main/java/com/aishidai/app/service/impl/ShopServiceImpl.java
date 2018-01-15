@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.aishidai.app.dao.ShopsDOCustomMapper;
 import com.aishidai.app.dao.ShopsDOMapper;
 import com.aishidai.app.model.pojo.ShopsDO;
+import com.aishidai.app.model.pojo.ShopsDOCustom;
 import com.aishidai.app.model.pojo.ShopsDOExample;
 import com.aishidai.app.model.query.QueryShop;
 import com.aishidai.app.model.query.ShopsQuery;
@@ -23,8 +24,8 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	private ShopsDOCustomMapper shopsDOCustomMapper;
 	
-	public ShopsDO queryShopsDOById(long id) throws Exception  {
-		return shopsDOMapper.selectByPrimaryKey(id);
+	public ShopsDOCustom queryShopsDOById(long id) throws Exception  {
+		return shopsDOCustomMapper.selectByPrimaryKey(id);
 	}
 
 	
@@ -32,12 +33,6 @@ public class ShopServiceImpl implements ShopService {
 		return shopsDOMapper.updateByPrimaryKeySelective(ShopsDO) > 0;
 	}
 	
-	
-	public List<ShopsDO> queryShopsDOAll(ShopsQuery query) throws Exception  {
-//        return shopsDOMapper.queryShopsDOAll(query);
-        return null;
-	}
-
 	
 	public List<ShopsDO> selectShopBydistributorId(long distributorId)
 			throws Exception {
@@ -79,7 +74,7 @@ public class ShopServiceImpl implements ShopService {
 		if (StringUtils.isNotBlank(shopsDO.getShopsName())) {
 			criteria.andShopsNameLike("%" + shopsDO.getShopsName() + "%");
 		} 
-		criteria.andDeviceIsEqualTo(0);
+		criteria.andDeviceIsEqualTo(1);
 		criteria.andDistributorIdEqualTo(shopsDO.getDistributorId());
 		criteria.andIsDeletedEqualTo(0);
 		return shopsDOMapper.selectByExample(example);
@@ -91,7 +86,7 @@ public class ShopServiceImpl implements ShopService {
 		if (StringUtils.isNotBlank(shopsDO.getShopsName())) {
 			criteria.andShopsNameLike("%" + shopsDO.getShopsName() + "%");
 		} 
-		criteria.andDeviceIsEqualTo(1);
+		criteria.andDeviceIsEqualTo(0);
 		criteria.andDistributorIdEqualTo(shopsDO.getDistributorId());
 		criteria.andIsDeletedEqualTo(0);
 		return shopsDOMapper.selectByExample(example);
@@ -140,33 +135,14 @@ public class ShopServiceImpl implements ShopService {
 		return shopsDOMapper.selectByExample(example);
 	}
 
-
-	public List<ShopsDO> queryOtherShopsDOByDistributorId(ShopsQuery query)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ShopsDOCustom> queryShopsDOList(ShopsQuery query) throws Exception {
+		return shopsDOCustomMapper.selectShopsDOList(query);
 	}
-
-
-	public List<ShopsDO> queryShopsDOByDistributorId(ShopsQuery query)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public long queryShopsDOListCount(ShopsQuery query) {
+		return shopsDOCustomMapper.selectShopsDOListCount(query);
 	}
-
-
-	public List<ShopsDO> queryShopsDOList(ShopsQuery query) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public ShopsDO queryShopsDOByShopsName(String name) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	
 	public List<ShopsDO> queryShopsDOByDeviceId(long deviceId) {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
@@ -184,5 +160,4 @@ public class ShopServiceImpl implements ShopService {
 	public List<ShopsDO> shopList(QueryShop queryShop) {
 		return shopsDOCustomMapper.shopList(queryShop);
 	}
-
 }

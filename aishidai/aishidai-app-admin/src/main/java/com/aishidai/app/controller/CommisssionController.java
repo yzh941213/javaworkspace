@@ -1,6 +1,7 @@
 package com.aishidai.app.controller;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,22 +9,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aishidai.app.model.pojo.HqCommissionDO;
 import com.aishidai.app.model.pojo.MakerCommissionDetailDO;
 import com.aishidai.app.model.pojo.OtherShopCommissionDO;
+import com.aishidai.app.model.pojo.OtherShopCommissionDOCustom;
 import com.aishidai.app.model.pojo.ShopCommissionDO;
+import com.aishidai.app.model.pojo.ShopCommissionDOCustom;
+import com.aishidai.app.model.pojo.ShopsDOCustom;
+import com.aishidai.app.model.query.OtherShopCommissionQuery;
+import com.aishidai.app.model.query.ShopCommissionQuery;
 import com.aishidai.app.service.CommissionService;
 import com.aishidai.app.service.DistributorService;
+import com.aishidai.app.service.ShopService;
 import com.aishidai.app.service.SysUsersService;
+import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONObject;
 
 @RequestMapping(value="/manage/commission")
-@Controller
+@RestController
 public class CommisssionController {
 
 	private static final Logger log = LoggerFactory.getLogger(CommisssionController.class);
@@ -35,14 +45,94 @@ public class CommisssionController {
 	@Autowired
 	private SysUsersService sysUsersService;
 	
-	//两个列表  两个身份    
-	//TODO
+	@GetMapping(value="queryShopsCommissionListByRank")
+	public String queryShopsCommissionListByRank(ShopCommissionQuery query){
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		long userId = query.getUserId();
+		try {
+			List<ShopCommissionDOCustom> list = new ArrayList<ShopCommissionDOCustom>();
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				query.setIsDeleted(0);
+				list = commissionService.queryShopCommissionDOList(query);
+				this.addNameS(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, query.getsEcho(),
+						(long)commissionService.queryShopCommissionDOListCount(query)));
+			//经销商查询自己下面的
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				query.setDistributorId(
+						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
+				query.setIsDeleted(0);
+				list = commissionService.queryShopCommissionDOList(query);
+				this.addNameS(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, query.getsEcho(),
+						(long)commissionService.queryShopCommissionDOListCount(query)));
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				return jsonObject.toString();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		jsonObject.put("success", true);
+		jsonObject.put("message", "查询成功");
+		return jsonObject.toString();
+	}
 	
+	private void addNameS(List<ShopCommissionDOCustom> list) throws Exception {
+		for (ShopCommissionDOCustom bean : list) {
+			bean.setDistributorName(
+					distributorService.queryDistributorDOById(bean.getDistributorId()).getName());
+		}
+	}
+	
+	@GetMapping(value="queryOtherShopsCommissionListByRank")
+	public String queryOtherShopsCommissionListByRank(OtherShopCommissionQuery query){
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		long userId = query.getUserId();
+		try {
+			List<OtherShopCommissionDOCustom> list = new ArrayList<OtherShopCommissionDOCustom>();
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				query.setIsDeleted(0);
+				list = commissionService.queryOtherShopCommissionDOList(query);
+				this.addNameO(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, query.getsEcho(),
+						(long)commissionService.queryOtherShopCommissionDOListCount(query)));
+			//经销商查询自己下面的
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				query.setDistributorId(
+						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
+				query.setIsDeleted(0);
+				list = commissionService.queryOtherShopCommissionDOList(query);
+				this.addNameO(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, query.getsEcho(),
+						(long)commissionService.queryOtherShopCommissionDOListCount(query)));
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				return jsonObject.toString();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		jsonObject.put("success", true);
+		jsonObject.put("message", "查询成功");
+		return jsonObject.toString();
+	}
+	private void addNameO(List<OtherShopCommissionDOCustom> list) throws Exception {
+		for (OtherShopCommissionDOCustom bean : list) {
+			bean.setDistributorName(
+					distributorService.queryDistributorDOById(bean.getDistributorId()).getName());
+		}
+	}
 	/**
 	 * 查询异业店铺分成详情
 	 */
 	@RequestMapping(value = "/queryOtherShopCommissionDetail",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String queryOtherShops(@RequestParam(value = "id") long id) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -70,7 +160,6 @@ public class CommisssionController {
 	 * 查询店铺分成详情.
 	 */
 	@RequestMapping(value = "/queryShopCommissionDetail",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String queryShops(@RequestParam(value = "id") long id) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -84,7 +173,6 @@ public class CommisssionController {
 						commissionService.queryMakerCommissionDOByShopId(scdo.getShopId());
 				jsonObject.put("list", JSONObject.toJSON(list));
 			}
-			
 			jsonObject.put("success", true);
 			jsonObject.put("message", "查询成功");
 			jsonObject.put("data", JSONObject.toJSON(scdo));
@@ -98,7 +186,6 @@ public class CommisssionController {
 	 * 总部查询经销商分成详细
 	 **/
 	@RequestMapping(value = "/hqCommissionDetail",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String queryHqcommission(@RequestParam(value = "id") long id) {
 		
 		JSONObject jsonObject = new JSONObject();
@@ -119,7 +206,6 @@ public class CommisssionController {
 	 *删除异业分成 
 	 **/
 	@RequestMapping(value = "/removeOtherShopCommission",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String removeOtherShopCommission(@RequestParam(value = "id") long id,
 								   @RequestParam(value="isDelete") int isDelete) {
 		JSONObject jsonObject = new JSONObject();
@@ -169,7 +255,6 @@ public class CommisssionController {
 	 *删除店铺分成 
 	 **/
 	@RequestMapping(value = "/removeShopCommission",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String removeShopCommission(@RequestParam(value = "id") long id,
 								   @RequestParam(value="isDelete") int isDelete) {
 		JSONObject jsonObject = new JSONObject();
@@ -217,7 +302,6 @@ public class CommisssionController {
 	 *删除创客分成 
 	 **/
 	@RequestMapping(value = "/removeMakerCommission",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String removeMakerCommission(@RequestParam(value = "id") long id,
 								   @RequestParam(value="isDelete") int isDelete) {
 		JSONObject jsonObject = new JSONObject();
@@ -243,7 +327,6 @@ public class CommisssionController {
 	 * 删除总部分成
 	 **/
 	@RequestMapping(value = "/removeHqCommission",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String removeHqCommission(@RequestParam(value = "id") long id,
 								     @RequestParam(value="isDelete") int isDelete) {
 		JSONObject jsonObject = new JSONObject();
@@ -271,7 +354,7 @@ public class CommisssionController {
 	/**
 	 * 总部添加经销商分成
 	 */
-	@ResponseBody
+	
 	@RequestMapping(value="/addHqCommission" ,method={RequestMethod.GET,RequestMethod.POST})
 	public String addHqCommission(
 			@RequestParam(value = "distributorCommission") int distributorCommission,
@@ -309,7 +392,7 @@ public class CommisssionController {
 	/**
 	 * 添加异业店铺分成
 	 */
-	@ResponseBody
+	
 	@RequestMapping(value="/addOtherShopCommission" ,method={RequestMethod.GET,RequestMethod.POST})
 	public String addOtherShopCommission(
 			@RequestParam(value = "otherShopCommission") int otherShopCommission,
@@ -413,7 +496,7 @@ public class CommisssionController {
 		return jsonObject.toJSONString();
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping(value="/addShopCommission" ,method={RequestMethod.GET,RequestMethod.POST})
 	public String addShopCommission(
 			@RequestParam(value = "makerCommission") int makerCommission,
@@ -504,7 +587,7 @@ public class CommisssionController {
 	/**
 	 * 经销商修改异业店铺的分成
 	 */
-	@ResponseBody
+	
 	@RequestMapping(value="/editOtherShopcommission" ,method={RequestMethod.GET,RequestMethod.POST})
 	public String editOtherShopcommission(
 			@RequestParam(value = "id") long id,
@@ -586,7 +669,7 @@ public class CommisssionController {
 	 * 修改店铺的分成
 	 * @return
 	 */
-	@ResponseBody
+	
 	@RequestMapping(value="/editShopcommission" ,method={RequestMethod.GET,RequestMethod.POST})
 	public String editShopcommission(
 			@RequestParam(value = "id") long id,
@@ -669,7 +752,7 @@ public class CommisssionController {
 	 * 总部修改经销商分成
 	 * @return
 	 */
-	@ResponseBody
+	
 	@RequestMapping(value="/editHqCommission" ,method={RequestMethod.GET,RequestMethod.POST})
 	public String editHqCommission(
 			@RequestParam(value = "id") long id,

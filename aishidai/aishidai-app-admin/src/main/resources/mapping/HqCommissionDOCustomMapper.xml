@@ -29,5 +29,33 @@
       #{isDelete,jdbcType=INTEGER})
   </insert>
  
- 
+ <sql id="sql_hqCommissionDOList">
+    <if test="isDelete != null">
+    	and is_delete = #{isDelete}
+    </if>
+  	<if test="distributorId != null">
+  		and distributor_id = #{distributorId}
+  	</if>
+  </sql>
+  
+  <select id="selectHqCommissionDOList" resultMap="BaseResultMap"
+  		parameterType="com.aishidai.app.model.query.HqCommissionQuery">
+  		select * from hq_commission
+  		<where>
+  			<include refid="sql_hqCommissionDOList"></include>
+  			<if test="aoData != null and aoData !=''">
+            	limit #{stratRow},#{pageSize}
+            </if>
+  		</where>
+  </select>
+ 		
+ 		
+  <select id="selectHqCommissionDOListCount" parameterType="com.aishidai.app.model.query.HqCommissionQuery"
+  	resultType="long" >
+  		select count(*) from hq_commission
+  		<where>
+  		   <include refid="sql_hqCommissionDOList"></include>
+  		</where>
+  </select>
+  
 </mapper>

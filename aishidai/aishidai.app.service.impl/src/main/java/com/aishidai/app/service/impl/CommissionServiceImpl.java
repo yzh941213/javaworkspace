@@ -16,13 +16,19 @@ import com.aishidai.app.dao.OtherShopCommissionDOMapper;
 import com.aishidai.app.dao.ShopCommissionDOCustomMapper;
 import com.aishidai.app.dao.ShopCommissionDOMapper;
 import com.aishidai.app.model.pojo.HqCommissionDO;
+import com.aishidai.app.model.pojo.HqCommissionDOCustom;
 import com.aishidai.app.model.pojo.MakerCommissionDetailDO;
 import com.aishidai.app.model.pojo.MakerCommissionDetailDOExample;
 import com.aishidai.app.model.pojo.MakerDO;
 import com.aishidai.app.model.pojo.OtherShopCommissionDO;
+import com.aishidai.app.model.pojo.OtherShopCommissionDOCustom;
 import com.aishidai.app.model.pojo.OtherShopCommissionDOExample;
 import com.aishidai.app.model.pojo.ShopCommissionDO;
+import com.aishidai.app.model.pojo.ShopCommissionDOCustom;
 import com.aishidai.app.model.pojo.ShopCommissionDOExample;
+import com.aishidai.app.model.query.HqCommissionQuery;
+import com.aishidai.app.model.query.OtherShopCommissionQuery;
+import com.aishidai.app.model.query.ShopCommissionQuery;
 import com.aishidai.app.service.CommissionService;
 
 @Service
@@ -214,68 +220,28 @@ public class CommissionServiceImpl implements CommissionService {
 	}
 	
 	
-	
-
-	
-	/*public List<ShopCommissionDO> queryShopCommissionList(
-			ShopCommissionQuery query) throws Exception {
-		List<ShopCommissionDO> result = commissionDAO.selectShopCommissionDOList(query);
-		return result;
-	}
-	public int queryShopCommissionCount(ShopCommissionQuery query)
-			throws Exception {
-		return commissionDAO.selectShopCommissionCount(query);
-	}
-
-	
-	public List<OtherShopCommissionDO> queryOtherShopCommissionList(
-			OtherShopCommissionQuery query) throws Exception {
-		List<OtherShopCommissionDO> result = commissionDAO.selectOtherShopCommissionDOList(query);
-		return result;
-	}
-	public int queryOtherShopCommissionCount(OtherShopCommissionQuery query)
-			throws Exception {
-		return commissionDAO.selectOtherShopCommissionCount(query);
-	}
-	
-	
-	
-	
-	
-	public List<ShopCommissionDO> queryShopCommissionListbByHq(
-			ShopCommissionQuery query) throws Exception {
-		return commissionDAO.selectShopCommissionListbByHq(query);
-	}
-	public int queryShopCommissionCountByHq(ShopCommissionQuery query)
-			throws Exception {
-		return commissionDAO.selectShopCommissionCountByHq(query);
-	}
-
-	
-	
-	
-	
-	public List<OtherShopCommissionDO> queryOtherShopCommissionListByHq(
-			OtherShopCommissionQuery query) throws Exception {
-		return commissionDAO.selectOtherShopCommissionListByHq(query);
-	}
-	public int queryOtherShopCommissionCountByHq(OtherShopCommissionQuery query)
-			throws Exception {
-		return commissionDAO.selectOtherShopCommissionCountByHq(query);
-	}
-	
-	
-	
-	
-	public List<OtherShopCommissionDO> queryHqCommissionList(
+	public List<HqCommissionDOCustom> queryHqCommissionList(
 			HqCommissionQuery query) throws Exception {
-		
-		return commissionDAO.selectHqCommissionList(query);
+		return hqCommissionDOCustomMapper.selectHqCommissionDOList(query);
 	}
-	public int queryHqCommissionCount(HqCommissionQuery query) throws Exception {
-		
-		return commissionDAO.selectHqCommissionListCount(query);
-	}*/
+	public long queryHqCommissionCount(HqCommissionQuery query) throws Exception {
+		return hqCommissionDOCustomMapper.selectHqCommissionDOListCount(query);
+	}
 	
+	public List<ShopCommissionDOCustom> queryShopCommissionDOList(
+			ShopCommissionQuery query) {
+		return shopCommissionDOCustomMapper.selectShopCommissionDOList(query);
+	}
+	public long queryShopCommissionDOListCount(ShopCommissionQuery query) {
+		return shopCommissionDOCustomMapper.selectShopCommissionDOListCount(query);
+	}
+	
+	public List<OtherShopCommissionDOCustom> queryOtherShopCommissionDOList(
+			OtherShopCommissionQuery query) {
+		return otherShopCommissionDOCustomMapper.selectOtherShopCommissionDOList(query);
+	}
+	public long queryOtherShopCommissionDOListCount(OtherShopCommissionQuery query) {
+		return otherShopCommissionDOCustomMapper.selectOtherShopCommissionDOListCount(query);
+	}
 
 }

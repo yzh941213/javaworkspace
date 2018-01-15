@@ -3,9 +3,12 @@ package com.aishidai.app.service;
 import java.util.List;
 
 import com.aishidai.app.model.pojo.HqCommissionDO;
+import com.aishidai.app.model.pojo.HqCommissionDOCustom;
 import com.aishidai.app.model.pojo.MakerCommissionDetailDO;
 import com.aishidai.app.model.pojo.OtherShopCommissionDO;
+import com.aishidai.app.model.pojo.OtherShopCommissionDOCustom;
 import com.aishidai.app.model.pojo.ShopCommissionDO;
+import com.aishidai.app.model.pojo.ShopCommissionDOCustom;
 import com.aishidai.app.model.query.HqCommissionQuery;
 import com.aishidai.app.model.query.OtherShopCommissionQuery;
 import com.aishidai.app.model.query.ShopCommissionQuery;
@@ -13,56 +16,6 @@ import com.aishidai.app.model.query.ShopCommissionQuery;
 
 public interface CommissionService {
 
-	
-	/*List<ShopCommissionDO> queryShopCommissionList(ShopCommissionQuery query)throws Exception;
-	
-	int queryShopCommissionCount(ShopCommissionQuery query)throws Exception;
-	
-	
-	List<OtherShopCommissionDO> queryOtherShopCommissionList(OtherShopCommissionQuery query) throws Exception;
-	
-	int queryOtherShopCommissionCount(OtherShopCommissionQuery query)throws Exception;
-	
-	
-	List<OtherShopCommissionDO> queryHqCommissionList(HqCommissionQuery query) throws Exception;
-	
-	int queryHqCommissionCount(HqCommissionQuery query) throws Exception;
-	
-	
-	List<ShopCommissionDO> queryShopCommissionListbByHq(ShopCommissionQuery query) throws Exception;
-	
-	int queryShopCommissionCountByHq(ShopCommissionQuery query) throws Exception;
-	
-	
-	List<OtherShopCommissionDO> queryOtherShopCommissionListByHq(OtherShopCommissionQuery query) throws Exception;
-	
-	int queryOtherShopCommissionCountByHq(OtherShopCommissionQuery query) throws Exception;
-	
-	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	List<MakerCommissionDetailDO> queryMakerCommissionDOByShopId(long shopsId) throws Exception;
 	
 	HqCommissionDO queryHqCommissionDOById(long id) throws Exception;
@@ -98,4 +51,16 @@ public interface CommissionService {
 	int removeMakerCommissionDetailDO(long id) throws Exception;
 
 	ShopCommissionDO queryShopCommissionDOByShopId(long shopId);
+	
+
+	List<ShopCommissionDOCustom> queryShopCommissionDOList(ShopCommissionQuery query);
+
+	long queryShopCommissionDOListCount(ShopCommissionQuery query);
+	
+	public List<OtherShopCommissionDOCustom> queryOtherShopCommissionDOList(OtherShopCommissionQuery query);
+	public long queryOtherShopCommissionDOListCount(OtherShopCommissionQuery query);
+	
+	List<HqCommissionDOCustom> queryHqCommissionList(HqCommissionQuery query) throws Exception;
+	
+	long queryHqCommissionCount(HqCommissionQuery query) throws Exception;
 }

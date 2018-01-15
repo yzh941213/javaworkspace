@@ -8,19 +8,19 @@ import com.aishidai.app.utils.JniInterface;
 import com.alibaba.fastjson.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-@Controller
 @RequestMapping("/manager/role")
+@RestController
 public class RoleController {
 
     @Autowired
@@ -41,7 +41,6 @@ public class RoleController {
     
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    @ResponseBody
     public String addRoleDO(@RequestParam(value = "name", required = true)String name,
                             @RequestParam(value = "description", defaultValue = "")String description,
                             @RequestParam(value = "userId", required = true)long userId,
@@ -78,10 +77,23 @@ public class RoleController {
         return jsonObject.toString();
     }
     
+	@GetMapping("/queryDetail")
+	public String queryDetail(@RequestParam(value = "id",required =true) long id) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		try {
+			 RoleDO rdo = roleService.queryByPrimaryKey(id);
+			 jsonObject.put("data", rdo);
+		     jsonObject.put("message", "操作成功");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
     
     
     @RequestMapping(value = {"/update"}, method = RequestMethod.POST)
-    @ResponseBody
     public String updateRoleDO( @RequestParam(value = "id",required = true)long id,
                                 @RequestParam(value = "name")String name,
                                 @RequestParam(value = "userId", required = true)long userId,
@@ -115,13 +127,10 @@ public class RoleController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       
-        
         return jsonObject.toString();
     }
     
     @RequestMapping(value = {"/remove"})
-    @ResponseBody
     public String remove(@RequestParam(value = "id",required = true)long id){
 		
     	 JSONObject jsonObject = new JSONObject();
@@ -148,7 +157,6 @@ public class RoleController {
     }
     
     @RequestMapping(value = "/queryList", method = RequestMethod.GET)
-    @ResponseBody
     public String queryRoleDO() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("success", false);
@@ -169,7 +177,6 @@ public class RoleController {
     
     
     @RequestMapping(value="/model/path", method= RequestMethod.GET)
-    @ResponseBody
     public synchronized String execute(@RequestParam("path") String path,
 							    		@RequestParam("type") String type,
 							    		@RequestParam("colourNumber") int colourNumber,

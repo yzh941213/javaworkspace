@@ -45,7 +45,7 @@
 		shop_hours_close, is_deleted, services,
 		hot, services_type, device_id,
 		device_is, audit, star,
-		lat, lnt)
+		lat, lnt,is_suppliers)
 		values (#{distributorId,jdbcType=BIGINT}, #{shopsName,jdbcType=VARCHAR},
 		#{introduce,jdbcType=VARCHAR}, #{shopsUrl,jdbcType=VARCHAR},
 		#{telephone,jdbcType=VARCHAR},
@@ -58,8 +58,9 @@
 		#{hot,jdbcType=INTEGER}, #{servicesType,jdbcType=VARCHAR}, #{deviceId,jdbcType=BIGINT},
 		#{deviceIs,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER},
 		#{star,jdbcType=INTEGER},
-		#{lat,jdbcType=VARCHAR}, #{lnt,jdbcType=VARCHAR})
+		#{lat,jdbcType=VARCHAR}, #{lnt,jdbcType=VARCHAR}, #{isSuppliers,jdbcType=INTEGER})
 	</insert>
+	
 	
 	
    <select id="shopList" parameterType="com.aishidai.app.model.query.QueryShop" resultMap="BaseResultMap">
@@ -98,5 +99,54 @@
       </if>
 
 
+  </select>
+  
+  <sql id="sql_shopsDOList">
+  	<if test="distributorId != null">
+  		and distributor_id = #{distributorId}
+  	</if>
+  	<if test="shopsName != null and shopsName !=''">
+  		and shops_name = #{shopsName}
+  	</if>
+  	<if test="isSuppliers != null">
+  		and is_suppliers = #{isSuppliers}
+  	</if>
+  	<if test="deviceIs != null and deviceIs !=''">
+  		and device_is = #{deviceIs}
+  	</if>
+  	<if test="telephone != null and telephone !=''">
+  	    and elephone = #{telephone}
+  	</if>
+  	<if test="hot != null">
+  		and hot = #{hot}
+  	</if>	
+  	<if test="services != null and services !=''">
+  		and services like #{services}
+  	</if>
+    <if test="servicesType != null and servicesType !=''">
+  		and services_type like #{servicesType}
+  	</if>
+  </sql>
+  
+  <select id="selectShopsDOList" resultMap="BaseResultMap" 
+  	      parameterType="com.aishidai.app.model.query.ShopsQuery">
+      select * from shops
+      <where>
+      	<include refid="sql_shopsDOList"></include>
+      	<if test="aoData != null and aoData !=''">
+            limit #{stratRow},#{pageSize}
+        </if>
+      </where>
+  </select>
+  
+  <select id="selectShopsDOListCount" resultType="long">
+      select * from shops
+      <where>
+      	<include refid="sql_shopsDOList"></include>
+      </where>
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="long">
+  	 select * from shops where shops_id = #{shops_id}
   </select>
 </mapper>

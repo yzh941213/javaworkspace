@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aishidai.app.model.custom.po.Result;
-import com.aishidai.app.model.pojo.CraftsmenDOCustom;
 import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.SysUsersDO;
-import com.aishidai.app.model.query.CraftsmenQuery;
 import com.aishidai.app.model.query.DistributorQuery;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.SysUsersRoleService;
@@ -63,6 +61,7 @@ public class DistributorController {
 			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
 			//总部查询全部的
 			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				distributorQuery.setStatus(0);
 				list = distributorService.queryDistributorDOList(distributorQuery);
 				jsonObject.put("data", JsonResult.buildPaging(list, distributorQuery.getsEcho(),
 						(long)distributorService.queryDistributorDOListCount(distributorQuery)));

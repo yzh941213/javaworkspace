@@ -37,7 +37,11 @@
       #{updated,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
   </insert>
   
-  <sql id="sql_DistributorDOList">
+  <sql id="sql_distributorDOList">
+  
+    <if test="status != null">
+		AND status=#{status}
+	</if>
 	<if test="name != null and name != ''">
 		AND name=#{name}
 	</if>
@@ -47,11 +51,26 @@
 	<if test="city != null and city != ''">
 		AND city=#{city}
 	</if>
-</sql>
-  <select id="selectDistributorDOList">
-  	
+	
+  </sql>
   
+  <select id="selectDistributorDOList" resultMap="BaseResultMap" 
+  		  parameterType="com.aishidai.app.model.query.DistributorQuery">
+  	select * from distributor
+  	<where>
+  		<include refid="sql_distributorDOList"></include>
+  		<if test="aoData != null and aoData !=''">
+            limit #{stratRow},#{pageSize}
+        </if>
+  	</where>
   </select>
-  <select id="selectDistributorDOListCount"></select>
+  
+  <select id="selectDistributorDOListCount" resultType="long" 
+  		  parameterType="com.aishidai.app.model.query.DistributorQuery">
+  	select count(*) from distributor 
+  	<where>
+  		<include refid="sql_distributorDOList"></include>
+  	</where>
+  </select>
   
 </mapper>

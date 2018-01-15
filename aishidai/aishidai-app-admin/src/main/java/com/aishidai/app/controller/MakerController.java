@@ -6,13 +6,20 @@ import java.util.List;
 
 
 
+
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.pojo.CraftsmenDOCustom;
 import com.aishidai.app.model.pojo.DeviceDO;
 import com.aishidai.app.model.pojo.DeviceDOCustom;
 import com.aishidai.app.model.pojo.DeviceMakerDO;
@@ -20,12 +27,14 @@ import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.MakerDO;
 import com.aishidai.app.model.pojo.MakerDOCustom;
 import com.aishidai.app.model.pojo.SysUsersDO;
+import com.aishidai.app.model.query.MakerQuery;
 import com.aishidai.app.service.DeviceMakerServiec;
 import com.aishidai.app.service.DeviceService;
 import com.aishidai.app.service.DistributorService;
 import com.aishidai.app.service.MakerService;
 import com.aishidai.app.service.SysUsersService;
 import com.aishidai.app.utils.PasswordHash;
+import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -394,10 +403,53 @@ public class MakerController {
 			jsonObject.put("success", true);
 			jsonObject.put("data", JSONArray.toJSON(list));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jsonObject.toString();
 	}
-
+	
+	@GetMapping(value="queryMakerListByRank")
+	public String queryMakerListByRank(MakerQuery makerQuery){
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		long userId = makerQuery.getUserId();
+		try {
+			List<MakerDOCustom> list = new ArrayList<MakerDOCustom>();
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				makerQuery.setStatus(0);
+				list = makerService.queryMakerDOList(makerQuery);
+				this.addName(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, makerQuery.getsEcho(),
+						(long)makerService.queryMakerDOListCount(makerQuery)));
+			//经销商查询自己下面的
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				makerQuery.setDistributorId(
+						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
+				makerQuery.setStatus(0);
+				list = makerService.queryMakerDOList(makerQuery);
+				this.addName(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, makerQuery.getsEcho(),
+						(long)makerService.queryMakerDOListCount(makerQuery)));
+			
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				return jsonObject.toString();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		jsonObject.put("success", true);
+		jsonObject.put("message", "查询成功");
+		return jsonObject.toString();
+	}
+	
+	private void addName(List<MakerDOCustom> list) throws Exception {
+		//将经销商的名称设置其中
+		for (MakerDOCustom makerDOCustom : list) {
+			distributorService.queryDistributorDOById(makerDOCustom.getDistributorId());
+			makerDOCustom.setDistributorName(distributorService.queryDistributorDOById(makerDOCustom.getDistributorId()).getName());
+		}
+	}
 }

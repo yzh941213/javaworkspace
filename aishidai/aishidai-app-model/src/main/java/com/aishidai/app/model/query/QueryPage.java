@@ -6,7 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 public class QueryPage {
 	
     private String aoData;
-
+    private Integer status;
+    private Integer isDeleted;
+    
+    
     public String getAoData() {
         return aoData;
     }
@@ -56,4 +59,20 @@ public class QueryPage {
             }
         }
     }
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Integer isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 }

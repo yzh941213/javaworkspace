@@ -1,24 +1,31 @@
 package com.aishidai.app.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.aishidai.app.common.LoginConstant;
-import com.aishidai.app.model.message.ResultMessage;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.aishidai.app.common.LoginConstant;
 import com.aishidai.app.model.custom.po.Result;
+import com.aishidai.app.model.message.ResultMessage;
 import com.aishidai.app.model.pojo.DeviceDO;
 import com.aishidai.app.model.pojo.DistributorDO;
 import com.aishidai.app.model.pojo.ShopsDO;
+import com.aishidai.app.model.pojo.ShopsDOCustom;
 import com.aishidai.app.model.pojo.SysUsersDO;
 import com.aishidai.app.model.query.QueryShop;
+import com.aishidai.app.model.query.ShopsQuery;
 import com.aishidai.app.service.AttributeService;
 import com.aishidai.app.service.DeviceService;
 import com.aishidai.app.service.DistributorService;
@@ -30,9 +37,7 @@ import com.aishidai.app.utils.PasswordHash;
 import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONObject;
 
-import javax.servlet.http.HttpSession;
-
-@Controller
+@RestController
 @RequestMapping("/manage/shops")
 public class ShopController {
 
@@ -70,30 +75,78 @@ public class ShopController {
 	}
 	
 	
+	//查询店铺表的表
+	@GetMapping(value="queryShopsListByRank")
+	public String queryShopsListByRank(ShopsQuery shopsQuery){
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", false);
+		long userId = shopsQuery.getUserId();
+		try {
+			List<ShopsDOCustom> list = new ArrayList<ShopsDOCustom>();
+			//先判断是否是  // 0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人
+			//总部查询全部的
+			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				shopsQuery.setIsDeleted(0);
+				list = shopService.queryShopsDOList(shopsQuery);
+				this.addName(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, shopsQuery.getsEcho(),
+						(long)shopService.queryShopsDOListCount(shopsQuery)));
+			//经销商查询自己下面的
+			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
+				shopsQuery.setDistributorId(
+						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
+				shopsQuery.setIsDeleted(0);
+				list = shopService.queryShopsDOList(shopsQuery);
+				this.addName(list);
+				jsonObject.put("data", JsonResult.buildPaging(list, shopsQuery.getsEcho(),
+						(long)shopService.queryShopsDOListCount(shopsQuery)));
+			}else{
+				jsonObject.put("message", "您的身份不正确，请核对后重试！");
+				return jsonObject.toString();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		jsonObject.put("success", true);
+		jsonObject.put("message", "查询成功");
+		return jsonObject.toString();
+	}
 	
+	private void addName(List<ShopsDOCustom> list) throws Exception {
+		for (ShopsDOCustom shopsDOCustom : list) {
+			shopsDOCustom.setDistributorName(
+					distributorService.queryDistributorDOById(shopsDOCustom.getDistributorId()).getName());
+		}
+	}
+
+
 	/**
 	 * 查询店铺详情
 	 */
 	@RequestMapping(value = "/queryDetail",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
 	public String queryShops(@RequestParam(value = "shopsId") long shopsId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
-			ShopsDO shopsDO = shopService.queryShopsDOById(shopsId);
-			if (shopsDO.getDeviceIs() == 0) {
-				long deviceId = shopsDO.getDeviceId();//得到设备的ID号
-		        if (deviceId != 0) {
-		          DeviceDO device = deviceService.queryDeviceDOById(deviceId);
-		          jsonObject.put("deviceNum", device.getProductNo());
-		        }
+			ShopsDOCustom entity = shopService.queryShopsDOById(shopsId);
+			entity.setDistributorName(
+					distributorService.queryDistributorDOById(entity.getDistributorId()).getName());
+			if (entity.getDeviceIs() == 0) {
+				long deviceId = entity.getDeviceId();//得到设备的ID号
+	            DeviceDO device = deviceService.queryDeviceDOById(deviceId);
+	            if (device == null) {
+	            	  entity.setDeviceNum("无");
+				}else{
+					  entity.setDeviceNum(device.getProductNo());
+				}
 			}
 			jsonObject.put("success", true);
 			jsonObject.put("message", "查询成功");
-			jsonObject.put("data", JSONObject.toJSON(shopsDO));
+			jsonObject.put("data", entity);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			jsonObject.put("message", "查询失败");
 		}
 		return jsonObject.toString();
 	}
@@ -102,7 +155,6 @@ public class ShopController {
 	 * 用户根据店铺名称模糊查询，这是总部使用的(仅用于店铺)
 	 */
 	@RequestMapping("/queryByNameHqSNLike")
-	@ResponseBody
 	public String queryByNameHqSNLike(@RequestParam(value = "name",required = true) String name){
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -122,7 +174,6 @@ public class ShopController {
 	 * 用户根据店铺名称模糊查询，这是总部使用的(仅用于异业店铺)
 	 */
 	@RequestMapping("/queryByNameHqOSNLike")
-	@ResponseBody
 	public String queryByNameHqOSNLike(@RequestParam(value = "name",required = true) String name){
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -142,7 +193,6 @@ public class ShopController {
 	 * 用户根据店铺名称模糊查询,这是经销商使用的(仅用于店铺)
 	 */
 	@RequestMapping("/queryByNameSNLike")
-	@ResponseBody
 	public String queryByNameSNLike(@RequestParam(value = "name") String name,
 			@RequestParam(value = "userId") long userId){
 		JSONObject jsonObject = new JSONObject();
@@ -172,7 +222,6 @@ public class ShopController {
 	 * 用户根据异业店铺名称模糊查询，这是经销商使用的
 	 */
 	@RequestMapping("/queryByNameOSNLike")
-	@ResponseBody
 	public String queryByNameOSNLike(
 				@RequestParam(value = "name") String name,
 				@RequestParam(value = "userId") Long userId){
@@ -203,7 +252,6 @@ public class ShopController {
 	 *根据商铺对应的登录用户ID,查询商铺信息
 	 */
 	@RequestMapping("/queryShopByUserId")
-	@ResponseBody
 	public String queryShopByUserId(@RequestParam(value = "userId") long userId){
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
@@ -225,7 +273,6 @@ public class ShopController {
 	
 	
 	@RequestMapping(value = {"/save"}, method = RequestMethod.POST)
-	@ResponseBody
 	public String addShopsDO(ShopsDO shopsDO,
 				@RequestParam(value = "userId", required =true) long userId) {
 		
@@ -254,6 +301,7 @@ public class ShopController {
 					shopsDO.setCreated(new Date());
 					shopsDO.setUpdated(new Date());
 					shopsDO.setIsDeleted(0);
+					shopsDO.setAudit(0);
 					if (shopsDO.getShopsUrl() != null
 							&& !"".equals(shopsDO.getShopsUrl())) {
 						shopsDO.setShopsUrl(PhotoUtil.addPhoto(shopsDO
@@ -277,6 +325,7 @@ public class ShopController {
 				shopsDO.setCreated(new Date());
 				shopsDO.setUpdated(new Date());
 				shopsDO.setIsDeleted(0);
+				shopsDO.setAudit(0);
 				shopsDO.setDistributorId(userId);
 
 				if (shopsDO.getShopsUrl() != null
@@ -307,7 +356,6 @@ public class ShopController {
 
 	
 	@RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
-	@ResponseBody
 	public String editShopsDO(ShopsDO shopsDO,
 			@RequestParam(value = "userId", required =true) long userId){
 		
@@ -383,7 +431,6 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value = { "/audit"}, method = RequestMethod.POST)
-	@ResponseBody
 	public String updateShopDOAudit(@RequestParam("shopsId") long shopsId, 
 									@RequestParam("audit") int audit) {
 
@@ -409,7 +456,6 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value = { "/remove" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String removeShopDODeleted(@RequestParam("shopsId") long shopsId,
 			@RequestParam("isDeleted") int isDeleted) {
 
@@ -433,7 +479,6 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value = { "/addUser" }, method = RequestMethod.POST)
-	@ResponseBody
 	public String addUser(@RequestParam(value = "shopsId") long shopsId,
 			@RequestParam(value = "userName") String userName,
 			@RequestParam(value = "mobile") String mobile,

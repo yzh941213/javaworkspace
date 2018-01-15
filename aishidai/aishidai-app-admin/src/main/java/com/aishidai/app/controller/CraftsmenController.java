@@ -309,6 +309,7 @@ public class CraftsmenController {
 			//总部查询全部的
 			if (sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
 				list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
+				craftsmenQuery.setIsDeleted(0);
 				this.addNameDS(list);
 				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
 						(long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery)));
@@ -316,14 +317,16 @@ public class CraftsmenController {
 			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
 				craftsmenQuery.setDistributorId(
 						distributorService.selectDistributorDOByUserId(userId).get(0).getId());
+				craftsmenQuery.setIsDeleted(0);
 				list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
-				this.addnameS(list);
+				this.addNameS(list);
 				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
 						(long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery)));
 			//店铺查询属于自己的
 			}else if(sysUsersService.queryByPrimaryKey(userId).getGroupId() == 2){
 				craftsmenQuery.setShopsId(
 						shopService.queryShopsDOByUserId(userId).get(0).getShopsId());
+				craftsmenQuery.setIsDeleted(0);
 				list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
 				jsonObject.put("data", JsonResult.buildPaging(list, craftsmenQuery.getsEcho(),
 						(long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery)));
@@ -339,7 +342,7 @@ public class CraftsmenController {
 		return jsonObject.toString();
 	}
 	
-	private void addnameS(List<CraftsmenDOCustom> list) throws Exception {
+	private void addNameS(List<CraftsmenDOCustom> list) throws Exception {
 		for (CraftsmenDOCustom cdoc : list) {
 			cdoc.setDistributorName(shopService.queryShopsDOById(cdoc.getShopsId()) 
 					== null?"无":shopService.queryShopsDOById(cdoc.getShopsId()).getShopsName());

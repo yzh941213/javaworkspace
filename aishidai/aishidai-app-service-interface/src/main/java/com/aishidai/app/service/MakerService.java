@@ -13,7 +13,7 @@ import com.aishidai.app.model.query.MakerQuery;
 @Service
 public interface MakerService {
 
-	 List<MakerDO> queryMakerDOList(MakerQuery query)throws Exception;
+	 List<MakerDOCustom> queryMakerDOList(MakerQuery query)throws Exception;
 
 	 MakerDOCustom queryMakerDOById(long makerId)throws Exception;
 
@@ -32,4 +32,6 @@ public interface MakerService {
 	 long insertMaker(MakerDO MakerDO);
 
 	 boolean editDeviceMaker(List<DeviceMakerDO> list, long userId, long id);
+
+	 long queryMakerDOListCount(MakerQuery makerQuery);
 }

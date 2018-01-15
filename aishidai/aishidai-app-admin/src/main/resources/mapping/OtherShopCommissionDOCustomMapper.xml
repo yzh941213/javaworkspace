@@ -43,4 +43,38 @@
       )
   </insert>
   
+  <sql id="sql_otherShopCommissionDOList">
+    <if test="isDelete != null">
+    	and is_delete = #{isDelete}
+    </if>
+  	<if test="distributorId != null">
+  		and distributor_id = #{distributorId}
+  	</if>
+  	<if test="otherShopId != null">
+  		and other_shop_id = #{otherShopId}
+  	</if>
+  	<if test="type != null">
+  		and type = #{type}
+  	</if>
+  </sql>
+  <select id="selectOtherShopCommissionDOList" resultMap="BaseResultMap"
+  		parameterType="com.aishidai.app.model.query.OtherShopCommissionQuery">
+  		select * from other_shop_commission
+  		<where>
+  			<include refid="sql_otherShopCommissionDOList"></include>
+  			<if test="aoData != null and aoData !=''">
+            	limit #{stratRow},#{pageSize}
+            </if>
+  		</where>
+  </select>
+ 		
+ 		
+  <select id="selectOtherShopCommissionDOListCount" parameterType="com.aishidai.app.model.query.OtherShopCommissionQuery"
+  	resultType="long" >
+  		select count(*) from other_shop_commission
+  		<where>
+  		   <include refid="sql_otherShopCommissionDOList"></include>
+  		</where>
+  </select>
+  
 </mapper>

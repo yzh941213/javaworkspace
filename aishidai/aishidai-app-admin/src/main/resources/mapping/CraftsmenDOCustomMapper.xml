@@ -68,32 +68,36 @@
 		select * from craftsmen where id = #{id}
 	</select>
 
-	<sql id="sql_CraftsmenDOList">
-		<if test="distributorId != null and distributorId != ''">
-			AND distributor_id=#{distributor_id}
+	<sql id="sql_craftsmenDOList">
+		<if test="isDelete != null">
+			AND is_delete=#{isDelete}
 		</if>
-		<if test="shopsId != null and shopsId != ''">
-			AND shops_id=#{shops_id}
+		<if test="distributorId != null">
+			AND distributor_id=#{distributorId}
+		</if>
+		<if test="shopsId != null">
+			AND shops_id=#{shopsId}
 		</if>
 	</sql>
 
 
 	<select id="selectCraftsmenDOList" parameterType="com.aishidai.app.model.query.CraftsmenQuery" 
 			resultMap="BaseResultMap">
-		select * from craftsmen where is_deleted = 0 and  
+		select * from craftsmen 
 		<where>
-			<include refid="sql_CraftsmenDOList"></include>
+			<include refid="sql_craftsmenDOList"></include>
+			<if test="aoData != null and aoData !=''">
+           		limit #{stratRow},#{pageSize}
+            </if>
 		</where>	
-        limit #{stratRow},#{pageSize}
 	</select>
 	
 	<select id="selectCraftsmenDOListCount"  parameterType="com.aishidai.app.model.query.CraftsmenQuery" 
 	 		resultType="int">
-	 	select count(*) from craftsmen where is_deleted = 0 and  
+	 	select count(*) from craftsmen 
 		<where>
-			<include refid="sql_CraftsmenDOList"></include>
+			<include refid="sql_craftsmenDOList"></include>
 		</where>
 	 </select>
-
 
 </mapper>

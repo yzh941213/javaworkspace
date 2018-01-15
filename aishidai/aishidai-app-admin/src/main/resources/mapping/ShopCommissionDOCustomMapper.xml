@@ -37,5 +37,38 @@
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}
       )
   </insert>
+  <sql id="sql_shopCommissionDOList">
+    <if test="isDelete != null">
+    	and is_delete = #{isDelete}
+    </if>
+  	<if test="distributorId != null">
+  		and distributor_id = #{distributorId}
+  	</if>
+  	<if test="shopId != null">
+  		and shop_id = #{shopId}
+  	</if>
+  	<if test="type != null">
+  		and type = #{type}
+  	</if>
+  </sql>
+  <select id="selectShopCommissionDOList" resultMap="BaseResultMap"
+  		parameterType="com.aishidai.app.model.query.ShopCommissionQuery">
+  		select * from shop_commission
+  		<where>
+  			<include refid="sql_shopCommissionDOList"></include>
+  			<if test="aoData != null and aoData !=''">
+            	limit #{stratRow},#{pageSize}
+            </if>
+  		</where>
+  </select>
+ 		
+ 		
+  <select id="selectShopCommissionDOListCount" parameterType="com.aishidai.app.model.query.ShopCommissionQuery"
+  	resultType="long" >
+  		select count(*) from shop_commission
+  		<where>
+  		   <include refid="sql_shopCommissionDOList"></include>
+  		</where>
+  </select>
   
 </mapper>

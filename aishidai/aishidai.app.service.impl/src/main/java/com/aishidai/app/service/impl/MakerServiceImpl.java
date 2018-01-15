@@ -33,11 +33,16 @@ public class MakerServiceImpl implements MakerService {
 	private DeviceMakerDOMapper deviceMakerDOMapper;
 	@Autowired
 	private DeviceMakerDOCustomMapper deviceMakerDOCustomMapper;
-	public List<MakerDO> queryMakerDOList(MakerQuery query) {
-//		return makerDOMapper.queryMakerDOList(query);
-		return null;
+	
+	public List<MakerDOCustom> queryMakerDOList(MakerQuery query) {
+		return makerDOCustomMapper.queryMakerDOList(query);
 	}
-
+	
+	public long queryMakerDOListCount(MakerQuery query) {
+		return makerDOCustomMapper.queryMakerDOListCount(query);
+	}
+	
+	
 	
 	public MakerDOCustom queryMakerDOById(long id) {
 		return makerDOCustomMapper.selectByPrimaryKey(id);

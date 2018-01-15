@@ -17,8 +17,6 @@ public class QueryAttrbute extends QueryPage {
 
     private Date updated;
 
-    private Integer status;
-
     private Integer hot;
 
     private Integer stratification;
@@ -81,14 +79,6 @@ public class QueryAttrbute extends QueryPage {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Integer getHot() {

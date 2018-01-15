@@ -4,6 +4,7 @@ import com.aishidai.app.dao.ItemSkuDOCustomMapper;
 import com.aishidai.app.dao.ItemSkuDOMapper;
 import com.aishidai.app.dao.ItemSuitDOMapper;
 import com.aishidai.app.model.pojo.ItemSkuDO;
+import com.aishidai.app.model.pojo.ItemSkuDOExample;
 import com.aishidai.app.model.pojo.ItemSuitDO;
 import com.aishidai.app.model.vo.ItemVO;
 import com.aishidai.app.service.ItemSkuService;
@@ -11,8 +12,21 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.List;
+
 @Service
 public class ItemSkuServiceImpl implements ItemSkuService{
+    public List<ItemSkuDO> list(ItemSkuDO itemSkuDO) {
+
+        return null;
+    }
+
+    public List<ItemSkuDO> getByItem(Long itemId) {
+        ItemSkuDOExample itemSkuDOExample=new ItemSkuDOExample();
+        itemSkuDOExample.createCriteria().andItemIdEqualTo(itemId);
+        return itemSkuDOMapper.selectByExample(itemSkuDOExample);
+    }
 
     @Autowired
     ItemSkuDOCustomMapper itemSkuDOCustomMapper;

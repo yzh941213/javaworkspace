@@ -3,6 +3,8 @@ package com.aishidai.app.controller;
 import java.util.Date;
 import java.util.List;
 
+import com.aishidai.app.common.LoginConstant;
+import com.aishidai.app.model.message.ResultMessage;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,8 @@ import com.aishidai.app.utils.PasswordHash;
 import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONObject;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/manage/shops")
 public class ShopController {
@@ -48,11 +52,20 @@ public class ShopController {
 
 	@RequestMapping(value = { "/shopList" })
 	@ResponseBody
-	public JsonResult shopList(QueryShop queryShop) {
+	public JsonResult shopList(QueryShop queryShop, HttpSession httpSession) {
+		SysUsersDO sysUsersDO=(SysUsersDO)httpSession.getAttribute(LoginConstant.USER_SESSION_KEY);
+		if(sysUsersDO!=null){
+			//0为系统管理员 1为经销商 2为店铺 3为创客 4为手艺人 5为供应商
+			List<ShopsDO> list = shopService.shopList(queryShop);
+			//如果是总部账号
+			if(sysUsersDO.getGroupId()!=0){
+				queryShop.setSysUserId(sysUsersDO.getUserId());
+			}
+			return JsonResult.buildPaging(list, queryShop.getsEcho(), 116l);
+		}else{
+			return JsonResult.buildError(ResultMessage.LOGIN_NO);
+		}
 
-		List<ShopsDO> list = shopService.shopList(queryShop);
-
-		return JsonResult.buildPaging(list, queryShop.getsEcho(), 116l);
 	}
 	
 	

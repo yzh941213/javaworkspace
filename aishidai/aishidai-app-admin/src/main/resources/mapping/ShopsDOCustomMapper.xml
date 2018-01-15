@@ -83,6 +83,10 @@
     <if test="isSuppliers != null">
       AND  is_suppliers=#{isSuppliers}
     </if>
+      <if test="sysUserId != null">
+          AND  sys_user_id=#{sysUserId}
+      </if>
+
     <if test="aoData != null and aoData !=''">
       limit #{stratRow},#{pageSize}
     </if>

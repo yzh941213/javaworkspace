@@ -19,7 +19,12 @@ public class JsonResult{
         jsonResult.success=true;
         return jsonResult;
     }
-
+    public static JsonResult buildError(String message){
+        JsonResult jsonResult=new JsonResult();
+        jsonResult.message=message;
+        jsonResult.success=false;
+        return jsonResult;
+    }
     public static JsonResult buildSuccess(Boolean flag){
         JsonResult jsonResult=new JsonResult();
 

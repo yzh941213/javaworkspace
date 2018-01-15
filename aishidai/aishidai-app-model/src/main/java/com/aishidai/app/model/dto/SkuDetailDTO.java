@@ -1,27 +1,31 @@
 package com.aishidai.app.model.dto;
 
+import com.aishidai.app.model.pojo.ItemSkuDO;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by 蝈蝈 on 2016/10/10.
  */
-public class SkuDetailDTO implements Serializable{
+public class SkuDetailDTO extends ItemSkuDO implements Serializable{
 
 
     private static final long serialVersionUID = 7141838917549441148L;
-    private long colourId;
+
+
+    private Long colourId;
     private String colourName;
     private String image;
-    private long itemId;
+
 
     private List<Size> sizeList;
 
-    public long getColourId() {
+    public Long getColourId() {
         return colourId;
     }
 
-    public void setColourId(long colourId) {
+    public void setColourId(Long colourId) {
         this.colourId = colourId;
     }
 
@@ -49,11 +53,5 @@ public class SkuDetailDTO implements Serializable{
         this.sizeList = sizeList;
     }
 
-    public long getItemId() {
-        return itemId;
-    }
 
-    public void setItemId(long itemId) {
-        this.itemId = itemId;
-    }
 }

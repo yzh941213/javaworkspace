@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.AppPanelContentDOCustomMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AppPanelContentDO">
+    <id column="panel_content_id" jdbcType="BIGINT" property="panelContentId" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="is_h5" jdbcType="VARCHAR" property="isH5" />
+    <result column="href_page" jdbcType="VARCHAR" property="hrefPage" />
+    <result column="sorting" jdbcType="VARCHAR" property="sorting" />
+    <result column="panel_id" jdbcType="BIGINT" property="panelId" />
+    <result column="content_type" jdbcType="INTEGER" property="contentType" />
+  </resultMap>
+ <select id="getAll" resultMap="BaseResultMap">
+   SELECT  * FROM app_panel_content
+ </select>
+</mapper>

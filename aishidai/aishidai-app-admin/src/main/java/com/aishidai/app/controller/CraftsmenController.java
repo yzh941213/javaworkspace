@@ -313,9 +313,10 @@ public class CraftsmenController {
 		 }
 		long userId =sysUsersDO.getUserId();
 		try {
-
+			if(sysUsersDO.getGroupId()!=0){
+				craftsmenQuery.setSysUserId(sysUsersDO.getUserId());
+			}
 			List list=new ArrayList();
-			craftsmenQuery.setSysUserId(sysUsersDO.getUserId());
 			craftsmenQuery.setIsDeleted(0);
 			list = craftsmenService.queryCraftsmenDOList(craftsmenQuery);
 			return JsonResult.buildPaging(list, craftsmenQuery.getsEcho(), (long)craftsmenService.selectCraftsmenDOListCount(craftsmenQuery));

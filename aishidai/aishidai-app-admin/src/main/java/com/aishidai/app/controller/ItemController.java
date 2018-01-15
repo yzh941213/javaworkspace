@@ -53,12 +53,14 @@ public class ItemController {
 
             }
             ItemVO itemVO1= itemSkuService.getMaxMinPricByItemId(itemVO.getItemId());
-            itemVO.setMaxPrice(itemVO1.getMaxPrice());
-            itemVO.setMinPrice(itemVO1.getMinPrice());
-            itemVO.setMaxSalesPrice(itemVO1.getMaxSalesPrice());
-            itemVO.setMinSalesPrice(itemVO1.getMinSalesPrice());
+            if(itemVO1!=null) {
+                itemVO.setMaxPrice(itemVO1.getMaxPrice());
+                itemVO.setMinPrice(itemVO1.getMinPrice());
+                itemVO.setMaxSalesPrice(itemVO1.getMaxSalesPrice());
+                itemVO.setMinSalesPrice(itemVO1.getMinSalesPrice());
+            }
+                itemVO.setCategoryId(categoryId);
 
-            itemVO.setCategoryId(categoryId);
             result.add(itemVO);
         }
 

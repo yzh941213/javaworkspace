@@ -22,6 +22,13 @@ public class ItemSkuServiceImpl implements ItemSkuService{
         return null;
     }
 
+    public Boolean delByItemId(Long itemId) {
+        ItemSkuDOExample itemSkuDOExample=new ItemSkuDOExample();
+        itemSkuDOExample.createCriteria().andItemIdEqualTo(itemId);
+        itemSkuDOMapper.deleteByExample(itemSkuDOExample);
+        return true;
+    }
+
     public List<ItemSkuDO> getByItem(Long itemId) {
         ItemSkuDOExample itemSkuDOExample=new ItemSkuDOExample();
         itemSkuDOExample.createCriteria().andItemIdEqualTo(itemId);

@@ -22,4 +22,6 @@ public interface ItemSkuService {
 
    List<ItemSkuDO> list(ItemSkuDO itemSkuDO);
    List<ItemSkuDO> getByItem(Long itemId);
+
+   Boolean delByItemId(Long itemId);
 }

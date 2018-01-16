@@ -108,6 +108,8 @@ public class AttributeServiceImpl implements AttributeService {
 
 
         }
+        Assert.isTrue(!attributeDO.getParentId().equals(attributeDO.getParentId()), ResultMessage.ATTR_UPDATE_ERROR);
+
         return attributeDOMapper.updateByPrimaryKeySelective(attributeDO)>0;
     }
 

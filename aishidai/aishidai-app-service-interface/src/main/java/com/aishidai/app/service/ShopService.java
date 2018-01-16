@@ -40,5 +40,6 @@ public interface ShopService {
 	List<ShopsDO> shopList(QueryShop queryShop);
 
 	long queryShopsDOListCount(ShopsQuery shopsQuery);
+	Long count(QueryShop queryShop);
 	
 }

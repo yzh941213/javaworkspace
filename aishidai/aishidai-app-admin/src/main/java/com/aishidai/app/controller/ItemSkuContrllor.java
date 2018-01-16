@@ -65,11 +65,11 @@ public class ItemSkuContrllor {
                     isDel=true;
                 }
                 for (int j=0; j<list1.size();j++){
-                    JSONObject jsonObject1=(JSONObject)JSONObject.parse(list1.get(i).toJSONString());
+                    JSONObject jsonObject1=(JSONObject)JSONObject.parse(list1.get(j).toJSONString());
                     ItemSkuDO itemSkuDO=new ItemSkuVO();
                     itemSkuDO.setSizeId(Long.valueOf(jsonObject1.get("sizeId")+""));
                     itemSkuDO.setColorId(Long.valueOf(jsonObject.get("colorId").toString()));
-                    itemSkuDO.setPrice(jsonObject.get("price")+"");
+                    itemSkuDO.setPrice(jsonObject1.get("price")+"");
                     itemSkuDO.setSalesPrice(jsonObject1.get("salesPrice")+"");
                     itemSkuDO.setItemId(itemId);
                     itemSkuDO.setImage(jsonObject.get("image")+"");

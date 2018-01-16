@@ -18,7 +18,10 @@ import java.util.List;
 
 @Service
 public class ShopServiceImpl implements ShopService {
-	
+	public Long count(QueryShop queryShop) {
+		return shopsDOCustomMapper.count(queryShop);
+	}
+
 	@Autowired
 	private ShopsDOMapper shopsDOMapper;
 	@Autowired

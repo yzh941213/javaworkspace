@@ -67,7 +67,7 @@ public class ItemController {
 
 
 
-        return  JsonResult.buildPaging(result ,queryItem.getsEcho(),116l);
+        return  JsonResult.buildPaging(result ,queryItem.getsEcho(),itemService.count(queryItem));
     }
 
     @Autowired

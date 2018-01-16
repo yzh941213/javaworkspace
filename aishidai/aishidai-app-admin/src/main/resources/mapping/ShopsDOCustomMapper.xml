@@ -82,19 +82,20 @@
            limit #{stratRow},#{pageSize}
        </if>
   </select>
-  <select id="shopListCount" parameterType="com.aishidai.app.model.query.QueryShop" resultMap="BaseResultMap">
-    SELECT  * FROM  shops
+  <select id="count" parameterType="com.aishidai.app.model.query.QueryShop" resultMap="BaseResultMap">
+    SELECT  count(*) FROM  shops
 
-    where is_deleted=0
 
-    <if test="isSuppliers != null">
-      AND  is_suppliers=#{isSuppliers}
-    </if>
+      where is_deleted=0
+
+      <if test="isSuppliers != null">
+          AND  is_suppliers=#{isSuppliers}
+      </if>
       <if test="sysUserId != null">
           AND  sys_user_id=#{sysUserId}
       </if>
 
-      <if test="shopsName != null">
+      <if test="shopsName != null and shopsName != ''">
           AND  shops_name like '%${shopsName}%'
       </if>
 

@@ -58,4 +58,32 @@
 
 
   </select>
+
+  <select id="count" resultType="java.lang.Long"  parameterType="com.aishidai.app.model.query.QueryItem">
+
+
+
+    <if test="cid != null and cid != ''">
+      call attribute_findByParentId(#{cid},#{stratRow},#{pageSize},#{itemName},#{itemCode},#{itemStatus});
+    </if>
+    <if test="cid == null or cid == ''">
+      select count(*)
+      from item i
+      where is_delete=0
+      <if test="itemCode != null and itemCode !=''">
+        AND  item_code=#{itemCode}
+      </if>
+      <if test="itemName != null and itemName !=''">
+        AND  item_name=#{itemName}
+      </if>
+      <if test="itemStatus != null">
+        AND  item_status=#{itemStatus}
+      </if>
+    ORDER BY created DESC
+      limit #{stratRow},#{pageSize}
+    </if>
+
+
+
+  </select>
 </mapper>

@@ -13,6 +13,9 @@ import java.util.List;
 
 @Service
 public class ItemServiceImpl implements ItemService {
+    public Long count(QueryItem queryItem) {
+        return itemDOCustomMapper.count(queryItem);
+    }
 
     @Autowired
     ItemDOMapper itemDOMapper;

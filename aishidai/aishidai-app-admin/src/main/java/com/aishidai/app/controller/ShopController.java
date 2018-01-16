@@ -69,7 +69,7 @@ public class ShopController {
 			}
 			List<ShopsDO> list = shopService.shopList(queryShop);
 
-			return JsonResult.buildPaging(list, queryShop.getsEcho(), 116l);
+			return JsonResult.buildPaging(list, queryShop.getsEcho(), shopService.count(queryShop));
 		}else{
 			return JsonResult.buildError(ResultMessage.LOGIN_NO);
 		}

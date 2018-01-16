@@ -24,9 +24,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * Created by 蝈蝈 on 2016/8/30.
- */
+
 @Controller
 @RequestMapping("/manage/manager")
 public class FileUploadController {

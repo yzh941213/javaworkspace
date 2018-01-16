@@ -18,10 +18,7 @@ import java.util.List;
 
 @Service
 public class ShopServiceImpl implements ShopService {
-	public Long count(QueryShop queryShop) {
-		return shopsDOCustomMapper.count(queryShop);
-	}
-
+	
 	@Autowired
 	private ShopsDOMapper shopsDOMapper;
 	@Autowired
@@ -146,12 +143,15 @@ public class ShopServiceImpl implements ShopService {
 		return shopsDOCustomMapper.selectShopsDOListCount(query);
 	}
 	
-	public List<ShopsDO> queryShopsDOByDeviceId(long deviceId) {
+	public ShopsDO queryShopsDOByDeviceId(long deviceId) {
 		ShopsDOExample example = new ShopsDOExample();
 		ShopsDOExample.Criteria criteria = example.createCriteria();
 		criteria.andDeviceIdEqualTo(deviceId);
-		criteria.andIsDeletedEqualTo(0);
-		return shopsDOMapper.selectByExample(example);
+	    List<ShopsDO> list = shopsDOMapper.selectByExample(example);
+		if (list.isEmpty() && list.size() <= 0) {
+			return null;
+		}
+		return list.get(0);
 	}
 
 

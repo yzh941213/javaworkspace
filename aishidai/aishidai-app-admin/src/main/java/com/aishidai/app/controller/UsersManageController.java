@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/manage/users")
+@RequestMapping("/manager/users")
 public class UsersManageController {
 
     @Autowired
@@ -119,7 +119,7 @@ public class UsersManageController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 
-		boolean result = usersService.operatUsersDO(usersDO);
+		boolean result = usersService.editUsersDO(usersDO);
 		if (result == true) {
 			jsonObject.put("success", true);
 			jsonObject.put("message", "更新成功");

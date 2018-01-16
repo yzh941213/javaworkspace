@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aishidai.app.dao.MemberDOMapper;
 import com.aishidai.app.dao.UsersDOMapper;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.dto.UsersListDTO;
+import com.aishidai.app.model.pojo.MemberDO;
+import com.aishidai.app.model.pojo.MemberDOExample;
 import com.aishidai.app.model.pojo.UsersDO;
 import com.aishidai.app.model.query.UsersQuery;
 import com.aishidai.app.service.UsersService;
@@ -21,6 +24,8 @@ public class UsersServiceImpl implements UsersService{
 
     @Autowired
     private UsersDOMapper usersDOMapper;
+    @Autowired
+    private MemberDOMapper memberDOMapper;
 
     private static final Logger logger = LoggerFactory.getLogger(UsersServiceImpl.class);
 
@@ -84,39 +89,74 @@ public class UsersServiceImpl implements UsersService{
     }
 
     
-	public boolean operatUsersDO(UsersDO usersDO) {
+	
+
+   
+   
+    public Long addUsersDOS(List<UsersDO> usersDOs) {
+		return null;
+    }
+
+
+	
+
+
+	public List<UsersDO> queryUserDOlist(UsersQuery query) throws Exception {
+		
+		return null;
+	}
+
+
+	public MemberDO queryMemberDOByUserId1(int userId) throws Exception {
+		
+		return null;
+	}
+
+
+	public MemberDO queryMemberDOByUserId(int userId) throws Exception {
+		
+		return null;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<UsersDO> queryAll() {
+		return usersDOMapper.selectByExample(null);
+	}
+	
+	public boolean editUsersDO(UsersDO usersDO) {
 		return usersDOMapper.updateByPrimaryKeySelective(usersDO)>0;
 	}
 
-   
-   
-    public Result<Long> addUsersDOS(List<UsersDO> usersDOs) {
-		return null;
-         /*Result<Long> result;
-        try {
-            result = usersDOMapper.addUsersDO(usersDOs);
-            return result;
-        } catch (Exception e) {
-            logger.info("", e);
-            throw new RuntimeException(e.getMessage());
-        }*/
-    }
-
-	
-	/*public List<UsersDO> queryUserDOlist(UsersQuery query) {
-		// TODO Auto-generated method stub
-		return usersDOMapper.selectUserDOlist(query);
+	public List<MemberDO> queryMemberAll() {
+		return memberDOMapper.selectByExample(null);
 	}
 
-	
-	public List<MemberDO> queryMemberList(MemberQuery memberQuery)throws Exception{
-		// TODO Auto-generated method stub
-		return usersDOMapper.selectMemberList(memberQuery);
-	}
 
+	public MemberDO queryMemberDOByUserId(Long userId) {
+		MemberDOExample example = new MemberDOExample();
+		MemberDOExample.Criteria criteria = example.createCriteria();
+		criteria.andUserIdEqualTo(userId);
+		List<MemberDO> list = memberDOMapper.selectByExample(example);
+		if (list.isEmpty() && list.size() <=0) {
+			return null;
+		}
+		return list.get(0);
+	}
 	
-	public MemberDO queryMemberDOByUserId(int userId) throws Exception {
-		// TODO Auto-generated method stub
-		return usersDOMapper.selectMemberDOByUserId(userId);
-	}*/
 }

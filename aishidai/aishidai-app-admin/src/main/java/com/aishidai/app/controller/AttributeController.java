@@ -2,7 +2,6 @@ package com.aishidai.app.controller;
 
 import com.aishidai.app.model.pojo.AttributeDO;
 import com.aishidai.app.model.query.QueryAttrbute;
-import com.aishidai.app.model.query.QueryItem;
 import com.aishidai.app.service.AttributeService;
 import com.aishidai.common.json.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;

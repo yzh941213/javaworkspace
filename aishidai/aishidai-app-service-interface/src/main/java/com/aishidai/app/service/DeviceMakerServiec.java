@@ -8,4 +8,6 @@ public interface DeviceMakerServiec {
 
 	List<DeviceMakerDO> selectByMakerId(Long id);
 
+	List<DeviceMakerDO> selectBydeviceId(Long id);
+
 }

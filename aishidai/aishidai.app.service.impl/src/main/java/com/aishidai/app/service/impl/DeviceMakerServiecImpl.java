@@ -21,6 +21,15 @@ public class DeviceMakerServiecImpl implements DeviceMakerServiec {
 		DeviceMakerDOExample example = new DeviceMakerDOExample();
 		DeviceMakerDOExample.Criteria criteria = example.createCriteria();
 		criteria.andMakerIdEqualTo(id);
+		criteria.andIsDeleteEqualTo(0);
+		return deviceMakerDOMapper.selectByExample(example);
+	}
+
+	public List<DeviceMakerDO> selectBydeviceId(Long id) {
+		DeviceMakerDOExample example = new DeviceMakerDOExample();
+		DeviceMakerDOExample.Criteria criteria = example.createCriteria();
+		criteria.andDeviceIdEqualTo(id);
+		criteria.andIsDeleteEqualTo(0);
 		return deviceMakerDOMapper.selectByExample(example);
 	}
 

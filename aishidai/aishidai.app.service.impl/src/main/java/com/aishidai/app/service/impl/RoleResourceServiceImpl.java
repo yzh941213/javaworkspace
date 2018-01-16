@@ -51,18 +51,11 @@ public class RoleResourceServiceImpl implements RoleResourceService {
         Result<Long> result = new Result<Long>();
         try {
             for (RoleResourceDO roleResource : roleResourceDOs) {
-                if (null != roleResource.getId() && roleResource.getId() != 0) {
                 	
-                    long row1 = roleResourceDOMapper.updateByPrimaryKeySelective(roleResource);
-                    if (row1 == 0) {
-                        throw new RuntimeException();
-                    }
-                } 
+                long row1 = roleResourceDOMapper.updateByPrimaryKeySelective(roleResource);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            logger.info("set Resource to Role" + e.getMessage());
-            throw new RuntimeException();
         }
         result.setResult(1l);
         result.setSuccess(true);

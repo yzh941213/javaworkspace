@@ -74,7 +74,7 @@ public class SysUsersController {
 					
 				} else if (user.getGroupId() == 3) {
 					
-					List<MakerDO> list = makerService.queryMakerDOBySysUserId(user.getUserId());
+					List<MakerDO> list = makerService.queryMakerDOByUserId(user.getUserId());
 					if (!list.isEmpty() && list.size() >= 0) {
 						request.getSession().setAttribute(LoginConstant.USER_MAKER_SESSION_KEY, list.get(0));
 					}

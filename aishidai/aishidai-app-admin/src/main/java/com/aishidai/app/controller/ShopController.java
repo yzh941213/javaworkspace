@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.aishidai.app.util.UserSessionUtil;
-import org.apache.catalina.manager.util.SessionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,7 +67,7 @@ public class ShopController {
 			}
 			List<ShopsDO> list = shopService.shopList(queryShop);
 
-			return JsonResult.buildPaging(list, queryShop.getsEcho(), shopService.count(queryShop));
+			return JsonResult.buildPaging(list, queryShop.getsEcho(), 116l);
 		}else{
 			return JsonResult.buildError(ResultMessage.LOGIN_NO);
 		}
@@ -283,27 +281,25 @@ public class ShopController {
 		try {
 			if (shopsDO != null && shopsDO.getDeviceIs() == 0) {
 				// 先查询用户需要绑定的设备是否是已经绑定到其他店铺
-				List<ShopsDO> list_shops = shopService
+			     ShopsDO shops_result = shopService
 						.queryShopsDOByDeviceId(shopsDO.getDeviceId());
-				if (!list_shops.isEmpty() && !(list_shops.size() <= 0)) {
+				if (shops_result != null) {
 					jsonObject.put("success", false);
 					jsonObject.put("message", "该设备已经绑定其他店铺，请核实后重试。");
 					return jsonObject.toString();
 				}
 			}
 			// 先判断是否是经销商添加的
-			if (shopsDO.getDistributorId() == 0) {
-				if (sysUsersService.queryByPrimaryKey(userId) != null
-						&& sysUsersService.queryByPrimaryKey(userId)
-								.getGroupId() != 0) {
-					// 创建者必须是经销商或者总部账号
-					jsonObject.put("message", "对不起，您没有相关权限，请联系管理员处理");
-					return jsonObject.toString();
-				} else {
+			
+			if (sysUsersService.queryByPrimaryKey(userId) != null
+					&& sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				if (shopsDO.getDistributorId() != 0) {
+				
 					shopsDO.setCreated(new Date());
 					shopsDO.setUpdated(new Date());
 					shopsDO.setIsDeleted(0);
 					shopsDO.setAudit(0);
+
 					if (shopsDO.getShopsUrl() != null
 							&& !"".equals(shopsDO.getShopsUrl())) {
 						shopsDO.setShopsUrl(PhotoUtil.addPhoto(shopsDO
@@ -322,14 +318,18 @@ public class ShopController {
 					}else{
 						jsonObject.put("message", "操作失败");
 					}
+				}else{
+					// 创建者必须是经销商或者总部账号
+					jsonObject.put("message", "请填写经销商信息");
+					return jsonObject.toString();
 				}
-			} else {
+			} else if(sysUsersService.queryByPrimaryKey(userId) != null
+					&& sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1){
 				shopsDO.setCreated(new Date());
 				shopsDO.setUpdated(new Date());
 				shopsDO.setIsDeleted(0);
-				shopsDO.setAudit(0);
 				shopsDO.setDistributorId(userId);
-
+				shopsDO.setAudit(0);
 				if (shopsDO.getShopsUrl() != null
 						&& !"".equals(shopsDO.getShopsUrl())) {
 					shopsDO.setShopsUrl(PhotoUtil.addPhoto(shopsDO
@@ -348,6 +348,10 @@ public class ShopController {
 				}else{
 					jsonObject.put("message", "操作失败");
 				}
+			}else{
+				// 创建者必须是经销商或者总部账号
+				jsonObject.put("message", "对不起，您没有相关权限，请联系管理员处理");
+				return jsonObject.toString();
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -357,31 +361,29 @@ public class ShopController {
 	}
 
 	
-	@RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
-	public String editShopsDO(ShopsDO shopsDO,HttpSession session){
-		SysUsersDO sysUsersDO=	UserSessionUtil.getUser(session);
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
+	public String editShopsDO(ShopsDO shopsDO,
+			@RequestParam(value = "userId", required = true) long userId) {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
 			if (shopsDO != null && shopsDO.getDeviceIs() == 0) {
 				// 先查询用户需要绑定的设备是否是已经绑定到其他店铺
-				List<ShopsDO> list_shops = shopService
+				ShopsDO list_result = shopService
 						.queryShopsDOByDeviceId(shopsDO.getDeviceId());
-				if (!list_shops.isEmpty() && !(list_shops.size() <= 0) 
-						&& list_shops.get(0).getShopsId().longValue() != shopsDO.getShopsId().longValue()) {
+				if (list_result != null && list_result.getShopsId().longValue() != shopsDO
+								.getShopsId().longValue()) {
 					jsonObject.put("success", false);
 					jsonObject.put("message", "该设备已经绑定其他店铺，请核实后重试。");
 					return jsonObject.toString();
 				}
 			}
-			
-			if (shopsDO.getDistributorId() == 0) {
-				if (sysUsersDO != null && sysUsersDO.getGroupId() != 0) {
-					// 创建者必须是经销商或者总部账号
-					jsonObject.put("message", "对不起，您没有相关权限，请联系管理员处理");
-					return jsonObject.toString();
-				} else {
+
+			if (sysUsersService.queryByPrimaryKey(userId) != null
+					&& sysUsersService.queryByPrimaryKey(userId).getGroupId() == 0) {
+				if (shopsDO.getDistributorId() != 0) {
+
 					shopsDO.setUpdated(new Date());
 					if (shopsDO.getShopsUrl() != null
 							&& !"".equals(shopsDO.getShopsUrl())) {
@@ -398,13 +400,18 @@ public class ShopController {
 					if (shopService.editShopsDO(shopsDO)) {
 						jsonObject.put("success", true);
 						jsonObject.put("message", "操作成功");
-					}else{
+					} else {
 						jsonObject.put("message", "操作失败");
 					}
+				} else {
+					// 创建者必须是经销商或者总部账号
+					jsonObject.put("message", "请填写经销商信息");
+					return jsonObject.toString();
 				}
-			} else {
+			} else if (sysUsersService.queryByPrimaryKey(userId) != null
+					&& sysUsersService.queryByPrimaryKey(userId).getGroupId() == 1) {
 				shopsDO.setUpdated(new Date());
-
+				shopsDO.setDistributorId(userId);
 				if (shopsDO.getShopsUrl() != null
 						&& !"".equals(shopsDO.getShopsUrl())) {
 					shopsDO.setShopsUrl(PhotoUtil.addPhoto(shopsDO
@@ -420,7 +427,7 @@ public class ShopController {
 				if (shopService.editShopsDO(shopsDO)) {
 					jsonObject.put("success", true);
 					jsonObject.put("message", "操作成功");
-				}else{
+				} else {
 					jsonObject.put("message", "操作失败");
 				}
 			}

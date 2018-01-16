@@ -117,7 +117,7 @@ public class MakerServiceImpl implements MakerService {
 	}
 	*/
 	
-	public List<MakerDO> queryMakerDOBySysUserId(long userId) {
+	public List<MakerDO> queryMakerDOByUserId(long userId) {
 		MakerDOExample example = new MakerDOExample();
 		MakerDOExample.Criteria criteria = example.createCriteria();
 		criteria.andSysUserIdEqualTo(userId);

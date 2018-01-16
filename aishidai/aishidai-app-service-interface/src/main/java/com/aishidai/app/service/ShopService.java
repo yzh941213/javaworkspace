@@ -33,13 +33,12 @@ public interface ShopService {
 	
 	List<ShopsDO> selectShopBydistributorId(long distributorId) throws Exception ;
 	
-	List<ShopsDO> queryShopsDOByDeviceId(long deviceId);
+	ShopsDO queryShopsDOByDeviceId(long deviceId);
 
 	boolean insertShops(ShopsDO shopsDO);
 
 	List<ShopsDO> shopList(QueryShop queryShop);
 
 	long queryShopsDOListCount(ShopsQuery shopsQuery);
-	Long count(QueryShop queryShop);
-	
+
 }

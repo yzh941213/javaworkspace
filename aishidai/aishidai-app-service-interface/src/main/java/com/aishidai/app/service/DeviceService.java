@@ -18,7 +18,7 @@ public interface DeviceService {
 
 	List<DeviceDO> queryDeviceList() throws Exception ;
 	
-	List<DeviceDO> queryDeviceDOByProductNo(String productNo) throws Exception;
+	DeviceDO queryDeviceDOByProductNo(String productNo) throws Exception;
 	
 	List<DeviceDO> queryDeviceDOLike(String deviceNum) throws Exception;
 

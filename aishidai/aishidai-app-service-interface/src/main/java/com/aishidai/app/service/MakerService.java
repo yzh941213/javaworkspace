@@ -21,7 +21,7 @@ public interface MakerService {
 
 	 List<MakerDO> queryMakerDOByDistributorId(long distributorId)throws Exception;
 
-	 List<MakerDO> queryMakerDOBySysUserId(long sysUserId)throws Exception;
+	 List<MakerDO> queryMakerDOByUserId(long userId)throws Exception;
 
 	 List<MakerDO> queryMakerDOAll( )throws Exception;
 	

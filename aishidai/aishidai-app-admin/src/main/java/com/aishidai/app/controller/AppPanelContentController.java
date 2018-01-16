@@ -1,9 +1,7 @@
 package com.aishidai.app.controller;
 
 import com.aishidai.app.model.pojo.AppPanelContentDO;
-import com.aishidai.app.model.pojo.AppPanelDO;
 import com.aishidai.app.service.AppPanelContentService;
-import com.aishidai.app.service.AppPanelService;
 import com.aishidai.common.json.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

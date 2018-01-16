@@ -46,14 +46,19 @@ public class DeviceServiceImpl implements DeviceService {
 		DeviceDOExample example =  new DeviceDOExample();
 		DeviceDOExample.Criteria criteria = example.createCriteria();
 		criteria.andDistributorIdEqualTo(distributorId);
+		
 		return deviceDOMapper.selectByExample(example);
 	}
 
-	public List<DeviceDO> queryDeviceDOByProductNo(String productNo) throws Exception {
+	public DeviceDO queryDeviceDOByProductNo(String productNo) throws Exception {
 		DeviceDOExample example =  new DeviceDOExample();
 		DeviceDOExample.Criteria criteria = example.createCriteria();
 		criteria.andProductNoEqualTo(productNo);
-		return deviceDOMapper.selectByExample(example);
+		 List<DeviceDO> list = deviceDOMapper.selectByExample(example);
+		if (list.isEmpty() && list.size() <= 0) {
+			return null;
+		}
+		return list.get(0);
 	}
 
 	

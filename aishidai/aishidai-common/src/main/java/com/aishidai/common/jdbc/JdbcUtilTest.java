@@ -1,20 +1,13 @@
 package com.aishidai.common.jdbc;
 
 
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
-public class JdbcUtil {
+public class JdbcUtilTest {
 
     // 表示定义数据库的用户名
     private static String USERNAME ;
@@ -49,15 +42,15 @@ public class JdbcUtil {
         try {
 
             USERNAME = "root";
-            PASSWORD = "zhezhuo408";
+            PASSWORD = "123456";
             DRIVER= "com.mysql.jdbc.Driver";
-            URL = "jdbc:mysql://118.31.37.175:3306/asd?useUnicode=true&characterEncoding=UTF-8";
+            URL = "jdbc:mysql://116.62.23.45:3306/asd?useUnicode=true&characterEncoding=UTF-8";
         } catch (Exception e) {
             throw new RuntimeException("读取数据库配置文件异常！", e);
         }
     }
 
-    public JdbcUtil() {
+    public JdbcUtilTest() {
 
     }
 
@@ -169,6 +162,7 @@ public class JdbcUtil {
     }
 
     public static void main(String[] args) {
+
         String insertSql=
 
                 "insert into item （"+
@@ -193,40 +187,16 @@ public class JdbcUtil {
                         "    item_model          ,   "+
                         "    shop_id             ,   "+
                         "    audit               "+
-                        ")values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)	";
+                        ")value(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)	";
 
-        JdbcUtilTest jdbcUtil1 = new JdbcUtilTest();
-        jdbcUtil1.getConnection();
-        JdbcUtil jdbcUtil = new JdbcUtil();
+
+        JdbcUtilTest jdbcUtil = new JdbcUtilTest();
         jdbcUtil.getConnection();
         try {
             List<Map<String, Object>> result = jdbcUtil.findResult(
                     "select * from item", null);
             for (Map<String, Object> m : result) {
                 System.out.println(m);
-                List<String> list=new ArrayList<String>();
-                list.add( m.get("itemId")+"");
-                list.add( m.get("nameId")+"");
-                list.add( m.get("price")+"");
-                list.add( m.get("salesPrice")+"");
-                list.add( m.get("image")+"");
-                list.add( m.get("categoryId")+"");
-                list.add( m.get("itemCode")+"");
-                list.add( m.get("comIntroduce")+"");
-                list.add( m.get("proIntroduce")+"");
-                list.add( m.get("summary")+"");
-                list.add( m.get("salseVolume")+"");
-                list.add( m.get("created")+"");
-                list.add( m.get("updated")+"");
-                list.add( m.get("recommend")+"");
-                list.add( m.get("itemName")+"");
-                list.add( m.get("itemTag")+"");
-                list.add( m.get("itemStatus")+"");
-                list.add( m.get("deleteIs")+"");
-                list.add( m.get("itemModel")+"");
-                list.add( m.get("shopId")+"");
-                list.add( m.get("audit")+"");
-                jdbcUtil1.updateByPreparedStatement(insertSql,list);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -76,11 +76,12 @@ public class ItemController {
     @GetMapping(value = "add")
     public JsonResult add(ItemDO itemDO){
         try {
+
             itemDO.setCreated(new Date());
             itemDO.setUpdated(new Date());
             itemDO.setAudit(0);
             itemDO.setIsDelete(0);
-            return  JsonResult.buildSuccess(itemDOMapper.insert(itemDO));
+            return  JsonResult.buildSuccess( itemService.add(itemDO));
         }catch (Exception e){
             return JsonResult.buidException(e);
         }

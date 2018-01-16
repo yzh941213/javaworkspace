@@ -67,7 +67,7 @@ public class ItemController {
 
 
 
-        return  JsonResult.buildPaging(result ,queryItem.getsEcho(),116l);
+        return  JsonResult.buildPaging(result ,queryItem.getsEcho(),itemService.count(queryItem));
     }
 
     @Autowired
@@ -76,11 +76,12 @@ public class ItemController {
     @GetMapping(value = "add")
     public JsonResult add(ItemDO itemDO){
         try {
+
             itemDO.setCreated(new Date());
             itemDO.setUpdated(new Date());
             itemDO.setAudit(0);
             itemDO.setIsDelete(0);
-            return  JsonResult.buildSuccess(itemDOMapper.insert(itemDO));
+            return  JsonResult.buildSuccess( itemService.add(itemDO));
         }catch (Exception e){
             return JsonResult.buidException(e);
         }

@@ -15,6 +15,7 @@ import com.aishidai.common.json.JsonResult;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,7 @@ public class ItemSkuContrllor {
     @PostMapping(value = "add")
     public JsonResult add(String data){
         try {
+            data=new String(Base64.decodeBase64(data.getBytes()));
             SkuData skuData1 =new SkuData();
             boolean isDel=false;
             boolean suitIsDel=false;
@@ -63,20 +65,20 @@ public class ItemSkuContrllor {
                     isDel=true;
                 }
                 for (int j=0; j<list1.size();j++){
-                    JSONObject jsonObject1=(JSONObject)JSONObject.parse(list1.get(i).toJSONString());
+                    JSONObject jsonObject1=(JSONObject)JSONObject.parse(list1.get(j).toJSONString());
                     ItemSkuDO itemSkuDO=new ItemSkuVO();
                     itemSkuDO.setSizeId(Long.valueOf(jsonObject1.get("sizeId")+""));
                     itemSkuDO.setColorId(Long.valueOf(jsonObject.get("colorId").toString()));
-                    itemSkuDO.setPrice(jsonObject.get("price")+"");
-                    itemSkuDO.setSalesPrice(jsonObject.get("salesPrice")+"");
+                    itemSkuDO.setPrice(jsonObject1.get("price")+"");
+                    itemSkuDO.setSalesPrice(jsonObject1.get("salesPrice")+"");
                     itemSkuDO.setItemId(itemId);
                     itemSkuDO.setImage(jsonObject.get("image")+"");
                     itemSkuDO.setDescription(jsonObject.get("description")+"");
                     itemSkuDO.setStock(Integer.valueOf(jsonObject1.get("stock")+""));
-                    itemSkuDO.setSalseVolume(Integer.valueOf(jsonObject1.get("salseVolume")+""));
+                    //itemSkuDO.setSalseVolume(Integer.valueOf(jsonObject1.get("salseVolume")+""));
                     itemSkuDO.setCreated(new Date());
                     itemSkuDO.setUpdated(new Date());
-                    itemSkuDO.setSuitImage(jsonObject.get("suit_image")+"");
+                    itemSkuDO.setSuitImage(jsonObject.get("suitImage")+"");
                     itemSkuService.add(itemSkuDO);
 
                 }
@@ -105,7 +107,7 @@ public class ItemSkuContrllor {
             skuDetailDTO1.setSalesPrice(itemSkuDO.getSalesPrice());
             skuDetailDTO1.setImage(itemSkuDO.getImage());
             skuDetailDTO1.setDescription(itemSkuDO.getDescription());
-            skuDetailDTO1.setColorId(skuDetailDTO1.getColourId());
+            skuDetailDTO1.setColorId(skuDetailDTO1.getColorId());
             skuDetailDTO1.setSalseVolume(itemSkuDO.getSalseVolume());
             skuDetailDTO1.setCreated(new Date());
             skuDetailDTO1.setUpdated(new Date());

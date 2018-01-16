@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface ItemDOCustomMapper {
     List<ItemVO> itemList(QueryItem queryItem);
+    Long count(QueryItem queryItem);
 
 }

@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/manager/users")
+@RequestMapping("/manage/users")
 public class UsersManageController {
 
     @Autowired

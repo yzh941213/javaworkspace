@@ -19,4 +19,6 @@ public interface ShopsDOCustomMapper {
 	long selectShopsDOListCount(ShopsQuery query);
 
 	ShopsDOCustom selectByPrimaryKey(long id);
+
+	Long count(QueryShop queryShop);
 }

@@ -20,4 +20,6 @@ public interface ItemService {
     List<ItemVO> itemList(QueryItem  queryItem);
 
     ItemDO getById(Long itemId);
+
+    Long count(QueryItem  queryItem);
 }

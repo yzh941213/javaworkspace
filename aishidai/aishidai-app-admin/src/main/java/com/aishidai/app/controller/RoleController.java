@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@RequestMapping("/manager/role")
+@RequestMapping("/manage/role")
 @RestController
 public class RoleController {
 

@@ -67,8 +67,8 @@ public class ItemSkuContrllor {
                     ItemSkuDO itemSkuDO=new ItemSkuVO();
                     itemSkuDO.setSizeId(Long.valueOf(jsonObject1.get("sizeId")+""));
                     itemSkuDO.setColorId(Long.valueOf(jsonObject.get("colorId").toString()));
-                    itemSkuDO.setPrice(jsonObject.get("price")+"");
-                    itemSkuDO.setSalesPrice(jsonObject.get("salesPrice")+"");
+                    itemSkuDO.setPrice(jsonObject1.get("price")+"");
+                    itemSkuDO.setSalesPrice(jsonObject1.get("salesPrice")+"");
                     itemSkuDO.setItemId(itemId);
                     itemSkuDO.setImage(jsonObject.get("image")+"");
                     itemSkuDO.setDescription(jsonObject.get("description")+"");

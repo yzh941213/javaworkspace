@@ -14,19 +14,21 @@ public class SkuDetailDTO extends ItemSkuDO implements Serializable{
     private static final long serialVersionUID = 7141838917549441148L;
 
 
-    private Long colourId;
+    private Long colorId;
     private String colourName;
     private String image;
 
 
     private List<Size> sizeList;
 
-    public Long getColourId() {
-        return colourId;
+
+    public Long getColorId() {
+        return colorId;
     }
 
-    public void setColourId(Long colourId) {
-        this.colourId = colourId;
+
+    public void setColorId(Long colorId) {
+        this.colorId = colorId;
     }
 
     public String getColourName() {

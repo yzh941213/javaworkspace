@@ -3,6 +3,7 @@ package com.aishidai.app.controller;
 import com.aishidai.app.model.custom.po.Result;
 import com.aishidai.app.model.pojo.ResourceDO;
 import com.aishidai.app.model.pojo.ResourceDOCustom;
+import com.aishidai.app.model.pojo.RoleDO;
 import com.aishidai.app.model.pojo.RoleResourceDO;
 import com.aishidai.app.service.ResourceService;
 import com.aishidai.app.service.RoleResourceService;
@@ -115,8 +116,8 @@ public class RoleResourceController {
     
     @RequestMapping("/resource/queryList")
     @ResponseBody
-    public String queryResourceDO(
-    		@RequestParam(value = "roleId", required = true)long roleId) {
+    public String queryResourceDO (
+    		@RequestParam(value = "roleId", required = true)long roleId)throws  Exception {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("success", false);
@@ -127,8 +128,11 @@ public class RoleResourceController {
             jsonObject.put("success", true);
             jsonObject.put("data", result.getResult());
             jsonObject.put("message", result.getSuccessInfo());
+            RoleDO roleDO= roleService.queryByPrimaryKey(roleId);
+            jsonObject.put("role", roleDO);
             return jsonObject.toString();
         }
+
         jsonObject.put("data", result.getResult());
         jsonObject.put("message", "查询失败");
         return jsonObject.toString();

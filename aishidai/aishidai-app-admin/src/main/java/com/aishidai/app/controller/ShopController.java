@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.aishidai.app.util.UserSessionUtil;
+import org.apache.catalina.manager.util.SessionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -356,9 +358,9 @@ public class ShopController {
 
 	
 	@RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
-	public String editShopsDO(ShopsDO shopsDO,
-			@RequestParam(value = "userId", required =true) long userId){
-		
+	public String editShopsDO(ShopsDO shopsDO,HttpSession session){
+		SysUsersDO sysUsersDO=	UserSessionUtil.getUser(session);
+
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", false);
 		try {
@@ -375,9 +377,7 @@ public class ShopController {
 			}
 			
 			if (shopsDO.getDistributorId() == 0) {
-				if (sysUsersService.queryByPrimaryKey(userId) != null
-						&& sysUsersService.queryByPrimaryKey(userId)
-								.getGroupId() != 0) {
+				if (sysUsersDO != null && sysUsersDO.getGroupId() != 0) {
 					// 创建者必须是经销商或者总部账号
 					jsonObject.put("message", "对不起，您没有相关权限，请联系管理员处理");
 					return jsonObject.toString();

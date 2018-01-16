@@ -69,14 +69,18 @@
 	</select>
 
 	<sql id="sql_craftsmenDOList">
-		<if test="isDelete != null">
-			AND is_delete=#{isDelete}
+		<if test="isDeleted != null">
+			AND is_deleted=#{isDeleted}
 		</if>
 		<if test="distributorId != null">
 			AND distributor_id=#{distributorId}
 		</if>
 		<if test="shopsId != null">
 			AND shops_id=#{shopsId}
+		</if>
+
+		<if test="sysUserId != null">
+			AND sys_user_id=#{sysUserId}
 		</if>
 	</sql>
 

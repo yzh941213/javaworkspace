@@ -75,4 +75,14 @@ public class AttributeController {
         }
 
     }
+
+    @GetMapping(value = "getById")
+    public JsonResult getById(Long attributeId){
+        try {
+            return JsonResult.buildSuccess(attributeService.getById(attributeId));
+        }catch (Exception e){
+            return JsonResult.buidException(e);
+        }
+
+    }
 }

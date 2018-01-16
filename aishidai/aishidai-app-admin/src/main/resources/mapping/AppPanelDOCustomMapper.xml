@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aishidai.app.dao.AppPanelDOCustomMapper">
+  <resultMap id="BaseResultMap" type="com.aishidai.app.model.pojo.AppPanelDO">
+    <id column="panel_id" jdbcType="BIGINT" property="panelId" />
+    <result column="panel_code" jdbcType="VARCHAR" property="panelCode" />
+    <result column="panel_name" jdbcType="VARCHAR" property="panelName" />
+    <result column="sorting" jdbcType="VARCHAR" property="sorting" />
+    <result column="jump_page" jdbcType="VARCHAR" property="jumpPage" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+  </resultMap>
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT * FROM app_panel
+  </select>
+</mapper>

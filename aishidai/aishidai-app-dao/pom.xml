@@ -16,6 +16,11 @@
         <artifactId>aishidai</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+	 <parent>
+        <groupId>com.aishidai</groupId>
+        <artifactId>aishidai</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
 
     <dependencies>

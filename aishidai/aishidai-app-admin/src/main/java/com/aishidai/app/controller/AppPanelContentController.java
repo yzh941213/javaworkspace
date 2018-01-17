@@ -18,7 +18,7 @@ public class AppPanelContentController {
 
     @GetMapping(value = "getAll")
     public JsonResult getAll(){
-
+		//github 测试注解
         return  JsonResult.buildSuccess(appPanelContentService.getAll());
     }
 

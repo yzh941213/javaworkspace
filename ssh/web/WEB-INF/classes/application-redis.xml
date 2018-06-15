@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+        <property name="connectionFactory"   ref="connectionFactory" />
+    </bean>
+
+    <!--redis连接信息-->
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:hostName="localhost" p:port="6379" p:password="" p:poolConfig-ref="poolConfig"  >
+    </bean>
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="50" /><!-- 最大空闲连接 -->
+        <property name="maxTotal" value="500" /><!-- 最大连接数  -->
+        <property name="maxWaitMillis" value="10000" /><!-- 最大等待时间 -->
+        <!--	#当调用borrow Object方法时，是否进行有效性检查-->
+        <property name="testOnBorrow" value="false" />
+    </bean>
+
+    <bean id="myRedisTemplate" class="system.redis.MyRedisTemplate">
+        <property name="redisTemplate" ref="redisTemplate"></property>
+    </bean>
+</beans>

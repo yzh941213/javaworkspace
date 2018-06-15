@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="62f8719f-8741-47de-a0c9-e361db894eaa" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/activiti/target/" />
+    <ignored path="$PROJECT_DIR$/redis-recevier/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/javaWorkSpace$StringCompareToTest.ic" NAME="StringCompareToTest Coverage Results" MODIFIED="1528186688033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.string.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Byte.java" pinned="false" current-in-tab="false">
+        <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Byte.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="151" selection-start-line="151" selection-end-line="151" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="true">
+        <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="639" column="33" lean-forward="true" selection-start-line="639" selection-start-column="33" selection-end-line="639" selection-end-column="33" />
+              <folding>
+                <element signature="e#19434#19435#0" expanded="true" />
+                <element signature="e#19478#19479#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Integer.java" pinned="false" current-in-tab="false">
+        <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11520">
+              <caret line="616" column="39" selection-start-line="616" selection-start-column="20" selection-end-line="616" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="BpmnFile" />
+        <option value="spring-beans.schema" />
+        <option value="struts_2_5" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>cacheManager</find>
+      <find>建立连接</find>
+      <find>validParams</find>
+      <find>根路径</find>
+      <find>request.</find>
+      <find>路径</find>
+      <find>gatewayUrl</find>
+      <find>monitorService</find>
+      <find>way</find>
+      <find>pay(</find>
+      <find>appAuthToken</find>
+      <find>resourcePatternResolver</find>
+      <find>customizeBeanFactory</find>
+      <find>getParent</find>
+      <find>value</find>
+      <find>省</find>
+      <find>自治</find>
+      <find>自治区</find>
+      <find>subset</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="D:/代码资源文件/java/GIT/gitMgr/unipayment" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/activiti/src/main/resources/application.xml" />
+        <option value="$PROJECT_DIR$/activiti/src/main/resources/activiti.cfg.xml" />
+        <option value="$PROJECT_DIR$/activiti/src/test/java/com/activiti/activiti/CreateTable.java" />
+        <option value="$PROJECT_DIR$/ssm/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/ssm/src/ListTest.java" />
+        <option value="$PROJECT_DIR$/ssh/web/WEB-INF/struts.xml" />
+        <option value="$PROJECT_DIR$/gxyl/web/index.jsp" />
+        <option value="$PROJECT_DIR$/gxyl/src/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/ssh/web/WEB-INF/application-mvc.xml" />
+        <option value="$PROJECT_DIR$/ssh/src/com/websocket/MyHandler.java" />
+        <option value="$PROJECT_DIR$/ssh/src/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/ssh/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/ssh/web/websocket.html" />
+        <option value="$PROJECT_DIR$/ssh/src/com/websocket/WebSocketConfig.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/WhileTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/RandomSend.java" />
+        <option value="$PROJECT_DIR$/ssh/src/junit/JunitTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/ListRetainAll.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/PayUtiles.java" />
+        <option value="D:/代码资源文件/java/GIT/gitMgr/unipayment/src/com/fh/controller/payment/UnipayController.java" />
+        <option value="$PROJECT_DIR$/activiti/pom.xml" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/FloatTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/MapTest.java" />
+        <option value="$PROJECT_DIR$/payDemo/src/com/alipay/demo/trade/Main.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/recevier/Recevier.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/Recevier.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/Receiver.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/RedisRecevierApplication.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/pom.xml" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/RedisReceiverApplication.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/RedisDao.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/FloatTest.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/TrancationManager.java" />
+        <option value="$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/RedisReceiverApplication.java" />
+        <option value="$PROJECT_DIR$/gxyl/src/web/Index.java" />
+        <option value="D:/代码资源文件/java/GIT/gitMgr/unipayment/src/com/fh/listener/WebAppContextListener.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/StringSplitTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/StringCompareToTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/StringRegionMatchesTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/LastIndexOf.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/Replace.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/IndexOf.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/Join.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/string/Trim.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/StringTestChar.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/controller/StringTest.java" />
+        <option value="$PROJECT_DIR$/jdk10/src/jdk/JdkTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/lang/_boolean/Type.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/lang/_byte/Byte.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/lang/_byte/Test.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/soft/maven" />
+        <option name="userSettingsFile" value="D:\soft\maven\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1095" />
+    <option name="width" value="1560" />
+    <option name="height" value="1410" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssh" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssh" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssh" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssh" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SearchEverywhereHistoryKey" value="SimpleAliasRegistry&#9;PSI&#9;JAVA://org.springframework.core.SimpleAliasRegistry&#10;simpleali&#9;PSI&#9;JAVA://org.springframework.core.SimpleAliasRegistry" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="D:/workSpace/TinseCMS/Automat-springboot" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.16487806" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaWorkSpace\payDemo" />
+      <recent name="D:\javaWorkSpace\payDemo\web\WEB-INF" />
+      <recent name="D:\javaWorkSpace\payDemo\src" />
+      <recent name="D:\javaWorkSpace\ssh\web\WEB-INF" />
+      <recent name="D:\javaWorkSpace\ssh\web\WEB-INF\lib" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Byte" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lang._byte.Byte" />
+      <module name="ssh" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lang._byte.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="StringTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.controller.StringTest" />
+      <module name="ssh" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="StringTestChar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.controller.StringTestChar" />
+      <module name="ssh" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lang._byte.Test" />
+      <module name="ssh" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lang._byte.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="Type" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lang._boolean.Type" />
+      <module name="ssh" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lang._boolean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="unimall" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+    </configuration>
+    <configuration name="ActivitiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="activiti" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.activiti.activiti.ActivitiApplication" />
+    </configuration>
+    <configuration name="RedisRecevierApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="redis-recevier" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.admin.redisrecevier.receiver.RedisReceiverApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.6" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <file path="$PROJECT_DIR$/ssh/web">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </file>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_javaWorkSpace" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55394" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ActivitiApplication" />
+      <item itemvalue="Spring Boot.RedisRecevierApplication" />
+      <item itemvalue="Tomcat Server.Unnamed" />
+      <item itemvalue="Application.StringTestChar" />
+      <item itemvalue="Application.StringTest" />
+      <item itemvalue="Application.Type" />
+      <item itemvalue="Application.Byte" />
+      <item itemvalue="Application.Test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Byte" />
+        <item itemvalue="Application.Type" />
+        <item itemvalue="Application.StringTest" />
+        <item itemvalue="Application.StringTestChar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62f8719f-8741-47de-a0c9-e361db894eaa" name="Default" comment="" />
+      <created>1522202953077</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522202953077</updated>
+      <workItem from="1522202958640" duration="1288000" />
+      <workItem from="1522208552190" duration="177000" />
+      <workItem from="1522208821010" duration="1521000" />
+      <workItem from="1522210396767" duration="7000" />
+      <workItem from="1522211040619" duration="666000" />
+      <workItem from="1522216388412" duration="1279000" />
+      <workItem from="1522285292466" duration="2253000" />
+      <workItem from="1522287724507" duration="3113000" />
+      <workItem from="1522375946260" duration="372000" />
+      <workItem from="1522389788992" duration="22000" />
+      <workItem from="1522478921440" duration="26000" />
+      <workItem from="1522656631030" duration="335000" />
+      <workItem from="1522739315115" duration="1359000" />
+      <workItem from="1523851533218" duration="1275000" />
+      <workItem from="1523862302564" duration="705000" />
+      <workItem from="1523874581650" duration="1621000" />
+      <workItem from="1523927026856" duration="457000" />
+      <workItem from="1524291222213" duration="1471000" />
+      <workItem from="1524454834724" duration="2161000" />
+      <workItem from="1524464234515" duration="3787000" />
+      <workItem from="1524468968606" duration="610000" />
+      <workItem from="1524710739438" duration="151000" />
+      <workItem from="1524817950340" duration="106000" />
+      <workItem from="1525406407586" duration="3146000" />
+      <workItem from="1525416923759" duration="796000" />
+      <workItem from="1525418655028" duration="914000" />
+      <workItem from="1525419600108" duration="619000" />
+      <workItem from="1525485237833" duration="718000" />
+      <workItem from="1525513388366" duration="1321000" />
+      <workItem from="1525654513484" duration="5913000" />
+      <workItem from="1525750636816" duration="657000" />
+      <workItem from="1525781002931" duration="634000" />
+      <workItem from="1525827661222" duration="284000" />
+      <workItem from="1525942612663" duration="164000" />
+      <workItem from="1525945050139" duration="238000" />
+      <workItem from="1526539132654" duration="681000" />
+      <workItem from="1526875726854" duration="1793000" />
+      <workItem from="1526982210988" duration="140000" />
+      <workItem from="1527145509835" duration="197000" />
+      <workItem from="1527416850144" duration="4203000" />
+      <workItem from="1527479477681" duration="1700000" />
+      <workItem from="1527500842152" duration="3535000" />
+      <workItem from="1527565474628" duration="97000" />
+      <workItem from="1527591776680" duration="2177000" />
+      <workItem from="1527594093170" duration="4621000" />
+      <workItem from="1527641580781" duration="1731000" />
+      <workItem from="1527651820701" duration="9000" />
+      <workItem from="1527736001554" duration="718000" />
+      <workItem from="1528083817594" duration="10488000" />
+      <workItem from="1528160363741" duration="127000" />
+      <workItem from="1528162923018" duration="9915000" />
+      <workItem from="1528185689716" duration="5760000" />
+      <workItem from="1528247267102" duration="9680000" />
+      <workItem from="1528263263665" duration="4485000" />
+      <workItem from="1528355271134" duration="9449000" />
+      <workItem from="1528429308182" duration="8725000" />
+      <workItem from="1528442254098" duration="5766000" />
+      <workItem from="1528455133746" duration="507000" />
+      <workItem from="1528513596631" duration="109000" />
+      <workItem from="1528530841250" duration="5147000" />
+      <workItem from="1528677918750" duration="1191000" />
+      <workItem from="1528959105600" duration="136000" />
+      <workItem from="1528968307228" duration="611000" />
+      <workItem from="1529025717949" duration="588000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 12h 37m 25s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 12h 37m 43s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 12h 38m 15s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 14h 55m 56s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 14h 57m 59s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 14h 58m 25s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 15h 02m 04s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 15h 04m 09s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 15h 04m 18s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JunitTest_junitTest - 2018.05.04 at 15h 07m 30s.xml">
+      <configuration name="JunitTest.junitTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="134452000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="2062" height="1134" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Application Servers" order="8" weight="0.3296593" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="JSF" order="4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.36629668" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35005015" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1501996" />
+      <window_info id="Web" order="2" side_tool="true" />
+      <window_info anchor="right" id="BPMNPalette" order="4" weight="0.32984033" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="BPMN Editor" order="2" weight="0.5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32896066" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.32983193" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/activiti/src/test/java/com/activiti/activiti/CreateTable.java</url>
+          <line>42</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssm/src/ListTest.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssm/src/ListTest.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/RedisReceiverApplication.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/redis-recevier/src/main/java/com/admin/redisrecevier/receiver/RedisReceiverApplication.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-context-4.1.9.RELEASE.jar!/org/springframework/context/support/AbstractApplicationContext.class</url>
+          <line>523</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-context-4.1.9.RELEASE.jar!/org/springframework/jndi/support/SimpleJndiBeanFactory.class</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-beans-4.1.9.RELEASE.jar!/org/springframework/beans/factory/support/StaticListableBeanFactory.class</url>
+          <line>57</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/gxyl/web/WEB-INF/lib/spring-1.2.6.jar!/org/springframework/web/context/support/WebApplicationContextUtils.class</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/StringCompareToTest.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/IndexOf.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/IndexOf.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/LastIndexOf.java</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/LastIndexOf.java</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/Replace.java</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/Replace.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/Trim.java</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/Trim.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/string/Trim.java</url>
+          <line>18</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/controller/StringTest.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/controller/StringTest.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/lang/_boolean/Type.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Boolean.java</url>
+          <line>239</line>
+          <properties />
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Byte.java</url>
+          <line>151</line>
+          <properties />
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java</url>
+          <line>612</line>
+          <properties />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="95" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar!/org/springframework/context/support/GenericApplicationContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-core-4.2.5.RELEASE.jar!/org/springframework/util/ObjectUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="442" column="93" lean-forward="true" selection-start-line="442" selection-start-column="93" selection-end-line="442" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar!/org/springframework/context/ApplicationContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar!/org/springframework/context/ConfigurableApplicationContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="63" lean-forward="true" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-core-4.1.9.RELEASE.jar!/org/springframework/core/SimpleAliasRegistry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar!/org/springframework/context/support/ClassPathXmlApplicationContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar!/org/springframework/context/support/AbstractApplicationContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12340">
+          <caret line="728" column="28" selection-start-line="728" selection-start-column="28" selection-end-line="728" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/BeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/config/AutowireCapableBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/support/AbstractBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="71" column="73" lean-forward="true" selection-start-line="71" selection-start-column="73" selection-end-line="71" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-core-4.2.5.RELEASE.jar!/org/springframework/core/AliasRegistry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/support/BeanDefinitionRegistry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar!/org/springframework/context/support/AbstractRefreshableApplicationContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/config/ConfigurableListableBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="87" lean-forward="true" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/gxyl/web/WEB-INF/lib/org.springframework.core-3.1.2.RELEASE.jar!/org/springframework/core/SimpleAliasRegistry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/support/DefaultListableBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/代码资源文件/java/GIT/gitMgr/unipayment/WebRoot/WEB-INF/lib/spring-core-4.2.5.RELEASE.jar!/org/springframework/core/SimpleAliasRegistry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="19" column="75" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2780">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-core-4.1.9.RELEASE.jar!/org/springframework/util/StringUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10500">
+          <caret line="565" column="69" selection-start-line="565" selection-start-column="69" selection-end-line="565" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="504" column="28" lean-forward="true" selection-start-line="504" selection-start-column="28" selection-end-line="504" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="1334" column="22" selection-start-line="1334" selection-start-column="22" selection-end-line="1334" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/StringCompareToTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/StringSplitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/StringRegionMatchesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/regex/Pattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="1052" column="26" selection-start-line="1052" selection-start-column="26" selection-end-line="1052" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/LastIndexOf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/Replace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/CharSequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/IndexOf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/StringJoiner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1889">
+          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/Join.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55880">
+          <caret line="2867" selection-start-line="2867" selection-end-line="2867" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/string/Trim.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="3330" column="25" selection-start-line="3330" selection-start-column="25" selection-end-line="3330" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/controller/StringTestChar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/fastjson-1.2.38.jar!/com/alibaba/fastjson/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.compiler/javax/lang/model/element/VariableElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.desktop/sun/awt/SunHints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="790" column="53" lean-forward="true" selection-start-line="790" selection-start-column="53" selection-end-line="790" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/controller/StringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="846" selection-start-line="16" selection-start-column="846" selection-end-line="16" selection-end-column="846" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/invoke/VarHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="439" column="22" selection-start-line="439" selection-start-column="22" selection-end-line="439" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/jdk.jshell/jdk/jshell/VarSnippet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jdk10/src/jdk/JdkTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Boolean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="239" column="26" selection-start-line="239" selection-start-column="16" selection-end-line="239" selection-end-column="26" />
+          <folding>
+            <element signature="e#2293#2294#0" expanded="true" />
+            <element signature="e#2327#2328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/_boolean/Type.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11520">
+          <caret line="616" column="39" selection-start-line="616" selection-start-column="20" selection-end-line="616" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/_byte/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/lang/_byte/Byte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Byte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="151" selection-start-line="151" selection-end-line="151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/jdk10/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="639" column="33" lean-forward="true" selection-start-line="639" selection-start-column="33" selection-end-line="639" selection-end-column="33" />
+          <folding>
+            <element signature="e#19434#19435#0" expanded="true" />
+            <element signature="e#19478#19479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>ssm:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.16487806" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.16487806" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.16487806" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.16487806" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>jdk10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.16487806" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: asm:asm-commons:3.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.16487806" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

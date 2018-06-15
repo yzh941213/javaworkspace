@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+a{text-decoration:none;}
+#demopage{width:720px;margin:0;border:0px solid #000;}
+#demopage h2{margin:40px 0 20px 0;font-size:16px;text-align:center;font-family:"微软雅黑","黑体";color:#ff6600;}
+/* slider */
+.slider{margin:0px ;width:455px;height:298px;border:0px solid #ccc;position:relative;overflow:hidden;}
+.conbox{position:absolute;/*必要元素*/}
+.switcher{position:absolute;bottom:10px;right:10px;float:right;z-index:99;}
+.switcher a{background:#aabbcc;border:0px solid #00767d;cursor:pointer;float:left;font-family:arial;height:10px;line-height:10px;width:10px;margin:4px;text-align:center;color:#00767d;}
+.switcher a.curs,.switcher a:hover{background:#ff6f6f;border:0px solid #00767d;height:12px;line-height:12px;width:12px;margin:0 2px;color:#fff;font-weight:800;}
+/* slider1 水平 */
+#slider1 .conbox{width:9999em;}
+#slider1 .conbox div{width:720px;height:214px;overflow:hidden;float:left;}

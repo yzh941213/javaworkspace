@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+	">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://localhost:3306/gxyl?characterEncoding=utf8&amp;seUnicode=true&amp;useOldAliasMetadataBehavior=true&amp;allowMultiQueries=true"
+		p:username="root" p:password="root" p:maxActive="100" p:maxIdle="10" p:initialSize="5" p:minIdle="5"
+		p:validationQuery = "select 1"
+		p:testWhileIdle = "true"
+		p:timeBetweenEvictionRunsMillis = "3600000"
+		p:minEvictableIdleTimeMillis = "18000000"
+		p:numTestsPerEvictionRun="100"
+		p:testOnBorrow = "true"
+		p:maxWait="100">
+
+	</bean>
+	
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="set*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="SUPPORTS" read-only="true"	rollback-for="CustomException" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 创建SqlSessionFactory，同时指定数据源-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
+	</bean>
+	
+	<bean id="personDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IPersonDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="personService" class="com.web.service.impl.PersonServiceImpl">
+		<property name="personDao" ref="personDao"></property>
+	</bean>
+	
+	<bean id="newsClsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.INewsClsDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="newsClsService" class="com.web.service.impl.NewsClsServiceImpl">
+		<property name="newsClsDao" ref="newsClsDao"></property>
+	</bean>
+	
+	<bean id="newsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.INewsDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="newsService" class="com.web.service.impl.NewsServiceImpl">
+		<property name="newsDao" ref="newsDao"></property>
+		<property name="attachDao" ref="attachDao"></property>
+	</bean>
+	
+	<bean id="attachDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IAttachDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="attachService" class="com.web.service.impl.AttachServiceImpl">
+		<property name="attachDao" ref="attachDao"></property>
+	</bean>
+	
+	<bean id="menuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IMenuDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="menuService" class="com.web.service.impl.MenuServiceImpl">
+		<property name="menuDao" ref="menuDao"></property>
+	</bean>
+	
+	<bean id="friendDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IFriendDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="friendService" class="com.web.service.impl.FriendServiceImpl">
+		<property name="friendDao" ref="friendDao"></property>
+	</bean>
+	
+	<bean id="wareDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IWareDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="wareService" class="com.web.service.impl.WareServiceImpl">
+		<property name="wareDao" ref="wareDao"></property>
+	</bean>
+	
+	<!-- Flow -->
+	<bean id="flowDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IFlowDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="flowService" class="com.web.service.impl.FlowServiceImpl">
+		<property name="flowDao" ref="flowDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
+	</bean>
+	
+	<!-- Item -->
+	<bean id="itemDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IItemDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="itemService" class="com.web.service.impl.ItemServiceImpl">
+		<property name="itemDao" ref="itemDao"></property>
+	</bean>
+	
+	<bean id="mywebservice" class="web.webservice.TrainServiceImpl">
+	</bean>
+	
+	<!-- Flowcls -->
+	<bean id="flowclsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IFlowclsDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="flowclsService" class="com.web.service.impl.FlowclsServiceImpl">
+		<property name="flowclsDao" ref="flowclsDao"></property>
+	</bean>
+	<!-- comments -->
+	<bean id="commentsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.ICommentsDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="commentsService" class="com.web.service.impl.CommentsServiceImpl">
+		<property name="commentsDao" ref="commentsDao"></property>
+	</bean>
+	<!-- comments -->
+	<bean id="replyDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.IReplyDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="replyService" class="com.web.service.impl.ReplyServiceImpl">
+		<property name="replyDao" ref="replyDao"></property>
+	</bean>
+	<!-- soft -->
+	<bean id="softDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.dao.ISoftDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="softService" class="com.web.service.impl.SoftServiceImpl">
+		<property name="softDao" ref="softDao"></property>
+	</bean>
+	<!-- 配置Xfire -->
+	<!--<import resource="classpath:org/codehaus/xfire/spring/xfire.xml" />
+	<bean id="baseWebService" class="org.codehaus.xfire.spring.remoting.XFireExporter"
+		lazy-init="false" abstract="true">
+		&lt;!&ndash; 引用xfire.xml中定义的工厂 &ndash;&gt;
+		<property name="serviceFactory" ref="xfire.serviceFactory" />
+		&lt;!&ndash; 引用xfire.xml中的xfire实例 &ndash;&gt;
+		<property name="xfire" ref="xfire" />
+		<property name="properties">
+			<map>
+				<entry key="mtom-enabled" value="true" />
+			</map>
+		</property>
+	</bean>
+	<bean id="service" parent="baseWebService">
+		&lt;!&ndash; 业务服务bean &ndash;&gt;
+		<property name="serviceBean" ref="mywebservice" />
+		&lt;!&ndash; 业务服务bean的接口类 &ndash;&gt;
+		<property name="serviceClass" value="web.webservice.ITrainService" />
+	</bean>-->
+</beans>

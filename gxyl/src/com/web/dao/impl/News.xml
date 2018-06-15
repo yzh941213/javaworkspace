@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.INewsDao">
+	<resultMap id="newsMap" type="News">
+		<id property="newsAutoid" column="newsAutoid"/>
+		<result property="newsClsAutoid" column="newsClsAutoid"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="image" column="image"/>
+		<result property="date" column="date"/>
+		<result property="sortIndex" column="sortIndex"/>
+		<result property="personAutoid" column="personAutoid"/>
+		<result property="showIndex" column="showIndex"/>
+		<association property="person" javaType="com.web.entity.Person">
+			<id property="personAutoid" column="personAutoid"/>
+			<result property="account" column="account"/>
+		</association>
+		<association property="newsCls" javaType="com.web.entity.NewsCls">
+			<id property="newsClsAutoid" column="newsClsAutoid"/>
+			<result property="name" column="name"/>
+			<result property="clsName" column="clsName"/>
+		</association>
+	</resultMap>
+	<select id="getNewsByID" resultMap="newsMap">
+		select n.*,p.account,nc.name,nc.clsName from news n 
+			inner join newscls nc on n.newsClsAutoid=nc.newsClsAutoid 
+			left join person p on p.personAutoid = n.personAutoid
+			where newsAutoid=#{newsAutoid}
+	</select>
+	<select id="getNewsByPage" parameterType="Map" resultMap="newsMap">
+		select n.*,nc.`name`,nc.clsName,p.name from news n LEFT JOIN newscls nc on n.newsClsAutoid=nc.newsClsAutoid INNER JOIN person p on p.personAutoid=n.personAutoid
+		where n.newsAutoid &lt;=(
+			select newsAutoid from news where 1=1
+			<if test="title!=''">and title like CONCAT('%',#{title},'%')</if>
+			<if test="newsClsAutoid!=0">and newsClsAutoid=#{newsClsAutoid}</if>
+			<if test="newsClsAutoid==0">and newsClsAutoid in(select newsClsAutoid from newscls where clsName=#{clsName})</if>
+			ORDER BY newsAutoid desc,sortIndex DESC LIMIT #{pageindex},1
+		)
+		<if test="title!=''">and n.title like CONCAT('%',#{title},'%')</if>
+		<if test="newsClsAutoid!=0">and n.newsClsAutoid=#{newsClsAutoid}</if>
+		<if test="newsClsAutoid==0">and n.newsClsAutoid in(select newsClsAutoid from newscls where clsName=#{clsName})</if>
+		ORDER BY n.newsAutoid desc, n.sortIndex DESC LIMIT #{pagesize}
+	</select>
+	<select id="getCount" parameterType="Map" resultType="int">
+		select count(*) as count from news n LEFT JOIN newscls nc on n.newsClsAutoid=nc.newsClsAutoid INNER JOIN person p on p.personAutoid=n.personAutoid
+		where 1=1
+		<if test="title!=''">and n.title like CONCAT('%',#{title},'%')</if>
+		<if test="newsClsAutoid!=0">and n.newsClsAutoid=#{newsClsAutoid}</if>
+		<if test="newsClsAutoid==0">and n.newsClsAutoid in(select newsClsAutoid from newscls where clsName=#{clsName})</if>
+	</select>
+	<insert id="create" parameterType="News" useGeneratedKeys="true" keyProperty="newsAutoid">
+		insert into news(newsClsAutoid,title,content,image,date,personAutoid,sortIndex)
+		values(#{newsClsAutoid},#{title},#{content},#{image},#{date},#{personAutoid},
+		(select sortIndex from(select IFNULL(MAX(sortIndex)+1,1) as sortIndex from news where newsClsAutoid=#{newsClsAutoid}) as newt)
+		)
+	</insert>
+	<update id="modify" parameterType="News">
+		update news set newsClsAutoid=#{newsClsAutoid}, title=#{title}, content=#{content}, image=#{image},
+		date=#{date} where newsAutoid=#{newsAutoid}
+	</update>
+	<delete id="delete">
+		delete from news where newsAutoid in
+		<foreach collection="array" item="newsAutoid" open="(" separator="," close=")">
+			#{newsAutoid}
+		</foreach>
+	</delete>
+	<update id="setShowIndex" parameterType="Integer">
+		update news set showIndex=1 where newsAutoid=#{newsAutoid}
+	</update>
+	<update id="cencalShowIndex">
+		update news set showIndex=0 where newsClsAutoid in(select newsClsAutoid from newscls where clsName=(select clsName from newscls where newsClsAutoid=#{newsClsAutoid}))
+	</update>
+	<select id="getNewsByClsNum" resultMap="newsMap">
+		select n.*, nc.clsName from news n inner join newscls nc on n.newsClsAutoid=nc.newsClsAutoid where n.newsClsAutoid in(select newsClsAutoid from newscls where clsName=#{clsName})
+		order by n.sortIndex desc
+		<if test="number!=0">limit #{number}</if>
+	</select>
+	<select id="getNewsByNewsClsAutoid" resultMap="newsMap">
+		select n.*,ns.name, ns.clsName from news n inner join newscls ns on n.newsClsAutoid=ns.newsClsAutoid where n.newsClsAutoid=#{newsClsAutoid} order by sortIndex asc
+	</select>
+	<select id="getNewsByShowIndex" resultMap="newsMap">
+		select * from news where newsClsAutoid in(select newsClsAutoid from newscls where clsName=#{clsName}) and showIndex=1
+	</select>
+</mapper>

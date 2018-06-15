@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.web.entity.Person" alias="Person"/>
+		<typeAlias type="com.web.entity.NewsCls" alias="NewsCls"/>
+		<typeAlias type="com.web.entity.News" alias="News"/>
+		<typeAlias type="com.web.entity.Attach" alias="Attach"/>
+		<typeAlias type="com.web.entity.Menu" alias="Menu"/>
+		<typeAlias type="com.web.entity.Friend" alias="Friend"/>
+		<typeAlias type="com.web.entity.Ware" alias="Ware"/>
+		<typeAlias type="com.web.entity.Flowcls" alias="Flowcls"/>
+		<typeAlias type="com.web.entity.Flow" alias="Flow"/>
+		<typeAlias type="com.web.entity.Item" alias="Item"/>
+		<typeAlias type="com.web.entity.Comments" alias="Comments"/>
+		<typeAlias type="com.web.entity.Reply" alias="Reply"/>
+		<typeAlias type="com.web.entity.Soft" alias="Softe"/>
+		<!--
+		
+		
+		
+		<typeAlias type="com.webntity.Sysparam" alias="sysparam"/>
+		<typeAlias type="com.webntity.SubMenu" alias="SubMenu"/>
+		
+		
+		<typeAlias type="com.webntity.PerClazz" alias="PerClazz"/>
+		<typeAlias type="com.webntity.Brflow" alias="Brflow"/>
+		
+		<typeAlias type="com.webntity.Attach" alias="Attach"/>
+		<typeAlias type="com.webntity.NewsClazz" alias="NewsClazz"/>
+		<typeAlias type="com.webntity.Learnrec" alias="Learnrec"/>
+		<typeAlias type="com.webntity.FlowPapers" alias="FlowPapers"/>
+		<typeAlias type="com.webntity.Course" alias="Course"/>
+		<typeAlias type="com.webntity.CourseType" alias="CourseType"/>
+		<typeAlias type="com.webntity.FlowQuestion" alias="FlowQuestion"/>
+		<typeAlias type="com.webntity.CoursePapers" alias="CoursePapers"/>
+		<typeAlias type="com.webntity.CourseItem" alias="CourseItem"/>
+		<typeAlias type="com.webntity.BranchCourse" alias="BranchCourse"/>
+		<typeAlias type="com.webntity.StuFlowPapers" alias="StuFlowPapers"/>
+		<typeAlias type="com.webntity.StuFlowQues" alias="StuFlowQues"/>
+		<typeAlias type="com.webntity.ComCourse" alias="ComCourse"/>
+		<typeAlias type="com.webntity.QuesType" alias="QuesType"/>
+		<typeAlias type="com.webntity.QuesBase" alias="QuesBase"/>
+		<typeAlias type="com.webntity.Question" alias="Question"/>
+		<typeAlias type="com.webntity.QuesAttach" alias="QuesAttach"/>
+		 
+		
+		
+		<typeAlias type="com.webntity.Warecls" alias="Warecls"/>
+		<typeAlias type="com.webntity.Ware" alias="ware"/>
+		<typeAlias type="com.webntity.Comments" alias="Comments"/>
+		<typeAlias type="com.webntity.News" alias="News"/>
+		<typeAlias type="com.webntity.Learnrec" alias="Learnrec"/>
+		<typeAlias type="com.webntity.Friend" alias="friend"/>
+		<typeAlias type="com.webntity.Power" alias="power"/>
+		<typeAlias type="com.webntity.Attach" alias="Attach"/>
+		
+		
+		
+		<typeAlias type="com.webntity.Examcls" alias="Examcls"/>
+		<typeAlias type="com.webntity.Exam" alias="Exam"/>
+		<typeAlias type="com.webntity.Papers" alias="Papers"/>
+		<typeAlias type="com.webntity.Stubm" alias="Stubm"/>
+		 -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/train/dao/impl/Person.xml"/>
+		<mapper resource="com/train/dao/impl/NewsCls.xml"/>
+		<mapper resource="com/train/dao/impl/News.xml"/>
+		<mapper resource="com/train/dao/impl/Attach.xml"/>
+		<mapper resource="com/train/dao/impl/Menu.xml"/>
+		<mapper resource="com/train/dao/impl/Friend.xml"/>
+		<mapper resource="com/train/dao/impl/Ware.xml"/>
+		<mapper resource="com/train/dao/impl/Flowcls.xml"/>
+		<mapper resource="com/train/dao/impl/Flow.xml"/>
+		<mapper resource="com/train/dao/impl/Item.xml"/>
+		<mapper resource="com/train/dao/impl/Comments.xml"/>
+		<mapper resource="com/train/dao/impl/Reply.xml"/>
+		<mapper resource="com/train/dao/impl/Soft.xml"/>
+		<!--
+		
+		<mapper resource="com/web/dao/impl/Sysparam.xml"/>
+		<mapper resource="com/web/dao/impl/SubMenu.xml"/>
+		
+		
+		<mapper resource="com/web/dao/impl/PerClazz.xml"/>
+		<mapper resource="com/web/dao/impl/Brflow.xml"/>
+		<mapper resource="com/web/dao/impl/Attach.xml"/>
+		<mapper resource="com/web/dao/impl/NewsClazz.xml"/>
+		<mapper resource="com/web/dao/impl/Learnrec.xml"/>
+		<mapper resource="com/web/dao/impl/FlowPapers.xml"/>
+		<mapper resource="com/web/dao/impl/Course.xml"/>
+		<mapper resource="com/web/dao/impl/CourseType.xml"/>
+		<mapper resource="com/web/dao/impl/FlowQuestion.xml"/>
+		<mapper resource="com/web/dao/impl/CoursePapers.xml"/>
+		<mapper resource="com/web/dao/impl/CourseItem.xml"/>
+		<mapper resource="com/web/dao/impl/BranchCourse.xml"/>
+		<mapper resource="com/web/dao/impl/StuFlowPapers.xml"/>
+		<mapper resource="com/web/dao/impl/StuFlowQues.xml"/>
+		<mapper resource="com/web/dao/impl/ComCourse.xml"/>
+		<mapper resource="com/web/dao/impl/QuesType.xml"/>
+		<mapper resource="com/web/dao/impl/QuesBase.xml"/>
+		<mapper resource="com/web/dao/impl/Question.xml"/>
+		<mapper resource="com/web/dao/impl/QuesAttach.xml"/>
+		 
+		<mapper resource="com/web/dao/impl/Warecls.xml"/>
+		<mapper resource="com/web/dao/impl/Ware.xml"/>
+		<mapper resource="com/web/dao/impl/Comments.xml"/>
+		<mapper resource="com/web/dao/impl/News.xml"/>
+		<mapper resource="com/web/dao/impl/Learnrec.xml"/>
+		<mapper resource="com/web/dao/impl/Friend.xml"/>
+		<mapper resource="com/web/dao/impl/Power.xml"/>
+		<mapper resource="com/web/dao/impl/Attach.xml"/>
+		<mapper resource="com/web/dao/impl/Examcls.xml"/>
+		<mapper resource="com/web/dao/impl/Exam.xml"/>
+		<mapper resource="com/web/dao/impl/Papers.xml"/>
+		<mapper resource="com/web/dao/impl/Stubm.xml"/>
+		 -->
+	</mappers>
+</configuration>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.ICommentsDao">
+	<resultMap id="comments" type="Comments">
+		<id property="commentsAutoid" column="commentsAutoid"/>
+		<result property="personAutoid" column="personAutoid"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="date" column="date"/>
+		<result property="count" column="count"/>
+		<association property="person" javaType="com.web.entity.Person">
+			<id property="personAutoid" column="personAutoid"/>
+			<result property="account" column="account"/>
+			<result property="name" column="name"/>
+		</association>
+	</resultMap>
+	<select id="getCommentsByID" resultMap="comments">
+		select c.*, p.account, p.name from comments c inner join person p on c.personAutoid=p.personAutoid where commentsAutoid=#{commentsAutoid}
+	</select>
+	
+	<select id="getCommentsByPage" resultMap="comments">
+		select c.*, p.account, p.name,(select Count(*) from reply where commentsAutoid = c.commentsAutoid) as count from comments c inner join person p on c.personAutoid=p.personAutoid 
+		where commentsAutoid &lt;=(
+			select commentsAutoid from comments order by commentsAutoid desc limit #{pageindex},1
+		) order by commentsAutoid desc limit #{pagesize}
+	</select>
+	<select id="getCount" resultType="int">
+		select count(*) as count from comments c inner join person p on c.personAutoid=p.personAutoid 
+	</select>
+	
+	<insert id="create" parameterType="Comments" useGeneratedKeys="true" keyProperty="commentsAutoid">
+		insert into comments(title,content,date,personAutoid)
+		values (#{title},#{content},#{date},#{personAutoid})
+		
+	</insert>
+	
+	<update id="modify" parameterType="Comments">
+		update comments set title = #{title},content = #{content},date = #{date}
+		 where commentsAutoid = #{commentsAutoid}
+	</update>
+	
+	<delete id="delete">
+		delete from comments where commentsAutoid in
+		<foreach collection="array" item="commentsAutoid" open="(" separator="," close=")">
+			#{commentsAutoid}
+		</foreach> 
+	</delete>
+	
+	<select id="getCommentByTitle" parameterType="java.util.Map" resultType="Comments">
+		select c.*, p.account, p.name from comments c inner join person p on c.personAutoid=p.personAutoid 
+		where title like concat(concat('%',#{title}),'%') and commentsAutoid &lt;=(
+			select commentsAutoid from comments where title like concat(concat('%',#{title}),'%')
+			 order by commentsAutoid desc limit #{pageindex},1
+			) order by commentsAutoid desc limit #{pagesize}
+	</select>
+	<select id="getCountByTitle" parameterType="java.util.Map" resultType="int">
+		select count(*) as count from comments c where c.title like concat(concat('%',#{title}),'%') 
+	</select>
+</mapper>

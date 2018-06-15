@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+body,div,h1,h2,h3,h4,h5,h6,a,img,p,ul,ol,li,dl,dd,dt{padding:0; margin:0; border:0; list-style:none;}
+body{color:#333; font-size:12px; font-family:"宋体"; }
+a{text-decoration:none;}
+<!--top-->
+.top{width:1120px; height:150px; margin:0 auto;}
+.logo{width:120px; height:127px; margin:13px 0 0 10px; float:left;}
+.word{width:480px; height:130px; margin-left:10px; margin-top:20px; float:left;}
+.word p{height:60px; margin-bottom:10px;}
+
+<!--菜单导航栏-->
+.nav ul{width:1120px; height:36px; margin:0 auto;}
+.nav ul li{float:left;  line-height:36px; text-align:center; font-weight:bold;}
+.nav ul li{width:108px; background:url(../images/bg.png) no-repeat right center;}
+.nav ul li.nobg{width:119px; background:none;}
+.nav ul li a{color:#fff;}
+.nav ul li a:hover{color:#ff6f6f;}
+.nav .center .nav_ul{width:100px; display:none; position:absolute; z-index:20;}
+.nav .center .nav_li{width:110px; height:36px; margin:0; background:#fff; line-height:36px; border-bottom:1px dashed #ccc; padding-left:10px;}
+.nav .center .nav_li a{ color:#006498;}
+.nav .center .nav_li:hover{background:#0096f0;}
+.nav .current a{color:#ff6f6f;}
+
+/*当前位置*/
+.login{width:1118px; height:30px; line-height:30px; margin:10px auto; background:#fff; border:1px solid #ccc;}
+.login .current{padding-left:10px; float:left;}
+.login p span{color:#FF5900;}
+.login1 a{color:#FF5900;}
+.login .search{width:205px; height:27px; position:relative; float:right;}
+.login .search input{width:190px; height:25px; border: 1px solid #ccc; line-height:25px; color:#ccc; border-radius:8px; padding-left:10px;}
+.login .search .image{width:10px; height:11px;  position:absolute; right:10px;  border: 0px solid #ccc; padding-top:10px;}

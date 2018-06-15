@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+   window.onload = function (ev) {
+
+       var ws = new WebSocket("ws://localhost:8080/myHandler")
+       ws.onopen = function () {
+           console.log("onpen");
+           ws.send("{}");
+       };
+       ws.onclose = function () {
+           console.log("onclose");
+       };
+
+       ws.onmessage = function (msg) {
+           console.log(msg.data);
+       }
+   }
+
+
+    
+</script>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.IAttachDao">
+	<resultMap id="attachMap" type="Attach">
+		<id property="attachAutoid" column="attachAutoid"/>
+		<result property="newsAutoid" column="newsAutoid"/>
+		<result property="name" column="name"/>
+		<result property="fileName" column="fileName"/>
+		<result property="filePath" column="filePath"/>
+		<result property="fileSize" column="fileSize"/>
+	</resultMap>
+	<select id="getAttach" resultMap="attachMap">
+		select * from attach where newsAutoid=#{newsAutoid}
+	</select>
+	
+	<insert id="create" parameterType="java.util.List" useGeneratedKeys="true">
+		<selectKey resultType="int" keyProperty="attachAutoid" order="AFTER">  
+        	SELECT LAST_INSERT_ID()  
+    	</selectKey>
+		insert into attach(newsAutoid,name,fileName,filePath,fileSize)
+		values
+		<foreach collection="list" item="attach" index="index" separator="," >
+		(#{attach.newsAutoid},#{attach.name},#{attach.fileName},#{attach.filePath},#{attach.fileSize})
+		</foreach>
+	</insert>
+	<delete id="delete">
+		delete from attach where newsAutoid=#{newsAutoid}
+	</delete>
+</mapper>

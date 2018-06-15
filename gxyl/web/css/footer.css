@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+/*底部*/
+.footer{width:1120px; height:72px; margin:20px auto;}
+.footer p{height:25px; margin:0px auto; line-height:25px; text-align:center; color:#666;}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.ISoftDao">
+	<resultMap id="softMap" type="Softe">
+		<id property="softAutoid" column="softAutoid"/>
+		<result property="clsID" column="clsID"/>
+		<result property="content" column="content"/>
+		<result property="softName" column="softName"/>
+		<result property="fileName" column="fileName"/>
+		<result property="filePath" column="filePath"/>
+		<result property="fileSize" column="fileSize"/>
+	</resultMap>
+	<select id="getSoftByID" resultMap="softMap">
+		select * from soft where softAutoid=#{softAutoid}
+	</select>
+	<select id="getSoftByPage" resultMap="softMap">
+		select * from soft where clsID=#{clsID} order by softAutoid desc limit #{pageindex},#{pagesize}
+	</select>
+	<select id="getCount" resultType="int">
+		select count(*) from soft where clsID=#{clsID}
+	</select>
+	<insert id="create" parameterType="Soft" useGeneratedKeys="true" keyProperty="softAutoid">
+		insert into soft(clsID,content,softName,fileName,filePath,fileSize)
+		values (#{clsID},#{content},#{softName},#{fileName},#{filePath},#{fileSize})		
+	</insert>
+	<update id="modify">
+		update soft set clsID=#{clsID},content=#{content},softName=#{softName},fileName=#{fileName},filePath=#{filePath},fileSize=#{fileSize}
+		where softAutoid=#{softAutoid}
+	</update>
+	<delete id="delete">
+		delete from soft where softAutoid in
+		<foreach collection="array" index="index" item="softAutoid" open="(" separator="," close=")">
+			#{softAutoid}
+		</foreach>
+	</delete>
+</mapper>

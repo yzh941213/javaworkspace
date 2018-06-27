@@ -11,6 +11,9 @@ import java.sql.Timestamp;
 @Table(name = "test")
 public class Test implements Serializable {
 
+
+
+
     @Id
     @Column
     private Integer id;

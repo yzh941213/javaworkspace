@@ -1,15 +1,20 @@
 package jdk;
 
 
-import jdk.jshell.VarSnippet;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JdkTest {
 
 
     public static void main(String[] args) {
+
+        Map<String,String>map = new HashMap<>();
+
+
+        String str = map.get("result");
+
+        System.out.println(str);
 
     }
 }

@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Automat-springboot/Automat-springboot.iml" filepath="$PROJECT_DIR$/Automat-springboot/Automat-springboot.iml" />
       <module fileurl="file://$PROJECT_DIR$/activiti/activiti.iml" filepath="$PROJECT_DIR$/activiti/activiti.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gxyl/gxyl.iml" filepath="$PROJECT_DIR$/gxyl/gxyl.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/环保/huanbao/gxyl.iml" filepath="$USER_HOME$/Desktop/环保/huanbao/gxyl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-sdk-v3/java-sdk-v3.iml" filepath="$PROJECT_DIR$/java-sdk-v3/java-sdk-v3.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdk10/jdk10.iml" filepath="$PROJECT_DIR$/jdk10/jdk10.iml" />
       <module fileurl="file://$PROJECT_DIR$/payDemo/payDemo.iml" filepath="$PROJECT_DIR$/payDemo/payDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-recevier/redis-recevier.iml" filepath="$PROJECT_DIR$/redis-recevier/redis-recevier.iml" />

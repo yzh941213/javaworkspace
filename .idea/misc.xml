@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/activiti/pom.xml" />
         <option value="$PROJECT_DIR$/redis-recevier/pom.xml" />
+        <option value="$PROJECT_DIR$/wxpay-sdk/pom.xml" />
+        <option value="$PROJECT_DIR$/java-sdk-v3/pom.xml" />
       </list>
     </option>
   </component>

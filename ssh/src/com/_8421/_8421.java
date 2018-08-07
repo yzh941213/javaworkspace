@@ -9,32 +9,32 @@ public class _8421 {
          * 1010
          * 1000
          */
-        System.out.println(9&10);
+        //System.out.println(9&10);
 
             /*
                 1001
                 1010
                 0011
              */
-        System.out.println(9^10);
+        //System.out.println(9^10);
             /*
              * 1001
              * 1010
                1011
              */
-        System.out.println(9|10);
+       // System.out.println(9|10);
 
         /*
          * 1001
          * 10
          */
-        System.out.println(9>>2);
+        //System.out.println(9>>2);
 
         /*
          * 1001
          * 100100
          */
-        System.out.println(9<<2);
+       // System.out.println(9<<2);
         //System.out.println(true^true);
         // System.out.println(false&true);
         // System.out.println(false|true);
@@ -44,11 +44,11 @@ public class _8421 {
 
 
         /*
-         * 10010
+         * 1000
          * 100
          * 无符号左移
          */
-        System.out.println(18>>>2);
+        System.out.println(8>>>1);
 
 
     }

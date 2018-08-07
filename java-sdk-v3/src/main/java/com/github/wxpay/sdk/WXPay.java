@@ -296,8 +296,7 @@ public class WXPay {
                                 remainingTimeMs = remainingTimeMs - (int)(WXPayUtil.getCurrentTimestampMs() - startTimestampMs);
                                 if (remainingTimeMs <= 100) {
                                     break;
-                                }
-                                else {
+                                } else {
                                     WXPayUtil.getLogger().info("microPayWithPos: try micropay again");
                                     if (remainingTimeMs > 5*1000) {
                                         Thread.sleep(5*1000);

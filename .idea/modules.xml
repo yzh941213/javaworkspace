@@ -9,9 +9,13 @@
       <module fileurl="file://$PROJECT_DIR$/jdk10/jdk10.iml" filepath="$PROJECT_DIR$/jdk10/jdk10.iml" />
       <module fileurl="file://$PROJECT_DIR$/payDemo/payDemo.iml" filepath="$PROJECT_DIR$/payDemo/payDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-recevier/redis-recevier.iml" filepath="$PROJECT_DIR$/redis-recevier/redis-recevier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot/spring-boot.iml" filepath="$PROJECT_DIR$/spring-boot/spring-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-shiro/spring-boot-shiro.iml" filepath="$PROJECT_DIR$/spring-boot-shiro/spring-boot-shiro.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssh/ssh.iml" filepath="$PROJECT_DIR$/ssh/ssh.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm/ssm.iml" filepath="$PROJECT_DIR$/ssm/ssm.iml" />
+      <module fileurl="file://D:/代码资源文件/java/GIT/gitMgr/unimall/unimall.iml" filepath="D:/代码资源文件/java/GIT/gitMgr/unimall/unimall.iml" />
       <module fileurl="file://D:/代码资源文件/java/GIT/gitMgr/unipayment/unipayment.iml" filepath="D:/代码资源文件/java/GIT/gitMgr/unipayment/unipayment.iml" />
+      <module fileurl="file://D:/代码资源文件/java/GIT/gitMgr/weblearn/weblearn.iml" filepath="D:/代码资源文件/java/GIT/gitMgr/weblearn/weblearn.iml" />
     </modules>
   </component>
 </project>

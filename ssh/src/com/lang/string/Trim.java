@@ -4,12 +4,12 @@ public class Trim {
 
     public static void main(String[] args) {
 
-        String source = "  ";
+        String source = "  2011448/r";
 
         //去除字符串两边的空格
-        //System.out.println(source.trim());
+        System.out.println(source.trim());
 
-        System.out.println(trim(source.toCharArray()));
+        //System.out.println(trim(source.toCharArray()));
     }
 
 

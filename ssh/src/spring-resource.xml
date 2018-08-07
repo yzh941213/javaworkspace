@@ -1,0 +1,5 @@
+<beans>
+    <bean name="helloWorldService" class="us.codecraft.tinyioc.HelloWorldService">
+        <property name="text" value="Hello World!"></property>
+    </bean>
+</beans>

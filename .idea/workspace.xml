@@ -27,11 +27,114 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Resource.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/Resource.java">
+      <file leaf-file-name="URLResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/URLResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+            <state relative-caret-position="240">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeanDefinitionReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/BeanDefinitionReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="37" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractBeanDefinitionReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/AbstractBeanDefinitionReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XMLBeanDefinitionReader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/XMLBeanDefinitionReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="747">
+              <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PropertyValue.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/PropertyValue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+              <folding>
+                <element signature="e#145#146#0" expanded="true" />
+                <element signature="e#172#173#0" expanded="true" />
+                <element signature="e#212#213#0" expanded="true" />
+                <element signature="e#244#245#0" expanded="true" />
+                <element signature="e#276#277#0" expanded="true" />
+                <element signature="e#304#305#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#380#381#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeanDefinition.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/BeanDefinition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DocumentBuilder.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/javax/xml/parsers/DocumentBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1560">
+              <caret line="113" column="19" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceLoader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spring-resource.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ssh/src/spring-resource.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -46,8 +149,8 @@
         <option value="struts_2_5" />
         <option value="HTML File" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,14 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/realm/MyRealm1.java" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/realm/MyRealm2.java" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/resources/shiro.ini" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/test/java/com/admin/ShiroApplicationTests.java" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/resources/shiro-role.ini" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/test/java/com/admin/ShiroRoleTest.java" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/test/java/com/admin/ShiroBase64.java" />
-        <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/config/NonConfigurationCreateTest.java" />
         <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/realm/service/PerMissionService.java" />
         <option value="$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/realm/service/RoleService.java" />
         <option value="$PROJECT_DIR$/spring-boot-shiro/src/test/java/com/admin/NonConfigurationCreateTest.java" />
@@ -137,11 +232,19 @@
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_2/BeanTest.java" />
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/BeanFactory.java" />
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/AbstrBeanFactory.java" />
-        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/PropertyValue.java" />
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/BeanDefinition.java" />
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/AutoWareCableBeanFactory.java" />
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/BeanTest.java" />
         <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/Resource.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/URLResource.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceLoader.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/spring-resource.xml" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceTest.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/BeanDefinitionReader.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/BeanDefinition.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/AbstractBeanDefinitionReader.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/PropertyValue.java" />
+        <option value="$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/XMLBeanDefinitionReader.java" />
       </list>
     </option>
   </component>
@@ -166,7 +269,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1460" />
     <option name="width" value="1135" />
     <option name="height" value="1410" />
@@ -176,6 +279,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,15 +321,22 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="spring" type="462c0819:PsiDirectoryNode" />
               <item name="init_bean" type="462c0819:PsiDirectoryNode" />
+              <item name="_3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWorkSpace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssh" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="init_bean" type="462c0819:PsiDirectoryNode" />
               <item name="_4_xml" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -244,7 +356,11 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\javaWorkSpace\ssh\src" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.spring.init_bean._4_xml" />
       <recent name="com.spring.init_bean._2" />
       <recent name="com._thread.delayed2" />
       <recent name="com.admin.config" />
@@ -270,7 +386,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BeanTest.test (1)">
+  <component name="RunManager" selected="JUnit.ResourceTest.test">
     <configuration name="BeanTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.spring.init_bean._1.BeanTest" />
       <module name="ssh" />
@@ -289,17 +405,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com._thread.delayed2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="DelayTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com._thread.delayed.DelayTest" />
-      <module name="ssh" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com._thread.delayed.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -342,6 +447,29 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.spring.init_bean._2" />
       <option name="MAIN_CLASS_NAME" value="com.spring.init_bean._2.BeanTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="ResourceTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.spring.init_bean._4_xml.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.spring.init_bean._4_xml" />
+      <option name="MAIN_CLASS_NAME" value="com.spring.init_bean._4_xml.ResourceTest" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -632,19 +760,19 @@
       <item itemvalue="Tomcat Server.Unnamed" />
       <item itemvalue="Spring Boot.ShiroApplication" />
       <item itemvalue="Spring Boot.ShiroApplication (1)" />
-      <item itemvalue="Application.DelayTest" />
       <item itemvalue="Application.DelayTest (1)" />
       <item itemvalue="Application.BeanTest" />
       <item itemvalue="JUnit.BeanTest.test" />
       <item itemvalue="JUnit.BeanTest.test (1)" />
+      <item itemvalue="JUnit.ResourceTest.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ResourceTest.test" />
         <item itemvalue="JUnit.BeanTest.test (1)" />
         <item itemvalue="JUnit.BeanTest.test" />
         <item itemvalue="Application.BeanTest" />
         <item itemvalue="Application.DelayTest (1)" />
-        <item itemvalue="Application.DelayTest" />
       </list>
     </recent_temporary>
   </component>
@@ -799,20 +927,12 @@
       <workItem from="1533525244750" duration="1651000" />
       <workItem from="1533528729011" duration="554000" />
       <workItem from="1533545827494" duration="919000" />
-      <workItem from="1533605771804" duration="6381000" />
+      <workItem from="1533605771804" duration="11691000" />
+      <workItem from="1533628975210" duration="62000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ShiroRoleTest_test1 - 2018.07.23 at 11h 11m 34s.xml">
-      <configuration name="ShiroRoleTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShiroRoleTest_test1 - 2018.07.23 at 11h 12m 09s.xml">
-      <configuration name="ShiroRoleTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShiroRoleTest_test1 - 2018.07.23 at 11h 14m 16s.xml">
-      <configuration name="ShiroRoleTest.test1" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ShiroRoleTest_test1 - 2018.07.23 at 11h 14m 35s.xml">
       <configuration name="ShiroRoleTest.test1" configurationId="JUnit" />
     </history-entry>
@@ -834,9 +954,18 @@
     <history-entry file="BeanTest_test_(1) - 2018.08.07 at 11h 56m 56s.xml">
       <configuration name="BeanTest.test (1)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ResourceTest_test - 2018.08.07 at 14h 09m 13s.xml">
+      <configuration name="ResourceTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ResourceTest_test - 2018.08.07 at 14h 09m 45s.xml">
+      <configuration name="ResourceTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ResourceTest_test - 2018.08.07 at 14h 10m 30s.xml">
+      <configuration name="ResourceTest.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316288000" />
+    <option name="totallyTimeSpent" value="321660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1134" extended-state="6" />
@@ -850,22 +979,21 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="JSF" order="4" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.26880643" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.499501" weight="0.4529828" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40421262" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24774323" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992248" visible="true" weight="0.2260479" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992248" visible="true" weight="0.2260479" />
       <window_info anchor="right" id="Bean Validation" order="4" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="BPMNPalette" order="4" weight="0.32984033" />
@@ -875,6 +1003,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.499501" weight="0.4529828" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32998997" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1171,8 +1300,14 @@
           <properties />
           <option name="timeStamp" value="172" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceLoader.java</url>
+          <line>8</line>
+          <properties />
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="173" />
+      <option name="time" value="175" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1180,76 +1315,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-beans-4.1.9.RELEASE.jar!/org/springframework/beans/factory/ListableBeanFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/config/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-boot-shiro/src/main/java/com/admin/config/MySessionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.0.7.RELEASE/spring-beans-5.0.7.RELEASE.jar!/org/springframework/beans/factory/FactoryBean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-context-4.1.9.RELEASE.jar!/org/springframework/context/MessageSource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-context-4.1.9.RELEASE.jar!/org/springframework/context/ApplicationContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-core-4.1.9.RELEASE.jar!/org/springframework/core/io/ClassPathResource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.0.7.RELEASE/spring-beans-5.0.7.RELEASE.jar!/org/springframework/beans/factory/BeanFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-context-4.1.9.RELEASE.jar!/org/springframework/jndi/support/SimpleJndiBeanFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-beans-4.1.9.RELEASE.jar!/org/springframework/beans/factory/xml/XmlBeanFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/ssh/web/WEB-INF/lib/spring-beans-4.1.9.RELEASE.jar!/org/springframework/beans/factory/support/DefaultListableBeanFactory.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
@@ -1358,9 +1423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1424,10 +1486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#193#194#0" expanded="true" />
-            <element signature="e#220#221#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1456,18 +1514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="33" column="58" lean-forward="true" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
-          <folding>
-            <element signature="e#184#185#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#399#400#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1496,10 +1542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-          <folding>
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#329#330#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1514,35 +1556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/PropertyValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="e#172#173#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-            <element signature="e#304#305#0" expanded="true" />
-            <element signature="e#346#347#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/BeanDefinition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="46" column="43" lean-forward="true" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-          <folding>
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#915#916#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
-            <element signature="e#1030#1031#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1569,8 +1582,117 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/Resource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        <state relative-caret-position="140">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/spring-resource.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/URLResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/ResourceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/BeanDefinitionReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/javax/xml/parsers/DocumentBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="113" column="19" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/BeanDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="46" column="43" lean-forward="true" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/BeanDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/AbstractBeanDefinitionReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_3/PropertyValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+          <folding>
+            <element signature="e#145#146#0" expanded="true" />
+            <element signature="e#172#173#0" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh/src/com/spring/init_bean/_4_xml/XMLBeanDefinitionReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1580,7 +1702,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited />
+          <last-edited>payDemo:war exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1640,7 +1762,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>Maven: asm:asm-commons:3.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -21,4 +21,9 @@ public class PropertyValue {
     public void setValue(Object value) {
         this.value = value;
     }
+
+    public PropertyValue(String name, Object value) {
+        this.name = name;
+        this.value = value;
+    }
 }
